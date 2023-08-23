@@ -1,69 +1,129 @@
 import React from "react";
-import { Dropdown, Space } from "antd";
-import en from "../../assets/images/en.png";
-import tr from "../../assets/images/tr.png";
-import az from "../../assets/images/az.png";
+import { Link } from "react-router-dom";
+import "./navbarDropdown.scss";
 
 const NavBarDropdownComponent = () => {
-  const items = [
-    {
-      key: "1",
-      label: `EN`,
-      icon: <img src={en} width="18px" height="12px" />,
-    },
-    {
-      key: "2",
-      label: "TR",
-      icon: <img src={tr} width="18px" height="12px" />,
-    },
-    {
-      key: "3",
-      label: "AZ",
-      icon: <img src={az} width="18px" height="12px" />,
-    },
-  ];
-  const items1 = [
-    {
-      key: "1",
-      label: `salam`,
-      icon: <img src={en} width="18px" height="12px" />,
-    },
-    {
-      key: "2",
-      label: "TR",
-      icon: <img src={tr} width="18px" height="12px" />,
-    },
-    {
-      key: "3",
-      label: "AZ",
-      icon: <img src={az} width="18px" height="12px" />,
-    },
-  ];
-
   return (
     <>
-      <Dropdown
-        menu={{
-          items,
-        }}
-      >
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            <i className="fa-solid fa-earth-americas"></i> metbex
-          </Space>
-        </a>
-      </Dropdown>
-      <Dropdown
-        menu={{
-          items1,
-        }}
-      >
-        <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            <i className="fa-solid fa-earth-americas"></i> qapi
-          </Space>
-        </a>
-      </Dropdown>
+      <div className="dropdown">
+        <Link to={"/features"} className="parent">
+          KURUMSAL
+        </Link>
+        <div className="dropdown-content">
+          <Link to={"/photo-proofing"} title="Photo Proofing">
+            <div className="text">ARMARIUM HAKKINDA</div>
+          </Link>
+          <Link to={"/deliver-photos-to-client"} title="Digital Downloads">
+            <div className="text">VIZYON VE MISYON</div>
+          </Link>
+          <Link to={"/visitor-analytics"} title="Visitor Analytics">
+            <div className="text">REFERANSLAR</div>
+          </Link>
+          <Link to={"/online-store"} title="Online Store">
+            <div className="text">INSAN KAYNAKLARI</div>
+          </Link>
+          <Link to={"/gallery-directories"} title="Gallery Directories">
+            <div className="text">KALITE VE CEVRE POLITIKAMIZ</div>
+          </Link>
+          <Link to={"/themes"} title="Themes">
+            <div className="text">VIDEOLAR</div>
+          </Link>
+          <Link to={"/themes"} title="Themes">
+            <div className="text">KALITE BELGELERIMIZ</div>
+          </Link>
+          <Link to={"/themes"} title="Themes">
+            <div className="text">YETKILI SATICI BASVURUSU</div>
+          </Link>
+          <Link to={"/themes"} title="Themes">
+            <div className="text">KISISEL VERILERIN KORUNMASI</div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="dropdown">
+        <Link to={"/features"} className="parent">
+          MUTFAKLAR
+        </Link>
+        <div className="dropdown-content">
+          <Link to={"/photo-proofing"} title="Photo Proofing">
+            <div className="text">MUTFAK MODELLERI</div>
+          </Link>
+          <Link to={"/deliver-photos-to-client"} title="Digital Downloads">
+            <div className="text">MASALAR VE SANDALYELER</div>
+          </Link>
+          <Link to={"/visitor-analytics"} title="Visitor Analytics">
+            <div className="text">AKSESUARLAR</div>
+          </Link>
+          <Link to={"/online-store"} title="Online Store">
+            <div className="text">DIGITAL KATALOG</div>
+          </Link>
+          <Link to={"/gallery-directories"} title="Gallery Directories">
+            <div className="text">SANAL TUR</div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="dropdown">
+        <Link to={"/features"} className="parent">
+          YETKILI SATICILAR
+        </Link>
+        <div className="dropdown-content">
+          <Link to={"/photo-proofing"} title="Photo Proofing">
+            <div className="text">YURT ICI SATICILAR</div>
+          </Link>
+          <Link to={"/deliver-photos-to-client"} title="Digital Downloads">
+            <div className="text">YURT DISI SATICILAR</div>
+          </Link>
+          <Link to={"/visitor-analytics"} title="Visitor Analytics">
+            <div className="text">LINEDECOR ADB WEBSITESI</div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="dropdown">
+        <Link to={"/features"} className="parent">
+          FIRSATLAR
+        </Link>
+        <div className="dropdown-content">
+          <Link to={"/photo-proofing"} title="Photo Proofing">
+            <div className="text">KAMPANYALAR</div>
+          </Link>
+          <Link to={"/deliver-photos-to-client"} title="Digital Downloads">
+            <div className="text">TESHIR FIRSATLARI</div>
+          </Link>
+          <Link to={"/visitor-analytics"} title="Visitor Analytics">
+            <div className="text">UCRETSIZ PROJELENDIRME</div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="dropdown">
+        <Link to={"/features"} className="parent">
+          HABERLER
+        </Link>
+        <div className="dropdown-content">
+          <Link to={"/photo-proofing"} title="Photo Proofing">
+            <div className="text">HABERLER</div>
+          </Link>
+          <Link to={"/deliver-photos-to-client"} title="Digital Downloads">
+            <div className="text">BASINDA ARMARIUM</div>
+          </Link>
+        </div>
+      </div>
+
+      <div className="dropdown">
+        <Link to={"/features"} className="parent">
+          ILETISIM
+        </Link>
+        <div className="dropdown-content">
+          <Link to={"/photo-proofing"} title="Photo Proofing">
+            <div className="text">ILETISIM BILGILERI</div>
+          </Link>
+          <Link to={"/deliver-photos-to-client"} title="Digital Downloads">
+            <div className="text">İLETİSİM FORMU</div>
+          </Link>
+        </div>
+      </div>
     </>
   );
 };
