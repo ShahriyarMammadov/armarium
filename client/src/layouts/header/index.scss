@@ -5,6 +5,7 @@ header {
     left: 0;
     right: 0;
     padding: 10px 5px;
+    z-index: 2;
 
     #header {
 
@@ -17,6 +18,13 @@ header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-height: 100px;
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+            &.inactive {
+                max-height: 0;
+                opacity: 0;
+            }
 
             .left {
                 display: flex;
@@ -87,3 +95,13 @@ header {
         }
     }
 }
+
+// .active {
+//     transform: translateY(0);
+// }
+
+// .inactive {
+//     max-height: 0;
+//     opacity: 0;
+//     overflow: hidden;
+// }

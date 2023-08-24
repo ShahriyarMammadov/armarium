@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import DropdownComponent from "../../components/dropdown/dropdown.jsx";
@@ -6,10 +6,46 @@ import logo from "../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../components/dropdown/navbarDropdown";
 
 const Header = () => {
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const threshold = 50;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.scrollY;
+      const visible =
+        prevScrollPos > currentScrollPos || currentScrollPos < threshold;
+
+      setPrevScrollPos(currentScrollPos);
+      setVisible(visible);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos]);
+
+  // useEffect(() => {
+  //   const headerTop = document.querySelector(".headerTop");
+
+  //   if (!visible) {
+  //     headerTop.style.transition =
+  //       "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out";
+  //     headerTop.style.maxHeight = "0";
+  //     headerTop.style.opacity = "0";
+  //     headerTop.style.overflow = "hidden";
+  //   } else {
+  //     headerTop.style.transition =
+  //       "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out";
+  //     headerTop.style.maxHeight = "100px"; // Header'ın normal yüksekliği
+  //     headerTop.style.opacity = "1";
+  //     headerTop.style.overflow = "visible";
+  //   }
+  // }, [visible]);
   return (
     <header>
       <div id="header" className="container">
-        <div className="headerTop">
+        <div className={`${visible ? "active" : "inactive"} headerTop`}>
           <div className="left">
             <div className="icon">
               <a href="https://facebook.com">
