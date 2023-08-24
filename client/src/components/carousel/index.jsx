@@ -11,6 +11,21 @@ const Carousel = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const nextSlide = () => {
+    setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  // useEffect(() => {
+  //   const interval = setInterval(nextSlide, 5000);
+  //   return () => clearInterval(interval);
+  // }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isHovered) {
@@ -26,14 +41,20 @@ const Carousel = () => {
       {images.map((image, index) => (
         <div
           key={index}
+          className={`carousel-item ${index === activeIndex ? "active" : ""}`}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className={`carousel-item ${index === activeIndex ? "active" : ""}`}
           style={{
             backgroundImage: `url(${image})`,
           }}
         ></div>
       ))}
+      <button className="carousel-button prev" onClick={prevSlide}>
+        <i className="fa-solid fa-angle-left"></i>
+      </button>
+      <button className="carousel-button next" onClick={nextSlide}>
+        <i className="fa-solid fa-angle-right"></i>
+      </button>
     </div>
   );
 };

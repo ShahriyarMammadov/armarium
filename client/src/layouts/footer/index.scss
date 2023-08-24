@@ -39,6 +39,7 @@ footer {
                         font-size: 13px;
                         color: #c1c1c1;
                         line-height: 5px;
+                        transition: all 0.3s;
 
                         &:hover {
                             color: azure;
@@ -69,6 +70,7 @@ footer {
                 i {
                     font-size: 40px;
                     margin-left: 20px;
+                    transition: all 0.3s;
 
                     &.fa-facebook-f {
                         margin-left: 0;
