@@ -3,6 +3,8 @@ import "./index.scss";
 import Carousel from "../../components/carousel";
 import videoImg from "../../assets/images/15.jpg";
 import backImg from "../../assets/images/16.png";
+import { Link } from "react-router-dom";
+import CardComponent from "../../components/card";
 
 const HomePage = () => {
   return (
@@ -10,6 +12,7 @@ const HomePage = () => {
       <section id="section1" className="imageSlider">
         <Carousel />
       </section>
+
       <section id="section2" className="about">
         <div className="container section2">
           <div className="left">
@@ -31,6 +34,13 @@ const HomePage = () => {
             <img src={videoImg} alt="videoImg" className="videoImg" />
             <img src={backImg} alt="backImg" />
           </div>
+        </div>
+      </section>
+
+      {/* backendden gelecek */}
+      <section id="section3" className="cards">
+        <div className="container">
+          <CardComponent />
         </div>
       </section>
     </main>
