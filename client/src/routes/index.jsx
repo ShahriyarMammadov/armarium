@@ -1,6 +1,7 @@
 import AdminRoot from "../components/root/admin";
 import MainRoot from "../components/root/site";
 import HomePage from "../pages/homePage";
+import ModelsDetailPage from "../pages/modelsDetailPage";
 
 const ROUTES = [
   {
@@ -12,8 +13,8 @@ const ROUTES = [
         element: <HomePage />,
       },
       {
-        path: "galleriesDetail/:id",
-        // element: <AllGalleriesDetail />,
+        path: "model/:id",
+        element: <ModelsDetailPage />,
       },
       {
         path: "*",
