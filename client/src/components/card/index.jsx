@@ -68,6 +68,22 @@ const CardComponent = () => {
             </div>
           </div>
         </div>
+
+        <div className="card">
+          <div className="image">
+            <img src={iso} alt="first" />
+          </div>
+          <div className="text">
+            <div className="headerText">
+              <h3>
+                <Link to={"/"}>Dijital Katalog</Link>
+              </h3>
+            </div>
+            <div className="link">
+              <Link to={"/"}>Detaylar Icin Tiklayiniz {">"}</Link>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

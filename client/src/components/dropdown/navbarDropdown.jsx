@@ -7,7 +7,7 @@ const NavBarDropdownComponent = () => {
     <>
       <div className="dropdown">
         <Link to={"/features"} className="parent">
-          KURUMSAL
+          HAQQIMIZDA
         </Link>
         <div className="dropdown-content">
           <Link to={"/photo-proofing"} title="Photo Proofing">
@@ -42,7 +42,7 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <Link to={"/features"} className="parent">
-          MUTFAKLAR
+          VİZYON VƏ MİSSİYA
         </Link>
         <div className="dropdown-content">
           <Link to={"/photo-proofing"} title="Photo Proofing">
@@ -65,7 +65,7 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <Link to={"/features"} className="parent">
-          YETKILI SATICILAR
+          VAKANSİYALAR
         </Link>
         <div className="dropdown-content">
           <Link to={"/photo-proofing"} title="Photo Proofing">
@@ -82,7 +82,7 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <Link to={"/features"} className="parent">
-          FIRSATLAR
+          REFERANSLAR
         </Link>
         <div className="dropdown-content">
           <Link to={"/photo-proofing"} title="Photo Proofing">
@@ -99,7 +99,7 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <Link to={"/features"} className="parent">
-          HABERLER
+          SATIŞ NÖQTƏLƏRİ
         </Link>
         <div className="dropdown-content">
           <Link to={"/photo-proofing"} title="Photo Proofing">
@@ -113,7 +113,7 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <Link to={"/features"} className="parent">
-          ILETISIM
+          XƏBƏRLƏR
         </Link>
         <div className="dropdown-content">
           <Link to={"/photo-proofing"} title="Photo Proofing">

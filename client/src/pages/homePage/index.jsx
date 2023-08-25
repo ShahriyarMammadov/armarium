@@ -5,6 +5,7 @@ import videoImg from "../../assets/images/15.jpg";
 import backImg from "../../assets/images/16.png";
 import { Link } from "react-router-dom";
 import CardComponent from "../../components/card";
+import ModelsComponent from "../../components/models";
 
 const HomePage = () => {
   return (
@@ -42,6 +43,10 @@ const HomePage = () => {
         <div className="container">
           <CardComponent />
         </div>
+      </section>
+
+      <section id="section4" className="models">
+        <ModelsComponent />
       </section>
     </main>
   );

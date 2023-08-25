@@ -1,0 +1,36 @@
+.backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 13px;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s;
+    border: none;
+    border-radius: 50%;
+
+    &:hover {
+        .fa-arrow-up {
+            animation: slideUp 1s ease-in-out;
+        }
+    }
+
+    .fa-arrow-up {
+        display: inline-block;
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-30%);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
