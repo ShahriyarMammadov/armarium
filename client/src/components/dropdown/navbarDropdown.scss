@@ -1,11 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
 .dropdown {
     position: relative;
     display: inline-block;
 
+    .active {
+        background-color: #e30615;
+        padding: 10px;
+    }
+
     .parent {
-        font-family: 'Lato', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         margin-left: 30px;
         padding: 10px 0;
         color: #252525;
@@ -18,7 +21,7 @@
     }
 
     .dropdown-content {
-        font-family: 'Lato', sans-serif;
+        font-family: Arial, Helvetica, sans-serif;
         display: none;
         position: absolute;
         background-color: white;
@@ -29,6 +32,8 @@
         border-bottom: 2px solid red;
 
         a {
+            background-color: white;
+            color: black !important;
             text-underline-offset: 1px !important;
             color: black;
             padding: 12px 16px;

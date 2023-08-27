@@ -24,42 +24,42 @@ const ModelsComponent = () => {
 
         {/* Backend-den gelecek */}
         <div className="images">
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image1} alt="" />
             </div>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image2} alt="" />
             </div>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image3} alt="" />
             </div>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image4} alt="" />
             </div>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image5} alt="" />
             </div>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image6} alt="" />
             </div>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image7} alt="" />
             </div>
           </Link>
-          <Link to={"/"}>
+          <Link to={"/model/name"}>
             <div className="image">
               <img src={image8} alt="" />
             </div>

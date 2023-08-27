@@ -2,6 +2,7 @@ import AdminRoot from "../components/root/admin";
 import MainRoot from "../components/root/site";
 import HomePage from "../pages/homePage";
 import ModelsDetailPage from "../pages/modelsDetailPage";
+import NotFoundPage from "../pages/notFoundPage";
 
 const ROUTES = [
   {
@@ -18,7 +19,7 @@ const ROUTES = [
       },
       {
         path: "*",
-        // element: <ErrorPage />,
+        element: <NotFoundPage />,
       },
     ],
   },

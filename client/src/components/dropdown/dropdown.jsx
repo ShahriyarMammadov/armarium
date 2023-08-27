@@ -23,6 +23,10 @@ const DropdownComponent = () => {
     },
   ];
 
+  const handleLanguageChange = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Dropdown
       menu={{
@@ -31,9 +35,9 @@ const DropdownComponent = () => {
         defaultSelectedKeys: ["1"],
       }}
     >
-      <a onClick={(e) => e.preventDefault()}>
+      <a onClick={(e) => handleLanguageChange(e)}>
         <Space>
-          <i className="fa-solid fa-earth-americas"></i> LANGUAGES
+          <img src={az} alt="language" width={"30px"} height={"22px"} />
         </Space>
       </a>
     </Dropdown>

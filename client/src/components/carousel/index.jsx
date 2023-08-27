@@ -4,13 +4,25 @@ import image1 from "../../assets/images/1.jpg";
 import image2 from "../../assets/images/2.png";
 import image3 from "../../assets/images/3.jpg";
 import image4 from "../../assets/images/4.jpg";
-
-const images = [image1, image2, image3, image4];
+import country from "../../assets/images/country_slide.jpg";
+import decor from "../../assets/images/deco.jpg";
+import retro from "../../assets/images/retro1-1.jpg";
+import vintage from "../../assets/images/vintage.jpg";
 
 const Carousel = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  const images = [
+    retro,
+    vintage,
+    image1,
+    image2,
+    image3,
+    image4,
+    decor,
+    country,
+  ];
   const nextSlide = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -28,13 +40,13 @@ const Carousel = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isHovered) {
-        setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
-      }
+      // if (!isHovered) {
+      setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
+      // }
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, []);
 
   return (
     <div className="carousel">
@@ -42,8 +54,8 @@ const Carousel = () => {
         <div
           key={index}
           className={`carousel-item ${index === activeIndex ? "active" : ""}`}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          // onMouseEnter={() => setIsHovered(true)}
+          // onMouseLeave={() => setIsHovered(false)}
           style={{
             backgroundImage: `url(${image})`,
           }}

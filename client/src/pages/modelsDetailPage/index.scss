@@ -1,5 +1,4 @@
 main {
-    margin-top: 160px;
 
     #detailPage {
         .coverImage {
@@ -12,6 +11,25 @@ main {
                 height: 100%;
             }
         }
+
+        .aboutText {
+            h5 {
+                font-weight: 200;
+                color: #252525;
+                line-height: 26.4px;
+                letter-spacing: 0;
+                font-size: 24px;
+                text-transform: uppercase;
+            }
+
+            p {
+                font-weight: 400;
+                font-size: 16px;
+                color: #5b5b5b;
+                line-height: 28px;
+                margin-left: 10px;
+            }
+        }
     }
 }
 
@@ -19,9 +37,9 @@ main {
     columns: 3 200px;
     column-gap: 1.5rem;
     width: 100%;
-    margin: 60px auto;
+    padding: 60px 0;
 
-    .gallery {
+    .ant-image {
         width: 150px;
         margin: 0 1.5rem 1.5rem 0;
         display: inline-block;
@@ -30,8 +48,9 @@ main {
         padding: 5px;
         box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
         border-radius: 5px;
-        cursor: pointer;
         position: relative;
+        cursor: zoom-in;
+        overflow: hidden;
 
         &:hover {
             border-color: coral;
@@ -39,12 +58,15 @@ main {
             .fa-trash {
                 display: inline;
             }
-        }
 
-        img {
-            width: 100%;
-            border-radius: 5px;
-            transition: all 0.25s ease-in-out;
         }
+    }
+}
+
+
+
+@keyframes shine {
+    100% {
+        left: 125%;
     }
 }

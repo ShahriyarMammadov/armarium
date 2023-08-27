@@ -1,4 +1,7 @@
 import React from "react";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
+import { Image } from "antd";
 import "./index.scss";
 import coverImage from "../../assets/images/101.jpg";
 import image1 from "../../assets/images/100.jpg";
@@ -31,30 +34,62 @@ const ModelsDetailPage = () => {
         </div>
 
         <div className="grid-container container">
-          <div className="gallery" key={1}>
-            <img src={image1} alt={`image`} />
+          <Image.PreviewGroup
+            preview={{
+              onChange: (current, prev) =>
+                console.log(`current index: ${current}, prev index: ${prev}`),
+            }}
+          >
+            <Image src={image1} />
+            <Image src={image2} />
+            <Image src={image3} />
+            <Image src={image4} />
+            <Image src={image5} />
+            <Image src={image6} />
+            <Image src={image7} />
+            <Image src={image8} />
+          </Image.PreviewGroup>
+
+          {/* <div className="gallery" key={1}>
+            <Zoom>
+              <img src={image1} alt={`image`} />
+            </Zoom>
           </div>
           <div className="gallery" key={1}>
-            <img src={image2} alt={`image`} />
+            <Zoom>
+              <img src={image2} alt={`image`} />
+            </Zoom>
           </div>
           <div className="gallery" key={1}>
-            <img src={image3} alt={`image`} />
+            <Zoom>
+              <img src={image3} alt={`image`} />
+            </Zoom>
           </div>
           <div className="gallery" key={1}>
-            <img src={image4} alt={`image`} />
+            <Zoom>
+              <img src={image4} alt={`image`} />
+            </Zoom>
           </div>
           <div className="gallery" key={1}>
-            <img src={image5} alt={`image`} />
+            <Zoom>
+              <img src={image5} alt={`image`} />
+            </Zoom>
           </div>
           <div className="gallery" key={1}>
-            <img src={image6} alt={`image`} />
+            <Zoom>
+              <img src={image6} alt={`image`} />
+            </Zoom>
           </div>
           <div className="gallery" key={1}>
-            <img src={image7} alt={`image`} />
+            <Zoom>
+              <img src={image7} alt={`image`} />
+            </Zoom>
           </div>
           <div className="gallery" key={1}>
-            <img src={image8} alt={`image`} />
-          </div>
+            <Zoom>
+              <img src={image8} alt={`image`} />
+            </Zoom>
+          </div> */}
         </div>
       </section>
     </main>
