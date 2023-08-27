@@ -78,11 +78,11 @@ main {
             }
 
             @media only screen and (max-width: 1040px) {
-                flex-direction: column;
+                flex-direction: column-reverse;
 
                 .right {
                     position: static;
-                    margin-top: 20px;
+                    margin-bottom: 30px;
                 }
 
                 .left {

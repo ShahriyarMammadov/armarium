@@ -108,6 +108,28 @@ header {
                 }
             }
 
+            @media only screen and (max-width: 768px) {
+                padding: 0 30px;
+            }
+
+            @media only screen and (max-width: 500px) {
+                .left {
+                    .telephoneNumber {
+                        a {
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+
+            @media only screen and (max-width: 440px) {
+                flex-direction: column;
+
+                .left {
+                    margin-bottom: 20px;
+                }
+            }
+
             .right {
                 display: flex;
                 align-items: center;
@@ -171,6 +193,21 @@ header {
                     transition: opacity 0.3s ease, visibility 0.3s ease;
                     color: white;
 
+                    @media only screen and (max-width: 445px) {
+                        left: 65% !important;
+                    }
+
+                    @media only screen and (max-width: 420px) {
+                        width: 380px;
+                    }
+
+                    @media only screen and (max-width: 400px) {
+                        width: 360px;
+                    }
+
+                    @media only screen and (max-width: 375px) {
+                        width: 300px;
+                    }
 
                     .cardLogo {
 
@@ -182,6 +219,13 @@ header {
                             img {
                                 width: 100px;
                                 height: 100px;
+                            }
+
+                            @media only screen and (max-width: 420px) {
+                                img {
+                                    width: 80px;
+                                    height: 80px;
+                                }
                             }
                         }
 
