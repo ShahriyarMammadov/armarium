@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import DropdownComponent from "../../components/dropdown/dropdown.jsx";
 import logo from "../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../components/dropdown/navbarDropdown";
+import { Button, Drawer } from "antd";
 
 const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [colorChange, setColorChange] = useState(false);
+  const [toggle, setToggle] = useState(false);
   const [visible, setVisible] = useState(true);
 
   const threshold = 50;
@@ -50,6 +52,16 @@ const Header = () => {
   //     headerTop.style.overflow = "visible";
   //   }
   // }, [visible]);
+
+  // DRAWER
+  const [open, setOpen] = useState(false);
+  const showDrawer = () => {
+    setOpen(true);
+  };
+  const onClose = () => {
+    setToggle(false);
+    setOpen(false);
+  };
 
   return (
     <header className={`${colorChange ? "colorChange" : ""}`}>
@@ -190,6 +202,33 @@ const Header = () => {
           <nav>
             <NavBarDropdownComponent />
           </nav>
+        </div>
+
+        {/* RESPONSIVE */}
+        {/* <Button type="primary" onClick={showDrawer}>
+          Open
+        </Button> */}
+        <Drawer
+          title="Basic Drawer"
+          placement="left"
+          onClose={onClose}
+          open={open}
+        >
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Drawer>
+        <div
+          id="btn"
+          className={`${toggle ? "on" : ""}`}
+          onClick={() => {
+            setToggle(!toggle);
+            showDrawer();
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
       </div>
     </header>
