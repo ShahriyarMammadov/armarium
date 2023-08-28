@@ -8,9 +8,11 @@ import image5 from "../../assets/images/160.jpg";
 import image6 from "../../assets/images/161.jpg";
 import image7 from "../../assets/images/162.jpg";
 import image8 from "../../assets/images/163.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ModelsComponent = () => {
+const navigate = useNavigate()
+
   return (
     <div id="modelsComponent">
       <div className="container">
@@ -19,7 +21,13 @@ const ModelsComponent = () => {
             <h3>MODELLER</h3>
             <hr />
           </div>
-          <button>TÜM MODELLER</button>
+          <button
+            onClick={() => {
+              navigate("/allModels");
+            }}
+          >
+            TÜM MODELLER
+          </button>
         </div>
 
         {/* Backend-den gelecek */}

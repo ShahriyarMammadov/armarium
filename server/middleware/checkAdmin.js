@@ -9,7 +9,7 @@ export const checkAdmin = (req, res, next) => {
         .status(404)
         .send({ success: false, message: "Token is invalid" });
     }
-    jwt.verify(token, "bendis", (err, admin) => {
+    jwt.verify(token, "4473", (err, admin) => {
       if (err) {
         return res
           .status(401)

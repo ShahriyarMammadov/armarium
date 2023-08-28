@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import DropdownComponent from "../../components/dropdown/dropdown.jsx";
 import logo from "../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../components/dropdown/navbarDropdown";
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
+import { Collapse } from "antd";
 
 const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -58,9 +59,47 @@ const Header = () => {
   const showDrawer = () => {
     setOpen(true);
   };
+
   const onClose = () => {
     setToggle(false);
     setOpen(false);
+  };
+
+  const items = [
+    {
+      key: "1",
+      label: "HAQQIMIZDA",
+      children: <p>asdasf</p>,
+    },
+    {
+      key: "2",
+      label: "MEBEL",
+      children: <p>salam</p>,
+    },
+    {
+      key: "3",
+      label: "VAKANSİYALAR",
+      children: <p>sdg</p>,
+    },
+    {
+      key: "4",
+      label: "REFERANSLAR",
+      children: <p>sdg</p>,
+    },
+    {
+      key: "5",
+      label: "SATIŞ NÖQTƏLƏRİ",
+      children: <p>sdg</p>,
+    },
+    {
+      key: "6",
+      label: "XƏBƏRLƏR",
+      children: <p>sdg</p>,
+    },
+  ];
+
+  const onChange = (key) => {
+    console.log(key);
   };
 
   return (
@@ -214,9 +253,12 @@ const Header = () => {
           onClose={onClose}
           open={open}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+          <Collapse
+            items={items}
+            defaultActiveKey={["1"]}
+            onChange={onChange}
+          />
+          ;
         </Drawer>
         <div
           id="btn"
