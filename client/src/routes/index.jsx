@@ -34,7 +34,7 @@ const ROUTES = [
     children: [
       {
         path: "",
-        // element: <DashboardPage />,
+        // element: <addModels />,
       },
       {
         path: "user/",
