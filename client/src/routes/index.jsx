@@ -4,6 +4,9 @@ import AllModelsPage from "../pages/allModelsPage";
 import HomePage from "../pages/homePage";
 import ModelsDetailPage from "../pages/modelsDetailPage";
 import NotFoundPage from "../pages/notFoundPage";
+import GuaranteePage from "../pages/guaranteePage";
+import CustomerServicePage from "../pages/customerServicePage";
+import AboutPage from "../pages/aboutPage";
 
 const ROUTES = [
   {
@@ -21,6 +24,18 @@ const ROUTES = [
       {
         path: "allModels",
         element: <AllModelsPage />,
+      },
+      {
+        path: "zemanet",
+        element: <GuaranteePage />,
+      },
+      {
+        path: "musteri_xidmeti",
+        element: <CustomerServicePage />,
+      },
+      {
+        path: "haqqimizda",
+        element: <AboutPage />,
       },
       {
         path: "*",

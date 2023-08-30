@@ -1,8 +1,23 @@
 import { decorModel } from "../models/decorModel.js";
 
+// ---------------------- ADD DECOR ----------------------
+// yeni decor-un yaradılması, 15 dənə şəkil, 1 dənə örtük şəkli yükləmək mümkündür, digərlərində validation yoxdur
+
 export const addDecor = async (req, res) => {
   try {
     const { name, description } = req.body;
+    if (!req.files.images) {
+      return res.status(415).json({
+        error: "Heç Bir Şəkil Əlavə Edilməyib, Zəhmət Olmasa Şəkil Seçin!",
+      });
+    }
+
+    if (!req.files.coverImage) {
+      return res.status(415).json({
+        error: "Zəhmət Olmasa Örtük Şəkli Seçin",
+      });
+    }
+
     const images = req.files.images.map((image) => image.filename);
     const coverImage = req.files.coverImage[0].filename;
 
@@ -15,44 +30,82 @@ export const addDecor = async (req, res) => {
 
     await newDecor.save();
 
-    res.status(201).json(newDecor);
+    res
+      .status(201)
+      .json({ message: "Yeni Dekor Uğurla Yaradıldı", newDecor: newDecor });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
   }
 };
+// -------------------------------------------------------
 
-// export const addDecor = async (req, res) => {
-//   try {
-//     const { name, description } = req.body;
-//     const coverImage = req.file.filename;
+// ---------------------- ALL DECOR ----------------------
+// Bütün decor-ların göndərilməsi
 
-//     const images = req.files.map((file) => file.filename);
+export const allDecor = async (req, res) => {
+  try {
+    const decors = await decorModel.find();
+    res.json(decors);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+// -------------------------------------------------------
 
-//     const newDecor = new decorModel({
-//       name,
-//       description,
-//       images,
-//       coverImage,
-//     });
+// ------------------ DECOR BY NAME ----------------------
+// Adına görə decor-un göndərilməsi
 
-//     await newDecor.save();
+export const decorByName = async (req, res) => {
+  try {
+    const { decorName } = req.params;
+    const decors = await decorModel.find({ name: decorName });
 
-//     res.status(201).json({ message: "Decor added successfully" });
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({ error: "An error occurred" });
-//   }
-// };
+    if (!decors) {
+      return res.status(404).json({ message: "Dekor Tapılmadı", data: decors });
+    }
 
-// export const getAllDecors = async (req, res) => {
-//   try {
-//     const decors = await decorModel.find();
-//     res.status(200).json(decors);
-//   } catch (error) {
-//     console.log(error);
-//     res
-//       .status(500)
-//       .json({ error: "Dekor verileri alınırken bir hata oluştu." });
-//   }
-// };
+    res.json(decors);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+// -------------------------------------------------------
+
+// ----------- DECOR WITH SPECIAL DATA -------------------
+// Decor-un adına görə `adını, description və örtük şəklinin göndərilməsi
+
+export const decorWithSpecialData = async (req, res) => {
+  try {
+    const decors = await decorModel.find({}, "name description coverImage");
+    res.json(decors);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+// -------------------------------------------------------
+
+// ----------- EDİT DECOR WITH DECOR NAME ----------------
+// Decor-un adına görə məlumatlarının redaktə edilməsi
+
+export const editDecorByName = async (req, res) => {
+  try {
+    const { name } = req.params;
+    const { description, coverImage } = req.body;
+
+    const updatedDecor = await decorModel.findOneAndUpdate(
+      { name },
+      { description, coverImage },
+      { new: true }
+    );
+
+    res.json(updatedDecor);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+// -------------------------------------------------------

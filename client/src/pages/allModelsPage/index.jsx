@@ -112,10 +112,10 @@ const AllModelsPage = () => {
             <input type="file" name="images" accept="image/*" multiple />
             <button type="submit">Upload</button>
           </form>
-          <img
-            src="http://localhost:3000/images/images-1693305691159-813746495.jpeg"
+          {/* <img
+            src="http://localhost:3000/images/images-1693322611929-100045829.jpeg"
             alt="Resim"
-          />
+          /> */}
         </div>
       </div>
     </div>

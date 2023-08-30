@@ -6,36 +6,18 @@ const NavBarDropdownComponent = () => {
   return (
     <>
       <div className="dropdown">
-        <NavLink to={"/features"} className="parent">
+        <NavLink to={"/haqqimizda"} className="parent">
           HAQQIMIZDA
         </NavLink>
         <div className="dropdown-content">
-          <NavLink to={"/photo-proofing"} title="Photo Proofing">
-            <div className="text">ARMARIUM HAKKINDA</div>
+          <NavLink to={"/zemanet"} title="Zəmanət">
+            <div className="text">ZƏMANƏT</div>
           </NavLink>
-          <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
-            <div className="text">VIZYON VE MISYON</div>
+          <NavLink to={"/musteri_xidmeti"} title="Terminlər">
+            <div className="text">MÜŞTƏRİ XİDMƏTLƏRİ</div>
           </NavLink>
-          <NavLink to={"/visitor-analytics"} title="Visitor Analytics">
-            <div className="text">REFERANSLAR</div>
-          </NavLink>
-          <NavLink to={"/online-store"} title="Online Store">
-            <div className="text">INSAN KAYNAKLARI</div>
-          </NavLink>
-          <NavLink to={"/gallery-directories"} title="Gallery Directories">
-            <div className="text">KALITE VE CEVRE POLITIKAMIZ</div>
-          </NavLink>
-          <NavLink to={"/themes"} title="Themes">
-            <div className="text">VIDEOLAR</div>
-          </NavLink>
-          <NavLink to={"/themes"} title="Themes">
-            <div className="text">KALITE BELGELERIMIZ</div>
-          </NavLink>
-          <NavLink to={"/themes"} title="Themes">
-            <div className="text">YETKILI SATICI BASVURUSU</div>
-          </NavLink>
-          <NavLink to={"/themes"} title="Themes">
-            <div className="text">KISISEL VERILERIN KORUNMASI</div>
+          <NavLink to={"/terminler"} title="Visitor Analytics">
+            <div className="text">TERMİNLƏR</div>
           </NavLink>
         </div>
       </div>
