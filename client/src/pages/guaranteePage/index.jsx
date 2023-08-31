@@ -2,6 +2,7 @@ import React from "react";
 import "./index.scss";
 
 import guaranteBackGif from "../../assets/giphy/haqqimizdaBackGif.gif";
+import { Link } from "react-router-dom";
 
 const GuaranteePage = () => {
   return (
@@ -10,6 +11,17 @@ const GuaranteePage = () => {
         <img src={guaranteBackGif} alt="Welcome" loading="lazy" />
       </div>
       <div className="container">
+        <div className="navigation">
+          <span>
+            <Link to={"/"}>
+              Home <i className="fa-solid fa-caret-right"></i>{" "}
+            </Link>
+            <Link to={"/haqqimizda"}>
+              Haqqımızda <i className="fa-solid fa-caret-right"></i>{" "}
+            </Link>
+            <span>Zəmanət</span>
+          </span>
+        </div>
         <p>
           Şirkətimiz istehsal etdiyi hər bir məhsul növünə 2 il müddətində
           zəmanət verilir. Zəmanət şərtləri haqqında daha ətraflı məlumatı bu

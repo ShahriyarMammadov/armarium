@@ -1,0 +1,43 @@
+#skeleton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    .image-skeleton {
+        width: 270px;
+        height: 180px;
+        background: linear-gradient(to right,
+                transparent 0%,
+                #e0e0e0 50%,
+                transparent 100%);
+        background-size: 200% 100%;
+        animation: shine 1.5s infinite;
+    }
+}
+
+// @keyframes shine {
+//     0% {
+//         background-position: -100% 0;
+//     }
+
+//     100% {
+//         background-position: 100% 0;
+//     }
+// }
+
+
+@keyframes shine {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}

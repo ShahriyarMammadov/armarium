@@ -3,7 +3,7 @@
     display: inline-block;
 
     .active {
-        background-color: #e30615;
+        border-bottom: 3px solid red;
         padding: 10px;
     }
 
@@ -53,6 +53,12 @@
             display: block;
             transition: all 0.3s;
 
+            &.active {
+                background-color: #5B5B5B;
+                color: white !important;
+                border: none;
+            }
+
             &:hover {
                 background-color: #5B5B5B;
                 color: #ffffff !important;
@@ -79,4 +85,3 @@
         transform: translateY(0);
     }
 }
-

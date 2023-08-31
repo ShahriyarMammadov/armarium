@@ -7,6 +7,10 @@ import NotFoundPage from "../pages/notFoundPage";
 import GuaranteePage from "../pages/guaranteePage";
 import CustomerServicePage from "../pages/customerServicePage";
 import AboutPage from "../pages/aboutPage";
+import TermsPage from "../pages/termsPage";
+import NewsPage from "../pages/newsPage";
+import BlogPage from "../pages/BlogPage";
+import NewsDetailPage from "../pages/newsDetailPage";
 
 const ROUTES = [
   {
@@ -22,20 +26,36 @@ const ROUTES = [
         element: <ModelsDetailPage />,
       },
       {
-        path: "allModels",
+        path: "/mebel/all_models",
         element: <AllModelsPage />,
       },
       {
-        path: "zemanet",
+        path: "haqqimizda/zemanet",
         element: <GuaranteePage />,
       },
       {
-        path: "musteri_xidmeti",
+        path: "haqqimizda/musteri_xidmeti",
         element: <CustomerServicePage />,
+      },
+      {
+        path: "haqqimizda/terminler",
+        element: <TermsPage />,
       },
       {
         path: "haqqimizda",
         element: <AboutPage />,
+      },
+      {
+        path: "xeberler",
+        element: <NewsPage />,
+      },
+      {
+        path: "xeberler/:id",
+        element: <NewsDetailPage />,
+      },
+      {
+        path: "xeberler/blog",
+        element: <BlogPage />,
       },
       {
         path: "*",

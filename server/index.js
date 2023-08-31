@@ -10,6 +10,7 @@ import path from "path";
 import authRouter from "./routers/auth.js";
 import decorRouter from "./routers/decor.js";
 import selectedDecorRouter from "./routers/selectedDecor.js";
+import newsRouter from "./routers/news.js";
 // --------------------------------------------------------
 
 //------------------------- Morgan ------------------------
@@ -39,6 +40,7 @@ app.use("/images", express.static("images"));
 app.use("/auth", authRouter);
 app.use("/decor", decorRouter);
 app.use("/selectedDecor", selectedDecorRouter);
+app.use("/news", newsRouter);
 // --------------------------------------------------------
 
 //--------------------- Express js Server -----------------

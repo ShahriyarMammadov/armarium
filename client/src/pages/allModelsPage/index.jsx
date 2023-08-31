@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import models from "../../assets/images/models.jpg";
 import { Tabs } from "antd";
@@ -12,20 +12,25 @@ import image5 from "../../assets/images/148.jpg";
 import image6 from "../../assets/images/150.jpg";
 
 const AllModelsPage = () => {
-  const [kitchenModels, setKitchenModels] = useState([]);
+  const [decors, setDecors] = useState([]);
 
   const onChange = (key) => {
     console.log(key);
   };
 
-  const getDecorData = async () => {
+  const getAllDecors = async () => {
     try {
-      const data = await axios.get("http://localhost:3000/decor/getAllDecor");
-      console.log(data);
+      const data = await axios.get("http://localhost:3000/decor/allDecor");
+      setDecors(data?.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getAllDecors();
+  }, []);
+  console.log(decors);
 
   return (
     <div id="allModels">
@@ -48,14 +53,21 @@ const AllModelsPage = () => {
                 <h2>Content of Tab Pane 2</h2>
                 <p>Some different text here...</p>
                 <div className="imagesCards">
-                  <Link to={"/model/salsm"}>
-                    <img src={image2} alt="Image 2" />
-                    <div className="text hidden">
-                      <p className="modelName">Esso</p>
-                      <p className="description hidden">Maskulen ve Derin</p>
-                    </div>
-                  </Link>
-                  <Link to={"/model/salsm"}>
+                  {decors?.map((e, i) => {
+                    return (
+                      <Link to={`/model/${e?.name}`}>
+                        <img
+                          src={`http://localhost:3000/images/${e?.coverImage}`}
+                          alt={`${e?.name}`}
+                        />
+                        <div className="text hidden">
+                          <p className="modelName">{e?.name}</p>
+                          <p className="description hidden">{e?.description}</p>
+                        </div>
+                      </Link>
+                    );
+                  })}
+                  {/* <Link to={"/model/salsm"}>
                     <img src={image3} alt="Image 2" />
                     <div className="text">
                       <p className="modelName">Petra</p>
@@ -89,7 +101,7 @@ const AllModelsPage = () => {
                       <p className="modelName">Luna</p>
                       <p className="description hidden">Maskulen ve Derin</p>
                     </div>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </Tabs.TabPane>

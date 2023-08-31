@@ -10,13 +10,13 @@ const NavBarDropdownComponent = () => {
           HAQQIMIZDA
         </NavLink>
         <div className="dropdown-content">
-          <NavLink to={"/zemanet"} title="Zəmanət">
+          <NavLink to={"/haqqimizda/zemanet"} title="Zəmanət">
             <div className="text">ZƏMANƏT</div>
           </NavLink>
-          <NavLink to={"/musteri_xidmeti"} title="Terminlər">
+          <NavLink to={"/haqqimizda/musteri_xidmeti"} title="Terminlər">
             <div className="text">MÜŞTƏRİ XİDMƏTLƏRİ</div>
           </NavLink>
-          <NavLink to={"/terminler"} title="Visitor Analytics">
+          <NavLink to={"/haqqimizda/terminler"} title="Visitor Analytics">
             <div className="text">TERMİNLƏR</div>
           </NavLink>
         </div>
@@ -27,8 +27,8 @@ const NavBarDropdownComponent = () => {
           MEBEL
         </NavLink>
         <div className="dropdown-content">
-          <NavLink to={"/photo-proofing"} title="Photo Proofing">
-            <div className="text">MUTFAK MODELLERI</div>
+          <NavLink to={"/mebel/all_models"} title="Photo Proofing">
+            <div className="text">BÜTÜN MODELLƏR</div>
           </NavLink>
           <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
             <div className="text">MASALAR VE SANDALYELER</div>
@@ -41,23 +41,6 @@ const NavBarDropdownComponent = () => {
           </NavLink>
           <NavLink to={"/gallery-directories"} title="Gallery Directories">
             <div className="text">SANAL TUR</div>
-          </NavLink>
-        </div>
-      </div>
-
-      <div className="dropdown">
-        <NavLink to={"/features"} className="parent">
-          VAKANSİYALAR
-        </NavLink>
-        <div className="dropdown-content">
-          <NavLink to={"/photo-proofing"} title="Photo Proofing">
-            <div className="text">YURT ICI SATICILAR</div>
-          </NavLink>
-          <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
-            <div className="text">YURT DISI SATICILAR</div>
-          </NavLink>
-          <NavLink to={"/visitor-analytics"} title="Visitor Analytics">
-            <div className="text">LINEDECOR ADB WEBSITESI</div>
           </NavLink>
         </div>
       </div>
@@ -95,14 +78,28 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <NavLink to={"/features"} className="parent">
-          XƏBƏRLƏR
+          VAKANSİYALAR
         </NavLink>
         <div className="dropdown-content">
           <NavLink to={"/photo-proofing"} title="Photo Proofing">
-            <div className="text">ILETISIM BILGILERI</div>
+            <div className="text">YURT ICI SATICILAR</div>
           </NavLink>
           <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
-            <div className="text">İLETİSİM FORMU</div>
+            <div className="text">YURT DISI SATICILAR</div>
+          </NavLink>
+          <NavLink to={"/visitor-analytics"} title="Visitor Analytics">
+            <div className="text">LINEDECOR ADB WEBSITESI</div>
+          </NavLink>
+        </div>
+      </div>
+
+      <div className="dropdown">
+        <NavLink to={"/xeberler"} className="parent">
+          XƏBƏRLƏR
+        </NavLink>
+        <div className="dropdown-content">
+          <NavLink to={"/xeberler/blog"} title="Digital Downloads">
+            <div className="text">BLOG</div>
           </NavLink>
         </div>
       </div>
