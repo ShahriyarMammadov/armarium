@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import "./index.scss";
 import blogBackImage from "../../assets/images/blogBackImage.jpeg";
-import blogCard1 from "../../assets/images/blogCard1.jpeg";
-import author from "../../assets/images/as.png";
 import { Modal, Input, Button } from "antd";
+import { Link } from "react-router-dom";
+
+import image1 from "../../assets/images/blogImage1.jpg";
+import image2 from "../../assets/images/blogImage2.jpg";
+import image3 from "../../assets/images/blogImage3.jpg";
+import image4 from "../../assets/images/blogImage4.jpg";
 
 const BlogPage = () => {
   const { TextArea } = Input;
@@ -21,10 +25,8 @@ const BlogPage = () => {
     setModalText("The modal will be closed after two seconds");
     console.log(name, comment);
     setConfirmLoading(true);
-    setTimeout(() => {
-      setOpen(false);
-      setConfirmLoading(false);
-    }, 2000);
+    setOpen(false);
+    setConfirmLoading(false);
   };
 
   const handleCancel = () => {
@@ -39,313 +41,126 @@ const BlogPage = () => {
       </div>
       <div className="blogPage container">
         <div className="headerText">
-          <h1>Armarium Blog</h1>
+          <h1>ARMARIUM BLOQ</h1>
+        </div>
+        <div className="navigation">
+          <span>
+            <Link to={"/"}>
+              Home <i className="fa-solid fa-caret-right"></i>{" "}
+            </Link>
+            <Link to={"/xeberler"}>
+              Xəbərlər <i className="fa-solid fa-caret-right"></i>{" "}
+            </Link>
+            <span>Bloq</span>
+          </span>
         </div>
 
-        <div className="selectedBlogs"></div>
+        <div className="blogs">
+          <div className="blog">
+            <img src={image1} alt="Blog" />
 
-        <div className="allBlogs">
-          <div className="card">
-            <div className="image">
-              <img src={blogCard1} alt="blog" />
-            </div>
-
-            <div className="categoryAndDate">
-              <h6>Business, Travel</h6>
-              {" - "}
-              <p className="date">31 Avqust, 2023</p>
-            </div>
-
-            <div className="blogHeaderText">
-              <h4>
-                Your Meet unhappy customers are your greatest source of learning
-              </h4>
-            </div>
-
-            {/* <hr /> */}
-
-            <div className="description">
-              <p>
-                For the away, behind the wind mountains, for, from the countries
-                Vakalla and Conr, Lorem ipsum dolor sit amet consectetur.
-              </p>
-            </div>
-
-            <div className="author">
-              <div className="authorAbout">
-                <div className="authorImage">
-                  <img src={author} alt="Armarium" />
-                </div>
-                <div>
-                  <p>Armarium</p>
-                  <p className="position">CEO, Offer</p>
-                </div>
+            <div className="rightText">
+              <div className="blogHeaderText">
+                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
+              </div>
+              <div className="description">
+                <p>
+                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
+                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
+                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
+                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
+                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
+                  earum harum id eligendi consequatur quo recusandae. Lorem
+                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
+                  voluptas explicabo eius maxime nam obcaecati cum vero optio
+                  esse nesciunt?
+                </p>
               </div>
 
-              <div className="comment">
-                <i
-                  className="fa-regular fa-comment-dots"
-                  onClick={showModal}
-                ></i>
-              </div>
+              <Link to={"/xeberler/blog/name"}>
+                Ətraflı <i className="fa-solid fa-caret-right"></i>
+              </Link>
             </div>
           </div>
 
-          <div className="card">
-            <div className="image">
-              <img src={blogCard1} alt="blog" />
-            </div>
+          <div className="blog">
+            <img src={image2} alt="Blog" />
 
-            <div className="categoryAndDate">
-              <h6>Business, Travel</h6>
-              {" - "}
-              <p className="date">31 Avqust, 2023</p>
-            </div>
-
-            <div className="blogHeaderText">
-              <h4>
-                Your Meet unhappy customers are your greatest source of learning
-              </h4>
-            </div>
-
-            {/* <hr /> */}
-
-            <div className="description">
-              <p>
-                For the away, behind the wind mountains, for, from the countries
-                Vakalla and Conr, Lorem ipsum dolor sit amet consectetur.
-              </p>
-            </div>
-
-            <div className="author">
-              <div className="authorAbout">
-                <div className="authorImage">
-                  <img src={author} alt="Armarium" />
-                </div>
-                <div>
-                  <p>Armarium</p>
-                  <p className="position">CEO, Offer</p>
-                </div>
+            <div className="rightText">
+              <div className="blogHeaderText">
+                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
+              </div>
+              <div className="description">
+                <p>
+                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
+                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
+                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
+                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
+                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
+                  earum harum id eligendi consequatur quo recusandae. Lorem
+                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
+                  voluptas explicabo eius maxime nam obcaecati cum vero optio
+                  esse nesciunt?
+                </p>
               </div>
 
-              <div className="comment">
-                <i className="fa-regular fa-comment-dots"></i>
-              </div>
+              <Link to={"/xeberler/blog/name"}>
+                Ətraflı <i className="fa-solid fa-caret-right"></i>
+              </Link>
             </div>
           </div>
 
-          <div className="card">
-            <div className="image">
-              <img src={blogCard1} alt="blog" />
-            </div>
+          <div className="blog">
+            <img src={image3} alt="Blog" />
 
-            <div className="categoryAndDate">
-              <h6>Business, Travel</h6>
-              {" - "}
-              <p className="date">31 Avqust, 2023</p>
-            </div>
-
-            <div className="blogHeaderText">
-              <h4>
-                Your Meet unhappy customers are your greatest source of learning
-              </h4>
-            </div>
-
-            {/* <hr /> */}
-
-            <div className="description">
-              <p>
-                For the away, behind the wind mountains, for, from the countries
-                Vakalla and Conr, Lorem ipsum dolor sit amet consectetur.
-              </p>
-            </div>
-
-            <div className="author">
-              <div className="authorAbout">
-                <div className="authorImage">
-                  <img src={author} alt="Armarium" />
-                </div>
-                <div>
-                  <p>Armarium</p>
-                  <p className="position">CEO, Offer</p>
-                </div>
+            <div className="rightText">
+              <div className="blogHeaderText">
+                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
+              </div>
+              <div className="description">
+                <p>
+                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
+                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
+                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
+                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
+                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
+                  earum harum id eligendi consequatur quo recusandae. Lorem
+                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
+                  voluptas explicabo eius maxime nam obcaecati cum vero optio
+                  esse nesciunt?
+                </p>
               </div>
 
-              <div className="comment">
-                <i className="fa-regular fa-comment-dots"></i>
-              </div>
+              <Link to={"/xeberler/blog/name"}>
+                Ətraflı <i className="fa-solid fa-caret-right"></i>
+              </Link>
             </div>
           </div>
 
-          <div className="card">
-            <div className="image">
-              <img src={blogCard1} alt="blog" />
-            </div>
+          <div className="blog">
+            <img src={image4} alt="Blog" />
 
-            <div className="categoryAndDate">
-              <h6>Business, Travel</h6>
-              {" - "}
-              <p className="date">31 Avqust, 2023</p>
-            </div>
-
-            <div className="blogHeaderText">
-              <h4>
-                Your Meet unhappy customers are your greatest source of learning
-              </h4>
-            </div>
-
-            {/* <hr /> */}
-
-            <div className="description">
-              <p>
-                For the away, behind the wind mountains, for, from the countries
-                Vakalla and Conr, Lorem ipsum dolor sit amet consectetur.
-              </p>
-            </div>
-
-            <div className="author">
-              <div className="authorAbout">
-                <div className="authorImage">
-                  <img src={author} alt="Armarium" />
-                </div>
-                <div>
-                  <p>Armarium</p>
-                  <p className="position">CEO, Offer</p>
-                </div>
+            <div className="rightText">
+              <div className="blogHeaderText">
+                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
+              </div>
+              <div className="description">
+                <p>
+                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
+                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
+                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
+                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
+                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
+                  earum harum id eligendi consequatur quo recusandae. Lorem
+                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
+                  voluptas explicabo eius maxime nam obcaecati cum vero optio
+                  esse nesciunt?
+                </p>
               </div>
 
-              <div className="comment">
-                <i className="fa-regular fa-comment-dots"></i>
-              </div>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="image">
-              <img src={blogCard1} alt="blog" />
-            </div>
-
-            <div className="categoryAndDate">
-              <h6>Business, Travel</h6>
-              {" - "}
-              <p className="date">31 Avqust, 2023</p>
-            </div>
-
-            <div className="blogHeaderText">
-              <h4>
-                Your Meet unhappy customers are your greatest source of learning
-              </h4>
-            </div>
-
-            {/* <hr /> */}
-
-            <div className="description">
-              <p>
-                For the away, behind the wind mountains, for, from the countries
-                Vakalla and Conr, Lorem ipsum dolor sit amet consectetur.
-              </p>
-            </div>
-
-            <div className="author">
-              <div className="authorAbout">
-                <div className="authorImage">
-                  <img src={author} alt="Armarium" />
-                </div>
-                <div>
-                  <p>Armarium</p>
-                  <p className="position">CEO, Offer</p>
-                </div>
-              </div>
-
-              <div className="comment">
-                <i className="fa-regular fa-comment-dots"></i>
-              </div>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="image">
-              <img src={blogCard1} alt="blog" />
-            </div>
-
-            <div className="categoryAndDate">
-              <h6>Business, Travel</h6>
-              {" - "}
-              <p className="date">31 Avqust, 2023</p>
-            </div>
-
-            <div className="blogHeaderText">
-              <h4>
-                Your Meet unhappy customers are your greatest source of learning
-              </h4>
-            </div>
-
-            {/* <hr /> */}
-
-            <div className="description">
-              <p>
-                For the away, behind the wind mountains, for, from the countries
-                Vakalla and Conr, Lorem ipsum dolor sit amet consectetur.
-              </p>
-            </div>
-
-            <div className="author">
-              <div className="authorAbout">
-                <div className="authorImage">
-                  <img src={author} alt="Armarium" />
-                </div>
-                <div>
-                  <p>Armarium</p>
-                  <p className="position">CEO, Offer</p>
-                </div>
-              </div>
-
-              <div className="comment">
-                <i className="fa-regular fa-comment-dots"></i>
-              </div>
-            </div>
-          </div>
-
-          <div className="card">
-            <div className="image">
-              <img src={blogCard1} alt="blog" />
-            </div>
-
-            <div className="categoryAndDate">
-              <h6>Business, Travel</h6>
-              {" - "}
-              <p className="date">31 Avqust, 2023</p>
-            </div>
-
-            <div className="blogHeaderText">
-              <h4>
-                Your Meet unhappy customers are your greatest source of learning
-              </h4>
-            </div>
-
-            {/* <hr /> */}
-
-            <div className="description">
-              <p>
-                For the away, behind the wind mountains, for, from the countries
-                Vakalla and Conr, Lorem ipsum dolor sit amet consectetur.
-              </p>
-            </div>
-
-            <div className="author">
-              <div className="authorAbout">
-                <div className="authorImage">
-                  <img src={author} alt="Armarium" />
-                </div>
-                <div>
-                  <p>Armarium</p>
-                  <p className="position">CEO, Offer</p>
-                </div>
-              </div>
-
-              <div className="comment">
-                <i className="fa-regular fa-comment-dots"></i>
-              </div>
+              <Link to={"/xeberler/blog/name"}>
+                Ətraflı <i className="fa-solid fa-caret-right"></i>
+              </Link>
             </div>
           </div>
         </div>
@@ -359,7 +174,7 @@ const BlogPage = () => {
           onCancel={handleCancel}
           footer={[
             <Button key="back" onClick={handleCancel}>
-              Return
+              Cancel
             </Button>,
             <Button key="submit" type="primary" onClick={handleOk}>
               Submit

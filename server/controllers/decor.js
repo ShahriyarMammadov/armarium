@@ -1,4 +1,6 @@
 import { decorModel } from "../models/decorModel.js";
+import fs from "fs";
+const uploadDir = "images/";
 
 // ---------------------- ADD DECOR ----------------------
 // yeni decor-un yaradılması, 15 dənə şəkil, 1 dənə örtük şəkli yükləmək mümkündür, digərlərində validation yoxdur
@@ -105,6 +107,53 @@ export const editDecorByName = async (req, res) => {
     res.json(updatedDecor);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+// -------------------------------------------------------
+
+// ----------- DELETE DECOR WITH DECOR NAME --------------
+// Decor-un adına görə məlumatlarının silinməsi
+
+export const deleteDecorByName = async (req, res) => {
+  try {
+    const decorNameToDelete = req.params.decorName;
+
+    const deletedDecor = await decorModel.findOneAndDelete({
+      name: decorNameToDelete,
+    });
+
+    if (!deletedDecor) {
+      return res
+        .status(404)
+        .json({ message: `${decorNameToDelete} Adında Dekor Tapılmadı` });
+    }
+
+    deletedDecor.images.forEach((imageFileName) => {
+      const imagePath = uploadDir + imageFileName;
+
+      fs.unlink(imagePath, (err) => {
+        if (err) {
+          console.error(`Error: ${imageFileName}`);
+        } else {
+          console.log(`Şəkillər Silindi: ${imageFileName}`);
+        }
+      });
+    });
+
+    const coverImagePath = uploadDir + deletedDecor.coverImage;
+    fs.unlink(coverImagePath, (err) => {
+      if (err) {
+        console.error(`Error: ${deletedDecor.coverImage}`);
+      } else {
+        console.log(`Örtük Şəkli Sİlindi: ${deletedDecor.coverImage}`);
+      }
+    });
+
+    res.json({
+      message: `${decorNameToDelete} Adlı Dekor Uğurla Silindi.`,
+    });
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };

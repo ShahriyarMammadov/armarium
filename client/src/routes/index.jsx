@@ -11,6 +11,8 @@ import TermsPage from "../pages/termsPage";
 import NewsPage from "../pages/newsPage";
 import BlogPage from "../pages/BlogPage";
 import NewsDetailPage from "../pages/newsDetailPage";
+import BlogDetailPage from "../pages/BlogDetailPage";
+import VacanciesPage from "../pages/VacanciesPage";
 
 const ROUTES = [
   {
@@ -56,6 +58,14 @@ const ROUTES = [
       {
         path: "xeberler/blog",
         element: <BlogPage />,
+      },
+      {
+        path: "xeberler/blog/:id",
+        element: <BlogDetailPage />,
+      },
+      {
+        path: "vakansiyalar",
+        element: <VacanciesPage />,
       },
       {
         path: "*",

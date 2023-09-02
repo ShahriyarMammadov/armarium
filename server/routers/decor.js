@@ -4,6 +4,7 @@ import {
   allDecor,
   decorByName,
   decorWithSpecialData,
+  deleteDecorByName,
   editDecorByName,
 } from "../controllers/decor.js";
 import upload from "../config/multer.js";
@@ -30,5 +31,8 @@ decorRouter.get("/decorWithSpecialData", decorWithSpecialData);
 
 // ----------------- EDIT DECOR BY NAME-------------------
 decorRouter.patch("/editDecorByName", editDecorByName);
+
+// ---------------- DELETE DECOR BY NAME------------------
+decorRouter.delete("/deleteDecorByName/:decorName", deleteDecorByName);
 
 export default decorRouter;

@@ -77,10 +77,10 @@ const NavBarDropdownComponent = () => {
       </div>
 
       <div className="dropdown">
-        <NavLink to={"/features"} className="parent">
+        <NavLink to={"/vakansiyalar"} className="parent">
           VAKANSİYALAR
         </NavLink>
-        <div className="dropdown-content">
+        {/* <div className="dropdown-content">
           <NavLink to={"/photo-proofing"} title="Photo Proofing">
             <div className="text">YURT ICI SATICILAR</div>
           </NavLink>
@@ -90,7 +90,7 @@ const NavBarDropdownComponent = () => {
           <NavLink to={"/visitor-analytics"} title="Visitor Analytics">
             <div className="text">LINEDECOR ADB WEBSITESI</div>
           </NavLink>
-        </div>
+        </div> */}
       </div>
 
       <div className="dropdown">

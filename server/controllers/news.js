@@ -1,10 +1,12 @@
 import { newsModel } from "../models/newsModel.js";
+import fs from "fs";
+const uploadDir = "images/";
 
 // ----------------------- ADD NEWS ----------------------
 
 export const addNews = async (req, res) => {
   try {
-    const { name, description, allDescription, date } = req.body;
+    const { name, description, cardDescription, date } = req.body;
 
     if (!req.files.coverImage) {
       return res.status(415).json({
@@ -17,7 +19,7 @@ export const addNews = async (req, res) => {
     const newNews = new newsModel({
       name,
       description,
-      allDescription,
+      cardDescription,
       date,
       coverImage,
     });
@@ -40,7 +42,7 @@ export const addNews = async (req, res) => {
 export const allNews = async (req, res) => {
   try {
     const news = await newsModel.find();
-    res.json(news);
+    res.json(news.reverse());
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
@@ -54,6 +56,7 @@ export const allNews = async (req, res) => {
 export const newsByName = async (req, res) => {
   try {
     const { newsName } = req.params;
+    console.log(newsName);
     const news = await newsModel.find({ name: newsName });
 
     if (!news) {
@@ -81,14 +84,14 @@ export const newsWithSpecialData = async (req, res) => {
 };
 // -------------------------------------------------------
 
-// ----------- --EDİT NEWS WITH NEWS NAME ----------------
+// ------------- EDİT NEWS WITH NEWS NAME ----------------
 
 export const editNewsByName = async (req, res) => {
   try {
     const { name } = req.params;
     const { description, coverImage, allDescription } = req.body;
 
-    const updatedNews = await decorModel.findOneAndUpdate(
+    const updatedNews = await newsModel.findOneAndUpdate(
       { name },
       { description, coverImage, allDescription },
       { new: true }
@@ -97,6 +100,38 @@ export const editNewsByName = async (req, res) => {
     res.json(updatedNews);
   } catch (error) {
     console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+// -------------------------------------------------------
+
+// ------------- DELETE NEWS BY NEWS NAME ----------------
+
+export const deleteNewsByName = async (req, res) => {
+  try {
+    const newsNameToDelete = req.params.newsName;
+
+    const deletedNews = await newsModel.findOneAndDelete({
+      name: newsNameToDelete,
+    });
+
+    if (!deletedNews) {
+      return res.status(404).json({ message: "Xəbər Tapılmadı" });
+    }
+
+    const coverImagePath = uploadDir + deletedNews.coverImage;
+    fs.unlink(coverImagePath, (err) => {
+      if (err) {
+        console.error(`Error: ${deletedNews.coverImage}`);
+      } else {
+        console.log(`Cover image Silindi: ${deletedNews.coverImage}`);
+      }
+    });
+
+    res.json({
+      message: `${newsNameToDelete} Adlı Xəbər Silindi`,
+    });
+  } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };

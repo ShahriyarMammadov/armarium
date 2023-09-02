@@ -1,4 +1,4 @@
-#vacanciesPage {
+#blogDetail {
 
     .backImage {
         width: 100%;
@@ -10,7 +10,9 @@
         }
     }
 
-    .vacanciesPage {
-        padding: 10px 0 40px 0;
+    .blogDetail {
+        .blogImage {
+            width: 100%;
+        }
     }
 }

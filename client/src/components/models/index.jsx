@@ -37,7 +37,7 @@ const ModelsComponent = () => {
               navigate("/mebel/all_models");
             }}
           >
-            TÜM MODELLER
+            BÜTÜN MODELLƏR
           </button>
         </div>
 

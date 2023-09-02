@@ -3,6 +3,7 @@ import upload from "../config/multer.js";
 import {
   addNews,
   allNews,
+  deleteNewsByName,
   editNewsByName,
   newsByName,
   newsWithSpecialData,
@@ -20,12 +21,15 @@ newsRouter.post(
 newsRouter.get("/allNews", allNews);
 
 // ------------------ GET NEWS BY NAME-------------------
-newsRouter.get("/newsByName/:decorName", newsByName);
+newsRouter.get("/newsByName/:newsName", newsByName);
 
 // ------------------- GET NEWS BY ID--------------------
 newsRouter.get("/newsWithSpecialData", newsWithSpecialData);
 
 // ----------------- EDIT NEWS BY NAME-------------------
 newsRouter.patch("/editNewsByName", editNewsByName);
+
+// ----------------- EDIT NEWS BY NAME-------------------
+newsRouter.delete("/deleteNewsByName/:newsName", deleteNewsByName);
 
 export default newsRouter;

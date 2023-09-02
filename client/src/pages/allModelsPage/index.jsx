@@ -62,46 +62,13 @@ const AllModelsPage = () => {
                         />
                         <div className="text hidden">
                           <p className="modelName">{e?.name}</p>
-                          <p className="description hidden">{e?.description}</p>
+                          <p className="description hidden">
+                            {e?.description?.slice(0, 37) + ". . ."}
+                          </p>
                         </div>
                       </Link>
                     );
                   })}
-                  {/* <Link to={"/model/salsm"}>
-                    <img src={image3} alt="Image 2" />
-                    <div className="text">
-                      <p className="modelName">Petra</p>
-                      <p className="description hidden">Maskulen ve Derin</p>
-                    </div>
-                  </Link>
-                  <Link to={"/model/salsm"}>
-                    <img src={image4} alt="Image 2" />
-                    <div className="text hidden">
-                      <p className="modelName">Sera</p>
-                      <p className="description hidden">Maskulen ve Derin</p>
-                    </div>
-                  </Link>
-                  <Link to={"/model/salsm"}>
-                    <img src={image5} alt="Image 2" />
-                    <div className="text hidden">
-                      <p className="modelName">Otto</p>
-                      <p className="description hidden">Maskulen ve Derin</p>
-                    </div>
-                  </Link>
-                  <Link to={"/model/salsm"}>
-                    <img src={image6} alt="Image 2" />
-                    <div className="text">
-                      <p className="modelName">Lea</p>
-                      <p className="description hidden">Maskulen ve Derin</p>
-                    </div>
-                  </Link>
-                  <Link to={"/model/salsm"}>
-                    <img src={image1} alt="Image 2" />
-                    <div className="text">
-                      <p className="modelName">Luna</p>
-                      <p className="description hidden">Maskulen ve Derin</p>
-                    </div>
-                  </Link> */}
                 </div>
               </div>
             </Tabs.TabPane>
@@ -114,14 +81,16 @@ const AllModelsPage = () => {
             </Tabs.TabPane>
           </Tabs>
           <form
-            action="http://localhost:3000/decor/addDecor"
+            action="http://localhost:3000/news/addNews"
             method="POST"
             enctype="multipart/form-data"
           >
             <input type="text" name="name" placeholder="Name" />
             <input type="text" name="description" placeholder="Description" />
+            <input type="text" name="cardDescription" placeholder="Card Description" />
             <input type="file" name="coverImage" accept="image/*" />
-            <input type="file" name="images" accept="image/*" multiple />
+            <input type="date" />
+            {/* <input type="file" name="images" accept="image/*" multiple /> */}
             <button type="submit">Upload</button>
           </form>
           {/* <img

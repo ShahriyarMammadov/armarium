@@ -11,7 +11,7 @@ const Footer = () => {
         <div id="footer" className="container">
           <div className="about">
             <div className="headerText">
-              <h4>Hakkimizda</h4>
+              <h4>HAQQIMIZDA</h4>
             </div>
             <div className="texts">
               <div className="text">
@@ -21,7 +21,7 @@ const Footer = () => {
               </div>
               <div className="text">
                 <Link to={"/"}>
-                  <p>Iletisim</p>
+                  <p>Əlaqə</p>
                 </Link>
               </div>
               <div className="text">
