@@ -46,7 +46,7 @@ const NavBarDropdownComponent = () => {
       </div>
 
       <div className="dropdown">
-        <NavLink to={"/features"} className="parent">
+        <NavLink to={"/referanslar"} className="parent">
           REFERANSLAR
         </NavLink>
         <div className="dropdown-content">
@@ -56,41 +56,19 @@ const NavBarDropdownComponent = () => {
           <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
             <div className="text">TESHIR FIRSATLARI</div>
           </NavLink>
-          <NavLink to={"/visitor-analytics"} title="Visitor Analytics">
-            <div className="text">UCRETSIZ PROJELENDIRME</div>
-          </NavLink>
         </div>
       </div>
 
       <div className="dropdown">
-        <NavLink to={"/features"} className="parent">
+        <NavLink to={"/satis_noqteleri"} className="parent">
           SATIŞ NÖQTƏLƏRİ
         </NavLink>
-        <div className="dropdown-content">
-          <NavLink to={"/photo-proofing"} title="Photo Proofing">
-            <div className="text">HABERLER</div>
-          </NavLink>
-          <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
-            <div className="text">BASINDA ARMARIUM</div>
-          </NavLink>
-        </div>
       </div>
 
       <div className="dropdown">
         <NavLink to={"/vakansiyalar"} className="parent">
           VAKANSİYALAR
         </NavLink>
-        {/* <div className="dropdown-content">
-          <NavLink to={"/photo-proofing"} title="Photo Proofing">
-            <div className="text">YURT ICI SATICILAR</div>
-          </NavLink>
-          <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
-            <div className="text">YURT DISI SATICILAR</div>
-          </NavLink>
-          <NavLink to={"/visitor-analytics"} title="Visitor Analytics">
-            <div className="text">LINEDECOR ADB WEBSITESI</div>
-          </NavLink>
-        </div> */}
       </div>
 
       <div className="dropdown">

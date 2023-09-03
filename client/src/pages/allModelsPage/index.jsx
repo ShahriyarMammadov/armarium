@@ -10,6 +10,7 @@ import image3 from "../../assets/images/146.jpg";
 import image4 from "../../assets/images/147.jpg";
 import image5 from "../../assets/images/148.jpg";
 import image6 from "../../assets/images/150.jpg";
+import { Helmet } from "react-helmet";
 
 const AllModelsPage = () => {
   const [decors, setDecors] = useState([]);
@@ -30,10 +31,13 @@ const AllModelsPage = () => {
   useEffect(() => {
     getAllDecors();
   }, []);
-  console.log(decors);
 
   return (
     <div id="allModels">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Bütün Modellər</title>
+      </Helmet>
       <div className="coverImage">
         <div className="img">
           <img src={models} alt="AllModels" />
@@ -81,13 +85,13 @@ const AllModelsPage = () => {
             </Tabs.TabPane>
           </Tabs>
           <form
-            action="http://localhost:3000/news/addNews"
+            action="http://localhost:3000/blog/addBLog"
             method="POST"
             enctype="multipart/form-data"
           >
             <input type="text" name="name" placeholder="Name" />
             <input type="text" name="description" placeholder="Description" />
-            <input type="text" name="cardDescription" placeholder="Card Description" />
+            {/* <input type="text" name="cardDescription" placeholder="Card Description" /> */}
             <input type="file" name="coverImage" accept="image/*" />
             <input type="date" />
             {/* <input type="file" name="images" accept="image/*" multiple /> */}

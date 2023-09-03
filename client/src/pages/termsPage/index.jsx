@@ -2,10 +2,15 @@ import React from "react";
 import "./index.scss";
 import backImage from "../../assets/images/termsBackImage.jpg";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const TermsPage = () => {
   return (
     <div id="termsPage">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Terminlər</title>
+      </Helmet>
       <div className="backImage">
         <img src={backImage} alt="TermsPage" />
       </div>

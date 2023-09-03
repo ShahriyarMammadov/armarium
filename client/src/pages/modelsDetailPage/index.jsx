@@ -12,6 +12,7 @@ import image7 from "../../assets/images/107.jpg";
 import image8 from "../../assets/images/108.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const ModelsDetailPage = () => {
   const [decorData, setDecorData] = useState([]);
@@ -35,6 +36,10 @@ const ModelsDetailPage = () => {
 
   return (
     <main>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | {id}</title>
+      </Helmet>
       <section id="detailPage">
         <div className="coverImage">
           <img
@@ -63,56 +68,7 @@ const ModelsDetailPage = () => {
                 <Image key={i} src={`http://localhost:3000/images/${e}`} />
               );
             })}
-            {/* <Image src={image1} />
-            <Image src={image2} />
-            <Image src={image3} />
-            <Image src={image4} />
-            <Image src={image5} />
-            <Image src={image6} />
-            <Image src={image7} />
-            <Image src={image8} /> */}
           </Image.PreviewGroup>
-
-          {/* <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image1} alt={`image`} />
-            </Zoom>
-          </div>
-          <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image2} alt={`image`} />
-            </Zoom>
-          </div>
-          <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image3} alt={`image`} />
-            </Zoom>
-          </div>
-          <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image4} alt={`image`} />
-            </Zoom>
-          </div>
-          <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image5} alt={`image`} />
-            </Zoom>
-          </div>
-          <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image6} alt={`image`} />
-            </Zoom>
-          </div>
-          <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image7} alt={`image`} />
-            </Zoom>
-          </div>
-          <div className="gallery" key={1}>
-            <Zoom>
-              <img src={image8} alt={`image`} />
-            </Zoom>
-          </div> */}
         </div>
       </section>
     </main>

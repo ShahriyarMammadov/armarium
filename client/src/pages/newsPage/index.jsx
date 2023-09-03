@@ -3,6 +3,7 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import backImage from "../../assets/images/newsBackImage.jpg";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const NewsPage = () => {
   const [data, setData] = useState([]);
@@ -22,6 +23,10 @@ const NewsPage = () => {
 
   return (
     <div id="newsPage">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Xəbərlər</title>
+      </Helmet>
       <div className="backImage">
         <img src={backImage} alt="Armarium" />
       </div>

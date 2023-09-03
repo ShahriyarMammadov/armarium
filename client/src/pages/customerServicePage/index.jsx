@@ -2,10 +2,15 @@ import React from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import backImage from "../../assets/giphy/customerServiceBackGif.gif";
+import { Helmet } from "react-helmet";
 
 const CustomerServicePage = () => {
   return (
     <div id="customerServicePage">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Müştəri Xidmətləri</title>
+      </Helmet>
       <div className="backImage">
         <img src={backImage} alt="BackGround Image" />
       </div>

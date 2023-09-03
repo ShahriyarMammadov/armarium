@@ -1,14 +1,13 @@
-import mongoose, { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose";
 
-// card Description elave et
-const decorSchema = new Schema(
+const blogSchema = new Schema(
   {
     name: { type: String, unique: true, required: true },
     description: { type: String, required: true },
-    images: { type: Array, required: true },
     coverImage: { type: String, required: true },
+    date: { type: Date, required: true, default: Date.now() },
   },
   { versionKey: false, timestamps: true }
 );
 
-export const decorModel = model("decor", decorSchema);
+export const blogModel = model("blog", blogSchema);

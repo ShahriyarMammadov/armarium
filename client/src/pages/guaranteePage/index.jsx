@@ -3,10 +3,15 @@ import "./index.scss";
 
 import guaranteBackGif from "../../assets/giphy/haqqimizdaBackGif.gif";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const GuaranteePage = () => {
   return (
     <div id="guaranteePage">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Zəmanət</title>
+      </Helmet>
       <div className="backColor">
         <img src={guaranteBackGif} alt="Welcome" loading="lazy" />
       </div>

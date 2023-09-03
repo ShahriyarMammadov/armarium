@@ -9,10 +9,11 @@ import CustomerServicePage from "../pages/customerServicePage";
 import AboutPage from "../pages/aboutPage";
 import TermsPage from "../pages/termsPage";
 import NewsPage from "../pages/newsPage";
-import BlogPage from "../pages/BlogPage";
 import NewsDetailPage from "../pages/newsDetailPage";
-import BlogDetailPage from "../pages/BlogDetailPage";
 import VacanciesPage from "../pages/VacanciesPage";
+import PointOfSalesPages from "../pages/pointOfSalePage";
+import BlogPage from "../pages/blogPage";
+import BlogDetailPage from "../pages/blogDetailPage";
 
 const ROUTES = [
   {
@@ -66,6 +67,10 @@ const ROUTES = [
       {
         path: "vakansiyalar",
         element: <VacanciesPage />,
+      },
+      {
+        path: "satis_noqteleri",
+        element: <PointOfSalesPages />,
       },
       {
         path: "*",

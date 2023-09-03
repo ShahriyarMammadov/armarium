@@ -3,6 +3,7 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import backImage from "../../assets/images/vacanciesBackImage.jpeg";
 import { Collapse } from "antd";
+import { Helmet } from "react-helmet";
 
 const VacanciesPage = () => {
   const items = [
@@ -151,6 +152,10 @@ const VacanciesPage = () => {
   // Elanin bitme tarixinide elave etmek olar
   return (
     <div id="vacanciesPage">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Vakansiyalar</title>
+      </Helmet>
       <div className="backImage">
         <img src={backImage} alt="salam" />
       </div>

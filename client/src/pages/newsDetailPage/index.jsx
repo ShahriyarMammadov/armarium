@@ -3,6 +3,7 @@ import "./index.scss";
 import image1 from "../../assets/images/xeberler1.jpg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const NewsDetailPage = () => {
   const { id } = useParams();
@@ -24,6 +25,10 @@ const NewsDetailPage = () => {
 
   return (
     <div id="newsDetail">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | {id}</title>
+      </Helmet>
       <div className="backImage">
         <img
           src={`http://localhost:3000/images/${detailData[0]?.coverImage}`}

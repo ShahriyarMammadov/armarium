@@ -6,10 +6,15 @@ import backImg from "../../assets/images/16.png";
 import { Link } from "react-router-dom";
 import CardComponent from "../../components/card";
 import ModelsComponent from "../../components/models";
+import { Helmet } from "react-helmet";
 
 const HomePage = () => {
   return (
     <main>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Xəyallarınız Gerçəkləşdirək</title>
+      </Helmet>
       <section id="section1" className="imageSlider">
         <Carousel />
       </section>

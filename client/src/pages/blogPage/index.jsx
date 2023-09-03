@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import blogBackImage from "../../assets/images/blogBackImage.jpeg";
 import { Modal, Input, Button } from "antd";
 import { Link } from "react-router-dom";
-
-import image1 from "../../assets/images/blogImage1.jpg";
-import image2 from "../../assets/images/blogImage2.jpg";
-import image3 from "../../assets/images/blogImage3.jpg";
-import image4 from "../../assets/images/blogImage4.jpg";
+import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const BlogPage = () => {
   const { TextArea } = Input;
+  const [blogs, setBlogs] = useState([]);
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const [modalText, setModalText] = useState("Content of the modal");
 
   const showModal = () => {
     setOpen(true);
@@ -34,8 +30,25 @@ const BlogPage = () => {
     setOpen(false);
   };
 
+  const getAllBlog = async () => {
+    try {
+      const data = await axios.get("http://localhost:3000/blog/getAllBlog");
+      setBlogs(data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getAllBlog();
+  }, []);
+
   return (
     <div id="blogPage">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Bloq</title>
+      </Helmet>
       <div className="backImage">
         <img src={blogBackImage} alt="" />
       </div>
@@ -46,123 +59,49 @@ const BlogPage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              Home <i className="fa-solid fa-caret-right"></i>{" "}
+              HOME <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/xeberler"}>
-              Xəbərlər <i className="fa-solid fa-caret-right"></i>{" "}
+              XƏBƏRLƏR <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>Bloq</span>
+            <span>BLOQ</span>
           </span>
         </div>
 
         <div className="blogs">
-          <div className="blog">
-            <img src={image1} alt="Blog" />
+          {blogs.map((e, i) => {
+            return (
+              <div className="blog" key={i}>
+                <img
+                  src={`http://localhost:3000/images/${e?.coverImage}`}
+                  alt={`${e?.name}`}
+                />
 
-            <div className="rightText">
-              <div className="blogHeaderText">
-                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
+                <div className="rightText">
+                  <div className="blogHeaderText">
+                    <h2>{e?.name}</h2>
+                  </div>
+                  <div className="description">
+                    <p>
+                      {e?.description
+                        ?.slice(0, 250)
+                        ?.split("<br />")
+                        ?.map((line, lineIndex) => (
+                          <React.Fragment key={lineIndex}>
+                            {line}. . .
+                            <br />
+                          </React.Fragment>
+                        ))}
+                    </p>
+                  </div>
+
+                  <Link to={`/xeberler/blog/${e?.name}`}>
+                    Ətraflı <i className="fa-solid fa-caret-right"></i>
+                  </Link>
+                </div>
               </div>
-              <div className="description">
-                <p>
-                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
-                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
-                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
-                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
-                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
-                  earum harum id eligendi consequatur quo recusandae. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                  voluptas explicabo eius maxime nam obcaecati cum vero optio
-                  esse nesciunt?
-                </p>
-              </div>
-
-              <Link to={"/xeberler/blog/name"}>
-                Ətraflı <i className="fa-solid fa-caret-right"></i>
-              </Link>
-            </div>
-          </div>
-
-          <div className="blog">
-            <img src={image2} alt="Blog" />
-
-            <div className="rightText">
-              <div className="blogHeaderText">
-                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
-              </div>
-              <div className="description">
-                <p>
-                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
-                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
-                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
-                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
-                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
-                  earum harum id eligendi consequatur quo recusandae. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                  voluptas explicabo eius maxime nam obcaecati cum vero optio
-                  esse nesciunt?
-                </p>
-              </div>
-
-              <Link to={"/xeberler/blog/name"}>
-                Ətraflı <i className="fa-solid fa-caret-right"></i>
-              </Link>
-            </div>
-          </div>
-
-          <div className="blog">
-            <img src={image3} alt="Blog" />
-
-            <div className="rightText">
-              <div className="blogHeaderText">
-                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
-              </div>
-              <div className="description">
-                <p>
-                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
-                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
-                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
-                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
-                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
-                  earum harum id eligendi consequatur quo recusandae. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                  voluptas explicabo eius maxime nam obcaecati cum vero optio
-                  esse nesciunt?
-                </p>
-              </div>
-
-              <Link to={"/xeberler/blog/name"}>
-                Ətraflı <i className="fa-solid fa-caret-right"></i>
-              </Link>
-            </div>
-          </div>
-
-          <div className="blog">
-            <img src={image4} alt="Blog" />
-
-            <div className="rightText">
-              <div className="blogHeaderText">
-                <h2>Rahat və Funksional Mətbəxin 5 sirri</h2>
-              </div>
-              <div className="description">
-                <p>
-                  Rahat və funksional mətbəxin sirri bahalı mebel və təmirdə
-                  deyil - burada əsas şey məkanı düzgün planlaşdırmaq və
-                  prioritetləşdirməkdir. Mükəmməl nəticə əldə etməyin necə daha
-                  asan olduğunun sirlərini Lorem, ipsum dolor sit amet
-                  consectetur adipisicing elit. Tenetur corrupti quam eum odit,
-                  earum harum id eligendi consequatur quo recusandae. Lorem
-                  ipsum dolor sit amet consectetur adipisicing elit. Numquam
-                  voluptas explicabo eius maxime nam obcaecati cum vero optio
-                  esse nesciunt?
-                </p>
-              </div>
-
-              <Link to={"/xeberler/blog/name"}>
-                Ətraflı <i className="fa-solid fa-caret-right"></i>
-              </Link>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
         {/* COMMENT MODAL */}
