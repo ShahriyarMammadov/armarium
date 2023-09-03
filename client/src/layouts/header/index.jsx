@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Link } from "react-router-dom";
-import DropdownComponent from "../../components/dropdown/dropdown.jsx";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../components/dropdown/navbarDropdown";
-import { Drawer } from "antd";
+import { Button, Drawer, Dropdown } from "antd";
 import { Collapse } from "antd";
+import { useTranslation } from "react-i18next";
+import i18n from "../../../public/locales/i18n.js";
+
+import en from "../../assets/images/en.png";
+import tr from "../../assets/images/tr.png";
+import az from "../../assets/images/az.png";
 
 const Header = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [colorChange, setColorChange] = useState(false);
   const [toggle, setToggle] = useState(false);
   const [visible, setVisible] = useState(true);
+
+  const { t } = useTranslation();
 
   const threshold = 50;
   const scrollThreshold = 400;
@@ -36,23 +43,22 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos]);
 
-  // useEffect(() => {
-  //   const headerTop = document.querySelector(".headerTop");
+  // LANGUAGE
+  const handleChange = (value) => {
+    i18n.changeLanguage(value);
+    localStorage.setItem("lang", value);
+  };
 
-  //   if (!visible) {
-  //     headerTop.style.transition =
-  //       "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out";
-  //     headerTop.style.maxHeight = "0";
-  //     headerTop.style.opacity = "0";
-  //     headerTop.style.overflow = "hidden";
-  //   } else {
-  //     headerTop.style.transition =
-  //       "max-height 0.3s ease-in-out, opacity 0.3s ease-in-out";
-  //     headerTop.style.maxHeight = "100px"; // Header'ın normal yüksekliği
-  //     headerTop.style.opacity = "1";
-  //     headerTop.style.overflow = "visible";
-  //   }
-  // }, [visible]);
+  let language;
+
+  if (typeof localStorage !== "undefined") {
+    language =
+      localStorage.getItem("lang") !== null
+        ? localStorage.getItem("lang")
+        : localStorage.getItem("defaultLang");
+  } else {
+    language = i18n.language || "az";
+  }
 
   // DRAWER
   const [open, setOpen] = useState(false);
@@ -66,6 +72,50 @@ const Header = () => {
   };
 
   const items = [
+    {
+      key: "1",
+      label: (
+        <img
+          src={az}
+          alt="AZ"
+          title="AZ"
+          width={"25px"}
+          height={"15px"}
+          onClick={() => handleChange("az")}
+        />
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <img
+          src={tr}
+          alt="TR"
+          title="TR"
+          width={"25px"}
+          height={"15px"}
+          onClick={() => handleChange("tr")}
+        />
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <img
+          src={en}
+          alt="EN"
+          title="EN"
+          width={"25px"}
+          height={"15px"}
+          onClick={() => handleChange("en")}
+        />
+      ),
+    },
+  ];
+
+  console.log(language);
+
+  const items1 = [
     {
       key: "1",
       label: "HAQQIMIZDA",
@@ -152,7 +202,20 @@ const Header = () => {
           </div>
           <div className="right">
             <div className="language">
-              <DropdownComponent />
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottom"
+                arrow={{
+                  pointAtCenter: true,
+                }}
+              >
+                <img
+                  src={language === "az" ? az : language === "tr" ? tr : en}
+                  alt="AZ"
+                />
+              </Dropdown>
             </div>
 
             <div className="search">
@@ -186,6 +249,10 @@ const Header = () => {
                   </a>
                 </div>
                 <address>
+                  <h1>{t("welcome")}</h1>
+                  <p>{t("greeting", { name: "John" })}</p>
+                  <button onClick={() => handleChange("en")}>English</button>
+                  <button onClick={() => handleChange("tr")}>Türkçe</button>
                   İnterpak Ahşap ve Ürünleri San. Tic. Ltd. Şti. Atatürk
                   Olimpiyat Parkı Yolu E6 Gişeler Yanı MASKO Mobilya Kenti 2-B
                   Blok No:22-24 İkitelli / İSTANBUL , TÜRKİYE
@@ -254,7 +321,7 @@ const Header = () => {
           open={open}
         >
           <Collapse
-            items={items}
+            items={items1}
             defaultActiveKey={["1"]}
             onChange={onChange}
           />
