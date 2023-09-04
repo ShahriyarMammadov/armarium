@@ -14,6 +14,7 @@ import VacanciesPage from "../pages/VacanciesPage";
 import PointOfSalesPages from "../pages/pointOfSalePage";
 import BlogPage from "../pages/blogPage";
 import BlogDetailPage from "../pages/blogDetailPage";
+import ReferencesPage from "../pages/referencesPage";
 
 const ROUTES = [
   {
@@ -71,6 +72,10 @@ const ROUTES = [
       {
         path: "satis_noqteleri",
         element: <PointOfSalesPages />,
+      },
+      {
+        path: "referanslar",
+        element: <ReferencesPage />,
       },
       {
         path: "*",

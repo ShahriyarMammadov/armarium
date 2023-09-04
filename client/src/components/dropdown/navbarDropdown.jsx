@@ -52,14 +52,6 @@ const NavBarDropdownComponent = () => {
         <NavLink to={"/referanslar"} className="parent">
           {t("REFERANSLAR")}
         </NavLink>
-        <div className="dropdown-content">
-          <NavLink to={"/photo-proofing"} title="Photo Proofing">
-            <div className="text">KAMPANYALAR</div>
-          </NavLink>
-          <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
-            <div className="text">TESHIR FIRSATLARI</div>
-          </NavLink>
-        </div>
       </div>
 
       <div className="dropdown">

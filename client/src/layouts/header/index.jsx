@@ -8,8 +8,8 @@ import { Collapse } from "antd";
 import { useTranslation } from "react-i18next";
 import i18n from "../../locales/i18n";
 
-import en from "../../assets/images/en.png";
-import tr from "../../assets/images/tr.png";
+import en from "../../assets/images/en.jpg";
+import tr from "../../assets/images/tr.jpg";
 import az from "../../assets/images/az.png";
 
 const Header = () => {
@@ -79,8 +79,8 @@ const Header = () => {
           src={az}
           alt="AZ"
           title="AZ"
-          width={"25px"}
-          height={"15px"}
+          width={"28px"}
+          height={"20px"}
           onClick={() => handleChange("az")}
         />
       ),
@@ -92,8 +92,8 @@ const Header = () => {
           src={tr}
           alt="TR"
           title="TR"
-          width={"25px"}
-          height={"15px"}
+          width={"28px"}
+          height={"20px"}
           onClick={() => handleChange("tr")}
         />
       ),
@@ -105,8 +105,8 @@ const Header = () => {
           src={en}
           alt="EN"
           title="EN"
-          width={"25px"}
-          height={"15px"}
+          width={"28px"}
+          height={"20px"}
           onClick={() => handleChange("en")}
         />
       ),

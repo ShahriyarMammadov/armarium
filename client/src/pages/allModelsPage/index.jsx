@@ -85,7 +85,7 @@ const AllModelsPage = () => {
             </Tabs.TabPane>
           </Tabs>
           <form
-            action="http://localhost:3000/blog/addBLog"
+            action="http://localhost:3000/vacancy/addVacancy"
             method="POST"
             enctype="multipart/form-data"
           >
@@ -93,7 +93,7 @@ const AllModelsPage = () => {
             <input type="text" name="description" placeholder="Description" />
             {/* <input type="text" name="cardDescription" placeholder="Card Description" /> */}
             <input type="file" name="coverImage" accept="image/*" />
-            <input type="date" />
+            {/* <input type="date" /> */}
             {/* <input type="file" name="images" accept="image/*" multiple /> */}
             <button type="submit">Upload</button>
           </form>

@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Image } from "antd";
 import "./index.scss";
-import coverImage from "../../assets/images/101.jpg";
-import image1 from "../../assets/images/100.jpg";
-import image2 from "../../assets/images/102.jpg";
-import image3 from "../../assets/images/103.jpg";
-import image4 from "../../assets/images/104.jpg";
-import image5 from "../../assets/images/105.jpg";
-import image6 from "../../assets/images/106.jpg";
-import image7 from "../../assets/images/107.jpg";
-import image8 from "../../assets/images/108.jpg";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";

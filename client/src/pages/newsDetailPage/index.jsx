@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import image1 from "../../assets/images/xeberler1.jpg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
