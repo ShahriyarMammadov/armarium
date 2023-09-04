@@ -3,6 +3,7 @@ import "./index.scss";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import SkeletonComponent from "../skeleton";
+import { useTranslation } from "react-i18next";
 
 const ModelsComponent = () => {
   const [selectedData, setSelectedData] = useState([]);
@@ -23,13 +24,14 @@ const ModelsComponent = () => {
   useEffect(() => {
     getSelectedModelsData();
   }, []);
+  const { t } = useTranslation();
 
   return (
     <div id="modelsComponent">
       <div className="container">
         <div className="headerText">
           <div className="text">
-            <h3>MODELLER</h3>
+            <h3>{t("MODELLƏR")}</h3>
             <hr />
           </div>
           <button
@@ -37,7 +39,7 @@ const ModelsComponent = () => {
               navigate("/mebel/all_models");
             }}
           >
-            BÜTÜN MODELLƏR
+            {t("BÜTÜN MODELLƏR")}
           </button>
         </div>
 

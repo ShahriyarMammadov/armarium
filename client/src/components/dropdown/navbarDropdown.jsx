@@ -1,34 +1,37 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./navbarDropdown.scss";
+import { useTranslation } from "react-i18next";
 
 const NavBarDropdownComponent = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="dropdown">
         <NavLink to={"/haqqimizda"} className="parent">
-          HAQQIMIZDA
+          {t("HAQQIMIZDA")}
         </NavLink>
         <div className="dropdown-content">
           <NavLink to={"/haqqimizda/zemanet"} title="Zəmanət">
-            <div className="text">ZƏMANƏT</div>
+            <div className="text">{t("ZƏMANƏT")}</div>
           </NavLink>
           <NavLink to={"/haqqimizda/musteri_xidmeti"} title="Terminlər">
-            <div className="text">MÜŞTƏRİ XİDMƏTLƏRİ</div>
+            <div className="text">{t("MÜSTƏRİ XİDMƏTLƏRİ")}</div>
           </NavLink>
           <NavLink to={"/haqqimizda/terminler"} title="Visitor Analytics">
-            <div className="text">TERMİNLƏR</div>
+            <div className="text">{t("TERMİNLƏR")}</div>
           </NavLink>
         </div>
       </div>
 
       <div className="dropdown">
         <NavLink to={"/features"} className="parent">
-          MEBEL
+          {t("MEBEL")}
         </NavLink>
         <div className="dropdown-content">
           <NavLink to={"/mebel/all_models"} title="Photo Proofing">
-            <div className="text">BÜTÜN MODELLƏR</div>
+            <div className="text">{t("BÜTÜN MODELLƏR")}</div>
           </NavLink>
           <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
             <div className="text">MASALAR VE SANDALYELER</div>
@@ -47,7 +50,7 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <NavLink to={"/referanslar"} className="parent">
-          REFERANSLAR
+          {t("REFERANSLAR")}
         </NavLink>
         <div className="dropdown-content">
           <NavLink to={"/photo-proofing"} title="Photo Proofing">
@@ -61,23 +64,23 @@ const NavBarDropdownComponent = () => {
 
       <div className="dropdown">
         <NavLink to={"/satis_noqteleri"} className="parent">
-          SATIŞ NÖQTƏLƏRİ
+          {t("SATIŞ NÖQTƏLƏRİ")}
         </NavLink>
       </div>
 
       <div className="dropdown">
         <NavLink to={"/vakansiyalar"} className="parent">
-          VAKANSİYALAR
+          {t("VAKANSİYALAR")}
         </NavLink>
       </div>
 
       <div className="dropdown">
         <NavLink to={"/xeberler"} className="parent">
-          XƏBƏRLƏR
+          {t("XƏBƏRLƏR")}
         </NavLink>
         <div className="dropdown-content">
           <NavLink to={"/xeberler/blog"} title="Digital Downloads">
-            <div className="text">BLOG</div>
+            <div className="text">{t("BLOQ")}</div>
           </NavLink>
         </div>
       </div>

@@ -3,7 +3,6 @@ import "./index.scss";
 import Carousel from "../../components/carousel";
 import videoImg from "../../assets/images/15.jpg";
 import backImg from "../../assets/images/16.png";
-import { Link } from "react-router-dom";
 import CardComponent from "../../components/card";
 import ModelsComponent from "../../components/models";
 import { Helmet } from "react-helmet";

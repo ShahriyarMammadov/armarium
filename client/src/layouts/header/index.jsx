@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../components/dropdown/navbarDropdown";
-import { Button, Drawer, Dropdown } from "antd";
+import { Drawer, Dropdown } from "antd";
 import { Collapse } from "antd";
 import { useTranslation } from "react-i18next";
-import i18n from "../../../public/locales/i18n.js";
+import i18n from "../../locales/i18n";
 
 import en from "../../assets/images/en.png";
 import tr from "../../assets/images/tr.png";
@@ -196,7 +196,7 @@ const Header = () => {
             </div>
             <div className="telephoneNumber">
               <a href="tel:+994503134473">
-                ƏLAQƏ: <span>+99450 313 4473</span>
+                {t("ƏLAQƏ")}: <span>+99450 313 4473</span>
               </a>
             </div>
           </div>
@@ -241,7 +241,7 @@ const Header = () => {
               <div className="right about">
                 <div className="contact">
                   <a href="tel:+994503134473" className="telephoneNumber">
-                    Telefon: +99450 313 4473
+                    {t("Telefon")}: +99450 313 4473
                   </a>
                   <br />
                   <a href="mailto:armarium@armarium.az" className="email">
@@ -249,10 +249,6 @@ const Header = () => {
                   </a>
                 </div>
                 <address>
-                  <h1>{t("welcome")}</h1>
-                  <p>{t("greeting", { name: "John" })}</p>
-                  <button onClick={() => handleChange("en")}>English</button>
-                  <button onClick={() => handleChange("tr")}>Türkçe</button>
                   İnterpak Ahşap ve Ürünleri San. Tic. Ltd. Şti. Atatürk
                   Olimpiyat Parkı Yolu E6 Gişeler Yanı MASKO Mobilya Kenti 2-B
                   Blok No:22-24 İkitelli / İSTANBUL , TÜRKİYE
@@ -262,8 +258,8 @@ const Header = () => {
                   className="googleMaps"
                   target="_blank"
                 >
-                  <i className="fa-solid fa-location-dot"></i> Open in Google
-                  Maps
+                  <i className="fa-solid fa-location-dot"></i>{" "}
+                  {t("Google Xəritədə aç")}
                 </a>
                 <div className="icon">
                   <a

@@ -3,15 +3,18 @@ import "./index.scss";
 import ISO9001 from "../../assets/images/iso1.png";
 import ISO14001 from "../../assets/images/iso2.png";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <footer>
         <div id="footer" className="container">
           <div className="about">
             <div className="headerText">
-              <h4>HAQQIMIZDA</h4>
+              <h4>{t("HAQQIMIZDA")}</h4>
             </div>
             <div className="texts">
               <div className="text">
@@ -21,12 +24,14 @@ const Footer = () => {
               </div>
               <div className="text">
                 <Link to={"/"}>
-                  <p>Əlaqə</p>
+                  <p>{t("Əlaqə")}</p>
                 </Link>
               </div>
               <div className="text">
                 <p>
-                  <a href="tel: +994503134473">Telefon: +99450 313 4473</a>
+                  <a href="tel: +994503134473">
+                    {t("Telefon")}: +99450 313 4473
+                  </a>
                 </p>
               </div>
               <div className="text">
@@ -60,7 +65,7 @@ const Footer = () => {
           <div className="socialMediaIcon">
             <div>
               <div className="headerText">
-                <h4>Bizi Takip Edin</h4>
+                <h4>{t("Bizi İzləyin")}</h4>
               </div>
               <div className="text">
                 <a href="" target="_blank">
@@ -77,7 +82,7 @@ const Footer = () => {
 
             <div>
               <div className="headerText">
-                <h4>Sertifikatlar</h4>
+                <h4>{t("Sertifikatlar")}</h4>
               </div>
               <div className="text">
                 <img src={ISO9001} alt="ISO9001" className="first" />
@@ -99,8 +104,8 @@ const Footer = () => {
 
       <div className="allRight">
         <div className="container">
-          <p>© 2023 LINEADECOR, Tüm hakları saklıdır.</p>
-          <Link to={"/"}>Site Haritası</Link>
+          <p>{t("© 2023 ARMARİUM, Bütün hüquqlar Qorunur.")}</p>
+          <Link to={"/"}>{t("Sayt Xəritəsi")}</Link>
         </div>
       </div>
     </>

@@ -12,6 +12,7 @@ import decorRouter from "./routers/decor.js";
 import selectedDecorRouter from "./routers/selectedDecor.js";
 import newsRouter from "./routers/news.js";
 import blogRouter from "./routers/blog.js";
+import contactMe from "./routers/contactMe.js";
 // --------------------------------------------------------
 
 //------------------------- Morgan ------------------------
@@ -43,6 +44,7 @@ app.use("/decor", decorRouter);
 app.use("/selectedDecor", selectedDecorRouter);
 app.use("/news", newsRouter);
 app.use("/blog", blogRouter);
+app.use("/contactMe", contactMe);
 // --------------------------------------------------------
 
 //--------------------- Express js Server -----------------

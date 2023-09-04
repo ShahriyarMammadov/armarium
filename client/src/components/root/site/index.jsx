@@ -3,6 +3,7 @@ import Header from "../../../layouts/header";
 import Footer from "../../../layouts/footer";
 import { Outlet } from "react-router-dom";
 import BackToTopComponent from "../../backToTop";
+import FloatButtonComponent from "../../floatButton";
 
 const MainRoot = () => {
   return (
@@ -10,6 +11,7 @@ const MainRoot = () => {
       <Header />
       <Outlet />
       <BackToTopComponent />
+      <FloatButtonComponent />
       <Footer />
     </>
   );
