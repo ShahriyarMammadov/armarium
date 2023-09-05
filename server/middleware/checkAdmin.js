@@ -7,26 +7,33 @@ export const checkAdmin = (req, res, next) => {
     if (!token) {
       return res
         .status(404)
-        .send({ success: false, message: "Token is invalid" });
+        .json({ success: false, message: "Token is invalid" });
     }
     jwt.verify(token, "4473", (err, admin) => {
       if (err) {
         return res
           .status(401)
-          .send({ success: false, message: "Token is wrong" });
+          .json({ success: false, message: "Token is wrong" });
       } else {
         if (admin.role !== "admin") {
-          return res.status(403).send({
+          console.log("salam");
+          return res.status(200).json({
             success: false,
             message: "Your role is not eligible for access to this section",
           });
         } else {
+          console.log("asalam");
           req.admin = admin;
-          next();
+          return res.status(200).json({
+            success: true,
+            message: "Salam Admin",
+          });
+          // next();
         }
       }
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).send({ success: false, error: error.message });
   }
 };

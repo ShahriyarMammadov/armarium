@@ -1,25 +1,40 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../components/dropdown/navbarDropdown";
-import { Drawer, Dropdown } from "antd";
+import { Button, Drawer, Dropdown, Input, Modal, notification } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 import { Collapse } from "antd";
 import { useTranslation } from "react-i18next";
 import i18n from "../../locales/i18n";
+import axios from "axios";
 
 import en from "../../assets/images/en.jpg";
 import tr from "../../assets/images/tr.jpg";
 import az from "../../assets/images/az.png";
 
 const Header = () => {
+  // SCROLL
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  // HEADER COLOR CHANGE
   const [colorChange, setColorChange] = useState(false);
+
+  // DRAWER OPEN, CLOSE
   const [toggle, setToggle] = useState(false);
+
+  // MODAL PASSWORD INPUT
   const [visible, setVisible] = useState(true);
 
+  // PASSWORD AND EMAIL SEND TO BACKEND
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  // LANGUAGE
   const { t } = useTranslation();
 
+  // HEADERTOP VISIBLE
   const threshold = 50;
   const scrollThreshold = 400;
 
@@ -71,6 +86,23 @@ const Header = () => {
     setOpen(false);
   };
 
+  // MODAL
+  const [loading, setLoading] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const showModal = () => {
+    setOpenModal(true);
+  };
+  const handleOk = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setOpenModal(false);
+    }, 3000);
+  };
+  const handleCancel = () => {
+    setOpenModal(false);
+  };
+
   const items = [
     {
       key: "1",
@@ -113,8 +145,6 @@ const Header = () => {
     },
   ];
 
-  console.log(language);
-
   const items1 = [
     {
       key: "1",
@@ -152,8 +182,53 @@ const Header = () => {
     console.log(key);
   };
 
+  // LOGIN
+  const navigate = useNavigate();
+  const login = async () => {
+    try {
+      setLoading(true);
+      let data = await axios.post(
+        `http://localhost:3000/auth/signIn`,
+        {
+          email: email,
+          password: password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      setLoading(false);
+      console.log(data.data);
+      if (data?.data?.created) {
+        openNotificationWithIcon(data?.data?.message, "success");
+        navigate("/admin/");
+      } else {
+        openNotificationWithIcon(
+          data?.data?.errors?.email
+            ? data?.data?.errors?.email
+            : data?.data?.errors?.password,
+          "error"
+        );
+      }
+    } catch (error) {
+      console.log(error);
+      openNotificationWithIcon("Server Error", "error");
+      setLoading(false);
+    }
+  };
+
+  // NOTIFICATION
+  const [api, contextHolder] = notification.useNotification();
+  const openNotificationWithIcon = (text, type) => {
+    api[type]({
+      message: "Armarium",
+      description: text,
+    });
+  };
+
   return (
     <header className={`${colorChange ? "colorChange" : ""}`}>
+      {contextHolder}
       <div id="header" className={`container ${visible ? "" : "resize"}`}>
         <div className={`${visible ? "active" : "inactive"} headerTop`}>
           <div className="left">
@@ -217,12 +292,57 @@ const Header = () => {
                 />
               </Dropdown>
             </div>
-
             <div className="search">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
+            {localStorage.getItem("role") == "admin" ? (
+              <i
+                className="fa-solid fa-right-to-bracket"
+                onClick={showModal}
+              ></i>
+            ) : null}
           </div>
         </div>
+
+        {/* MODAL */}
+        <Modal
+          open={openModal}
+          title="LOGIN"
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              ÇIX
+            </Button>,
+            <Button
+              key="submit"
+              type="primary"
+              loading={loading}
+              onClick={() => {
+                login();
+              }}
+            >
+              DAXIL OL
+            </Button>,
+          ]}
+        >
+          <Input
+            placeholder="Email"
+            prefix={<UserOutlined />}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
+          <br />
+          <br />
+          <Input.Password
+            placeholder="Password"
+            prefix={<i className="fa-solid fa-lock"></i>}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
+        </Modal>
 
         <hr className={`${visible ? "active" : "inactive"} headerTop`} />
 
@@ -306,10 +426,7 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* RESPONSIVE */}
-        {/* <Button type="primary" onClick={showDrawer}>
-          Open
-        </Button> */}
+        {/* RESPONSIVE DRAWER*/}
         <Drawer
           title="Basic Drawer"
           placement="left"

@@ -1,48 +1,46 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-// import { useCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import AdminHeader from "../../../layouts/admin/header";
+// import { useDispatch, useSelector } from "react-redux";
 
 const AdminRoot = () => {
-  //   const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const userData = useSelector((state) => state.getAllUserDataReducer);
 
-  //   useEffect(() => {
-  //     const verifyUser = async () => {
-  //       if (!cookies.jwt) {
-  //         navigate("/login");
-  //       } else {
-  //         const { data } = await axios.post(
-  //           "http://localhost:3000/",
-  //           {},
-  //           {
-  //             withCredentials: true,
-  //           }
-  //         );
+  useEffect(() => {
+    const verifyUser = async () => {
+      if (!cookies.jwt) {
+        navigate("/");
+      } else {
+        const { data } = await axios.post(
+          "http://localhost:3000/checkAdmin",
+          {},
+          {
+            withCredentials: true,
+          }
+        );
 
-  //         if (!data?.status) {
-  //           removeCookie("jwt");
-  //           navigate("/login");
-  //         } else {
-  //           // if (userData?.data?.position === "admin") {
-  //           //   navigate("/admin/adminPanel");
-  //           // console.log(userData.data.position);
-  //           // }
-  //           //   await dispatch(getUserAllDataAction(data.data));
-  //           // dispatch(getAllcountryAction());
-  //         }
-  //       }
-  //     };
+        if (!data?.success) {
+          removeCookie("jwt");
+          navigate("/");
+          console.log(data?.message);
+        } else {
+          null;
+        }
+      }
+    };
 
-  //     verifyUser();
-  //   }, [cookies, removeCookie, navigate]);
+    verifyUser();
+  }, [cookies, removeCookie, navigate]);
 
   return (
     <>
+      <AdminHeader />
       <Outlet />
     </>
   );

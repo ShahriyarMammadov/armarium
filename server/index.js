@@ -15,6 +15,7 @@ import blogRouter from "./routers/blog.js";
 import contactMe from "./routers/contactMe.js";
 import referenceRouter from "./routers/references.js";
 import vacancyRouter from "./routers/vacancies.js";
+import { checkAdmin } from "./middleware/checkAdmin.js";
 // --------------------------------------------------------
 
 //------------------------- Morgan ------------------------
@@ -49,6 +50,7 @@ app.use("/blog", blogRouter);
 app.use("/contactMe", contactMe);
 app.use("/reference", referenceRouter);
 app.use("/vacancy", vacancyRouter);
+app.use("/checkAdmin", checkAdmin);
 // --------------------------------------------------------
 
 //--------------------- Express js Server -----------------

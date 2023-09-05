@@ -87,6 +87,12 @@ header {
             transition: all 0.3s ease-in-out;
             overflow: hidden;
 
+            .fa-right-to-bracket {
+                color: white;
+                cursor: pointer;
+                font-size: 18px;
+            }
+
             &.inactive {
                 max-height: 0px;
                 opacity: 0;

@@ -15,6 +15,7 @@ import PointOfSalesPages from "../pages/pointOfSalePage";
 import BlogPage from "../pages/blogPage";
 import BlogDetailPage from "../pages/blogDetailPage";
 import ReferencesPage from "../pages/referencesPage";
+import DashBoard from "../pages/admin/dashBoard";
 
 const ROUTES = [
   {
@@ -89,7 +90,7 @@ const ROUTES = [
     children: [
       {
         path: "",
-        // element: <addModels />,
+        element: <DashBoard />,
       },
       {
         path: "user/",
