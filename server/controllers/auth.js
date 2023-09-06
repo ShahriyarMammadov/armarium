@@ -65,8 +65,7 @@ export const signIn = async (req, res) => {
 // Register
 export const signUp = async (req, res) => {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
+    const { email, password, personalEmail, name, surname } = req.body;
 
     const existingUser = await userModel.findOne({ email: email });
     if (existingUser) {
@@ -76,6 +75,11 @@ export const signUp = async (req, res) => {
       });
     }
 
+    let profilePhoto;
+
+    if (req.files.profilePhoto) {
+      profilePhoto = req.files.profilePhoto[0].filename;
+    }
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -83,13 +87,19 @@ export const signUp = async (req, res) => {
     const newUser = await userModel.create({
       email: email,
       password: hashedPassword,
+      surname: surname,
+      name: name,
+      personalEmail: personalEmail,
+      profilePhoto: profilePhoto,
     });
+
     return res.status(200).send({
       success: true,
       message: "Uğurla Qeydiyyatdan Keçildi",
       newUser,
     });
   } catch (error) {
+    console.log(error);
     return res.status(500).send({
       success: false,
       message: "Server Error",

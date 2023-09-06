@@ -22,7 +22,6 @@ export const checkAdmin = (req, res, next) => {
             message: "Your role is not eligible for access to this section",
           });
         } else {
-          console.log("asalam");
           req.admin = admin;
           return res.status(200).json({
             success: true,

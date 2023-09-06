@@ -1,26 +1,46 @@
 import React, { useState } from "react";
-import {
-  AppstoreOutlined,
-  BarChartOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
 
+  const [userData, setUserData] = useState([]);
+  const [vacancy, setVacancy] = useState([]);
+  const [blog, setBlog] = useState([]);
+  const [news, setNews] = useState([]);
+  const [decor, setDecor] = useState([]);
+  const [references, setReferences] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
   const [menuItems, setMenuItems] = useState([
     { key: "1", title: "DashBoard", icon: <UserOutlined /> },
-    { key: "2", title: "Vakansiya Əlavə Et", icon: <i className="fa-solid fa-briefcase"></i> },
-    { key: "3", title: "Blog Əlavə Et", icon: <i className="fa-solid fa-layer-group"></i> },
-    { key: "4", title: "Xəbər Əlavə Et", icon: <i className="fa-solid fa-newspaper"></i> },
-    { key: "5", title: "Dekor Əlavə Et", icon: <i className="fa-regular fa-images"></i> },
-    { key: "6", title: "Referans Əlavə Et", icon: <i className="fa-regular fa-building"></i> },
+    {
+      key: "2",
+      title: "Vakansiya Əlavə Et",
+      icon: <i className="fa-solid fa-briefcase"></i>,
+    },
+    {
+      key: "3",
+      title: "Blog Əlavə Et",
+      icon: <i className="fa-solid fa-layer-group"></i>,
+    },
+    {
+      key: "4",
+      title: "Xəbər Əlavə Et",
+      icon: <i className="fa-solid fa-newspaper"></i>,
+    },
+    {
+      key: "5",
+      title: "Dekor Əlavə Et",
+      icon: <i className="fa-regular fa-images"></i>,
+    },
+    {
+      key: "6",
+      title: "Referans Əlavə Et",
+      icon: <i className="fa-regular fa-building"></i>,
+    },
   ]);
 
   // const items = [
@@ -44,8 +64,16 @@ const DashBoard = () => {
 
   const [selectedMenuItem, setSelectedMenuItem] = useState("1");
 
-  const handleMenuClick = (item) => {
+  const handleMenuClick = async (item) => {
     setSelectedMenuItem(item.key);
+
+    if (item.key === "1") {
+      const { data } = await axios.get(
+        `http://localhost:3000/user/userDataById`
+      );
+      setUserData(data);
+      console.log(data);
+    }
   };
 
   const renderContent = () => {
@@ -84,7 +112,7 @@ const DashBoard = () => {
           <Menu
             theme="dark"
             mode="inline"
-            defaultSelectedKeys={["4"]}
+            defaultSelectedKeys={["1"]}
             onClick={handleMenuClick}
             // items={items}
           >
