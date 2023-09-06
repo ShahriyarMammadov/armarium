@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
+import SiteDetailCardsComponent from "../../../components/admin/siteDetailCard";
+import UserDetailComponent from "../../../components/admin/userDetail";
+import CalendarComponent from "../../../components/admin/calendar";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -79,7 +82,13 @@ const DashBoard = () => {
   const renderContent = () => {
     switch (selectedMenuItem) {
       case "1":
-        return <p>İçerik 1</p>;
+        return (
+          <>
+            <SiteDetailCardsComponent />
+            <UserDetailComponent />
+            <CalendarComponent />
+          </>
+        );
       case "2":
         return <p>İçerik 2</p>;
       case "3":
@@ -127,6 +136,7 @@ const DashBoard = () => {
           className="site-layout"
           style={{
             marginLeft: 200,
+            backgroundColor: "#F3F2F7",
           }}
         >
           <Header

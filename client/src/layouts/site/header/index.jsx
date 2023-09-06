@@ -40,7 +40,7 @@ const Header = () => {
   const scrollThreshold = 400;
 
   // COOKIE
-  const [cookies, setCookie] = useCookies(["jwt"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -203,22 +203,50 @@ const Header = () => {
         }
       );
       setLoading(false);
-      console.log(data.data);
+
       if (data?.data?.created) {
-        openNotificationWithIcon(data?.data?.message, "success");
-        navigate("/admin/");
+        if (data?.data?.data?.role === "admin") {
+          openNotificationWithIcon(data?.data?.message, "success");
+          navigate("/admin/");
+        } else {
+          openNotificationWithIcon("SIZ ADMIN DEYILSINIZ!!!", "warning");
+          setOpenModal(false);
+        }
       } else {
         openNotificationWithIcon(
-          data?.data?.errors?.email
+          data?.data?.message?.email
             ? data?.data?.errors?.email
             : data?.data?.errors?.password,
           "error"
         );
       }
     } catch (error) {
-      console.log(error);
+      console.log("catch", error);
       openNotificationWithIcon("Server Error", "error");
       setLoading(false);
+    }
+  };
+
+  const checkAdmin = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.post(
+        "http://localhost:3000/checkAdmin",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+      if (!data?.success) {
+        setOpenModal(false);
+        removeCookie("jwt");
+        openNotificationWithIcon(data?.message, "error");
+      } else {
+        navigate("/admin/");
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -304,7 +332,7 @@ const Header = () => {
               <i
                 className="fa-solid fa-right-to-bracket"
                 onClick={() => {
-                  cookies.jwt ? navigate("/admin/") : showModal();
+                  cookies.jwt ? checkAdmin() : showModal();
                 }}
               ></i>
             ) : null}
