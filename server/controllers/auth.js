@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 // Create Token
+// export const maxAge = 10 * 60;
 export const maxAge = 3 * 24 * 60 * 60;
 
 export const createToken = (id, role) => {
@@ -49,13 +50,11 @@ export const signIn = async (req, res) => {
       maxAge: maxAge * 1000,
     });
 
-    res
-      .status(200)
-      .send({
-        data: user,
-        created: true,
-        message: "Xoş Gəldiniz 😀, Gününüz Xoş Keçsin",
-      });
+    res.status(200).send({
+      data: user,
+      created: true,
+      message: "Xoş Gəldiniz 😀, Gününüz Xoş Keçsin",
+    });
   } catch (err) {
     console.log(err);
     const errors = handleErrors(err);
