@@ -1,5 +1,6 @@
 import { decorModel } from "../models/decorModel.js";
 import fs from "fs";
+import { userModel } from "../models/user.js";
 const uploadDir = "images/";
 
 // ---------------------- ADD DECOR ----------------------
@@ -31,6 +32,16 @@ export const addDecor = async (req, res) => {
     });
 
     await newDecor.save();
+
+    let userId = req.params.id;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      user.decorCount += 1;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
 
     res
       .status(201)

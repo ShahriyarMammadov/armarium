@@ -18,8 +18,6 @@ const VacanciesPage = () => {
     }
   };
 
-  console.log(allData);
-
   useEffect(() => {
     getAllData();
   }, []);

@@ -12,7 +12,7 @@ const vacancyRouter = Router();
 
 // ---------------------- ADD DECOR ----------------------
 vacancyRouter.post(
-  "/addVacancy",
+  "/addVacancy/:id",
   upload.fields([{ name: "coverImage", maxCount: 1 }]),
   addVacancy
 );

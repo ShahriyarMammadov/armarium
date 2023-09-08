@@ -12,7 +12,7 @@ const newsRouter = Router();
 
 // ----------------------- ADD NEWS ----------------------
 newsRouter.post(
-  "/addNews",
+  "/addNews/:id",
   upload.fields([{ name: "coverImage", maxCount: 1 }]),
   addNews
 );

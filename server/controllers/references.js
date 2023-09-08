@@ -1,6 +1,7 @@
 import { referencesModel } from "../models/references.js";
 const uploadDir = "images/";
 import fs from "fs";
+import { userModel } from "../models/user.js";
 
 // ---------------------- ADD REFERENCES ----------------------
 // yeni decor-un yaradılması, 15 dənə şəkil, 1 dənə örtük şəkli yükləmək mümkündür, digərlərində validation yoxdur
@@ -30,6 +31,16 @@ export const addReference = async (req, res) => {
     });
 
     await newReference.save();
+
+    let userId = req.params.id;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      user.referenceCount += 1;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
 
     res.status(201).json({
       message: "Yeni Referans Uğurla Yaradıldı",

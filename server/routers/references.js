@@ -12,7 +12,7 @@ const referenceRouter = Router();
 
 // ---------------------- ADD DECOR ----------------------
 referenceRouter.post(
-  "/addReference",
+  "/addReference/:id",
   upload.fields([
     { name: "images", maxCount: 15 },
     { name: "coverImage", maxCount: 1 },

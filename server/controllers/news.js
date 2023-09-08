@@ -1,5 +1,6 @@
 import { newsModel } from "../models/newsModel.js";
 import fs from "fs";
+import { userModel } from "../models/user.js";
 const uploadDir = "images/";
 
 // ----------------------- ADD NEWS ----------------------
@@ -25,6 +26,16 @@ export const addNews = async (req, res) => {
     });
 
     await newNews.save();
+
+    let userId = req.params.id;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      user.newsCount += 1;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
 
     res
       .status(201)

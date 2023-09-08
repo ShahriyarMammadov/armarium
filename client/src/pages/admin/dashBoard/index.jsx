@@ -6,6 +6,7 @@ import UserDetailComponent from "../../../components/admin/userDetail";
 import CalendarComponent from "../../../components/admin/calendar";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import AddVacancyPage from "../addvacancyPage";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -110,7 +111,7 @@ const DashBoard = () => {
           </>
         );
       case "2":
-        return <p>İçerik 2</p>;
+        return <AddVacancyPage />;
       case "3":
         return <p>İçerik 3</p>;
       case "4":

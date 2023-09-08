@@ -30,7 +30,7 @@ export const addBlog = async (req, res) => {
     await newBlog.save();
 
     let userId = req.params.id;
-    console.log(userId)
+
     const user = await userModel.findById(userId);
     if (user) {
       user.blogCount += 1;

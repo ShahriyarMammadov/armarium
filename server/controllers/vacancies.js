@@ -1,6 +1,7 @@
 const uploadDir = "images/";
 import fs from "fs";
 import { vacanciesModel } from "../models/vacanciesModel.js";
+import { userModel } from "../models/user.js";
 
 // ---------------------- ADD VACANCY ----------------------
 // yeni decor-un yaradılması, 15 dənə şəkil, 1 dənə örtük şəkli yükləmək mümkündür, digərlərində validation yoxdur
@@ -15,17 +16,27 @@ export const addVacancy = async (req, res) => {
     //   });
     // }
 
-    if (req.files.coverImage) {
+    if (req?.files?.coverImage) {
       var coverImage = req?.files?.coverImage[0]?.filename;
     }
 
     const newVacancy = new vacanciesModel({
-      name,
-      description,
-      coverImage,
+      name: name,
+      description: description,
+      coverImage: coverImage ? coverImage : "",
     });
 
     await newVacancy.save();
+
+    let userId = req.params.id;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      user.vacanciesCount += 1;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
 
     res.status(201).json({
       message: "Yeni Vakansiya Uğurla Yaradıldı",
@@ -160,6 +171,7 @@ export const deleteVacancyByName = async (req, res) => {
       message: `${deletedVacancy} Adlı Dekor Uğurla Silindi.`,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };
