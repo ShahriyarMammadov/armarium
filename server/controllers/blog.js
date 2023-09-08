@@ -10,7 +10,7 @@ const uploadDir = "images/";
 
 export const addBlog = async (req, res) => {
   try {
-    const { name, description, date } = req.body;
+    const { name, description } = req.body;
 
     if (!req.files.coverImage) {
       return res.status(415).json({
@@ -24,7 +24,7 @@ export const addBlog = async (req, res) => {
       name,
       description,
       coverImage,
-      date,
+      // date,
     });
 
     await newBlog.save();
@@ -43,7 +43,7 @@ export const addBlog = async (req, res) => {
       .status(201)
       .json({ message: "Yeni Bloq Uğurla Yaradıldı", newBlog: newBlog });
   } catch (error) {
-    console.log(error);
+    console.log("blog", error);
     res.status(500).json({ error: error.message });
   }
 };

@@ -7,16 +7,13 @@ import CalendarComponent from "../../../components/admin/calendar";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import AddVacancyPage from "../addvacancyPage";
+import LoadingComponent from "../../../components/loading";
+import AddBlogPage from "../addBlogPage";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
 
   const [userData, setUserData] = useState([]);
-  const [vacancy, setVacancy] = useState([]);
-  const [blog, setBlog] = useState([]);
-  const [news, setNews] = useState([]);
-  const [decor, setDecor] = useState([]);
-  const [references, setReferences] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -78,8 +75,8 @@ const DashBoard = () => {
         `http://localhost:3000/user/userDataById/${id}`,
         { withCredentials: true }
       );
+      setLoading(false);
       setUserData(data);
-      console.log(data);
     }
   };
 
@@ -89,15 +86,15 @@ const DashBoard = () => {
 
   const handleMenuClick = async (item) => {
     setSelectedMenuItem(item.key);
-    console.log(item.key);
+    // console.log(item.key);
 
-    if (item.key === "1") {
-      const { data } = await axios.get(
-        `http://localhost:3000/user/userDataById`
-      );
-      setUserData(data);
-      console.log(data);
-    }
+    // if (item.key === "1") {
+    //   const { data } = await axios.get(
+    //     `http://localhost:3000/user/userDataById`
+    //   );
+    //   setUserData(data);
+    //   console.log(data);
+    // }
   };
 
   const renderContent = () => {
@@ -105,15 +102,21 @@ const DashBoard = () => {
       case "1":
         return (
           <>
-            <SiteDetailCardsComponent data={userData} />
-            <UserDetailComponent data={userData} />
-            <CalendarComponent />
+            {loading ? (
+              <LoadingComponent />
+            ) : (
+              <>
+                <SiteDetailCardsComponent data={userData} />
+                <UserDetailComponent data={userData} />
+                <CalendarComponent />
+              </>
+            )}
           </>
         );
       case "2":
         return <AddVacancyPage />;
       case "3":
-        return <p>İçerik 3</p>;
+        return <AddBlogPage />;
       case "4":
         return <p>İçerik 4</p>;
       case "5":

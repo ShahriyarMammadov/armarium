@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import {
-  Button,
-  Cascader,
-  Collapse,
-  DatePicker,
-  Form,
-  Input,
-  InputNumber,
-  Popconfirm,
-  Radio,
-  Select,
-  Switch,
-  TreeSelect,
-  message,
-} from "antd";
+import { Button, Collapse, Form, Input, Popconfirm, message } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import LoadingComponent from "../../../components/loading";
 
 const AddVacancyPage = () => {
   const { id } = useParams();
   const [name, setVacancyName] = useState("");
   const [description, setVacancyDescription] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const [allVacancies, setAllVacancies] = useState([]);
 
@@ -31,8 +19,10 @@ const AddVacancyPage = () => {
         `http://localhost:3000/vacancy/allVacancy`
       );
       setAllVacancies(data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -59,6 +49,7 @@ const AddVacancyPage = () => {
 
   const addVacancy = async () => {
     try {
+      setLoading(true);
       const addData = await axios.post(
         `http://localhost:3000/vacancy/addVacancy/${id}`,
         {
@@ -66,7 +57,8 @@ const AddVacancyPage = () => {
           description,
         }
       );
-      getAllVacancies()
+      getAllVacancies();
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -84,8 +76,8 @@ const AddVacancyPage = () => {
         >
           {data?.name}
           <Popconfirm
-            title="Delete the task"
-            description="Are you sure to delete this task?"
+            title="Vakansiya"
+            description="Vakansiya Həmişəlik Silinsin?"
             onConfirm={() => {
               vacancyDelete(data?.name);
             }}
@@ -123,19 +115,23 @@ const AddVacancyPage = () => {
 
   return (
     <div>
-      <div className="activeVacancies">
-        <h4>BÜTÜN VAKANSİYALAR</h4>
-        {allVacancies.length === 0 ? (
-          <h1>HEÇ BİR VAKANSİYA YOXDUR.</h1>
-        ) : (
-          <Collapse
-            // defaultActiveKey={["1"]}
-            accordion
-            items={items}
-            size="large"
-          />
-        )}
-      </div>
+      {loading ? (
+        <LoadingComponent />
+      ) : (
+        <div className="activeVacancies">
+          <h4>BÜTÜN VAKANSİYALAR</h4>
+          {allVacancies.length === 0 ? (
+            <h1>HEÇ BİR VAKANSİYA YOXDUR.</h1>
+          ) : (
+            <Collapse
+              // defaultActiveKey={["1"]}
+              accordion
+              items={items}
+              size="large"
+            />
+          )}
+        </div>
+      )}
 
       <Form
         labelCol={{
@@ -182,6 +178,7 @@ const AddVacancyPage = () => {
 
         <Form.Item label="Əlavə Edilsin?">
           <Button
+            loading={loading}
             onClick={() => {
               addVacancy();
             }}
