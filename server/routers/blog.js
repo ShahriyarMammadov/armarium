@@ -12,7 +12,7 @@ const blogRouter = Router();
 
 // ADD BLOG
 blogRouter.post(
-  "/addBlog",
+  "/addBlog/:id",
   upload.fields([{ name: "coverImage", maxCount: 1 }]),
   addBlog
 );

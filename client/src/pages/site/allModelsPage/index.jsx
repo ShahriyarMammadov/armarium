@@ -81,7 +81,7 @@ const AllModelsPage = () => {
             </Tabs.TabPane>
           </Tabs>
           <form
-            action="http://localhost:3000/vacancy/addVacancy"
+            action="http://localhost:3000/blog/addBlog/64f848dea23b3f45cfd2d676"
             method="POST"
             enctype="multipart/form-data"
           >

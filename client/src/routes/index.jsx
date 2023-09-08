@@ -89,7 +89,7 @@ const ROUTES = [
     element: <AdminRoot />,
     children: [
       {
-        path: "",
+        path: "adminData/:id",
         element: <DashBoard />,
       },
       {

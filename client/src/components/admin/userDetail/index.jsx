@@ -1,54 +1,87 @@
 import React from "react";
 import "./index.scss";
-import { Descriptions, Input } from "antd";
+import { Descriptions, Image } from "antd";
+// import axios from "axios";
 
-const UserDetailComponent = () => {
+const UserDetailComponent = ({ data }) => {
   const items = [
     {
       key: "1",
-      label: "UserName",
-      children: <Input placeholder="Basic usage" />,
+      label: "AD: ",
+      children: data?.user?.name,
     },
     {
       key: "2",
-      label: "Telephone",
-      children: <Input placeholder="Basic usage" />,
+      label: "SOYAD: ",
+      children: data?.user?.surname,
     },
     {
       key: "3",
-      label: "Live",
-      children: "Hangzhou, Zhejiang",
+      label: "EMAIL: ",
+      children: data?.user?.email,
     },
     {
       key: "4",
-      label: "Remark",
-      children: <Input placeholder="Basic usage" />,
+      label: "ŞƏXSİ EMAIL: ",
+      children: data?.user?.personalEmail,
     },
     {
       key: "5",
-      label: "Address",
-      children: <Input placeholder="Basic usage" />,
+      label: "ROL: ",
+      children: data?.user?.role,
     },
     {
       key: "6",
-      label: "Address",
-      children: <Input placeholder="Basic usage" />,
+      label: "YARADILMA: ",
+      children: data?.user?.createdAt,
     },
     {
       key: "7",
-      label: "Address",
-      children: <Input placeholder="Basic usage" />,
+      label: "SON YENİLƏNMƏ: ",
+      children: data?.user?.updatedAt,
+    },
+    {
+      key: "8",
+      label: "PROFİL FOTOSU:",
+      children: (
+        <>
+          <Image
+            width={100}
+            height={100}
+            src={`http://localhost:3000/images/${data?.user?.profilePhoto}`}
+            alt={`${data?.name}`}
+          />
+        </>
+      ),
     },
   ];
 
+  // const updateUserData = async () => {
+  //   try {
+  //     if (!profilePhoto) {
+  //       alert("Lütfen bir resim dosyası seçin.");
+  //       return;
+  //     }
+  // const formData = new FormData();
+  // formData.append("image", selectedFile);
+  // formData.append("name", name);
+  // formData.append("surname", surname);
+  // formData.append("email", email);
+  // formData.append("personalEmail", personalEmail);
+
+  //     const salam = await axios.put(
+  //       `http://localhost:3000/user/editUserData/${data?._id}`,
+  //       { name, surname, email, personalEmail, profilePhoto }
+  //     );
+  //     console.log(salam);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   return (
     <div id="userDetail">
-      {/* <div className="userDetail">
-        <Form.Item label="Success" hasFeedback validateStatus="success">
-          <Input allowClear placeholder="with allowClear" />
-        </Form.Item>
-      </div> */}
-      <Descriptions title="Info" items={items} />
+      <Descriptions title="MƏLUMATLARINIZ" items={items} />
     </div>
   );
 };

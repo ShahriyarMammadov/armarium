@@ -207,7 +207,7 @@ const Header = () => {
       if (data?.data?.created) {
         if (data?.data?.data?.role === "admin") {
           openNotificationWithIcon(data?.data?.message, "success");
-          navigate("/admin/");
+          navigate(`/admin/adminData/${data?.data?.data?._id}`);
         } else {
           openNotificationWithIcon("SIZ ADMIN DEYILSINIZ!!!", "warning");
           setOpenModal(false);
@@ -242,7 +242,7 @@ const Header = () => {
         removeCookie("jwt");
         openNotificationWithIcon(data?.message, "error");
       } else {
-        navigate("/admin/");
+        navigate(`/admin/adminData/${data?.data?.id}`);
       }
       setLoading(false);
     } catch (error) {

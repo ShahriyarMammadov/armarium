@@ -1,10 +1,16 @@
+import { blogModel } from "../models/blogModel.js";
+import { decorModel } from "../models/decorModel.js";
+import { newsModel } from "../models/newsModel.js";
 import { userModel } from "../models/user.js";
 import fs from "fs";
+import { vacanciesModel } from "../models/vacanciesModel.js";
+import { referencesModel } from "../models/references.js";
 const uploadDir = "images/";
 
 export const userById = async (req, res) => {
   try {
-    const id = req.admin;
+    const id = req.params.id;
+    console.log(id);
     const user = await userModel.findById(id);
 
     if (!user) {
@@ -13,7 +19,40 @@ export const userById = async (req, res) => {
         .json({ message: "Istifadəçi Tapılmadı", data: user });
     }
 
-    res.status(200).json(user);
+    const currentDate = new Date();
+    const oneMonthAgo = new Date();
+    oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+
+    const blogCount = await blogModel.countDocuments({
+      date: { $gte: oneMonthAgo, $lte: currentDate },
+    });
+
+    const newsCount = await newsModel.countDocuments({
+      date: { $gte: oneMonthAgo, $lte: currentDate },
+    });
+
+    const decorCount = await decorModel.countDocuments({
+      date: { $gte: oneMonthAgo, $lte: currentDate },
+    });
+    const vacanciesCount = await vacanciesModel.countDocuments({
+      date: { $gte: oneMonthAgo, $lte: currentDate },
+    });
+    const referanceCount = await referencesModel.countDocuments({
+      date: { $gte: oneMonthAgo, $lte: currentDate },
+    });
+
+    res
+      .status(200)
+      .json({
+        user: user,
+        data: {
+          blogCount,
+          newsCount,
+          decorCount,
+          vacanciesCount,
+          referanceCount,
+        },
+      });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
@@ -23,10 +62,7 @@ export const userById = async (req, res) => {
 export const userWithSpecialData = async (req, res) => {
   try {
     const id = req.body.id;
-    const blogs = await blogModel.find(
-      { _id: id },
-      "name description coverImage"
-    );
+    const blogs = await blogModel.find({ _id: id }, "name email coverImage");
     res.json(blogs);
   } catch (error) {
     console.log(error);
@@ -66,12 +102,18 @@ export const deleteUserById = async (req, res) => {
 
 export const editUserDataById = async (req, res) => {
   try {
-    const { name } = req.params;
-    const { description, coverImage } = req.body;
+    const id = req.params.id;
+    const { name, surname, personalEmail } = req.body;
 
+    if (req.files && req.files.profilePhoto) {
+      const profilePhotoPath = req.files.profilePhoto[0].path;
+      req.body.profilePhoto = profilePhotoPath.toString();
+    }
+
+    console.log("req", req.body);
     const user = await userModel.findByIdAndUpdate(id, req.body);
 
-    res.json(updatedBlog);
+    return res.status(200).json(user);
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });

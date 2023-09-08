@@ -9,13 +9,17 @@ import {
 import { checkAdmin } from "../middleware/checkAdmin.js";
 const userRouter = Router();
 
-userRouter.get("/userDataById/:id", checkAdmin, userById);
+userRouter.get("/userDataById/:id", userById);
 
-userRouter.get("/editUserData/:id", checkAdmin, editUserDataById);
+userRouter.patch(
+  "/editUserData/:id",
+  upload.fields([{ name: "profilePhoto", maxCount: 1 }]),
+  editUserDataById
+);
 
-userRouter.get("/userWithSpecialData/:id", checkAdmin, userWithSpecialData);
+userRouter.get("/userWithSpecialData/:id", userWithSpecialData);
 
-userRouter.delete("/userDelete/:id", checkAdmin, deleteUserById);
+userRouter.delete("/userDelete/:id", deleteUserById);
 
 // userRouter.patch("/editReferanceByName/:name", editReferenceByName);
 

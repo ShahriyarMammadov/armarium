@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
 import SiteDetailCardsComponent from "../../../components/admin/siteDetailCard";
 import UserDetailComponent from "../../../components/admin/userDetail";
 import CalendarComponent from "../../../components/admin/calendar";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -16,6 +18,8 @@ const DashBoard = () => {
   const [references, setReferences] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  const { id } = useParams();
 
   const [menuItems, setMenuItems] = useState([
     { key: "1", title: "DashBoard", icon: <UserOutlined /> },
@@ -67,8 +71,24 @@ const DashBoard = () => {
 
   const [selectedMenuItem, setSelectedMenuItem] = useState("1");
 
+  const getUserData = async () => {
+    if (selectedMenuItem === "1") {
+      const { data } = await axios.get(
+        `http://localhost:3000/user/userDataById/${id}`,
+        { withCredentials: true }
+      );
+      setUserData(data);
+      console.log(data);
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, []);
+
   const handleMenuClick = async (item) => {
     setSelectedMenuItem(item.key);
+    console.log(item.key);
 
     if (item.key === "1") {
       const { data } = await axios.get(
@@ -84,8 +104,8 @@ const DashBoard = () => {
       case "1":
         return (
           <>
-            <SiteDetailCardsComponent />
-            <UserDetailComponent />
+            <SiteDetailCardsComponent data={userData} />
+            <UserDetailComponent data={userData} />
             <CalendarComponent />
           </>
         );

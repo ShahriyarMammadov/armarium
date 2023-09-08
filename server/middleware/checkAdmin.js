@@ -16,18 +16,18 @@ export const checkAdmin = (req, res, next) => {
           .json({ success: false, message: "Token is wrong" });
       } else {
         if (admin.role !== "admin") {
-          console.log("salam");
           return res.status(200).json({
             success: false,
             message: "Your role is not eligible for access to this section",
           });
         } else {
           req.admin = admin;
-          return res.status(200).json({
+          res.status(200).json({
             success: true,
+            data: admin,
             message: "Salam Admin",
           });
-          // next();
+          next();
         }
       }
     });
