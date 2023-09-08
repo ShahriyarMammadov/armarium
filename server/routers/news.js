@@ -21,7 +21,7 @@ newsRouter.post(
 newsRouter.get("/allNews", allNews);
 
 // ------------------ GET NEWS BY NAME-------------------
-newsRouter.get("/newsByName/:newsName", newsByName);
+newsRouter.get("/newsByName/:id", newsByName);
 
 // ------------------- GET NEWS BY ID--------------------
 newsRouter.get("/newsWithSpecialData", newsWithSpecialData);
@@ -30,6 +30,6 @@ newsRouter.get("/newsWithSpecialData", newsWithSpecialData);
 newsRouter.patch("/editNewsByName", editNewsByName);
 
 // ----------------- EDIT NEWS BY NAME-------------------
-newsRouter.delete("/deleteNewsByName/:newsName", deleteNewsByName);
+newsRouter.delete("/deleteNewsByName/:id", deleteNewsByName);
 
 export default newsRouter;

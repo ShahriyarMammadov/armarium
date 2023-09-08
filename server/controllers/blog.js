@@ -33,7 +33,8 @@ export const addBlog = async (req, res) => {
 
     const user = await userModel.findById(userId);
     if (user) {
-      user.blogCount += 1;
+      const totalBlogCount = await blogModel.countDocuments();
+      user.blogCount = totalBlogCount;
       await user.save();
     } else {
       return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
@@ -121,29 +122,32 @@ export const editBlogByName = async (req, res) => {
 
 export const deleteBLogByName = async (req, res) => {
   try {
-    const newsNameToDelete = req.params.newsName;
+    const blogNameToDelete = req.params.id;
 
-    const deletedNews = await newsModel.findOneAndDelete({
-      name: newsNameToDelete,
+    console.log(blogNameToDelete);
+
+    const deletedBlog = await blogModel.findOneAndDelete({
+      name: blogNameToDelete,
     });
 
-    if (!deletedNews) {
-      return res.status(404).json({ message: "Xəbər Tapılmadı" });
+    if (!deletedBlog) {
+      return res.status(404).json({ message: "Bloq Tapılmadı" });
     }
 
-    const coverImagePath = uploadDir + deletedNews.coverImage;
+    const coverImagePath = uploadDir + deletedBlog.coverImage;
     fs.unlink(coverImagePath, (err) => {
       if (err) {
-        console.error(`Error: ${deletedNews.coverImage}`);
+        console.error(`Error: ${deletedBlog.coverImage}`);
       } else {
-        console.log(`Cover image Silindi: ${deletedNews.coverImage}`);
+        console.log(`Cover image Silindi: ${deletedBlog.coverImage}`);
       }
     });
 
     res.json({
-      message: `${newsNameToDelete} Adlı Xəbər Silindi`,
+      message: `${blogNameToDelete} Adlı Xəbər Silindi`,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };

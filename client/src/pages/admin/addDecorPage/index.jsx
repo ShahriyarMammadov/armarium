@@ -5,7 +5,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
 
-const AddBlogPage = () => {
+const addDecorPage = () => {
   const { id } = useParams();
   const [name, setBlogName] = useState("");
   const [description, setBlogDescription] = useState("");
@@ -14,17 +14,17 @@ const AddBlogPage = () => {
 
   const [sliceCount, setSliceCount] = useState(5);
 
-  const [blogs, setAllBlog] = useState([]);
+  const [decor, setAllDecor] = useState([]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setCoverImage(file);
   };
 
-  const getAllBlog = async () => {
+  const getAllDecor = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/blog/getAllBlog`);
-      setAllBlog(data);
+      const { data } = await axios.get(`http://localhost:3000/decor/allDecor`);
+      setAllDecor(data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -33,7 +33,7 @@ const AddBlogPage = () => {
   };
 
   useEffect(() => {
-    getAllBlog();
+    getAllDecor();
   }, []);
 
   const deleteBlog = async (name) => {
@@ -42,8 +42,8 @@ const AddBlogPage = () => {
       const deleteBlog = await axios.delete(
         `http://localhost:3000/blog/deleteBlogByName/${name}`
       );
-      message.success("Blog uğurla silindi");
-      getAllBlog();
+      message.success("Dekor uğurla silindi");
+      getAllDecor();
     } catch (error) {
       console.log(error);
     }
@@ -61,10 +61,10 @@ const AddBlogPage = () => {
       formData.append("name", name);
       formData.append("description", description);
       const addData = await axios.post(
-        `http://localhost:3000/blog/addBlog/${id}`,
+        `http://localhost:3000/decor/addDecor/${id}`,
         formData
       );
-      getAllBlog();
+      getAllDecor();
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -77,10 +77,10 @@ const AddBlogPage = () => {
         <LoadingComponent />
       ) : (
         <>
-          <h4>BÜTÜN BLOQLAR</h4>
-          {blogs.length === 0 ? (
+          <h4>BÜTÜN DEKORLAR</h4>
+          {decor.length === 0 ? (
             <>
-              <h1>HEÇ BİR BLOQ PAYLAŞMAMISINIZ.</h1>
+              <h1>HEÇ BİR DEKOR PAYLAŞMAMISINIZ.</h1>
             </>
           ) : (
             <div className="blogs">
@@ -241,4 +241,4 @@ const AddBlogPage = () => {
   );
 };
 
-export default AddBlogPage;
+export default addDecorPage;

@@ -32,7 +32,8 @@ export const addVacancy = async (req, res) => {
 
     const user = await userModel.findById(userId);
     if (user) {
-      user.vacanciesCount += 1;
+      const totalVacanciesModel = await vacanciesModel.countDocuments();
+      user.vacanciesCount = totalVacanciesModel;
       await user.save();
     } else {
       return res.status(404).json({ error: "Istifadəçi Tapılmadı" });

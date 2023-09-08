@@ -36,7 +36,8 @@ export const addReference = async (req, res) => {
 
     const user = await userModel.findById(userId);
     if (user) {
-      user.referenceCount += 1;
+      const totalReferenceCount = await referencesModel.countDocuments();
+      user.referenceCount = totalReferenceCount;
       await user.save();
     } else {
       return res.status(404).json({ error: "Istifadəçi Tapılmadı" });

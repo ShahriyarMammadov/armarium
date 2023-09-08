@@ -82,7 +82,7 @@ const AddVacancyPage = () => {
               vacancyDelete(data?.name);
             }}
             onCancel={cancel}
-            okText="SIL"
+            okText="SİL"
             cancelText="BAĞLA"
           >
             {/* <Button danger>Delete</Button> */}

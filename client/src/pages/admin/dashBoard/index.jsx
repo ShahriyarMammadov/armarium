@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import AddVacancyPage from "../addvacancyPage";
 import LoadingComponent from "../../../components/loading";
 import AddBlogPage from "../addBlogPage";
+import AddNewsPage from "../addNewsPage";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -84,6 +85,8 @@ const DashBoard = () => {
     getUserData();
   }, []);
 
+  console.log(userData);
+
   const handleMenuClick = async (item) => {
     setSelectedMenuItem(item.key);
     // console.log(item.key);
@@ -118,7 +121,7 @@ const DashBoard = () => {
       case "3":
         return <AddBlogPage />;
       case "4":
-        return <p>İçerik 4</p>;
+        return <AddNewsPage />;
       case "5":
         return <p>İçerik 5</p>;
       case "6":

@@ -30,6 +30,6 @@ blogRouter.get("/blogByNameWithSpecialData", blogWithSpecialData);
 blogRouter.patch("/editBlogByName", editBlogByName);
 
 // DELETE BLOG BY NAME
-blogRouter.delete("/deleteBLogByName", deleteBLogByName);
+blogRouter.delete("/deleteBLogByName/:id", deleteBLogByName);
 
 export default blogRouter;

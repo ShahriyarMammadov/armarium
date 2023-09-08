@@ -37,7 +37,8 @@ export const addDecor = async (req, res) => {
 
     const user = await userModel.findById(userId);
     if (user) {
-      user.decorCount += 1;
+      const totalDecorCount = await decorModel.countDocuments();
+      user.decorCount = totalDecorCount;
       await user.save();
     } else {
       return res.status(404).json({ error: "Istifadəçi Tapılmadı" });

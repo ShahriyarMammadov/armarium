@@ -21,6 +21,8 @@ const NewsPage = () => {
     getNewsData();
   }, []);
 
+  console.log(data);
+
   return (
     <div id="newsPage">
       <Helmet>
@@ -45,7 +47,7 @@ const NewsPage = () => {
             return (
               <div className="card" key={i}>
                 <div className="image">
-                  <Link to={`/xeberler/${e?.name}`}>
+                  <Link to={`/xeberler/${e?._id}`}>
                     <img
                       src={`http://localhost:3000/images/${e?.coverImage}`}
                       alt={`${e?.name}`}
@@ -67,7 +69,7 @@ const NewsPage = () => {
                   </div>
 
                   <div className="nav">
-                    <Link to={`/xeberler/${e?.name}`}>
+                    <Link to={`/xeberler/${e?._id}`}>
                       DAHA ƏTRAFLI <i className="fa-solid fa-caret-right"></i>
                     </Link>
                   </div>

@@ -31,7 +31,8 @@ export const addNews = async (req, res) => {
 
     const user = await userModel.findById(userId);
     if (user) {
-      user.newsCount += 1;
+      const totalNewsCount = await newsModel.countDocuments();
+      user.newsCount = totalNewsCount;
       await user.save();
     } else {
       return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
@@ -66,9 +67,8 @@ export const allNews = async (req, res) => {
 
 export const newsByName = async (req, res) => {
   try {
-    const { newsName } = req.params;
-    console.log(newsName);
-    const news = await newsModel.find({ name: newsName });
+    const { id } = req.params;
+    const news = await newsModel.find({ _id: id });
 
     if (!news) {
       return res.status(404).json({ message: "Xəbər Tapılmadı", data: news });
@@ -86,7 +86,7 @@ export const newsByName = async (req, res) => {
 
 export const newsWithSpecialData = async (req, res) => {
   try {
-    const news = await newsModel.find({}, "name description coverImage date");
+    const news = await newsModel.find({}, "name description coverImage date _id");
     res.json(news);
   } catch (error) {
     console.log(error);
@@ -120,10 +120,10 @@ export const editNewsByName = async (req, res) => {
 
 export const deleteNewsByName = async (req, res) => {
   try {
-    const newsNameToDelete = req.params.newsName;
+    const id = req.params.id;
 
     const deletedNews = await newsModel.findOneAndDelete({
-      name: newsNameToDelete,
+      _id: id,
     });
 
     if (!deletedNews) {
@@ -140,9 +140,10 @@ export const deleteNewsByName = async (req, res) => {
     });
 
     res.json({
-      message: `${newsNameToDelete} Adlı Xəbər Silindi`,
+      message: `${id} ID-li Xəbər Silindi`,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };
