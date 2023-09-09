@@ -1,21 +1,30 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Button, Image, Form, Input, Popconfirm, message } from "antd";
+import {
+  Button,
+  Form,
+  Input,
+  Popconfirm,
+  message,
+  Image,
+  Typography,
+} from "antd";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
 
-const addDecorPage = () => {
+const addReferencePage = () => {
   const { id } = useParams();
-  const [name, setDecorName] = useState("");
-  const [description, setDecorDescription] = useState("");
+  const [name, setReferenceName] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [images, setİmages] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { Text } = Typography;
+
   const [sliceCount, setSliceCount] = useState(5);
 
-  const [decor, setAllDecor] = useState([]);
+  const [reference, setAllReference] = useState([]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -28,10 +37,12 @@ const addDecorPage = () => {
     setİmages([...images, ...newImages]);
   };
 
-  const getAllDecor = async () => {
+  const getAllReference = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/decor/allDecor`);
-      setAllDecor(data);
+      const { data } = await axios.get(
+        `http://localhost:3000/reference/allReferences`
+      );
+      setAllReference(data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -40,17 +51,17 @@ const addDecorPage = () => {
   };
 
   useEffect(() => {
-    getAllDecor();
+    getAllReference();
   }, []);
 
-  const deleteDecor = async (name) => {
+  const deleteReference = async (name) => {
     try {
       setLoading(true);
       const deleteDecor = await axios.delete(
-        `http://localhost:3000/decor/deleteDecorByName/${name}`
+        `http://localhost:3000/reference/deleteReferanceByName/${name}`
       );
       message.success("Dekor uğurla silindi");
-      getAllDecor();
+      getAllReference();
     } catch (error) {
       console.log(error);
     }
@@ -60,14 +71,9 @@ const addDecorPage = () => {
     message.error("SİLİNMƏDİ");
   };
 
-  const addDecor = async () => {
+  const addReference = async () => {
     try {
-      if (
-        name.length === 0 ||
-        coverImage.length === 0 ||
-        images.length === 0 ||
-        description.length === 0
-      ) {
+      if (name.length === 0 || coverImage.length === 0 || images.length === 0) {
         return message.error("Zəhmət olmasa xanaları tam doldurun!");
       } else if (images.length > 14) {
         return message.error("14-dən çox şəkil yükləmək olmaz!");
@@ -76,16 +82,15 @@ const addDecorPage = () => {
       const formData = new FormData();
       formData.append("coverImage", coverImage);
       formData.append("name", name);
-      formData.append("description", description);
       images.forEach((image, index) => {
         formData.append("images", image);
       });
 
       const addData = await axios.post(
-        `http://localhost:3000/decor/addDecor/${id}`,
+        `http://localhost:3000/reference/addReference/${id}`,
         formData
       );
-      getAllDecor();
+      getAllReference();
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -98,55 +103,61 @@ const addDecorPage = () => {
         <LoadingComponent />
       ) : (
         <>
-          <h4>BÜTÜN DEKORLAR</h4>
-          {decor.length === 0 ? (
+          <h4>BÜTÜN REFERANSLAR</h4>
+          {reference.length === 0 ? (
             <>
-              <h1>HEÇ BİR DEKOR PAYLAŞMAMISINIZ.</h1>
+              <h1>HEÇ BİR REFERANS PAYLAŞMAMISINIZ.</h1>
             </>
           ) : (
-            <div id="decor">
+            <div id="reference">
               <>
-                <div className="imagesCards">
-                  {decor.slice(0, sliceCount).map((e, i) => {
-                    // const imageUrls = e?.images.map(
-                    //   (image) => `http://localhost:3000/images/${image}`
-                    // );
+                <div className="grid-container container">
+                  {reference?.map((e, i) => {
+                    const imageUrls = e?.images.map(
+                      (image) => `http://localhost:3000/images/${image}`
+                    );
                     return (
                       <>
-                        <Link to={`#`} key={i}>
-                          <img
-                            src={`http://localhost:3000/images/${e?.coverImage}`}
-                            alt={`${e?.name}`}
-                          />
-                          <div className="text hidden">
-                            <p className="modelName">
-                              <Popconfirm
-                                title="DEKOR"
-                                description="Dekor Həmişəlik Silinsin?"
-                                onConfirm={() => {
-                                  deleteDecor(e?._id);
+                        <div style={{ position: "relative" }} key={i}>
+                          <Image.PreviewGroup items={imageUrls} key={i}>
+                            <Image
+                              src={`http://localhost:3000/images/${e?.coverImage}`}
+                            />
+                          </Image.PreviewGroup>
+                          <Text
+                            style={{
+                              position: "absolute",
+                              top: "20px",
+                              right: "20px",
+                              color: "white",
+                              fontWeight: "bold",
+                              backgroundColor: "rgba(0, 0, 0, 0.5)",
+                              padding: "6px 10px",
+                            }}
+                          >
+                            <Popconfirm
+                              title="REFERANS"
+                              description="Referans Həmişəlik Silinsin?"
+                              onConfirm={() => {
+                                deleteReference(e?._id);
+                              }}
+                              onCancel={cancel}
+                              okText="SİL"
+                              cancelText="BAĞLA"
+                            >
+                              <i
+                                className="fa-regular fa-trash-can"
+                                style={{
+                                  color: "red",
+                                  cursor: "pointer",
+                                  fontSize: "24px",
+                                  marginRight: "20px",
                                 }}
-                                onCancel={cancel}
-                                okText="SİL"
-                                cancelText="BAĞLA"
-                              >
-                                <i
-                                  className="fa-regular fa-trash-can"
-                                  style={{
-                                    color: "red",
-                                    cursor: "pointer",
-                                    fontSize: "24px",
-                                  }}
-                                ></i>
-                              </Popconfirm>{" "}
-                              {e?.name}
-                            </p>
-
-                            <p className="description hidden">
-                              {e?.description?.slice(0, 37) + ". . ."}
-                            </p>
-                          </div>
-                        </Link>
+                              ></i>
+                            </Popconfirm>
+                            {e?.name}
+                          </Text>
+                        </div>
                       </>
                     );
                   })}
@@ -183,40 +194,12 @@ const addDecorPage = () => {
           margin: "0 auto",
         }}
       >
-        <Form.Item label="Bloqun Adı:">
+        <Form.Item label="Referansın Adı:">
           <Input
             onChange={(e) => {
-              setDecorName(e.target.value);
+              setReferenceName(e.target.value);
             }}
           />
-          <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            BLOQ-UN ADININ SONUNA `. , ? !` VƏ S. ƏLAVƏ ETMƏYİN
-          </p>
-        </Form.Item>
-        <Form.Item label="Bloq Məlumatı: ">
-          <Input
-            onChange={(e) => {
-              setDecorDescription(e.target.value);
-            }}
-          />
-          <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
-            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
-          </p>
         </Form.Item>
         <Form.Item label="Örtük Şəkli: ">
           <input type="file" name="coverImage" onChange={handleFileChange} />
@@ -244,7 +227,7 @@ const addDecorPage = () => {
           <Button
             loading={loading}
             onClick={() => {
-              addDecor();
+              addReference();
             }}
           >
             Əlavə Et
@@ -255,4 +238,4 @@ const addDecorPage = () => {
   );
 };
 
-export default addDecorPage;
+export default addReferencePage;

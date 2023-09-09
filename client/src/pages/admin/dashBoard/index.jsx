@@ -11,6 +11,7 @@ import LoadingComponent from "../../../components/loading";
 import AddBlogPage from "../addBlogPage";
 import AddNewsPage from "../addNewsPage";
 import AddDecorPage from "../addDecorPage";
+import AddReferencePage from "../addReferencePage";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -110,6 +111,9 @@ const DashBoard = () => {
               <LoadingComponent />
             ) : (
               <>
+                <h1>
+                  butun controller-de decor ve s. silinende count-da yenilensin
+                </h1>
                 <SiteDetailCardsComponent data={userData} />
                 <UserDetailComponent data={userData} />
                 <CalendarComponent />
@@ -126,7 +130,7 @@ const DashBoard = () => {
       case "5":
         return <AddDecorPage />;
       case "6":
-        return <p>İçerik 6</p>;
+        return <AddReferencePage />;
       default:
         return null;
     }
@@ -186,10 +190,9 @@ const DashBoard = () => {
           <Footer
             style={{
               textAlign: "center",
-              backgroundColor: "red",
             }}
           >
-            Ant Design ©2023 Created by Ant UED
+            ARMARİUM
           </Footer>
         </Layout>
       </Layout>

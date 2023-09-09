@@ -60,7 +60,7 @@ export const addReference = async (req, res) => {
 export const allReference = async (req, res) => {
   try {
     const references = await referencesModel.find();
-    res.json(references);
+    res.json(references.reverse());
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
@@ -131,10 +131,11 @@ export const editReferenceByName = async (req, res) => {
 
 export const deleteReferenceByName = async (req, res) => {
   try {
-    const referenceName = req.params.referenceName;
+    const referenceName = req.params.id;
+    console.log(referenceName);
 
     const deletedReference = await referencesModel.findOneAndDelete({
-      name: referenceName,
+      _id: referenceName,
     });
 
     if (!deletedReference) {

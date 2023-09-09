@@ -76,6 +76,7 @@ export const allDecor = async (req, res) => {
 export const decorByName = async (req, res) => {
   try {
     const { decorName } = req.params;
+    console.log(decorName)
     const decors = await decorModel.find({ name: decorName });
 
     if (!decors) {

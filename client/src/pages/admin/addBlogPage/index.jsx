@@ -55,6 +55,13 @@ const AddBlogPage = () => {
 
   const addBlog = async () => {
     try {
+      if (
+        name.length === 0 ||
+        coverImage.length === 0 ||
+        description.length === 0
+      ) {
+        return message.error("Zəhmət olmasa xanaları tam doldurun!");
+      }
       setLoading(true);
       const formData = new FormData();
       formData.append("coverImage", coverImage);
@@ -136,10 +143,6 @@ const AddBlogPage = () => {
                               ))}
                           </p>
                         </div>
-                        {/* 
-                    <Link to={`/xeberler/blog/${e?.name}`}>
-                      Ətraflı <i className="fa-solid fa-caret-right"></i>
-                    </Link> */}
                       </div>
                     </div>
                   );
@@ -207,13 +210,13 @@ const AddBlogPage = () => {
               fontWeight: "900",
             }}
           >
-            TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
-            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
+            BLOQ MƏLUMATI ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN
+            ƏVVƏLKİ CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
           </p>
         </Form.Item>
         <Form.Item label="Örtük Şəkli: ">
           <input type="file" name="coverImage" onChange={handleFileChange} />
-          <p
+          {/* <p
             style={{
               color: "red",
               fontSize: "12px",
@@ -223,7 +226,7 @@ const AddBlogPage = () => {
           >
             TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
             CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
-          </p>
+          </p> */}
         </Form.Item>
 
         <Form.Item label="Əlavə Edilsin?">

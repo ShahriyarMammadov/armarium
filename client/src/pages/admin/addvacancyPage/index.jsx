@@ -49,6 +49,9 @@ const AddVacancyPage = () => {
 
   const addVacancy = async () => {
     try {
+      if (name.length === 0 || description.length === 0) {
+        return message.error("Zəhmət olmasa xanaları tam doldurun!");
+      }
       setLoading(true);
       const addData = await axios.post(
         `http://localhost:3000/vacancy/addVacancy/${id}`,

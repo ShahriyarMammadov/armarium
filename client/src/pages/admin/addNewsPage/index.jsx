@@ -56,6 +56,14 @@ const AddNewsPage = () => {
 
   const addNews = async () => {
     try {
+      if (
+        name.length === 0 ||
+        coverImage.length === 0 ||
+        cardDescription.length === 0 ||
+        description.length === 0
+      ) {
+        return message.error("Zəhmət olmasa xanaları tam doldurun!");
+      }
       setLoading(true);
       const formData = new FormData();
       formData.append("coverImage", coverImage);
@@ -177,16 +185,6 @@ const AddNewsPage = () => {
               setNewsName(e.target.value);
             }}
           />
-          <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            BLOQ-UN ADININ SONUNA `. , ? !` VƏ S. ƏLAVƏ ETMƏYİN
-          </p>
         </Form.Item>
         <Form.Item label="Qısa Məlumat:">
           <Input
@@ -202,7 +200,8 @@ const AddNewsPage = () => {
               fontWeight: "900",
             }}
           >
-            BLOQ-UN ADININ SONUNA `. , ? !` VƏ S. ƏLAVƏ ETMƏYİN
+            MƏLUMAT ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
+            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
           </p>
         </Form.Item>
         <Form.Item label="Xəbər Məlumatı: ">
@@ -225,17 +224,6 @@ const AddNewsPage = () => {
         </Form.Item>
         <Form.Item label="Örtük Şəkli: ">
           <input type="file" name="coverImage" onChange={handleFileChange} />
-          <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
-            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
-          </p>
         </Form.Item>
 
         <Form.Item label="Əlavə Edilsin?">

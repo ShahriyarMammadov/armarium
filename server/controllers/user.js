@@ -41,18 +41,16 @@ export const userById = async (req, res) => {
       date: { $gte: oneMonthAgo, $lte: currentDate },
     });
 
-    res
-      .status(200)
-      .json({
-        user: user,
-        data: {
-          blogCount,
-          newsCount,
-          decorCount,
-          vacanciesCount,
-          referanceCount,
-        },
-      });
+    res.status(200).json({
+      user: user,
+      data: {
+        blogCount,
+        newsCount,
+        decorCount,
+        vacanciesCount,
+        referanceCount,
+      },
+    });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
