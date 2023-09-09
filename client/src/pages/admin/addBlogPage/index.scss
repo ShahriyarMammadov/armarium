@@ -1,15 +1,5 @@
 #adminBlog {
     .blogs {
-        .sliceBtn {
-            text-align: center;
-
-            button {
-                padding: 10px 25px;
-                margin-top: 25px;
-                cursor: pointer;
-                font-weight: 700;
-            }
-        }
 
         width: 90%;
         margin: 40px auto;
@@ -86,5 +76,16 @@
                 }
             }
         }
+    }
+}
+
+.sliceBtn {
+    text-align: center;
+
+    button {
+        padding: 10px 25px;
+        margin-top: 25px;
+        cursor: pointer;
+        font-weight: 700;
     }
 }

@@ -10,6 +10,7 @@ import AddVacancyPage from "../addvacancyPage";
 import LoadingComponent from "../../../components/loading";
 import AddBlogPage from "../addBlogPage";
 import AddNewsPage from "../addNewsPage";
+import AddDecorPage from "../addDecorPage";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -123,7 +124,7 @@ const DashBoard = () => {
       case "4":
         return <AddNewsPage />;
       case "5":
-        return <p>İçerik 5</p>;
+        return <AddDecorPage />;
       case "6":
         return <p>İçerik 6</p>;
       default:

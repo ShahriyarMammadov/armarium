@@ -33,6 +33,6 @@ decorRouter.get("/decorWithSpecialData", decorWithSpecialData);
 decorRouter.patch("/editDecorByName", editDecorByName);
 
 // ---------------- DELETE DECOR BY NAME------------------
-decorRouter.delete("/deleteDecorByName/:decorName", deleteDecorByName);
+decorRouter.delete("/deleteDecorByName/:id", deleteDecorByName);
 
 export default decorRouter;

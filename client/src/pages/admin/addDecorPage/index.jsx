@@ -7,9 +7,10 @@ import LoadingComponent from "../../../components/loading";
 
 const addDecorPage = () => {
   const { id } = useParams();
-  const [name, setBlogName] = useState("");
-  const [description, setBlogDescription] = useState("");
+  const [name, setDecorName] = useState("");
+  const [description, setDecorDescription] = useState("");
   const [coverImage, setCoverImage] = useState("");
+  const [images, setİmages] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [sliceCount, setSliceCount] = useState(5);
@@ -19,6 +20,12 @@ const addDecorPage = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setCoverImage(file);
+  };
+
+  const handleImagesChange = (e) => {
+    const selectedFiles = e.target.files;
+    const newImages = Array.from(selectedFiles);
+    setİmages([...images, ...newImages]);
   };
 
   const getAllDecor = async () => {
@@ -36,11 +43,11 @@ const addDecorPage = () => {
     getAllDecor();
   }, []);
 
-  const deleteBlog = async (name) => {
+  const deleteDecor = async (name) => {
     try {
       setLoading(true);
-      const deleteBlog = await axios.delete(
-        `http://localhost:3000/blog/deleteBlogByName/${name}`
+      const deleteDecor = await axios.delete(
+        `http://localhost:3000/decor/deleteDecorByName/${name}`
       );
       message.success("Dekor uğurla silindi");
       getAllDecor();
@@ -53,13 +60,17 @@ const addDecorPage = () => {
     message.error("SİLİNMƏDİ");
   };
 
-  const addBlog = async () => {
+  const addDecor = async () => {
     try {
       setLoading(true);
       const formData = new FormData();
       formData.append("coverImage", coverImage);
       formData.append("name", name);
       formData.append("description", description);
+      images.forEach((image, index) => {
+        formData.append("images", image);
+      });
+
       const addData = await axios.post(
         `http://localhost:3000/decor/addDecor/${id}`,
         formData
@@ -72,7 +83,7 @@ const addDecorPage = () => {
   };
 
   return (
-    <div id="adminBlog">
+    <div id="adminDecor">
       {loading ? (
         <LoadingComponent />
       ) : (
@@ -83,67 +94,50 @@ const addDecorPage = () => {
               <h1>HEÇ BİR DEKOR PAYLAŞMAMISINIZ.</h1>
             </>
           ) : (
-            <div className="blogs">
+            <div id="decor">
               <>
-                {blogs.slice(0, sliceCount).map((e, i) => {
-                  return (
-                    <div className="blog" key={i}>
-                      <img
-                        src={`http://localhost:3000/images/${e?.coverImage}`}
-                        alt={`${e?.name}`}
-                      />
+                <div className="imagesCards">
+                  {decor.slice(0, sliceCount).map((e, i) => {
+                    return (
+                      <>
+                        <Link to={`#`} key={i}>
+                          <img
+                            src={`http://localhost:3000/images/${e?.coverImage}`}
+                            alt={`${e?.name}`}
+                          />
+                          <div className="text hidden">
+                            <p className="modelName">
+                              <Popconfirm
+                                title="DEKOR"
+                                description="Dekor Həmişəlik Silinsin?"
+                                onConfirm={() => {
+                                  deleteDecor(e?._id);
+                                }}
+                                onCancel={cancel}
+                                okText="SİL"
+                                cancelText="BAĞLA"
+                              >
+                                <i
+                                  className="fa-regular fa-trash-can"
+                                  style={{
+                                    color: "red",
+                                    cursor: "pointer",
+                                    fontSize: "24px",
+                                  }}
+                                ></i>
+                              </Popconfirm>{" "}
+                              {e?.name}
+                            </p>
 
-                      <div className="rightText" style={{ width: "100%" }}>
-                        <div
-                          className="blogHeaderText"
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <h2>{e?.name}</h2>
-                          <Popconfirm
-                            title="BLOQ"
-                            description="Bloq Həmişəlik Silinsin?"
-                            onConfirm={() => {
-                              deleteBlog(e?.name);
-                            }}
-                            onCancel={cancel}
-                            okText="SİL"
-                            cancelText="BAĞLA"
-                          >
-                            <i
-                              className="fa-regular fa-trash-can"
-                              style={{
-                                color: "red",
-                                cursor: "pointer",
-                                fontSize: "24px",
-                              }}
-                            ></i>
-                          </Popconfirm>
-                        </div>
-                        <div className="description">
-                          <p>
-                            {e?.description
-                              ?.slice(0, 250)
-                              ?.split("<br />")
-                              ?.map((line, lineIndex) => (
-                                <React.Fragment key={lineIndex}>
-                                  {line}. . .
-                                  <br />
-                                </React.Fragment>
-                              ))}
-                          </p>
-                        </div>
-                        {/* 
-                    <Link to={`/xeberler/blog/${e?.name}`}>
-                      Ətraflı <i className="fa-solid fa-caret-right"></i>
-                    </Link> */}
-                      </div>
-                    </div>
-                  );
-                })}
+                            <p className="description hidden">
+                              {e?.description?.slice(0, 37) + ". . ."}
+                            </p>
+                          </div>
+                        </Link>
+                      </>
+                    );
+                  })}
+                </div>
                 <div className="sliceBtn">
                   <button
                     onClick={() => {
@@ -179,7 +173,7 @@ const addDecorPage = () => {
         <Form.Item label="Bloqun Adı:">
           <Input
             onChange={(e) => {
-              setBlogName(e.target.value);
+              setDecorName(e.target.value);
             }}
           />
           <p
@@ -196,7 +190,7 @@ const addDecorPage = () => {
         <Form.Item label="Bloq Məlumatı: ">
           <Input
             onChange={(e) => {
-              setBlogDescription(e.target.value);
+              setDecorDescription(e.target.value);
             }}
           />
           <p
@@ -225,12 +219,31 @@ const addDecorPage = () => {
             CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
           </p>
         </Form.Item>
+        <Form.Item label="Şəklillər: ">
+          <input
+            type="file"
+            name="images"
+            onChange={handleImagesChange}
+            multiple
+          />
+          <p
+            style={{
+              color: "red",
+              fontSize: "12px",
+              margin: "0",
+              fontWeight: "900",
+            }}
+          >
+            TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
+            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
+          </p>
+        </Form.Item>
 
         <Form.Item label="Əlavə Edilsin?">
           <Button
             loading={loading}
             onClick={() => {
-              addBlog();
+              addDecor();
             }}
           >
             Əlavə Et
