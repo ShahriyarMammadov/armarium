@@ -24,7 +24,7 @@ vacancyRouter.get("/vacancyWithSpecialData", vacancyWithSpecialData);
 
 vacancyRouter.get("/vacancyByName/:vacancyName", vacancyByName);
 
-vacancyRouter.delete("/deleteVacancyByName/:vacancyName", deleteVacancyByName);
+vacancyRouter.delete("/deleteVacancyByName/:vacancyName/:userId", deleteVacancyByName);
 
 vacancyRouter.patch("/editVacancyByName/:name", editVacancyByName);
 

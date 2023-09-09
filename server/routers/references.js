@@ -28,7 +28,7 @@ referenceRouter.get("/referencesWithSpecialData", referenceWithSpecialData);
 referenceRouter.get("/referenceByName/:referenceName", referenceByName);
 
 referenceRouter.delete(
-  "/deleteReferanceByName/:id",
+  "/deleteReferanceByName/:id/:userId",
   deleteReferenceByName
 );
 

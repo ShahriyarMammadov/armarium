@@ -76,7 +76,7 @@ export const allDecor = async (req, res) => {
 export const decorByName = async (req, res) => {
   try {
     const { decorName } = req.params;
-    console.log(decorName)
+    console.log(decorName);
     const decors = await decorModel.find({ name: decorName });
 
     if (!decors) {
@@ -164,6 +164,17 @@ export const deleteDecorByName = async (req, res) => {
         console.log(`Örtük Şəkli Sİlindi: ${deletedDecor.coverImage}`);
       }
     });
+
+    let userId = req.params.id;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      const totalDecorCount = await decorModel.countDocuments();
+      user.decorCount = totalDecorCount;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
 
     res.json({
       message: `${decorNameToDelete} Adlı Dekor Uğurla Silindi.`,

@@ -30,6 +30,6 @@ newsRouter.get("/newsWithSpecialData", newsWithSpecialData);
 newsRouter.patch("/editNewsByName", editNewsByName);
 
 // ----------------- EDIT NEWS BY NAME-------------------
-newsRouter.delete("/deleteNewsByName/:id", deleteNewsByName);
+newsRouter.delete("/deleteNewsByName/:id/:userId", deleteNewsByName);
 
 export default newsRouter;

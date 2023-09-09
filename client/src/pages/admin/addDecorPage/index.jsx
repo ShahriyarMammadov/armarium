@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Button, Image, Form, Input, Popconfirm, message } from "antd";
+import { Button, Form, Input, Popconfirm, message } from "antd";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
@@ -11,11 +11,16 @@ const addDecorPage = () => {
   const [description, setDecorDescription] = useState("");
   const [coverImage, setCoverImage] = useState("");
   const [images, setİmages] = useState([]);
+
+  const [selectedDecorName, setSelectedDecorName] = useState("");
+
   const [loading, setLoading] = useState(true);
 
   const [sliceCount, setSliceCount] = useState(5);
 
   const [decor, setAllDecor] = useState([]);
+
+  const [selectedDecor, setSelectedDecor] = useState([]);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -39,8 +44,54 @@ const addDecorPage = () => {
     }
   };
 
+  const getSelectedDecor = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `http://localhost:3000/selectedDecor/getSelectedDecors`
+      );
+      setSelectedDecor(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const addSelectedDecor = async () => {
+    try {
+      if (selectedDecorName.length === 0) {
+        return message.warning("Dekor Adı Qeyd Edin!");
+      }
+      const { data } = await axios.post(
+        `http://localhost:3000/selectedDecor/addNameToSelectedDecor`,
+        { selectedNames: selectedDecorName }
+      );
+      console.log(data);
+
+      message.success(data.message);
+
+      getSelectedDecor();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteSelectedDecor = async (name) => {
+    try {
+      console.log(name);
+      const { data } = await axios.delete(
+        `http://localhost:3000/selectedDecor/removeNameFromSelectedDecor?name=${name}`
+      );
+      getSelectedDecor();
+      message.success(data.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     getAllDecor();
+    getSelectedDecor();
   }, []);
 
   const deleteDecor = async (name) => {
@@ -51,6 +102,7 @@ const addDecorPage = () => {
       );
       message.success("Dekor uğurla silindi");
       getAllDecor();
+      getSelectedDecor();
     } catch (error) {
       console.log(error);
     }
@@ -251,6 +303,99 @@ const addDecorPage = () => {
           </Button>
         </Form.Item>
       </Form>
+
+      <div className="selectedDecors">
+        <h4>SEÇİLMİŞ DEKORLAR</h4>
+
+        <div
+          className="selectDecorName"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "10px",
+            overflow: "auto",
+          }}
+        >
+          {selectedDecor?.name?.names?.map((e, i) => {
+            return (
+              <p
+                style={{
+                  backgroundColor: "white",
+                  padding: "10px 20px",
+                }}
+              >
+                {e}
+                <Popconfirm
+                  title="SEÇİLMİŞ DEKORLAR"
+                  description={`${e} Adlı Seçilmiş Dekor Həmişəlik Silinsin?`}
+                  onConfirm={() => {
+                    deleteSelectedDecor(e);
+                  }}
+                  onCancel={cancel}
+                  okText="SİL"
+                  cancelText="BAĞLA"
+                >
+                  <i
+                    className="fa-regular fa-trash-can"
+                    style={{
+                      color: "red",
+                      cursor: "pointer",
+                      fontSize: "24px",
+                      marginLeft: "10px",
+                    }}
+                  ></i>
+                </Popconfirm>
+              </p>
+            );
+          })}
+        </div>
+        <Form
+          labelCol={{
+            span: 4,
+          }}
+          wrapperCol={{
+            span: 14,
+          }}
+          layout="vertical"
+          initialValues={{
+            size: "default",
+          }}
+          // onValuesChange={onFormLayoutChange}
+          size={"default"}
+          style={{
+            margin: "0 auto",
+          }}
+        >
+          <Form.Item label="Seçilmiş Dekorun Adı:">
+            <Input
+              onChange={(e) => {
+                setSelectedDecorName(e.target.value);
+              }}
+            />
+            <p
+              style={{
+                color: "red",
+                fontSize: "12px",
+                margin: "0",
+                fontWeight: "900",
+              }}
+            >
+              BLOQ-UN ADININ SONUNA `. , ? !` VƏ S. ƏLAVƏ ETMƏYİN
+            </p>
+          </Form.Item>
+
+          <Form.Item label="Əlavə Edilsin?">
+            <Button
+              loading={loading}
+              onClick={() => {
+                addSelectedDecor();
+              }}
+            >
+              Seçilmiş Dekorlara Əlavə Et
+            </Button>
+          </Form.Item>
+        </Form>
+      </div>
     </div>
   );
 };

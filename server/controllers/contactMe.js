@@ -26,3 +26,13 @@ export const addContactMe = async (req, res) => {
   }
 };
 // -------------------------------------------------------
+
+export const allContactMe = async (req, res) => {
+  try {
+    const contactMe = await contactMeModal.find();
+    res.json(contactMe.reverse());
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};

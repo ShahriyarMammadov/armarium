@@ -143,6 +143,17 @@ export const deleteBLogByName = async (req, res) => {
       }
     });
 
+    let userId = req.params.userId;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      const totalBlogCount = await blogModel.countDocuments();
+      user.blogCount = totalBlogCount;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
+
     res.json({
       message: `${blogNameToDelete} Adlı Xəbər Silindi`,
     });

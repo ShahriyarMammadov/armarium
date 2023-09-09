@@ -12,6 +12,7 @@ import AddBlogPage from "../addBlogPage";
 import AddNewsPage from "../addNewsPage";
 import AddDecorPage from "../addDecorPage";
 import AddReferencePage from "../addReferencePage";
+import AdminHeader from "../../../layouts/admin/header";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -111,9 +112,6 @@ const DashBoard = () => {
               <LoadingComponent />
             ) : (
               <>
-                <h1>
-                  butun controller-de decor ve s. silinende count-da yenilensin
-                </h1>
                 <SiteDetailCardsComponent data={userData} />
                 <UserDetailComponent data={userData} />
                 <CalendarComponent />
@@ -177,7 +175,7 @@ const DashBoard = () => {
               background: colorBgContainer,
             }}
           >
-            <div>salaam</div>
+            <AdminHeader />
           </Header>
           <Content
             style={{

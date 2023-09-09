@@ -168,6 +168,17 @@ export const deleteVacancyByName = async (req, res) => {
       }
     });
 
+    let userId = req.params.userId;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      const totalVacanciesCount = await vacanciesModel.countDocuments();
+      user.vacanciesCount = totalVacanciesCount;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
+
     res.json({
       message: `${deletedVacancy} Adlı Dekor Uğurla Silindi.`,
     });

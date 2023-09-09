@@ -86,7 +86,10 @@ export const newsByName = async (req, res) => {
 
 export const newsWithSpecialData = async (req, res) => {
   try {
-    const news = await newsModel.find({}, "name description coverImage date _id");
+    const news = await newsModel.find(
+      {},
+      "name description coverImage date _id"
+    );
     res.json(news);
   } catch (error) {
     console.log(error);
@@ -138,6 +141,17 @@ export const deleteNewsByName = async (req, res) => {
         console.log(`Cover image Silindi: ${deletedNews.coverImage}`);
       }
     });
+
+    let userId = req.params.userId;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      const totalNewsCount = await newsModel.countDocuments();
+      user.newsCount = totalNewsCount;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
 
     res.json({
       message: `${id} ID-li Xəbər Silindi`,

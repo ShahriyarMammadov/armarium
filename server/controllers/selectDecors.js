@@ -34,7 +34,7 @@ export const getSelectedDecors = async (req, res) => {
       { coverImage: 1, name: 1, description: 1, _id: 0 }
     );
 
-    res.json(selectedDecors);
+    res.json({ data: selectedDecors.reverse(), name: selectedNamesDocument });
   } catch (error) {
     console.log(error);
     res.status(500).json({ error: error.message });
@@ -45,25 +45,56 @@ export const getSelectedDecors = async (req, res) => {
 // ---------------- REMOVE SELECTED DECOR ----------------
 // Decor-un adına görə decor-un seçilmişlər siyahısından silinməsi
 
-export const removeNameFromSelectedDecor = async (nameToRemove) => {
+// Remove Name From Selected Decor
+export const removeNameFromSelectedDecor = async (req, res) => {
   try {
-    await selectedDecorModel.updateOne({}, { $pull: { names: nameToRemove } });
-    console.log(`${nameToRemove} removed from selected decor names.`);
+    const { name } = req.query;
+    const selectedDecorId = "64fc9119db08d97bb86ac4b9";
+
+    const result = await selectedDecorModel.updateOne(
+      { _id: selectedDecorId },
+      { $pull: { names: name } }
+    );
+
+    if (result.nModified === 0) {
+      return res
+        .status(404)
+        .json({ message: "Seçilmiş Dekorlarda Bele Bir Dekor Yoxdur." });
+    }
+
+    res.status(200).json({ message: "Seçilmiş Dekorlardan Silindi" });
   } catch (error) {
     console.error("Error:", error.message);
+    res.status(500).json({ error: error.message });
   }
 };
-// -------------------------------------------------------
 
-// ------------- ADD NAME TO SELECTED DECORS -------------
-// Yeni decor-un adının əlavə edilməsi
-
-export const addNameToSelectedDecor = async (newName) => {
+// Add Name To Selected Decor
+export const addNameToSelectedDecor = async (req, res) => {
   try {
-    await selectedDecorModel.updateOne({}, { $addToSet: { names: newName } });
-    console.log(`${newName} added to selected decor names.`);
+    const selectedDecorId = "64fc9119db08d97bb86ac4b9";
+    const { selectedNames } = req.body;
+
+    const existingSelectedDecor = await selectedDecorModel.findOne({
+      _id: selectedDecorId,
+      names: { $in: selectedNames },
+    });
+
+    if (existingSelectedDecor) {
+      return res.status(200).json({ message: "Bu Dekor Zatən Əlavə Edilib." });
+    }
+
+    const result = await selectedDecorModel.findOneAndUpdate(
+      { _id: selectedDecorId },
+      { $addToSet: { names: selectedNames } },
+      { upsert: true, new: true }
+    );
+
+    res.status(200).json({ message: "Dekor Əlavə Edildi." });
   } catch (error) {
     console.error("Error:", error.message);
+    res.status(500).json({ error: error.message });
   }
 };
+
 // -------------------------------------------------------

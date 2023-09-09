@@ -165,6 +165,17 @@ export const deleteReferenceByName = async (req, res) => {
       }
     });
 
+    let userId = req.params.userId;
+
+    const user = await userModel.findById(userId);
+    if (user) {
+      const totalReferencesCount = await referencesModel.countDocuments();
+      user.referenceCount = totalReferencesCount;
+      await user.save();
+    } else {
+      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+    }
+
     res.json({
       message: `${deletedReference} Adlı Dekor Uğurla Silindi.`,
     });
