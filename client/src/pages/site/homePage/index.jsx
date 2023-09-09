@@ -42,7 +42,6 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* backendden gelecek */}
       <section id="section3" className="cards">
         <div className="container">
           <CardComponent />

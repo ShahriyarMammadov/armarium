@@ -13,6 +13,7 @@ import AddNewsPage from "../addNewsPage";
 import AddDecorPage from "../addDecorPage";
 import AddReferencePage from "../addReferencePage";
 import AdminHeader from "../../../layouts/admin/header";
+import ContactPage from "../contactPage";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -50,6 +51,11 @@ const DashBoard = () => {
       title: "Referans Əlavə Et",
       icon: <i className="fa-regular fa-building"></i>,
     },
+    {
+      key: "7",
+      title: "Əlaqə",
+      icon: <i className="fa-regular fa-id-badge"></i>,
+    },
   ]);
 
   // const items = [
@@ -74,21 +80,17 @@ const DashBoard = () => {
   const [selectedMenuItem, setSelectedMenuItem] = useState("1");
 
   const getUserData = async () => {
-    if (selectedMenuItem === "1") {
-      const { data } = await axios.get(
-        `http://localhost:3000/user/userDataById/${id}`,
-        { withCredentials: true }
-      );
-      setLoading(false);
-      setUserData(data);
-    }
+    const { data } = await axios.get(
+      `http://localhost:3000/user/userDataById/${id}`,
+      { withCredentials: true }
+    );
+    setLoading(false);
+    setUserData(data);
   };
 
   useEffect(() => {
     getUserData();
   }, []);
-
-  console.log(userData);
 
   const handleMenuClick = async (item) => {
     setSelectedMenuItem(item.key);
@@ -129,6 +131,8 @@ const DashBoard = () => {
         return <AddDecorPage />;
       case "6":
         return <AddReferencePage />;
+      case "7":
+        return <ContactPage />;
       default:
         return null;
     }
@@ -143,7 +147,7 @@ const DashBoard = () => {
             height: "100vh",
             position: "fixed",
             left: 0,
-            top: 70,
+            top: 115,
             bottom: 0,
           }}
         >
@@ -175,7 +179,7 @@ const DashBoard = () => {
               background: colorBgContainer,
             }}
           >
-            <AdminHeader />
+            <AdminHeader data={userData?.user} />
           </Header>
           <Content
             style={{

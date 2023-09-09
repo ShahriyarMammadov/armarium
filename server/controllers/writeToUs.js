@@ -1,4 +1,4 @@
-import { writeToUsModel } from "../models/writeToUsModel";
+import { writeToUsModel } from "../models/writeToUsModel.js";
 
 // -------------------- ADD WriteToUs ---------------------
 

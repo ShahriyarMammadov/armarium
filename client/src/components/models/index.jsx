@@ -8,6 +8,8 @@ import { useTranslation } from "react-i18next";
 const ModelsComponent = () => {
   const [selectedData, setSelectedData] = useState([]);
 
+  console.log(selectedData);
+
   const navigate = useNavigate();
 
   const getSelectedModelsData = async () => {
@@ -44,10 +46,10 @@ const ModelsComponent = () => {
         </div>
 
         <div className="images">
-          {selectedData.length === 0 ? (
+          {selectedData?.data?.length === 0 ? (
             <SkeletonComponent />
           ) : (
-            selectedData?.map((e, i) => {
+            selectedData?.data?.map((e, i) => {
               return (
                 <Link to={`/model/${e?.name}`}>
                   <div className="image" key={i}>

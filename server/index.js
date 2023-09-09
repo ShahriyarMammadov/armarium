@@ -16,6 +16,7 @@ import contactMe from "./routers/contactMe.js";
 import referenceRouter from "./routers/references.js";
 import vacancyRouter from "./routers/vacancies.js";
 import userRouter from "./routers/user.js";
+import writeToUs from "./routers/writeToUs.js";
 import { checkAdmin } from "./middleware/checkAdmin.js";
 // --------------------------------------------------------
 
@@ -52,6 +53,7 @@ app.use("/contactMe", contactMe);
 app.use("/reference", referenceRouter);
 app.use("/vacancy", vacancyRouter);
 app.use("/user", userRouter);
+app.use("/writeToUs", writeToUs);
 app.use("/checkAdmin", checkAdmin);
 // --------------------------------------------------------
 

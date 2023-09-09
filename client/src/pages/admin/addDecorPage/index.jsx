@@ -98,7 +98,7 @@ const addDecorPage = () => {
     try {
       setLoading(true);
       const deleteDecor = await axios.delete(
-        `http://localhost:3000/decor/deleteDecorByName/${name}`
+        `http://localhost:3000/decor/deleteDecorByName/${name}/${id}`
       );
       message.success("Dekor uğurla silindi");
       getAllDecor();
@@ -133,14 +133,16 @@ const addDecorPage = () => {
         formData.append("images", image);
       });
 
-      const addData = await axios.post(
+      const { data } = await axios.post(
         `http://localhost:3000/decor/addDecor/${id}`,
         formData
       );
+      message.success(data.message);
       getAllDecor();
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 

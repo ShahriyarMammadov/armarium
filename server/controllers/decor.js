@@ -11,14 +11,21 @@ const uploadDir = "images/";
 export const addDecor = async (req, res) => {
   try {
     const { name, description } = req.body;
+
+    const existingDecor = await decorModel.findOne({ name });
+
+    if (existingDecor) {
+      return res.status(200).json({ message: "Bu Ad-da bir dekor zatən var." });
+    }
+
     if (!req.files.images) {
-      return res.status(415).json({
+      return res.status(200).json({
         error: "Heç Bir Şəkil Əlavə Edilməyib, Zəhmət Olmasa Şəkil Seçin!",
       });
     }
 
     if (!req.files.coverImage) {
-      return res.status(415).json({
+      return res.status(200).json({
         error: "Zəhmət Olmasa Örtük Şəkli Seçin",
       });
     }
@@ -80,7 +87,7 @@ export const decorByName = async (req, res) => {
     const decors = await decorModel.find({ name: decorName });
 
     if (!decors) {
-      return res.status(404).json({ message: "Dekor Tapılmadı", data: decors });
+      return res.status(200).json({ message: "Dekor Tapılmadı", data: decors });
     }
 
     res.json(decors);
@@ -133,6 +140,7 @@ export const editDecorByName = async (req, res) => {
 export const deleteDecorByName = async (req, res) => {
   try {
     const decorNameToDelete = req.params.id;
+    console.log(decorNameToDelete);
 
     const deletedDecor = await decorModel.findOneAndDelete({
       _id: decorNameToDelete,
@@ -140,7 +148,7 @@ export const deleteDecorByName = async (req, res) => {
 
     if (!deletedDecor) {
       return res
-        .status(404)
+        .status(200)
         .json({ message: `${decorNameToDelete} Adında Dekor Tapılmadı` });
     }
 
@@ -165,7 +173,7 @@ export const deleteDecorByName = async (req, res) => {
       }
     });
 
-    let userId = req.params.id;
+    let userId = req.params.userId;
 
     const user = await userModel.findById(userId);
     if (user) {
@@ -173,13 +181,14 @@ export const deleteDecorByName = async (req, res) => {
       user.decorCount = totalDecorCount;
       await user.save();
     } else {
-      return res.status(404).json({ error: "Istifadəçi Tapılmadı" });
+      return res.status(200).json({ error: "Istifadəçi Tapılmadı" });
     }
 
     res.json({
       message: `${decorNameToDelete} Adlı Dekor Uğurla Silindi.`,
     });
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: error.message });
   }
 };

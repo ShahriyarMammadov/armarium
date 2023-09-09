@@ -1,0 +1,29 @@
+#header {
+    .header {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+            img {
+                width: 60px;
+            }
+        }
+
+        .right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            .profilePhoto {
+                width: 40px;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
