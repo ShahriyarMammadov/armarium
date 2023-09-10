@@ -48,6 +48,17 @@ const Carousel = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const imageDecorText = [
+    "Retro",
+    "Vintage",
+    "Asena",
+    "Ormane",
+    "New Model",
+    "Galaxy",
+    "Decor",
+    "Country",
+  ];
+
   return (
     <div className="carousel">
       {images.map((image, index) => (
@@ -59,7 +70,9 @@ const Carousel = () => {
           style={{
             backgroundImage: `url(${image})`,
           }}
-        ></div>
+        >
+          <div className="decor-text">{imageDecorText[index]}</div>
+        </div>
       ))}
       <button className="carousel-button prev" onClick={prevSlide}>
         <i className="fa-solid fa-angle-left"></i>

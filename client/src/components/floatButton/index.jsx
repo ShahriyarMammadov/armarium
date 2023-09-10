@@ -3,6 +3,7 @@ import { FloatButton } from "antd";
 import { Button, Modal, Input, Space, message } from "antd";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const FloatButtonComponent = () => {
   const [loading, setLoading] = useState(false);
@@ -61,7 +62,11 @@ const FloatButtonComponent = () => {
       >
         <FloatButton
           tooltip={<div>{t("Bizə Yazın")}</div>}
-          icon={<i className="fa-regular fa-envelope fa-bounce"></i>}
+          icon={
+            <Link to={"/satis_noqteleri"} style={{ color: "black" }}>
+              <i className="fa-regular fa-envelope fa-bounce"></i>
+            </Link>
+          }
         />
         <FloatButton
           onClick={showModal}

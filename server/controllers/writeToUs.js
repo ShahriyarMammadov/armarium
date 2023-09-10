@@ -5,7 +5,7 @@ import nodemailer from "nodemailer";
 
 export const addWriteToUs = async (req, res) => {
   try {
-    const { fullName, email, text } = req.body;
+    const { fullName, email, text, phoneNumber } = req.body;
 
     if (!fullName || !email || !text) {
       return res.status(400).json({ message: "Xanaları Doldurun!" });
@@ -15,6 +15,7 @@ export const addWriteToUs = async (req, res) => {
       fullName,
       email,
       text,
+      phoneNumber,
     });
 
     await newWriteToUs.save();
@@ -31,14 +32,13 @@ export const addWriteToUs = async (req, res) => {
       from: "shahriyarmammadov16@gmail.com",
       to: "tu1d1f9a@code.edu.az",
       subject: "Sayt Üzərindən Yeni Bir Məktub Var",
-      text: "Yeni bir writeToUs elave edildi.",
+      text: "Yeni bir Məktub Əlave Edildi.",
     };
 
     await transporter.sendMail(mailOptions);
 
     res.status(201).json({
       message: "Təşəkkür Edirik, Qısa Zamanda Sizinlə Əlaqə Saxlayacıq.",
-      writeToUs: newWriteToUs,
     });
   } catch (error) {
     console.log(error);

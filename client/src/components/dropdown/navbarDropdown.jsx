@@ -17,7 +17,7 @@ const NavBarDropdownComponent = () => {
             <div className="text">{t("ZƏMANƏT")}</div>
           </NavLink>
           <NavLink to={"/haqqimizda/musteri_xidmeti"} title="Terminlər">
-            <div className="text">{t("MÜSTƏRİ XİDMƏTLƏRİ")}</div>
+            <div className="text">{t("MÜŞTƏRİ XİDMƏTLƏRİ")}</div>
           </NavLink>
           <NavLink to={"/haqqimizda/terminler"} title="Visitor Analytics">
             <div className="text">{t("TERMİNLƏR")}</div>

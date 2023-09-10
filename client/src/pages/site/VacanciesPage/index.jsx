@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
-import backImage from "../../../assets/backgroundImages/vakansiya.png";
+// import backImage from "../../../assets/backgroundImages/vakansiya.png";
 import { Collapse } from "antd";
 import { Helmet } from "react-helmet";
 import axios from "axios";
@@ -48,7 +48,7 @@ const VacanciesPage = () => {
         <title>Armarium | Vakansiyalar</title>
       </Helmet>
       <div className="backImage">
-        <img src={backImage} alt="salam" />
+        {/* <img src={backImage} alt="salam" /> */}
       </div>
       <div className="vacanciesPage container">
         <div className="navigation">

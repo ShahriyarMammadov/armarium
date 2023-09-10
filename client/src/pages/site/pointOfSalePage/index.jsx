@@ -1,18 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { Button, Input } from "antd";
+import { Button, Input, message } from "antd";
+import axios from "axios";
 
 // AIzaSyDakeBJ24f3MWFyBFxYwlRA8EIQPAs5g5c
 const PointOfSalesPages = () => {
   const { TextArea } = Input;
+  const [fullName, setfullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setphoneNumber] = useState("");
+  const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const addWriteToUs = async () => {
+    try {
+      if (text.length == 0 || fullName.length == 0 || text.length == 0) {
+        return message.error("Xanaları Tam Doldurun.");
+      }
+      setLoading(true);
+      const { data } = await axios.post(
+        `http://localhost:3000/writeToUs/addWriteToUs`,
+        {
+          fullName,
+          email,
+          phoneNumber,
+          text,
+        }
+      );
+      console.log(data);
+      message.success(data?.message);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   return (
     <div id="pointOfSales">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Satış Nöqtələri</title>
-        <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
       <div className="backImage">
         <iframe
@@ -76,7 +106,7 @@ const PointOfSalesPages = () => {
 
           <div className="contact">
             <h2>Əlaqə Məlumatları</h2>
-            <p className="companyName">Armarium</p>
+            <p className="companyName">İş saatları: 09:00 - 18:00</p>
             <address>
               Ahmedihani Mah. Abdulbari Sokak Goozle Cad. No : 50 Doğubayazıt /
               AĞRI
@@ -93,13 +123,60 @@ const PointOfSalesPages = () => {
 
         <div className="writeToUs">
           <div className="head">
-            <h3>BİZƏ YAZIN</h3>
+            <h3>TƏKLİF VƏ YA ŞİKAYƏTLƏRİNİZ</h3>
           </div>
 
           <div className="form">
-            <Input placeholder="Adınız" />
-            <TextArea rows={4} placeholder="Müraciətiniz" maxLength={400} />
-            <Button type="dashed">Göndər</Button>
+            <div className="top">
+              <div>
+                <label htmlFor="nameSurname">Ad və Soyadınız</label>
+                <Input
+                  name="nameSurname"
+                  id="nameSurname"
+                  onChange={(e) => {
+                    setfullName(e.target.value);
+                  }}
+                />
+              </div>
+              <div>
+                <label htmlFor="email">E-mail</label>
+                <Input
+                  name="email"
+                  id="email"
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                />
+              </div>
+              <div>
+                <label htmlFor="telephone">Telefon</label>
+                <Input
+                  name="telephone"
+                  id="telephone"
+                  onChange={(e) => {
+                    setphoneNumber(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <TextArea
+              rows={4}
+              placeholder="Müraciətiniz"
+              maxLength={400}
+              showCount
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
+            />
+            <Button
+              type="dashed"
+              loading={loading}
+              onClick={() => {
+                addWriteToUs();
+              }}
+            >
+              Göndər
+            </Button>
           </div>
         </div>
       </div>

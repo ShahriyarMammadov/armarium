@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import blogBackImage from "../../../assets/backgroundImages/blog.png";
+// import blogBackImage from "../../../assets/backgroundImages/blog.png";
 import { Modal, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -28,7 +28,7 @@ const BlogPage = () => {
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
+    // console.log("Clicked cancel button");
     setOpen(false);
   };
 
@@ -54,7 +54,7 @@ const BlogPage = () => {
         <title>Armarium | Bloq</title>
       </Helmet>
       <div className="backImage">
-        <img src={blogBackImage} alt="backImage" />
+        {/* <img src={blogBackImage} alt="backImage" /> */}
       </div>
       <div className="blogPage container">
         <div className="headerText">

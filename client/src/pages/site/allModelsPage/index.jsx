@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import models from "../../../assets/backgroundImages/dekorlar.png";
+// import models from "../../../assets/backgroundImages/dekorlar.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
@@ -33,7 +33,7 @@ const AllModelsPage = () => {
       </Helmet>
       <div className="coverImage">
         <div className="backImage">
-          <img src={models} alt="backImage" />
+          {/* <img src={models} alt="backImage" /> */}
         </div>
 
         <div className="allModels container">

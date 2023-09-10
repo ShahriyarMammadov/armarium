@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import backImage from "../../../assets/backgroundImages/terminler.png";
+// import backImage from "../../../assets/backgroundImages/terminler.png";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -12,7 +12,7 @@ const TermsPage = () => {
         <title>Armarium | Terminlər</title>
       </Helmet>
       <div className="backImage">
-        <img src={backImage} alt="TermsPage" />
+        {/* <img src={backImage} alt="TermsPage" /> */}
       </div>
       <div className="termsPage container">
         <div className="navigation">

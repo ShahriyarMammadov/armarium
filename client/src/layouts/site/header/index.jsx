@@ -153,32 +153,100 @@ const Header = () => {
     {
       key: "1",
       label: "HAQQIMIZDA",
-      children: <p>asdasf</p>,
+      children: (
+        <>
+          <Link to={"/haqqimizda"} className="drawerATeg" onClick={onClose}>
+            HAQQIMIZDA
+          </Link>
+          <Link
+            to={"/haqqimizda/zemanet"}
+            className="drawerATeg"
+            onClick={onClose}
+          >
+            ZƏMANƏT
+          </Link>
+          <Link
+            to={"/haqqimizda/musteri_xidmeti"}
+            className="drawerATeg"
+            onClick={onClose}
+          >
+            MÜŞTƏRİ XİDMƏTLƏRİ
+          </Link>
+          <Link
+            to={"/haqqimizda/terminler"}
+            className="drawerATeg"
+            onClick={onClose}
+          >
+            TERMİNLƏR
+          </Link>
+        </>
+      ),
     },
     {
       key: "2",
       label: "MEBEL",
-      children: <p>salam</p>,
+      children: (
+        <>
+          <Link
+            to={"/mebel/all_models"}
+            className="drawerATeg"
+            onClick={onClose}
+          >
+            BÜTÜN MODELLLƏR
+          </Link>
+        </>
+      ),
     },
     {
       key: "3",
       label: "VAKANSİYALAR",
-      children: <p>sdg</p>,
+      children: (
+        <>
+          <Link to={"/vakansiyalar"} className="drawerATeg" onClick={onClose}>
+            VAKANSİYALAR
+          </Link>
+        </>
+      ),
     },
     {
       key: "4",
       label: "REFERANSLAR",
-      children: <p>sdg</p>,
+      children: (
+        <>
+          <Link to={"/referanslar"} className="drawerATeg" onClick={onClose}>
+            REFERANSLAR
+          </Link>
+        </>
+      ),
     },
     {
       key: "5",
       label: "SATIŞ NÖQTƏLƏRİ",
-      children: <p>sdg</p>,
+      children: (
+        <>
+          <Link
+            to={"/satis_noqteleri"}
+            className="drawerATeg"
+            onClick={onClose}
+          >
+            SATIŞ NÖQTƏLƏRİ
+          </Link>
+        </>
+      ),
     },
     {
       key: "6",
       label: "XƏBƏRLƏR",
-      children: <p>sdg</p>,
+      children: (
+        <>
+          <Link to={"/xeberler"} className="drawerATeg" onClick={onClose}>
+            XƏBƏRLƏR
+          </Link>
+          <Link to={"/xeberler/blog"} className="drawerATeg" onClick={onClose}>
+            BLOQ
+          </Link>
+        </>
+      ),
     },
   ];
 
@@ -462,18 +530,12 @@ const Header = () => {
         </div>
 
         {/* RESPONSIVE DRAWER*/}
-        <Drawer
-          title="Basic Drawer"
-          placement="left"
-          onClose={onClose}
-          open={open}
-        >
+        <Drawer title="ARMARIUM" placement="left" onClose={onClose} open={open}>
           <Collapse
             items={items1}
             defaultActiveKey={["1"]}
             onChange={onChange}
           />
-          ;
         </Drawer>
         <div
           id="btn"

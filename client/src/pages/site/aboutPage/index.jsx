@@ -1,27 +1,23 @@
 import React from "react";
 import "./index.scss";
-import backImage from "../../../assets/backgroundImages/haqqimizda.png";
+import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
 
 const AboutPage = () => {
   return (
     <div id="aboutPage">
-      <div className="backImage">
-        <img src={backImage} alt="" />
-      </div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Armarium | Haqqımızda</title>
+      </Helmet>
+      <div className="backImage">{/* <img src={backImage} alt="" /> */}</div>
       <div className="aboutPage container">
         <div className="navigation">
           <span>
             <Link to={"/"}>
               HOME <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <Link to={"/xeberler"}>
-              XƏBƏRLƏR <i className="fa-solid fa-caret-right"></i>{" "}
-            </Link>
-            <Link to={"/xeberler/blog"}>
-              BLOG <i className="fa-solid fa-caret-right"></i>{" "}
-            </Link>
-            <span>salam</span>
+            <span to={"/xeberler"}>HAQQIMIZDA</span>
           </span>
         </div>
         <div className="about">
@@ -29,7 +25,7 @@ const AboutPage = () => {
         </div>
         <div className="aboutText">
           <p>
-            "Ehome.az" - müasir, gənc və şübhəsiz ki, dinamik şəkildə inkişaf
+            "Armarium.az" - müasir, gənc və şübhəsiz ki, dinamik şəkildə inkişaf
             edən mebel satışı ilə məşğul olan bir şirkətdir. Biz, istənilən
             interyerin ayrılmaz hissəsinə çeviriləcək mebel hissələrinin
             müxtəlif üslubda – klassikadan, modernə qədər satışı ilə

@@ -1,0 +1,28 @@
+#contactPage {
+    button {
+        margin-top: 15px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .contact {
+        .phone {
+            padding: 10px;
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+        }
+    }
+
+    #writeToUs {
+        #writeToUsDatas {
+            padding: 10px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+            p {
+                span {
+                    font-weight: 700;
+                }
+            }
+        }
+
+    }
+}

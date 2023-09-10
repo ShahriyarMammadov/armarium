@@ -1,12 +1,15 @@
 #termsPage {
     .backImage {
+        background-image: url('../../../assets/backgroundImages/terminler.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
         width: 100%;
         height: 600px;
+    }
 
-        img {
-            width: 100%;
-            height: 100%;
-        }
+    .termsPage{
+        padding: 0 15px;
     }
 
     .terms {

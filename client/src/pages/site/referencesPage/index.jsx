@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import axios from "axios";
-import backImage from "../../../assets/backgroundImages/referans.png";
+// import backImage from "../../../assets/backgroundImages/referans.png";
 import { Image, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -37,7 +37,7 @@ const ReferencesPage = () => {
         <title>Armarium | Referanslar</title>
       </Helmet>
       <div className="backImage">
-        <img src={backImage} alt="backImage" />
+        {/* <img src={backImage} alt="backImage" /> */}
       </div>
       <div className="referencesPage container">
         <div className="navigation">

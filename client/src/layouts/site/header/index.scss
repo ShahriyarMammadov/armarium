@@ -331,6 +331,15 @@ header {
     }
 }
 
+.drawerATeg {
+    display: block;
+    margin-top: 10px;
+
+    &:nth-child(1) {
+        margin: 0 !important;
+    }
+}
+
 #btn {
     cursor: pointer;
     display: none;

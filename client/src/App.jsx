@@ -26,6 +26,15 @@ function App() {
     setThemeColor(color);
   }, []);
 
+  let docTitle = document.title;
+  window.addEventListener("blur", () => {
+    document.title = "Come Back :(";
+  });
+
+  window.addEventListener("focus", () => {
+    document.title = docTitle;
+  });
+
   return (
     <>
       <RouterProvider router={router}></RouterProvider>

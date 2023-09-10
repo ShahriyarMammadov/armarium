@@ -1,7 +1,6 @@
 import React from "react";
 import "./index.scss";
-
-import guaranteBackGif from "../../../assets/backgroundImages/zemanet.png";
+// import guaranteBackGif from "../../../assets/backgroundImages/zemanet.png";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
@@ -13,7 +12,7 @@ const GuaranteePage = () => {
         <title>Armarium | Zəmanət</title>
       </Helmet>
       <div className="backImage">
-        <img src={guaranteBackGif} alt="Welcome" />
+        {/* <img src={guaranteBackGif} alt="Welcome" /> */}
       </div>
       <div className="container">
         <div className="navigation">

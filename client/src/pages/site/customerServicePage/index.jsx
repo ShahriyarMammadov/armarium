@@ -1,7 +1,7 @@
 import React from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
-import backImage from "../../../assets/backgroundImages/musteriXidmeti.png";
+// import backImage from "../../../assets/backgroundImages/musteriXidmeti.png";
 import { Helmet } from "react-helmet";
 
 const CustomerServicePage = () => {
@@ -12,7 +12,7 @@ const CustomerServicePage = () => {
         <title>Armarium | Müştəri Xidmətləri</title>
       </Helmet>
       <div className="backImage">
-        <img src={backImage} alt="BackGround Image" />
+        {/* <img src={backImage} alt="BackGround Image" /> */}
       </div>
       <div className="container">
         <div className="navigation">

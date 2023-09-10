@@ -165,8 +165,46 @@
     }
 
     .writeToUs {
+        padding-top: 30px;
+
         .head {
             text-align: center;
+        }
+
+        .form {
+            padding: 20px 15px;
+
+            button {
+                margin-top: 10px;
+            }
+
+            .top {
+                margin-bottom: 20px;
+                width: 100%;
+                display: flex;
+                gap: 40px;
+
+                @media only screen and (max-width: 768px) {
+                    flex-direction: column;
+
+                    div {
+                        width: 100% !important;
+                    }
+                }
+
+
+                div {
+                    width: 32%;
+
+                    input {
+                        margin-top: 10px;
+                    }
+
+                    label {
+                        padding-bottom: 50px;
+                    }
+                }
+            }
         }
     }
 }

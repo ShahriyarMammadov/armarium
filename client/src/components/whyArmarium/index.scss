@@ -1,0 +1,119 @@
+#whyArmarium {
+    padding: 20px 0 60px 0;
+
+    .whyArmarium {
+
+        .armariumHeaderText {
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+
+            h1 {
+                font-weight: 700;
+                font-size: 40px;
+                color: #c8c8c8;
+                line-height: 44px;
+                margin: 0;
+            }
+
+            @media only screen and (max-width: 768px) {
+                h1 {
+                    font-size: 35px;
+                }
+
+                p {
+                    font-size: 14px;
+                }
+            }
+
+            @media only screen and (max-width: 500px) {
+                h1 {
+                    font-size: 28px;
+                }
+
+                p {
+                    font-size: 13px;
+                }
+            }
+        }
+
+        .whyCards {
+            display: flex;
+            gap: 10px;
+            padding: 0 10px;
+
+            @media only screen and (max-width: 768px) {
+                flex-wrap: wrap;
+
+                i {
+                    font-size: 40px !important;
+                }
+
+                h3 {
+                    font-size: 18px !important;
+                }
+
+                p {
+                    font-size: 13px !important;
+                }
+            }
+
+            @media only screen and (max-width: 500px) {
+                .flexCard {
+                    flex-direction: column;
+                }
+            }
+
+            .flexCard {
+                display: flex;
+
+                .card {
+                    display: flex;
+                    padding: 10px;
+                    gap: 10px;
+
+                    i {
+                        font-size: 50px;
+
+                        &.fa-swatchbook {
+                            background: linear-gradient(to right, #58CF40 0%, #268BFF 23%, #FF2190 53%, #0C0CCF 100%);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+
+                        &.fa-gear {
+                            background: -webkit-linear-gradient(0deg, #000000 0%, #48abe0 100%);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+
+                        &.fa-medal {
+                            background: linear-gradient(to right, #FCEABB 0%, #FCCD4D 50%, #F8B500 51%, #FBDF93 100%);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+
+                        &.fa-brush {
+                            background: linear-gradient(to right, #E4EFC0 0%, #ABBD73 100%);
+                            -webkit-background-clip: text;
+                            -webkit-text-fill-color: transparent;
+                        }
+
+                    }
+
+                    .text {
+                        h3 {
+                            font-size: 22px;
+                            color: #545d60;
+                            margin: 0;
+                        }
+
+                        p {
+                            font-size: 14px;
+                            color: #777f84;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

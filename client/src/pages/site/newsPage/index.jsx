@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
-import backImage from "../../../assets/backgroundImages/xeberler.png";
+// import backImage from "../../../assets/backgroundImages/xeberler.png";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
@@ -32,7 +32,7 @@ const NewsPage = () => {
         <title>Armarium | Xəbərlər</title>
       </Helmet>
       <div className="backImage">
-        <img src={backImage} alt="Armarium" />
+        {/* <img src={backImage} alt="Armarium" /> */}
       </div>
       <div className="newsPage container">
         <div className="navigation">

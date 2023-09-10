@@ -6,6 +6,8 @@ import LoadingComponent from "../../../components/loading";
 const ContactPage = () => {
   const [contactMe, setContactMe] = useState([]);
   const [writeToUs, setWriteToUs] = useState([]);
+  const [sliceCount, setSliceCount] = useState(5);
+  const [sliceCountTel, setsliceCountTel] = useState(5);
 
   const [loading, setLoading] = useState(true);
 
@@ -48,13 +50,25 @@ const ContactPage = () => {
           <h3>TELEFON NÖMRƏSİ YAZILMIYIB.</h3>
         ) : (
           <div className="contact">
-            {contactMe?.map((e, i) => {
-              return <p key={i}>{e?.phoneNumber}</p>;
+            {contactMe?.slice(0, sliceCountTel).map((e, i) => {
+              return (
+                <div key={i} className="phone">
+                  <p>{e?.phoneNumber}</p>
+                </div>
+              );
             })}
           </div>
         )}
 
-        {contactMe.length < 4 ? null : <button>DAHA ÇOX</button>}
+        {contactMe.length < 4 ? null : (
+          <button
+            onClick={() => {
+              setsliceCountTel(sliceCountTel + 5);
+            }}
+          >
+            DAHA ÇOX
+          </button>
+        )}
       </div>
 
       <hr />
@@ -68,15 +82,35 @@ const ContactPage = () => {
           <h3>MESAJ YAZILMAYIB.</h3>
         ) : (
           <div className="writeToUs">
-            <p>salmas</p>
-            <p>salmas</p>
-            <p>salmas</p>
-            <p>salmas</p>
-            <p>salmas</p>
-            <p>salmas</p>
+            {writeToUs?.slice(0, sliceCount).map((e, i) => {
+              return (
+                <div key={i} id="writeToUsDatas">
+                  <p>
+                    <span>AD:</span> {e?.fullName}
+                  </p>
+                  <p>
+                    <span>EMAIL:</span> {e?.email}
+                  </p>
+                  <p>
+                    <span>ƏLAQƏ NÖMRƏSİ:</span> {e?.phoneNumber}
+                  </p>
+                  <p>
+                    <span>MƏTN:</span> {e?.text}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         )}
-        {writeToUs.length < 4 ? null : <button>DAHA ÇOX</button>}
+        {writeToUs.length < 4 ? null : (
+          <button
+            onClick={() => {
+              setSliceCount(sliceCount + 5);
+            }}
+          >
+            DAHA ÇOX
+          </button>
+        )}
       </div>
     </div>
   );
