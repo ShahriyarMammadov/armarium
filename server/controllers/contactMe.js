@@ -1,4 +1,5 @@
 import { contactMeModal } from "../models/contactMeModel.js";
+import nodemailer from "nodemailer";
 
 // -------------------- ADD CONTACT ME ---------------------
 
@@ -15,6 +16,23 @@ export const addContactMe = async (req, res) => {
     });
 
     await newContactMe.save();
+
+    const transporter = nodemailer.createTransport({
+      service: "GMAIL",
+      auth: {
+        user: "shahriyarmammadov16@gmail.com",
+        pass: "ipteqypnfwfqhcuu",
+      },
+    });
+
+    const mailOptions = {
+      from: "shahriyarmammadov16@gmail.com",
+      to: "tu1d1f9a@code.edu.az",
+      subject: "Armarium | Yeni Telefon Nömrəsi Əlavə Edildi",
+      text: `${phoneNumber} nömrəsi əlavə edildi`,
+    };
+
+    await transporter.sendMail(mailOptions);
 
     res.status(201).json({
       message: "Təşəkkür Edirik, Qısa Zamanda Sizinlə Əlaqə Saxlayacıq.",

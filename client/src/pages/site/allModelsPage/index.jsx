@@ -1,26 +1,23 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import models from "../../../assets/images/models.jpg";
-import { Tabs } from "antd";
+import models from "../../../assets/backgroundImages/dekorlar.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import image1 from "../../../assets/images/144.jpg";
-import image3 from "../../../assets/images/146.jpg";
 import { Helmet } from "react-helmet";
+import LoadingComponent from "../../../components/loading";
 
 const AllModelsPage = () => {
   const [decors, setDecors] = useState([]);
-
-  const onChange = (key) => {
-    console.log(key);
-  };
+  const [loading, setLoading] = useState(true);
 
   const getAllDecors = async () => {
     try {
       const data = await axios.get("http://localhost:3000/decor/allDecor");
       setDecors(data?.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -35,25 +32,20 @@ const AllModelsPage = () => {
         <title>Armarium | Bütün Modellər</title>
       </Helmet>
       <div className="coverImage">
-        <div className="img">
-          <img src={models} alt="AllModels" />
+        <div className="backImage">
+          <img src={models} alt="backImage" />
         </div>
 
         <div className="allModels container">
-          <Tabs defaultActiveKey="2" onChange={onChange} centered>
-            <Tabs.TabPane tab="Mətbəx Mebelləri" key="1">
-              <div>
-                <h2>Content of Tab Pane 1</h2>
-                <p>Some text here...</p>
-                <img src={image1} alt="Image 1" />
-              </div>
-            </Tabs.TabPane>
-            <Tabs.TabPane tab="Mətbəx Mebelləri" key="2">
-              <div id="KitchenModels">
-                <h2>Content of Tab Pane 2</h2>
-                <p>Some different text here...</p>
-                <div className="imagesCards">
-                  {decors?.map((e, i) => {
+          <div id="KitchenModels">
+            {loading ? (
+              <LoadingComponent />
+            ) : (
+              <div className="imagesCards">
+                {decors.length == 0 ? (
+                  <h3>Dekor Yoxdur.</h3>
+                ) : (
+                  decors?.map((e, i) => {
                     return (
                       <Link to={`/model/${e?.name}`}>
                         <img
@@ -68,35 +60,11 @@ const AllModelsPage = () => {
                         </div>
                       </Link>
                     );
-                  })}
-                </div>
+                  })
+                )}
               </div>
-            </Tabs.TabPane>
-            <Tabs.TabPane tab="Aksesuarlar" key="3">
-              <div>
-                <h2>Content of Tab Pane 2</h2>
-                <p>Some different text here...</p>
-                <img src={image3} alt="Image 2" />
-              </div>
-            </Tabs.TabPane>
-          </Tabs>
-          <form
-            action="http://localhost:3000/blog/addBlog/64f848dea23b3f45cfd2d676"
-            method="POST"
-            enctype="multipart/form-data"
-          >
-            <input type="text" name="name" placeholder="Name" />
-            <input type="text" name="description" placeholder="Description" />
-            {/* <input type="text" name="cardDescription" placeholder="Card Description" /> */}
-            <input type="file" name="coverImage" accept="image/*" />
-            {/* <input type="date" /> */}
-            {/* <input type="file" name="images" accept="image/*" multiple /> */}
-            <button type="submit">Upload</button>
-          </form>
-          {/* <img
-            src="http://localhost:3000/images/images-1693322611929-100045829.jpeg"
-            alt="Resim"
-          /> */}
+            )}
+          </div>
         </div>
       </div>
     </div>

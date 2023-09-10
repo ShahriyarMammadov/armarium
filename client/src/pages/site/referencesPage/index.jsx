@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import axios from "axios";
-import backImage from "../../../assets/images/referencesBackImage.jpg";
+import backImage from "../../../assets/backgroundImages/referans.png";
 import { Image, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import LoadingComponent from "../../../components/loading";
 
 const ReferencesPage = () => {
   const [allData, setAllData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const { Text } = Typography;
 
@@ -17,8 +19,10 @@ const ReferencesPage = () => {
         `http://localhost:3000/reference/allReferences`
       );
       setAllData(data.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -60,37 +64,45 @@ const ReferencesPage = () => {
             hizmet sunmaktadır.
           </p>
         </div>
-        <div className="grid-container container">
-          {allData?.map((e, i) => {
-            const imageUrls = e?.images.map(
-              (image) => `http://localhost:3000/images/${image}`
-            );
-            return (
-              <>
-                <div style={{ position: "relative" }}>
-                  <Image.PreviewGroup items={imageUrls} key={i}>
-                    <Image
-                      src={`http://localhost:3000/images/${e?.coverImage}`}
-                    />
-                  </Image.PreviewGroup>
-                  <Text
-                    style={{
-                      position: "absolute",
-                      top: "20px",
-                      right: "20px",
-                      color: "white",
-                      fontWeight: "bold",
-                      backgroundColor: "rgba(0, 0, 0, 0.5)",
-                      padding: "6px 10px",
-                    }}
-                  >
-                    {e?.name}
-                  </Text>
-                </div>
-              </>
-            );
-          })}
-        </div>
+        {loading ? (
+          <LoadingComponent />
+        ) : (
+          <div className="grid-container container">
+            {allData.length == 0 ? (
+              <h3>Referans Yoxdur.</h3>
+            ) : (
+              allData?.map((e, i) => {
+                const imageUrls = e?.images.map(
+                  (image) => `http://localhost:3000/images/${image}`
+                );
+                return (
+                  <>
+                    <div style={{ position: "relative" }}>
+                      <Image.PreviewGroup items={imageUrls} key={i}>
+                        <Image
+                          src={`http://localhost:3000/images/${e?.coverImage}`}
+                        />
+                      </Image.PreviewGroup>
+                      <Text
+                        style={{
+                          position: "absolute",
+                          top: "20px",
+                          right: "20px",
+                          color: "white",
+                          fontWeight: "bold",
+                          backgroundColor: "rgba(0, 0, 0, 0.5)",
+                          padding: "6px 10px",
+                        }}
+                      >
+                        {e?.name}
+                      </Text>
+                    </div>
+                  </>
+                );
+              })
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

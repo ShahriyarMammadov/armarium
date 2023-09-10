@@ -26,6 +26,7 @@ const FloatButtonComponent = () => {
 
   const handleOk = async () => {
     try {
+      setLoading(true);
       if (phoneNumber.trim().length !== 0) {
         const data = await axios.post(
           `http://localhost:3000/contactMe/addContactMe`,
@@ -36,8 +37,10 @@ const FloatButtonComponent = () => {
       } else {
         alert(t("Əlaqə Nömrəsi Qeyd Edin!"));
       }
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 

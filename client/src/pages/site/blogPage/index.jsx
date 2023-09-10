@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import blogBackImage from "../../../assets/images/blogBackImage.jpeg";
+import blogBackImage from "../../../assets/backgroundImages/blog.png";
 import { Modal, Input, Button } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import LoadingComponent from "../../../components/loading";
 
 const BlogPage = () => {
   const { TextArea } = Input;
@@ -12,6 +13,7 @@ const BlogPage = () => {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const showModal = () => {
     setOpen(true);
@@ -34,8 +36,10 @@ const BlogPage = () => {
     try {
       const data = await axios.get("http://localhost:3000/blog/getAllBlog");
       setBlogs(data?.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -50,7 +54,7 @@ const BlogPage = () => {
         <title>Armarium | Bloq</title>
       </Helmet>
       <div className="backImage">
-        <img src={blogBackImage} alt="" />
+        <img src={blogBackImage} alt="backImage" />
       </div>
       <div className="blogPage container">
         <div className="headerText">
@@ -68,41 +72,49 @@ const BlogPage = () => {
           </span>
         </div>
 
-        <div className="blogs">
-          {blogs.map((e, i) => {
-            return (
-              <div className="blog" key={i}>
-                <img
-                  src={`http://localhost:3000/images/${e?.coverImage}`}
-                  alt={`${e?.name}`}
-                />
+        {loading ? (
+          <LoadingComponent />
+        ) : (
+          <div className="blogs">
+            {blogs.length == 0 ? (
+              <h3>Bloq Yoxdur.</h3>
+            ) : (
+              blogs.map((e, i) => {
+                return (
+                  <div className="blog" key={i}>
+                    <img
+                      src={`http://localhost:3000/images/${e?.coverImage}`}
+                      alt={`${e?.name}`}
+                    />
 
-                <div className="rightText">
-                  <div className="blogHeaderText">
-                    <h2>{e?.name}</h2>
-                  </div>
-                  <div className="description">
-                    <p>
-                      {e?.description
-                        ?.slice(0, 250)
-                        ?.split("<br />")
-                        ?.map((line, lineIndex) => (
-                          <React.Fragment key={lineIndex}>
-                            {line}. . .
-                            <br />
-                          </React.Fragment>
-                        ))}
-                    </p>
-                  </div>
+                    <div className="rightText">
+                      <div className="blogHeaderText">
+                        <h2>{e?.name}</h2>
+                      </div>
+                      <div className="description">
+                        <p>
+                          {e?.description
+                            ?.slice(0, 250)
+                            ?.split("<br />")
+                            ?.map((line, lineIndex) => (
+                              <React.Fragment key={lineIndex}>
+                                {line}. . .
+                                <br />
+                              </React.Fragment>
+                            ))}
+                        </p>
+                      </div>
 
-                  <Link to={`/xeberler/blog/${e?.name}`}>
-                    Ətraflı <i className="fa-solid fa-caret-right"></i>
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
+                      <Link to={`/xeberler/blog/${e?.name}`}>
+                        Ətraflı <i className="fa-solid fa-caret-right"></i>
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })
+            )}
+          </div>
+        )}
 
         {/* COMMENT MODAL */}
         <Modal

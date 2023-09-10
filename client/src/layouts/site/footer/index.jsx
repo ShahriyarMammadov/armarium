@@ -18,12 +18,12 @@ const Footer = () => {
             </div>
             <div className="texts">
               <div className="text">
-                <Link to={"/"}>
-                  <p>Kurumsal</p>
+                <Link to={"/haqqimizda"}>
+                  <p>{t("Haqqımızda")}</p>
                 </Link>
               </div>
               <div className="text">
-                <Link to={"/"}>
+                <Link to={"/satis_noqteleri"}>
                   <p>{t("Əlaqə")}</p>
                 </Link>
               </div>
@@ -36,27 +36,33 @@ const Footer = () => {
               </div>
               <div className="text">
                 <Link to={"/"}>
-                  <p>Faks: +99450 313 4473</p>
+                  <p>
+                    <a href="tel:+994503134473">Faks: +99450 313 4473</a>
+                  </p>
                 </Link>
               </div>
               <div className="text">
                 <Link to={"/"}>
-                  <p>Email: info@armarium.az</p>
+                  <p>
+                    <a href="mailto:info@armarium.az">
+                      Email: info@armarium.az
+                    </a>
+                  </p>
                 </Link>
               </div>
               <div className="text">
-                <Link to={"/"}>
-                  <p>Yetkili Saticilik Bas Vurusu</p>
+                <Link to={"/haqqimizda/zemanet"}>
+                  <p>Zəmanət</p>
                 </Link>
               </div>
               <div className="text">
-                <Link to={"/"}>
-                  <p>Cerez Politikasi</p>
+                <Link to={"/haqqimizda/musteri_xidmeti"}>
+                  <p>Müştəri Xidmətləri</p>
                 </Link>
               </div>
               <div className="text">
-                <Link to={"/"}>
-                  <p>Bilgi Toplumu Hizmetleri</p>
+                <Link to={"/haqqimizda/terminler"}>
+                  <p>Terminlər</p>
                 </Link>
               </div>
             </div>

@@ -1,4 +1,5 @@
 import { writeToUsModel } from "../models/writeToUsModel.js";
+import nodemailer from "nodemailer";
 
 // -------------------- ADD WriteToUs ---------------------
 
@@ -17,6 +18,23 @@ export const addWriteToUs = async (req, res) => {
     });
 
     await newWriteToUs.save();
+
+    const transporter = nodemailer.createTransport({
+      service: "GMAIL",
+      auth: {
+        user: "shahriyarmammadov16@gmail.com",
+        pass: "ipteqypnfwfqhcuu",
+      },
+    });
+
+    const mailOptions = {
+      from: "shahriyarmammadov16@gmail.com",
+      to: "tu1d1f9a@code.edu.az",
+      subject: "Sayt Üzərindən Yeni Bir Məktub Var",
+      text: "Yeni bir writeToUs elave edildi.",
+    };
+
+    await transporter.sendMail(mailOptions);
 
     res.status(201).json({
       message: "Təşəkkür Edirik, Qısa Zamanda Sizinlə Əlaqə Saxlayacıq.",

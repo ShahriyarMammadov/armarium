@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
-import backImage from "../../../assets/images/vacanciesBackImage.jpeg";
+import backImage from "../../../assets/backgroundImages/vakansiya.png";
 import { Collapse } from "antd";
 import { Helmet } from "react-helmet";
 import axios from "axios";
