@@ -2,9 +2,11 @@ import React from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { Button, Input } from "antd";
 
 // AIzaSyDakeBJ24f3MWFyBFxYwlRA8EIQPAs5g5c
 const PointOfSalesPages = () => {
+  const { TextArea } = Input;
   return (
     <div id="pointOfSales">
       <Helmet>
@@ -86,6 +88,18 @@ const PointOfSalesPages = () => {
             <a href="mailto:salam">Email: armarium@gmail.com</a>
 
             <p className="contactAbout">Əlaqədar Şəxs: Armarium Armarium</p>
+          </div>
+        </div>
+
+        <div className="writeToUs">
+          <div className="head">
+            <h3>BİZƏ YAZIN</h3>
+          </div>
+
+          <div className="form">
+            <Input placeholder="Adınız" />
+            <TextArea rows={4} placeholder="Müraciətiniz" maxLength={400} />
+            <Button type="dashed">Göndər</Button>
           </div>
         </div>
       </div>

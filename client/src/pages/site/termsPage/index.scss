@@ -8,4 +8,16 @@
             height: 100%;
         }
     }
+
+    .terms {
+        text-align: center;
+    }
+
+    .termsText {
+        text-align: justify;
+
+        span {
+            font-weight: 700;
+        }
+    }
 }

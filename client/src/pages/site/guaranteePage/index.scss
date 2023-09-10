@@ -1,12 +1,15 @@
 #guaranteePage {
-    .backColor {
+    .backImage {
         width: 100%;
         height: 600px;
-        background-color: antiquewhite;
-        
-        img{
+
+        img {
             width: 100%;
             height: 100%;
         }
+    }
+
+    .guarantee {
+        text-align: center;
     }
 }
