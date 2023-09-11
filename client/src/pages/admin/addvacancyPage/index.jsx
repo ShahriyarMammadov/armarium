@@ -34,7 +34,7 @@ const AddVacancyPage = () => {
     try {
       console.log(name);
       const deleteVacancy = await axios.delete(
-        `http://localhost:3000/vacancy/deleteVacancyByName/${name}`
+        `http://localhost:3000/vacancy/deleteVacancyByName/${name}/${id}`
       );
       message.success("vakansiya uğurla silindi");
       getAllVacancies();
