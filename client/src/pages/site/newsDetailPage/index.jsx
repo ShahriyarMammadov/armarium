@@ -26,7 +26,7 @@ const NewsDetailPage = () => {
     <div id="newsDetail">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Armarium | {id}</title>
+        <title>Armarium | Xəbərlər</title>
       </Helmet>
       <div className="backImage">
         <img
@@ -38,12 +38,9 @@ const NewsDetailPage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              Home <i className="fa-solid fa-caret-right"></i>{" "}
+              ƏSAS SƏHİFƏ <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <Link to={"/xeberler"}>
-              Xəbərlər <i className="fa-solid fa-caret-right"></i>{" "}
-            </Link>
-            <span>{id}</span>
+            <Link to={"/xeberler"}>XƏBƏRLƏR</Link>
           </span>
         </div>
         <p>

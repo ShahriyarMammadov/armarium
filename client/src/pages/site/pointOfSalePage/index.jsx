@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Button, Input, message } from "antd";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 // AIzaSyDakeBJ24f3MWFyBFxYwlRA8EIQPAs5g5c
 const PointOfSalesPages = () => {
@@ -13,6 +14,8 @@ const PointOfSalesPages = () => {
   const [phoneNumber, setphoneNumber] = useState("");
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const { t } = useTranslation();
 
   const addWriteToUs = async () => {
     try {
@@ -29,7 +32,6 @@ const PointOfSalesPages = () => {
           text,
         }
       );
-      console.log(data);
       message.success(data?.message);
       setLoading(false);
     } catch (error) {
@@ -58,27 +60,24 @@ const PointOfSalesPages = () => {
         <div className="locationCard">
           <h3>Armarium</h3>
           <p>
-            Doğubayazıt Anadolu'nun doğusunda, Avrupa E-yolu E80 transityolu
-            üzerinde kurulmuştur. Ağrı'ya bağlı ve Merkez ilçenin 93 km
-            doğusunda, İran 25 km uzaklıktadır. İlçe toprakları genellikle
-            engebeli ve yüksektir. İlçe merkezi düzlükte kurulmuştur. Ağrı'nın
-            en eski, tarihi ve gelişmiş ilçesidir. Kendi adını taşıyan ovanın
-            güney doğusunda kurulmuştur.
+            {t(
+              "Armarium, 1997-ci ildə Türkiyənin Düzcə şəhərində təsis edilmiş birmebel şirkətidir. Şirkət mətbəx və qapı mebelləri istehsalı və interyer dizaynı sahəsində uzun illər ərzində qətiyyətli bir şəkildə fəaliyyət göstərir. Əsas fəaliyyət sahəsi, yaşayış binaları, otellər, restoranlar, kafelər ofislər və digər müəssisələr üçün qapı və mebel və dekorasiya istehsalıdır."
+            )}
           </p>
         </div>
 
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              HOME <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>SATIŞ NÖQTƏLƏRİ</span>
+            <span>{t("SATIŞ NÖQTƏLƏRİ")}</span>
           </span>
         </div>
 
         <div className="services">
           <div className="service">
-            <h2>Göstərilən Xidmətlər</h2>
+            <h2>{t("Göstərilən Xidmətlər")}</h2>
 
             <div>
               <p>
@@ -105,31 +104,33 @@ const PointOfSalesPages = () => {
           </div>
 
           <div className="contact">
-            <h2>Əlaqə Məlumatları</h2>
-            <p className="companyName">İş saatları: 09:00 - 18:00</p>
+            <h2>{t("Əlaqə Məlumatları")}</h2>
+            <p className="companyName">{t("İş saatları")}: 09:00 - 18:00</p>
             <address>
               Ahmedihani Mah. Abdulbari Sokak Goozle Cad. No : 50 Doğubayazıt /
               AĞRI
             </address>
 
             <a href="tel:+993134473" className="tel">
-              Telefon: +99450 313 4473
+              {t("Telefon")}: +99450 313 4473
             </a>
             <a href="mailto:salam">Email: armarium@gmail.com</a>
 
-            <p className="contactAbout">Əlaqədar Şəxs: Armarium Armarium</p>
+            <p className="contactAbout">
+              {t("Əlaqədar Şəxs")}: Armarium Armarium
+            </p>
           </div>
         </div>
 
         <div className="writeToUs">
           <div className="head">
-            <h3>TƏKLİF VƏ YA ŞİKAYƏTLƏRİNİZ</h3>
+            <h3>{t("TƏKLİF VƏ YA ŞİKAYƏTLƏRİNİZ")}</h3>
           </div>
 
           <div className="form">
             <div className="top">
               <div>
-                <label htmlFor="nameSurname">Ad və Soyadınız</label>
+                <label htmlFor="nameSurname">{t("Ad və Soyadınız")}</label>
                 <Input
                   name="nameSurname"
                   id="nameSurname"
@@ -149,7 +150,7 @@ const PointOfSalesPages = () => {
                 />
               </div>
               <div>
-                <label htmlFor="telephone">Telefon</label>
+                <label htmlFor="telephone">{t("Telefon")}</label>
                 <Input
                   name="telephone"
                   id="telephone"
@@ -161,7 +162,7 @@ const PointOfSalesPages = () => {
             </div>
             <TextArea
               rows={4}
-              placeholder="Müraciətiniz"
+              placeholder={t("Müraciətiniz")}
               maxLength={400}
               showCount
               onChange={(e) => {
@@ -175,7 +176,7 @@ const PointOfSalesPages = () => {
                 addWriteToUs();
               }}
             >
-              Göndər
+              {t("Göndər")}
             </Button>
           </div>
         </div>

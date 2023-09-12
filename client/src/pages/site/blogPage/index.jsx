@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
+import { useTranslation } from "react-i18next";
 
 const BlogPage = () => {
   const { TextArea } = Input;
@@ -14,6 +15,8 @@ const BlogPage = () => {
   const [name, setName] = useState("");
   const [comment, setComment] = useState("");
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   const showModal = () => {
     setOpen(true);
@@ -58,17 +61,17 @@ const BlogPage = () => {
       </div>
       <div className="blogPage container">
         <div className="headerText">
-          <h1>ARMARIUM BLOQ</h1>
+          <h1>{t("ARMARIUM BLOQ")}</h1>
         </div>
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              HOME <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/xeberler"}>
-              XƏBƏRLƏR <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("XƏBƏRLƏR")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>BLOQ</span>
+            <span>{t("BLOQ")}</span>
           </span>
         </div>
 

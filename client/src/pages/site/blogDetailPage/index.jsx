@@ -41,7 +41,7 @@ const BlogDetailPage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              HOME <i className="fa-solid fa-caret-right"></i>{" "}
+              ƏSAS SƏHİFƏ <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/xeberler"}>
               XƏBƏRLƏR <i className="fa-solid fa-caret-right"></i>{" "}

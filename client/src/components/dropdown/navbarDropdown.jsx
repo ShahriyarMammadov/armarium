@@ -33,18 +33,6 @@ const NavBarDropdownComponent = () => {
           <NavLink to={"/mebel/all_models"} title="Photo Proofing">
             <div className="text">{t("BÜTÜN MODELLƏR")}</div>
           </NavLink>
-          <NavLink to={"/deliver-photos-to-client"} title="Digital Downloads">
-            <div className="text">MASALAR VE SANDALYELER</div>
-          </NavLink>
-          <NavLink to={"/visitor-analytics"} title="Visitor Analytics">
-            <div className="text">AKSESUARLAR</div>
-          </NavLink>
-          <NavLink to={"/online-store"} title="Online Store">
-            <div className="text">DIGITAL KATALOG</div>
-          </NavLink>
-          <NavLink to={"/gallery-directories"} title="Gallery Directories">
-            <div className="text">SANAL TUR</div>
-          </NavLink>
         </div>
       </div>
 

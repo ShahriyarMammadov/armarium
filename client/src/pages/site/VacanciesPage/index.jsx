@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { Collapse } from "antd";
 import { Helmet } from "react-helmet";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
 
 const VacanciesPage = () => {
   const [allData, setAllData] = useState([]);
+  const { t } = useTranslation();
 
   const getAllData = async () => {
     try {
@@ -40,7 +42,6 @@ const VacanciesPage = () => {
     ),
   }));
 
-  // Elanin bitme tarixinide elave etmek olar
   return (
     <div id="vacanciesPage">
       <Helmet>
@@ -54,9 +55,9 @@ const VacanciesPage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              Home <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>Vakansiyalar</span>
+            <span>{t("VAKANSİYALAR")}</span>
           </span>
         </div>
 

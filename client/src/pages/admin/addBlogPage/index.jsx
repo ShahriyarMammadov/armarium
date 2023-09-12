@@ -40,7 +40,7 @@ const AddBlogPage = () => {
     try {
       setLoading(true);
       const deleteBlog = await axios.delete(
-        `http://localhost:3000/blog/deleteBlogByName/${name}`
+        `http://localhost:3000/blog/deleteBlogByName/${name}/${id}`
       );
       message.success("Blog uğurla silindi");
       getAllBlog();

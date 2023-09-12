@@ -41,7 +41,7 @@ const AddNewsPage = () => {
     try {
       setLoading(true);
       const deleteBlog = await axios.delete(
-        `http://localhost:3000/news/deleteNewsByName/${name}`
+        `http://localhost:3000/news/deleteNewsByName/${name}/${id}`
       );
       message.success("Xəbər uğurla silindi");
       getAllNews();

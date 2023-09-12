@@ -251,7 +251,7 @@ const Header = () => {
   ];
 
   const onChange = (key) => {
-    console.log(key);
+    // console.log(key);
   };
 
   // LOGIN
@@ -533,9 +533,28 @@ const Header = () => {
         <Drawer title="ARMARIUM" placement="left" onClose={onClose} open={open}>
           <Collapse
             items={items1}
-            defaultActiveKey={["1"]}
+            // defaultActiveKey={["1"]} 
             onChange={onChange}
           />
+          <div
+            className="language"
+            style={{ marginTop: "20px", width: "fit-content" }}
+          >
+            <Dropdown
+              menu={{
+                items,
+              }}
+              placement="bottom"
+              arrow={{
+                pointAtCenter: true,
+              }}
+            >
+              <img
+                src={language === "az" ? az : language === "tr" ? tr : en}
+                alt="AZ"
+              />
+            </Dropdown>
+          </div>
         </Drawer>
         <div
           id="btn"

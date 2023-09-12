@@ -38,7 +38,7 @@ if (typeof localStorage !== "undefined") {
 i18n.use(initReactI18next).init({
   resources,
   lng: `${userLang}`,
-  fallbackLng: "en",
+  fallbackLng: "az",
   interpolation: {
     escapeValue: false,
   },

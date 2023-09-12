@@ -6,10 +6,13 @@ import { Image, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
+import { useTranslation } from "react-i18next";
 
 const ReferencesPage = () => {
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const { t } = useTranslation();
 
   const { Text } = Typography;
 
@@ -43,9 +46,9 @@ const ReferencesPage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              HOME <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>REFERANSLAR</span>
+            <span>{t("REFERANSLAR")}</span>
           </span>
         </div>
 

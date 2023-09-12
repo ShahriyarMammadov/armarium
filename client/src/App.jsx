@@ -22,7 +22,7 @@ function App() {
     const prefersDarkMode = window.matchMedia(
       "(prefers-color-scheme: dark)"
     ).matches;
-    const color = prefersDarkMode ? "#0E2954" : "#AAC8A7";
+    const color = prefersDarkMode ? "#450601" : "#AAC8A7";
     setThemeColor(color);
   }, []);
 

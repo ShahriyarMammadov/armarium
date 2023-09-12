@@ -52,17 +52,17 @@ const Footer = () => {
               </div>
               <div className="text">
                 <Link to={"/haqqimizda/zemanet"}>
-                  <p>Zəmanət</p>
+                  <p>{t("Zəmanət")}</p>
                 </Link>
               </div>
               <div className="text">
                 <Link to={"/haqqimizda/musteri_xidmeti"}>
-                  <p>Müştəri Xidmətləri</p>
+                  <p>{t("Müştəri Xidmətləri")}</p>
                 </Link>
               </div>
               <div className="text">
                 <Link to={"/haqqimizda/terminler"}>
-                  <p>Terminlər</p>
+                  <p>{t("Terminlər")}</p>
                 </Link>
               </div>
             </div>

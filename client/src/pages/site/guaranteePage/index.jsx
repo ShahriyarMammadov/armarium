@@ -3,8 +3,11 @@ import "./index.scss";
 // import guaranteBackGif from "../../../assets/backgroundImages/zemanet.png";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const GuaranteePage = () => {
+  const { t } = useTranslation();
+
   return (
     <div id="guaranteePage">
       <Helmet>
@@ -18,16 +21,17 @@ const GuaranteePage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              Home <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/haqqimizda"}>
-              Haqqımızda <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("HAQQIMIZDA")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>Zəmanət</span>
+
+            <span>{t("ZƏMANƏT")}</span>
           </span>
         </div>
         <div className="guarantee">
-          <h3>ARMARİUM ZƏMANƏTİ</h3>
+          <h3>{t("ARMARİUM ZƏMANƏTİ")}</h3>
         </div>
         <div className="guaranteeText">
           <p>

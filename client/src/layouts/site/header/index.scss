@@ -5,7 +5,7 @@ header {
     right: 0;
     padding: 10px 5px;
     z-index: 10;
-    backdrop-filter: blur(5px);
+    // backdrop-filter: blur(5px);
     transition: all 0.5s;
 
     @media only screen and (max-width: 500px) {
@@ -154,15 +154,6 @@ header {
                 align-items: center;
                 gap: 20px;
 
-                .language {
-                    cursor: pointer;
-                    font-size: 15px;
-
-                    img {
-                        width: 35px;
-                        height: 25px;
-                    }
-                }
 
                 .search {
                     padding: 8px;
@@ -252,10 +243,10 @@ header {
                                 height: 130px;
                             }
 
-                            @media only screen and (max-width: 420px) {
+                            @media only screen and (max-width: 375px) {
                                 img {
                                     width: 80px;
-                                    height: 80px;
+                                    height: 120px;
                                 }
                             }
                         }
@@ -328,6 +319,16 @@ header {
                 }
             }
         }
+    }
+}
+
+.language {
+    cursor: pointer;
+    font-size: 15px;
+
+    img {
+        width: 35px;
+        height: 25px;
     }
 }
 

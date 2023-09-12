@@ -58,7 +58,7 @@ const addReferencePage = () => {
     try {
       setLoading(true);
       const deleteDecor = await axios.delete(
-        `http://localhost:3000/reference/deleteReferanceByName/${name}`
+        `http://localhost:3000/reference/deleteReferanceByName/${name}/${id}`
       );
       message.success("Dekor uğurla silindi");
       getAllReference();

@@ -3,8 +3,11 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 // import backImage from "../../../assets/backgroundImages/musteriXidmeti.png";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const CustomerServicePage = () => {
+  const { t } = useTranslation();
+
   return (
     <div id="customerServicePage">
       <Helmet>
@@ -18,16 +21,16 @@ const CustomerServicePage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              Home <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/haqqimizda"}>
-              Haqqımızda <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("HAQQIMIZDA")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>Müştəri Xidməti</span>
+            <span>{t("MÜŞTƏRİ XİDMƏTLƏRİ")}</span>
           </span>
         </div>
         <div className="customer">
-          <h3>MÜŞTƏRİ XİDMƏTİ</h3>
+          <h3>{t("MÜŞTƏRİ XİDMƏTLƏRİ")}</h3>
         </div>
         <div className="customerText">
           <p>

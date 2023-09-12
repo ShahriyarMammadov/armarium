@@ -3,8 +3,11 @@ import "./index.scss";
 // import backImage from "../../../assets/backgroundImages/terminler.png";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const TermsPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div id="termsPage">
       <Helmet>
@@ -18,16 +21,16 @@ const TermsPage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              Home <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/haqqimizda"}>
-              Haqqımızda <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("HAQQIMIZDA")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>Terminlər</span>
+            <span>{t("TERMİNLƏR")}</span>
           </span>
         </div>
         <div className="terms">
-          <h3>TERMİNLƏR</h3>
+          <h3>{t("TERMİNLƏR")}</h3>
         </div>
         <div className="termsText">
           <p>
@@ -51,18 +54,22 @@ const TermsPage = () => {
             və şurupları möhkəm saxlama qabiliyyəti vardır. <br /> <br />
             <span>Düşmə Qapaq</span> — İki yan tərəfindəki millərin köməyi ilə
             dönərək açılan və üfiqi vəziyyətdə durduqda masa kimi də istifadə
-            olunabilən mebel qapağı. <br /><br />
+            olunabilən mebel qapağı. <br />
+            <br />
             <span>Finischfolie</span> — Teksturalı incə lövhədən hazırlanmış və
-            səthi cila ilə örtülmüş təklaylı materialdır. <br /><br />
+            səthi cila ilə örtülmüş təklaylı materialdır. <br />
+            <br />
             <span>Karniz</span> — Mebel kompozisiyasını tamamlayan, hər hansı
             profil və ya bir neçə profildən hazırlanan xətt elementidir.
             Karnizin bayır tərəfə çıxıntısı olur. Adətən karnizin üstündə attik
-            və ya fronton yerləşdirilir. <br /><br />
+            və ya fronton yerləşdirilir. <br />
+            <br />
             <span>Laminat</span> — Kağız laylı dekorativ materialdır. Laminatın
             növləri— (High Pressure Laminat) — mərtəbəli presslərdə hazırlanan
             yüksək təzyiqlə preslənmiş üzlük materialıdır. CPL (Contiuous
             Pressure Laminat) — lentli presslərdə hazırlanan aşağı təzyiqlə
-            preslənmiş üzlük materialıdır. <br /><br />
+            preslənmiş üzlük materialıdır. <br />
+            <br />
             <span>MDF</span> — İngilis dilindən götürülmüş Medium Density
             Fiberboard ifadəsinin abreviaturudur. Orta sıxlığa malik taxtalifli
             lövhə mənasını verir. MDF lövhələr ağac liflərindən hazırlanır. Bu

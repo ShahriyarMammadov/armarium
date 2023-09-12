@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
+import { useTranslation } from "react-i18next";
 
 const NewsPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
   const getNewsData = async () => {
     try {
@@ -38,9 +40,9 @@ const NewsPage = () => {
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              Home <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
-            <span>Xəbərlər</span>
+            <span>{t("XƏBƏRLƏR")}</span>
           </span>
         </div>
 

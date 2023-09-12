@@ -12,6 +12,8 @@ const addDecorPage = () => {
   const [coverImage, setCoverImage] = useState("");
   const [images, setİmages] = useState([]);
 
+  const { TextArea } = Input;
+
   const [selectedDecorName, setSelectedDecorName] = useState("");
 
   const [loading, setLoading] = useState(true);
@@ -237,40 +239,19 @@ const addDecorPage = () => {
           margin: "0 auto",
         }}
       >
-        <Form.Item label="Bloqun Adı:">
+        <Form.Item label="Dekorun Adı:">
           <Input
             onChange={(e) => {
               setDecorName(e.target.value);
             }}
           />
-          <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            BLOQ-UN ADININ SONUNA `. , ? !` VƏ S. ƏLAVƏ ETMƏYİN
-          </p>
         </Form.Item>
-        <Form.Item label="Bloq Məlumatı: ">
-          <Input
+        <Form.Item label="Dekor Haqqında Məlumat: ">
+          <TextArea
             onChange={(e) => {
               setDecorDescription(e.target.value);
             }}
           />
-          <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
-            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
-          </p>
         </Form.Item>
         <Form.Item label="Örtük Şəkli: ">
           <input type="file" name="coverImage" onChange={handleFileChange} />
@@ -382,7 +363,8 @@ const addDecorPage = () => {
                 fontWeight: "900",
               }}
             >
-              BLOQ-UN ADININ SONUNA `. , ? !` VƏ S. ƏLAVƏ ETMƏYİN
+              DEKORUN ADI BÖYÜK HƏRFLƏ BAŞLAYIRSA İLK HƏRFİDƏ BÖYÜK ƏLAVƏ
+              EDİLMƏLİDİR.
             </p>
           </Form.Item>
 

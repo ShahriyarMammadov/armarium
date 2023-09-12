@@ -8,9 +8,12 @@ import ModelsComponent from "../../../components/models";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import WhyArmariumPage from "../../../components/whyArmarium";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const nav = useNavigate();
+
+  const { t } = useTranslation();
 
   return (
     <main>
@@ -25,25 +28,20 @@ const HomePage = () => {
       <section id="section2" className="about">
         <div className="container section2">
           <div className="left">
-            <h6 className="headerText">İnam, Bacarıq və Keyfiyyət İşidir...</h6>
+            <h6 className="headerText">
+              {t("İnam, Bacarıq və Keyfiyyət İşidir...")}
+            </h6>
             <p>
-              "Armarium.az" - müasir, gənc və şübhəsiz ki, dinamik şəkildə
-              inkişaf edən mebel satışı ilə məşğul olan bir şirkətdir. Biz,
-              istənilən interyerin ayrılmaz hissəsinə çeviriləcək mebel
-              hissələrinin müxtəlif üslubda – klassikadan, modernə qədər satışı
-              ilə professional məşğul oluruq. Mebeli evinizdən çıxmadan,
-              saytımızdan rahat bir kresloda oturaraq da sifariş edə bilərsiniz.
-              Hər gün saytımızı sizin üçün daha yaxşı və rahat hala gətiririk.
-              Peşakar konsultantlarımız öz sahələrinin mütəxəssisləridir,
-              məhsulla bağlı bütün suallarınızı mütləq cavablandıracaq və Sizə
-              ən optimal variantları seçməyinizdə yardımçı olacaqlar.
+              {t(
+                `Armarium, 1997-ci ildə Türkiyənin Düzcə şəhərində təsis edilmiş bir mebel şirkətidir. Şirkət mətbəx və qapı mebelləri istehsalı və interyer dizaynı sahəsində uzun illər ərzində qətiyyətli bir şəkildə fəaliyyət göstərir. Əsas fəaliyyət sahəsi, yaşayış binaları, otellər, restoranlar, kafelər ofislər və digər müəssisələr üçün qapı və mebel və dekorasiya istehsalıdır. Armarium, bu sahədə klassik və neoklasik dizaynların bacarığını nümayiş etdirərək müştərilərinin estetik tələblərini bütünlüklə qarşılayır. Şirkətin əsas məqsədi keyfiyyətli istehsal, uyğun məhsul təklifi və münasib qiymətlərdir. Bu, Armariumun marketinq siyasətinin ən əsas xüsusiyyətidir.`
+              )}
             </p>
             <button
               onClick={() => {
                 nav("/haqqimizda");
               }}
             >
-              ƏTRAFLI
+              {t("ƏTRAFLI")}
             </button>
           </div>
           <div className="right">

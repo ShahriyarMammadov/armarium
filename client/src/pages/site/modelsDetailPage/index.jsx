@@ -41,9 +41,6 @@ const ModelsDetailPage = () => {
 
         <div className="aboutText container">
           <h5>{decorData[0]?.name}</h5>
-          <div className="headText">
-            <p>Maskülen ve derin…</p>
-          </div>
           <p>{decorData[0]?.description}</p>
         </div>
 
