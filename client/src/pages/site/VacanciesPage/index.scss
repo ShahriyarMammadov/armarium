@@ -12,4 +12,18 @@
     .vacanciesPage {
         padding: 10px 0 40px 0;
     }
+
+    .ant-collapse-content-box {
+
+        @media only screen and (max-width: 425px) {
+            font-size: 14px;
+        }
+    }
+
+    .ant-collapse-header-text {
+
+        @media only screen and (max-width: 425px) {
+            font-size: 15px;
+        }
+    }
 }

@@ -13,10 +13,26 @@
         sans-serif;
 
     .container {
-        padding: 0 15px;
+        padding: 0 15px 40px 15px;
 
         .customer {
             text-align: center;
+
+            @media only screen and (max-width: 425px) {
+                h3 {
+                    font-size: 16px;
+                }
+            }
+        }
+
+        .customerText {
+
+            @media only screen and (max-width: 425px) {
+                p {
+                    font-size: 14px;
+                    text-align: justify;
+                }
+            }
         }
     }
 

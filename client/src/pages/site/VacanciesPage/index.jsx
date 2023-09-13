@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
-// import backImage from "../../../assets/backgroundImages/vakansiya.png";
 import { Collapse } from "antd";
 import { Helmet } from "react-helmet";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import LoadingComponent from "../../../components/loading";
 
 const VacanciesPage = () => {
   const [allData, setAllData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
   const getAllData = async () => {
     try {
       const data = await axios.get(`http://localhost:3000/vacancy/allVacancy`);
       setAllData(data.data);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -48,9 +51,8 @@ const VacanciesPage = () => {
         <meta charSet="utf-8" />
         <title>Armarium | Vakansiyalar</title>
       </Helmet>
-      <div className="backImage">
-        {/* <img src={backImage} alt="salam" /> */}
-      </div>
+      <div className="backImage"></div>
+
       <div className="vacanciesPage container">
         <div className="navigation">
           <span>
@@ -62,12 +64,16 @@ const VacanciesPage = () => {
         </div>
 
         <div className="vacancies">
-          <Collapse
-            // defaultActiveKey={["1"]}
-            accordion
-            items={items}
-            size="large"
-          />
+          {loading ? (
+            <LoadingComponent />
+          ) : (
+            <Collapse
+              // defaultActiveKey={["1"]}
+              accordion
+              items={items}
+              size="large"
+            />
+          )}
         </div>
       </div>
     </div>

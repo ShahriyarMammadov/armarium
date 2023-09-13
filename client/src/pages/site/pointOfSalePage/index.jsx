@@ -61,7 +61,7 @@ const PointOfSalesPages = () => {
           <h3>Armarium</h3>
           <p>
             {t(
-              "Armarium, 1997-ci ildə Türkiyənin Düzcə şəhərində təsis edilmiş birmebel şirkətidir. Şirkət mətbəx və qapı mebelləri istehsalı və interyer dizaynı sahəsində uzun illər ərzində qətiyyətli bir şəkildə fəaliyyət göstərir. Əsas fəaliyyət sahəsi, yaşayış binaları, otellər, restoranlar, kafelər ofislər və digər müəssisələr üçün qapı və mebel və dekorasiya istehsalıdır."
+              "Armarium, 1997-ci ildə Türkiyənin Düzcə şəhərində təsis edilmiş bir mebel şirkətidir. Şirkət mətbəx və qapı mebelləri istehsalı və interyer dizaynı sahəsində uzun illər ərzində qətiyyətli bir şəkildə fəaliyyət göstərir. Əsas fəaliyyət sahəsi, yaşayış binaları, otellər, restoranlar, kafelər ofislər və digər müəssisələr üçün qapı və mebel və dekorasiya istehsalıdır."
             )}
           </p>
         </div>

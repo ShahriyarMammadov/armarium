@@ -1,7 +1,6 @@
 import React from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
-// import backImage from "../../../assets/backgroundImages/musteriXidmeti.png";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 
@@ -14,9 +13,7 @@ const CustomerServicePage = () => {
         <meta charSet="utf-8" />
         <title>Armarium | Müştəri Xidmətləri</title>
       </Helmet>
-      <div className="backImage">
-        {/* <img src={backImage} alt="BackGround Image" /> */}
-      </div>
+      <div className="backImage"></div>
       <div className="container">
         <div className="navigation">
           <span>
@@ -34,29 +31,29 @@ const CustomerServicePage = () => {
         </div>
         <div className="customerText">
           <p>
-            <h4>Müştəri xidməti!</h4>
-            Fəaliyyət göstərdiyimiz hər bir ölkədə aktiv müştəri xidməti xətləri
-            və satışdan sonrakı xidmət qurmuşuq. Belə ki, yaşadığı ölkədən asılı
-            olmayaraq, Embawood mebeli almış hər bir müştərimiz sonrakı
-            periodlarda yarana biləcək istənilən problem, nasazlıq barəsində
-            bizə müraciət edə bilər. Hər bir sorğu, istər zəmanət müddəti
-            çərçivəsində, istərsə də zəmanət müddətindən sonra diqqətlə
-            araşdırlır və müvafiq olaraq həll edilir.
-            <h4>2 illik zəmanət!</h4>
-            Mebel istehsalı prosesinin hər bir mərhələsində: xammal alışından
-            başlayaraq məhsulların paketlənməsinə qədər bütün proseslər ciddi
-            keyfiyyət nəzarətindən keçir. Belə yanaşmamızın nəticəsidir ki,
-            bütün mebel məhsullarımıza 2 illik zəmanət veririk. Bununla belə,
-            istənilən mebel modelimizi almaqla Siz ömür boyu etibar edə
-            biləcəyiniz keyfiyyət əldə edirsiniz. Çünki, biz hər bir mebel
-            modelimizə sevgi və nəvazişlə yanaşırıq. Sizin üçün istehsal edirik.
-            Sizin xidmətinizdəyik!
-            <h4>24 saat ərzində çatdırılma və quraşdırma!</h4>
-            Embawood sizə pulsuz çatdırma və quraşdırma xidməti təqdim edir.
-            İstənilən brend mağazamızda, istənilən miqdarda mebel alın və 24
-            saat ərzində aldığınız mebel evinizdə olacaqdır. Xüsusi təlim keçmiş
-            montaj qrupumuz operativ şəkildə və peşəkar səviyyədə mebelinizi ən
-            qısa müddət ərzində quraşdıracaqdır.
+            Armarium şirkəti olaraq missiyamız estetika, funksionallıq və
+            keyfiyyəti bir araya gətirərək unikal mebel və iç məkan dizaynlarını
+            müştərilərimizə təqdim edib onların yaşayış sahələrini və həmçinin
+            iş yerlərini gözəlləşdirmək və özəl etməkdir.
+            <br />
+            <br /> Bizimçün ən vacib dəyərlər: <br />
+            <br /> <br />
+            1. Müştəri Məmnuniyyəti: Müştəri ehtiyaclarını anlamaq və onları
+            qarşılamağa üstünlük vermək.
+            <br /> <br /> 2. Keyfiyyət: Yüksək keyfiyyətli materiallar və işçi
+            qüvvəsi istifadə edərək davamlı və estetik məhsullar təklif etmək.
+            <br /> <br /> 3. Yaradıcılıq və İnnovasiya: Müasir dövrə uyğun,
+            yenilikçi dizayn və istehsal prosesləri ilə müştərilərimizə orijinal
+            və özəl məhsullar təqdim etmək.
+            <br /> <br /> 4. Ətraf Mühitə Dəstək: Ətraf mühitə diqqət göstərib
+            xüsusi zərərsiz materialları seçərək sürətləndirilmiş iş tətbiqinə
+            bağlı qalmaq.
+            <br /> <br /> 5. İş Etikası: Etik davranışlar, şəffaf və dürüstlük
+            prinsiplərinə bağlılıq.
+            <br /> <br /> 6. Komanda İşbirliyi: İşbirliyi və kommunikasiya
+            içində bir komanda yaratmaq və birlikdə işləmək. Bu dəyərlər,
+            Armarium Mebel İnteryer'in müştərilərinə xidmət göstərmə üslubunu
+            əks etdirən əsas prinsip və dəyərləri ifadə edir
           </p>
         </div>
       </div>

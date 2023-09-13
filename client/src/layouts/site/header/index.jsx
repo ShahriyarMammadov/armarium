@@ -19,8 +19,16 @@ const Header = () => {
   // SCROLL
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
+  const { Search } = Input;
+
   // HEADER COLOR CHANGE
   const [colorChange, setColorChange] = useState(false);
+
+  const [searchModal, setsearchModal] = useState(false);
+
+  const showSearchModal = () => {
+    setsearchModal(true);
+  };
 
   // DRAWER OPEN, CLOSE
   const [toggle, setToggle] = useState(false);
@@ -37,7 +45,7 @@ const Header = () => {
 
   // HEADERTOP VISIBLE
   const threshold = 50;
-  const scrollThreshold = 400;
+  const scrollThreshold = 150;
 
   // COOKIE
   const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
@@ -327,6 +335,31 @@ const Header = () => {
     });
   };
 
+  // SEARCH
+
+  const handleSearchOk = () => {
+    setLoading(true);
+  };
+
+  const handleSearchCancel = () => {
+    setsearchModal(false);
+  };
+
+  const [searchResult, setSearchResult] = useState([]);
+
+  const onSearch = async (value, _e) => {
+    try {
+      const { data } = await axios.post(
+        `http://localhost:3000/search/searchByName/${value.toLocaleLowerCase()}`
+      );
+      setSearchResult(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(searchResult);
+
   return (
     <header className={`${colorChange ? "colorChange" : ""}`}>
       {contextHolder}
@@ -393,9 +426,63 @@ const Header = () => {
                 />
               </Dropdown>
             </div>
-            <div className="search">
+            <div className="search" onClick={showSearchModal}>
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
+            <Modal
+              open={searchModal}
+              title={t("AXTARIŞ")}
+              onOk={handleSearchOk}
+              onCancel={handleSearchCancel}
+              footer={[
+                <Button key="back" onClick={handleSearchCancel}>
+                  ÇIX
+                </Button>,
+              ]}
+            >
+              <Search
+                placeholder={t("Axtarış edin")}
+                onSearch={onSearch}
+                style={{
+                  width: "100%",
+                }}
+              />
+
+              <h4>Nəticələr:</h4>
+              <hr />
+              {searchResult.length === 0 ? (
+                <h3>Heç Bir Nəticə Tapılmadı</h3>
+              ) : (
+                searchResult?.map((e, i) => {
+                  return (
+                    <>
+                      <div key={i} className="searchResult">
+                        <p>Kateqoriya: {e?.category}</p>
+                        {e?.results.map((e, i) => {
+                          return (
+                            <>
+                              <div className="resultsDescription">
+                                <Link to={`${e?.category}`}>
+                                  <p>{e?.name}</p>
+                                  {e?.coverImage ? (
+                                    <img
+                                      src={`http://localhost:3000/images/${e?.coverImage}`}
+                                      alt="error"
+                                    />
+                                  ) : null}
+                                </Link>
+                              </div>
+                              <hr />
+                            </>
+                          );
+                        })}
+                      </div>
+                    </>
+                  );
+                })
+              )}
+            </Modal>
+
             {localStorage.getItem("role") == "admin" ? (
               <i
                 className="fa-solid fa-right-to-bracket"
@@ -533,27 +620,30 @@ const Header = () => {
         <Drawer title="ARMARIUM" placement="left" onClose={onClose} open={open}>
           <Collapse
             items={items1}
-            // defaultActiveKey={["1"]} 
+            // defaultActiveKey={["1"]}
             onChange={onChange}
           />
-          <div
-            className="language"
-            style={{ marginTop: "20px", width: "fit-content" }}
-          >
-            <Dropdown
-              menu={{
-                items,
-              }}
-              placement="bottom"
-              arrow={{
-                pointAtCenter: true,
-              }}
-            >
-              <img
-                src={language === "az" ? az : language === "tr" ? tr : en}
-                alt="AZ"
-              />
-            </Dropdown>
+          <div className="drawerContent">
+            <div className="language">
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                placement="bottom"
+                arrow={{
+                  pointAtCenter: true,
+                }}
+              >
+                <img
+                  src={language === "az" ? az : language === "tr" ? tr : en}
+                  alt="AZ"
+                />
+              </Dropdown>
+            </div>
+
+            <div className="search" onClick={showSearchModal}>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </div>
           </div>
         </Drawer>
         <div

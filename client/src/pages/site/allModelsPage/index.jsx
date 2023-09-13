@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-// import models from "../../../assets/backgroundImages/dekorlar.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
+import SkeletonComponent from "../../../components/skeleton";
 
 const AllModelsPage = () => {
   const [decors, setDecors] = useState([]);
@@ -32,14 +32,12 @@ const AllModelsPage = () => {
         <title>Armarium | Bütün Modellər</title>
       </Helmet>
       <div className="coverImage">
-        <div className="backImage">
-          {/* <img src={models} alt="backImage" /> */}
-        </div>
+        <div className="backImage"></div>
 
         <div className="allModels container">
           <div id="KitchenModels">
             {loading ? (
-              <LoadingComponent />
+              <SkeletonComponent />
             ) : (
               <div className="imagesCards">
                 {decors.length == 0 ? (
@@ -47,7 +45,7 @@ const AllModelsPage = () => {
                 ) : (
                   decors?.map((e, i) => {
                     return (
-                      <Link to={`/model/${e?.name}`}>
+                      <Link to={`/model/${e?.name}`} key={i}>
                         <img
                           src={`http://localhost:3000/images/${e?.coverImage}`}
                           alt={`${e?.name}`}

@@ -10,7 +10,7 @@ import {
   Typography,
 } from "antd";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
 
 const addReferencePage = () => {
@@ -90,6 +90,8 @@ const addReferencePage = () => {
         `http://localhost:3000/reference/addReference/${id}`,
         formData
       );
+      message.success(addData?.data?.message);
+
       getAllReference();
       setLoading(false);
     } catch (error) {

@@ -154,21 +154,6 @@ header {
                 align-items: center;
                 gap: 20px;
 
-
-                .search {
-                    padding: 8px;
-                    background-color: #2e2924;
-                    transition: all 0.5s;
-                    cursor: pointer;
-
-                    &:hover {
-                        background-color: black;
-                    }
-
-                    i {
-                        color: white;
-                    }
-                }
             }
         }
 
@@ -322,6 +307,28 @@ header {
     }
 }
 
+.ant-modal-content {
+    max-height: 500px;
+    overflow-y: scroll;
+
+    .searchResult {
+        .resultsDescription {
+            a {
+                text-decoration: none;
+                color: black;
+                font-weight: 600;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img {
+                    width: 100px;
+                }
+            }
+        }
+    }
+}
+
 .language {
     cursor: pointer;
     font-size: 15px;
@@ -338,6 +345,31 @@ header {
 
     &:nth-child(1) {
         margin: 0 !important;
+    }
+}
+
+.drawerContent {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .language {
+        margin-top: 20px !important;
+    }
+
+    .search {
+        padding: 8px;
+        background-color: #2e2924;
+        transition: all 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: black;
+        }
+
+        i {
+            color: white;
+        }
     }
 }
 

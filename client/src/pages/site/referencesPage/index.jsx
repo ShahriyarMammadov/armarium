@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import axios from "axios";
-// import backImage from "../../../assets/backgroundImages/referans.png";
 import { Image, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
 import { useTranslation } from "react-i18next";
+import SkeletonComponent from "../../../components/skeleton";
 
 const ReferencesPage = () => {
   const [allData, setAllData] = useState([]);
@@ -39,9 +39,8 @@ const ReferencesPage = () => {
         <meta charSet="utf-8" />
         <title>Armarium | Referanslar</title>
       </Helmet>
-      <div className="backImage">
-        {/* <img src={backImage} alt="backImage" /> */}
-      </div>
+      <div className="backImage"></div>
+
       <div className="referencesPage container">
         <div className="navigation">
           <span>
@@ -68,7 +67,9 @@ const ReferencesPage = () => {
           </p>
         </div>
         {loading ? (
-          <LoadingComponent />
+          <div className="skeletonComp">
+            <SkeletonComponent />
+          </div>
         ) : (
           <div className="grid-container container">
             {allData.length == 0 ? (

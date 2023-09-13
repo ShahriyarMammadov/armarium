@@ -6,8 +6,6 @@ const uploadDir = "images/";
 // ---------------------- ADD DECOR ----------------------
 // yeni decor-un yaradılması, 15 dənə şəkil, 1 dənə örtük şəkli yükləmək mümkündür, digərlərində validation yoxdur
 
-// eyni adda decor olanda return elemek lazimdi
-
 export const addDecor = async (req, res) => {
   try {
     const { name, description } = req.body;
@@ -188,7 +186,7 @@ export const deleteDecorByName = async (req, res) => {
       message: `${decorNameToDelete} Adlı Dekor Uğurla Silindi.`,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(500).json({ error: error.message });
   }
 };

@@ -57,9 +57,9 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section id="section4" className="whyArmarium">
+      {/* <section id="section4" className="whyArmarium">
         <WhyArmariumPage />
-      </section>
+      </section> */}
 
       <section id="section5" className="models">
         <ModelsComponent />

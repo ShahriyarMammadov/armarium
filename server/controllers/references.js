@@ -9,6 +9,15 @@ import { userModel } from "../models/user.js";
 export const addReference = async (req, res) => {
   try {
     const { name } = req.body;
+
+    const existingRef = await referencesModel.findOne({ name });
+
+    if (existingRef) {
+      return res
+        .status(200)
+        .json({ message: "Bu Ad-da bir Referans zatən var." });
+    }
+
     if (!req.files.images) {
       return res.status(415).json({
         error: "Heç Bir Şəkil Əlavə Edilməyib, Zəhmət Olmasa Şəkil Seçin!",
@@ -16,7 +25,7 @@ export const addReference = async (req, res) => {
     }
 
     if (!req.files.coverImage) {
-      return res.status(415).json({
+      return res.status(200).json({
         error: "Zəhmət Olmasa Örtük Şəkli Seçin",
       });
     }
