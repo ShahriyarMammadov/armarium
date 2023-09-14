@@ -53,8 +53,6 @@ const PointOfSalesPages = () => {
           frameborder="0"
           scrolling="no"
         ></iframe>
-
-        {/* <img src={pointOfSalesBackImage} alt="salam" /> */}
       </div>
       <div className="pointOfSales container">
         <div className="locationCard">
@@ -107,17 +105,16 @@ const PointOfSalesPages = () => {
             <h2>{t("Əlaqə Məlumatları")}</h2>
             <p className="companyName">{t("İş saatları")}: 09:00 - 18:00</p>
             <address>
-              Ahmedihani Mah. Abdulbari Sokak Goozle Cad. No : 50 Doğubayazıt /
-              AĞRI
+              Sumqayıt şossesi, döngə 1, n50 (Xırdalan dairəsi tərəf)
             </address>
 
             <a href="tel:+993134473" className="tel">
-              {t("Telefon")}: +99450 313 4473
+              {t("Telefon")}: +99455 415 2515
             </a>
-            <a href="mailto:salam">Email: armarium@gmail.com</a>
+            <a href="mailto:salam">Email: armarium@armarium.az</a>
 
             <p className="contactAbout">
-              {t("Əlaqədar Şəxs")}: Armarium Armarium
+              {t("Əlaqədar Şəxs")}: Fırat Yıldırım
             </p>
           </div>
         </div>

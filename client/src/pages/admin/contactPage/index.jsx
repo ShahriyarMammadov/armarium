@@ -54,6 +54,7 @@ const ContactPage = () => {
               return (
                 <div key={i} className="phone">
                   <p>{e?.phoneNumber}</p>
+                  <span>Tarix:</span> {e?.date}
                 </div>
               );
             })}
@@ -96,6 +97,9 @@ const ContactPage = () => {
                   </p>
                   <p>
                     <span>MƏTN:</span> {e?.text}
+                  </p>
+                  <p>
+                    <span>Tarix:</span> {e?.date}
                   </p>
                 </div>
               );

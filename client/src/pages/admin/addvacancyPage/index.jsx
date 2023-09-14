@@ -4,6 +4,7 @@ import { Button, Collapse, Form, Input, Popconfirm, message } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
+import TextArea from "antd/es/input/TextArea";
 
 const AddVacancyPage = () => {
   const { id } = useParams();
@@ -161,7 +162,7 @@ const AddVacancyPage = () => {
           />
         </Form.Item>
         <Form.Item label="Tələblər: ">
-          <Input
+          <TextArea
             onChange={(e) => {
               setVacancyDescription(e.target.value);
             }}

@@ -40,7 +40,7 @@ const VacanciesPage = () => {
             </React.Fragment>
           ))}
         </p>
-        <a href={`mailto:shahriyarmammadov16@gmail.com`}>Müraciət Et</a>
+        <a href={`mailto:f.yildirim@armarium.az`}>Müraciət Et</a>
       </>
     ),
   }));
@@ -72,6 +72,7 @@ const VacanciesPage = () => {
               accordion
               items={items}
               size="large"
+              style={{ fontWeight: "600" }}
             />
           )}
         </div>

@@ -30,11 +30,11 @@ body {
 
 @media only screen and (max-width: 425px) {
   .navigation a {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .navigation span {
-    font-size: 10px;
+    font-size: 12px;
   }
 }
 

@@ -1,35 +1,29 @@
-import jwt from "jsonwebtoken";
+import { userModel } from "../models/user.js";
 
 // check admin
-export const checkAdmin = (req, res, next) => {
+export const checkAdmin = async (req, res, next) => {
   try {
-    const token = req.cookies.jwt;
-    if (!token) {
-      return res
-        .status(404)
-        .json({ success: false, message: "Token is invalid" });
+    const userID = req.body.userID;
+    const user = await userModel.findById(userID);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
     }
-    jwt.verify(token, "4473", (err, admin) => {
-      if (err) {
-        return res
-          .status(401)
-          .json({ success: false, message: "Token is wrong" });
-      } else {
-        if (admin.role !== "admin") {
-          return res.status(200).json({
-            success: false,
-            message: "Your role is not eligible for access to this section",
-          });
-        } else {
-          req.admin = admin;
-          res.status(200).json({
-            success: true,
-            data: admin,
-            message: "Salam Admin",
-          });
-          next();
-        }
-      }
+
+    if (user.role !== "admin") {
+      return res.status(403).json({
+        success: false,
+        message: "Your role is not eligible for access to this section",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: user,
+      message: "Salam Admin",
     });
   } catch (error) {
     console.log(error);

@@ -6,6 +6,7 @@ const writeToUsSchema = new Schema(
     email: { type: String, required: true },
     phoneNumber: { type: String },
     text: { type: String, required: true },
+    date: { type: Date, default: Date.now() },
   },
   { versionKey: false, timestamps: true }
 );

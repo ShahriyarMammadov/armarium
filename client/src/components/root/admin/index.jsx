@@ -1,34 +1,36 @@
 import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 import axios from "axios";
 import AdminHeader from "../../../layouts/admin/header";
-// import { useDispatch, useSelector } from "react-redux";
 
 const AdminRoot = () => {
-  const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
+  // const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
   const navigate = useNavigate();
-
-  // const dispatch = useDispatch();
-  // const userData = useSelector((state) => state.getAllUserDataReducer);
 
   useEffect(() => {
     const verifyUser = async () => {
-      if (!cookies.jwt) {
+      const userID = sessionStorage.getItem("id");
+
+      if (!userID) {
         navigate("/");
       } else {
         const { data } = await axios.post(
           "http://localhost:3000/checkAdmin",
-          {},
+          {
+            userID: userID,
+          },
           {
             withCredentials: true,
           }
         );
 
+        console.log(data?.success);
+
         if (!data?.success) {
-          removeCookie("jwt");
-          navigate("/");
+          sessionStorage.removeItem("id");
           console.log(data?.message);
+          navigate("/");
         } else {
           null;
         }
@@ -36,7 +38,7 @@ const AdminRoot = () => {
     };
 
     verifyUser();
-  }, [cookies, removeCookie, navigate]);
+  }, [navigate]);
 
   return (
     <>

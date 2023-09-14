@@ -52,18 +52,16 @@ const ReferencesPage = () => {
         </div>
 
         <div className="text">
-          <h3>LINEADECOR, PROJELERİNİZE DEĞER KATAR.</h3>
+          <h3>{t("ARMARIUM, LAYIHƏLƏRİNİZƏ DƏYƏR QATAR..")}</h3>
           <h4>
-            Lineadecor 30 yılı aşkın tecrübesiyle yurt içi ve yurt dışında
-            seçkin gayrimenkul projelerinin mutfağında yer almaktadır.
+            {t(
+              "Armarium, 1997-ci ildə Türkiyənin Düzcə şəhərində təsis edilmiş bir mebel şirkətidir. Şirkət mətbəx və qapı mebelləri istehsalı interyer dizaynı sahəsində uzun illər ərzində qətiyyətli bir şəkildə fəaliyyət göstərir. Əsas fəaliyyət sahəsi, yaşayış binaları, otellər, restoranlar, kafelər ofislər və digər müəssisələr üçün qapı və mebel və dekorasiya istehsalıdır. Armarium, bu sahədə klassik və neoklasik dizaynların bacarığını nümayiş etdirərək müştərilərinin estetik tələblərini bütünlüklə qarşılayır."
+            )}
           </h4>
           <p>
-            Orta ve Yakın Doğu, Avrupa ve Amerika’da yükselen ayrıcalıklı
-            projelerin yanı sıra; Türkiye’de büyük inşaat firmalarının projeleri
-            de Lineadecor imzasını taşımaktadır. Mimari proje aşamasında mutfak
-            planlamasından tesisata kadar pek çok konuda danışmanlık hizmeti
-            veren Lineadecor, dev projelerin tasarım ortağı olarak kusursuz bir
-            hizmet sunmaktadır.
+            {t(
+              "Şirkətin əsas məqsədi keyfiyyətli istehsal, uyğun məhsul təklifi və münasib qiymətlərdir. Bu, Armariumun marketinq siyasətinin ən əsas xüsusiyyətidir. Müştərilərinə yüksək keyfiyyətli məhsullar və münasib qiymətlər təklif edərək onların büdcələrinə uyğun məhsullarla onları təmin edir. Şirkətin istehsal etdiyi mebellər funksionallıq və estetika ilə birləşir, bu da onların müştərilərinin tələblərini tamamilə qarşılayır."
+            )}
           </p>
         </div>
         {loading ? (

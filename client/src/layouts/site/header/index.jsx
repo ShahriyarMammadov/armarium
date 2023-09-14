@@ -283,6 +283,9 @@ const Header = () => {
       if (data?.data?.created) {
         if (data?.data?.data?.role === "admin") {
           openNotificationWithIcon(data?.data?.message, "success");
+
+          sessionStorage.setItem("id", data?.data?.data?._id);
+
           navigate(`/admin/adminData/${data?.data?.data?._id}`);
         } else {
           openNotificationWithIcon("SIZ ADMIN DEYILSINIZ!!!", "warning");
@@ -306,19 +309,22 @@ const Header = () => {
   const checkAdmin = async () => {
     try {
       setLoading(true);
+      const userID = sessionStorage.getItem("id");
       const { data } = await axios.post(
         "http://localhost:3000/checkAdmin",
-        {},
+        {
+          userID: userID,
+        },
         {
           withCredentials: true,
         }
       );
+
       if (!data?.success) {
         setOpenModal(false);
-        removeCookie("jwt");
         openNotificationWithIcon(data?.message, "error");
       } else {
-        navigate(`/admin/adminData/${data?.data?.id}`);
+        navigate(`/admin/adminData/${data?.data?._id}`);
       }
       setLoading(false);
     } catch (error) {
@@ -458,7 +464,7 @@ const Header = () => {
                           return (
                             <>
                               <div className="resultsDescription" key={i}>
-                                <Link to={`${e?.category}`}>
+                                <Link to={`${e?.name}`}>
                                   <p>{e?.name}</p>
                                   {e?.coverImage ? (
                                     <img
@@ -483,7 +489,7 @@ const Header = () => {
               <i
                 className="fa-solid fa-right-to-bracket"
                 onClick={() => {
-                  cookies.jwt ? checkAdmin() : showModal();
+                  sessionStorage.getItem("id") ? checkAdmin() : showModal();
                 }}
               ></i>
             ) : null}

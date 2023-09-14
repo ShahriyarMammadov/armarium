@@ -28,11 +28,6 @@ app.use(morgan("dev"));
 config();
 // --------------------------------------------------------
 
-//------------------------- Cookie ------------------------
-import cookieParser from "cookie-parser";
-app.use(cookieParser());
-// --------------------------------------------------------
-
 //-------------------- Express js server Config -----------
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ limit: "100mb", extended: true }));

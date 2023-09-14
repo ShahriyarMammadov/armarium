@@ -13,7 +13,7 @@ const AboutPage = () => {
         <meta charSet="utf-8" />
         <title>Armarium | Haqqımızda</title>
       </Helmet>
-      <div className="backImage">{/* <img src={backImage} alt="" /> */}</div>
+      <div className="backImage"></div>
       <div className="aboutPage container">
         <div className="navigation">
           <span>

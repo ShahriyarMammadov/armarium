@@ -1,9 +1,15 @@
 #notFound {
     padding: 160px;
-    background-color: #7D7C7B;
+    width: 100%;
+
+    @media only screen and (max-width: 768px) {
+        padding: 0;
+    }
 
     .ant-result-title,
     .ant-result-subtitle {
-        color: white;
+        width: 100%;
+        color: red;
+        font-weight: 900s;
     }
 }

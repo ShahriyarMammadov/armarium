@@ -1,14 +1,13 @@
 import { userModel } from "../models/user.js";
-import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 
 // Create Token
 // export const maxAge = 10 * 60;
-export const maxAge = 3 * 24 * 60 * 60;
+// export const maxAge = 3 * 24 * 60 * 60;
 
-export const createToken = (id, role) => {
-  return jwt.sign({ id, role }, "4473");
-};
+// export const createToken = (id, role) => {
+//   return jwt.sign({ id, role }, "4473");
+// };
 // -----------------------------------------------------
 
 // Email and Password error
@@ -43,12 +42,12 @@ export const signIn = async (req, res) => {
     if (!passwordMatch) {
       return res.status(200).json({ message: "Incorrect password" });
     }
-    const token = createToken(user._id, user.role);
+    // const token = createToken(user._id, user.role);
 
-    res.cookie("jwt", token, {
-      withCredentials: true,
-      maxAge: maxAge * 1000,
-    });
+    // res.cookie("jwt", token, {
+    //   withCredentials: true,
+    //   maxAge: maxAge * 1000,
+    // });
 
     res.status(200).send({
       data: user,
