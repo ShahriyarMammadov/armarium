@@ -37,11 +37,11 @@ export const signIn = async (req, res) => {
   try {
     const user = await userModel.findOne({ email });
     if (!user) {
-      throw Error("User not found");
+      return res.status(200).json({ message: "User not found" });
     }
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
-      throw Error("Incorrect password");
+      return res.status(200).json({ message: "Incorrect password" });
     }
     const token = createToken(user._id, user.role);
 

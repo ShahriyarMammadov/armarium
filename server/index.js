@@ -1,10 +1,9 @@
-import express, { json } from "express";
+import express from "express";
 const app = express();
 import cors from "cors";
 import morgan from "morgan";
 import { config } from "dotenv";
 import bodyParser from "body-parser";
-import path from "path";
 
 //------------------------ Routers ------------------------
 import authRouter from "./routers/auth.js";

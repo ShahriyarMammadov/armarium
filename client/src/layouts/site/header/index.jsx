@@ -358,8 +358,6 @@ const Header = () => {
     }
   };
 
-  console.log(searchResult);
-
   return (
     <header className={`${colorChange ? "colorChange" : ""}`}>
       {contextHolder}
@@ -448,10 +446,8 @@ const Header = () => {
                 }}
               />
 
-              <h4>Nəticələr:</h4>
-              <hr />
               {searchResult.length === 0 ? (
-                <h3>Heç Bir Nəticə Tapılmadı</h3>
+                <h4>Nəticə Tapılmadı</h4>
               ) : (
                 searchResult?.map((e, i) => {
                   return (
@@ -461,7 +457,7 @@ const Header = () => {
                         {e?.results.map((e, i) => {
                           return (
                             <>
-                              <div className="resultsDescription">
+                              <div className="resultsDescription" key={i}>
                                 <Link to={`${e?.category}`}>
                                   <p>{e?.name}</p>
                                   {e?.coverImage ? (

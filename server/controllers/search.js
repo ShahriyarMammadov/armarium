@@ -33,7 +33,7 @@ export const searchByName = async (req, res) => {
     }, []);
 
     if (combinedResults.length === 0) {
-      return res.status(200).json({ message: "Sonuç bulunamadı" });
+      return res.status(200).json(combinedResults);
     }
 
     res.status(200).json(combinedResults);

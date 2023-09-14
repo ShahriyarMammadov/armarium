@@ -23,7 +23,7 @@ userSchema.methods.comparePassword = async function (providedPassword) {
   try {
     return await bcrypt.compare(providedPassword, this.password);
   } catch (error) {
-    throw new Error("Password comparison failed.");
+    return res.status(200).json({ message: "Password comparison failed." });
   }
 };
 

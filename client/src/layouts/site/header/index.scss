@@ -96,6 +96,21 @@ header {
             transition: all 0.3s ease-in-out;
             overflow: hidden;
 
+            .search {
+                padding: 8px;
+                background-color: #2e2924;
+                transition: all 0.5s;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: black;
+                }
+
+                i {
+                    color: white;
+                }
+            }
+
             @media only screen and (max-width: 500px) {
                 display: none;
             }
@@ -362,6 +377,7 @@ header {
         background-color: #2e2924;
         transition: all 0.5s;
         cursor: pointer;
+        margin-top: 15px;
 
         &:hover {
             background-color: black;
