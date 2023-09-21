@@ -12,6 +12,15 @@ const AboutPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Haqqımızda</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
       <div className="backImage"></div>
       <div className="aboutPage container">

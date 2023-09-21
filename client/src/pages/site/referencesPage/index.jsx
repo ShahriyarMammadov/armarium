@@ -19,7 +19,7 @@ const ReferencesPage = () => {
   const getAllData = async () => {
     try {
       const data = await axios.get(
-        `http://localhost:3000/reference/allReferences`
+        `https://armariumbackend-production.up.railway.app/reference/allReferences`
       );
       setAllData(data.data);
       setLoading(false);
@@ -38,6 +38,15 @@ const ReferencesPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Referanslar</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
       <div className="backImage"></div>
 
@@ -75,14 +84,15 @@ const ReferencesPage = () => {
             ) : (
               allData?.map((e, i) => {
                 const imageUrls = e?.images.map(
-                  (image) => `http://localhost:3000/images/${image}`
+                  (image) =>
+                    `https://armariumbackend-production.up.railway.app/images/${image}`
                 );
                 return (
                   <>
                     <div style={{ position: "relative" }}>
                       <Image.PreviewGroup items={imageUrls} key={i}>
                         <Image
-                          src={`http://localhost:3000/images/${e?.coverImage}`}
+                          src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                         />
                       </Image.PreviewGroup>
                       <Text

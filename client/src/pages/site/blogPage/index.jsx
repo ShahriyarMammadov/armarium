@@ -37,7 +37,9 @@ const BlogPage = () => {
 
   const getAllBlog = async () => {
     try {
-      const data = await axios.get("http://localhost:3000/blog/getAllBlog");
+      const data = await axios.get(
+        "https://armariumbackend-production.up.railway.app/blog/getAllBlog"
+      );
       setBlogs(data?.data);
       setLoading(false);
     } catch (error) {
@@ -55,6 +57,15 @@ const BlogPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Bloq</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
       <div className="backImage">
         {/* <img src={blogBackImage} alt="backImage" /> */}
@@ -86,7 +97,7 @@ const BlogPage = () => {
                 return (
                   <div className="blog" key={i}>
                     <img
-                      src={`http://localhost:3000/images/${e?.coverImage}`}
+                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                       alt={`${e?.name}`}
                     />
 

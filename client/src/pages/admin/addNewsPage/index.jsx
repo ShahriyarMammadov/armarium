@@ -24,7 +24,9 @@ const AddNewsPage = () => {
 
   const getAllNews = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/news/allNews`);
+      const { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/news/allNews`
+      );
       setAllNews(data);
       setLoading(false);
     } catch (error) {
@@ -41,7 +43,7 @@ const AddNewsPage = () => {
     try {
       setLoading(true);
       const deleteBlog = await axios.delete(
-        `http://localhost:3000/news/deleteNewsByName/${name}/${id}`
+        `https://armariumbackend-production.up.railway.app/news/deleteNewsByName/${name}/${id}`
       );
       message.success("Xəbər uğurla silindi");
       getAllNews();
@@ -71,9 +73,14 @@ const AddNewsPage = () => {
       formData.append("description", description);
       formData.append("cardDescription", cardDescription);
       const addData = await axios.post(
-        `http://localhost:3000/news/addNews/${id}`,
+        `https://armariumbackend-production.up.railway.app/news/addNews/${id}`,
         formData
       );
+
+      setCoverImage("");
+      setNewsName("");
+      setNewsDescription("");
+      setNewsCardDescription("");
       getAllNews();
       setLoading(false);
     } catch (error) {
@@ -99,7 +106,7 @@ const AddNewsPage = () => {
                   <div className="card" key={i}>
                     <div className="image">
                       <img
-                        src={`http://localhost:3000/images/${e?.coverImage}`}
+                        src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                         alt={`${e?.name}`}
                       />
                     </div>

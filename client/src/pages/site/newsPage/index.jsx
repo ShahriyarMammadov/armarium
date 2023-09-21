@@ -14,7 +14,9 @@ const NewsPage = () => {
 
   const getNewsData = async () => {
     try {
-      let data = await axios.get(`http://localhost:3000/news/allNews`);
+      let data = await axios.get(
+        `https://armariumbackend-production.up.railway.app/news/allNews`
+      );
       setData(data.data);
       setLoading(false);
     } catch (error) {
@@ -32,10 +34,17 @@ const NewsPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Xəbərlər</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
-      <div className="backImage">
-        {/* <img src={backImage} alt="Armarium" /> */}
-      </div>
+      <div className="backImage"></div>
       <div className="newsPage container">
         <div className="navigation">
           <span>
@@ -59,7 +68,7 @@ const NewsPage = () => {
                     <div className="image">
                       <Link to={`/xeberler/${e?._id}`}>
                         <img
-                          src={`http://localhost:3000/images/${e?.coverImage}`}
+                          src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                           alt={`${e?.name}`}
                         />
                       </Link>

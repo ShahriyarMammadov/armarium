@@ -1,28 +1,18 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
-import image1 from "../../assets/images/1.jpg";
-import image2 from "../../assets/images/2.png";
-import image3 from "../../assets/images/3.jpg";
-import image4 from "../../assets/images/4.jpg";
-import country from "../../assets/images/country_slide.jpg";
-import decor from "../../assets/images/deco.jpg";
-import retro from "../../assets/images/retro1-1.jpg";
-import vintage from "../../assets/images/vintage.jpg";
+import alinda from "../../assets/carouselImage/alinda.jpg";
+import beigeGold from "../../assets/carouselImage/beigeGold.jpg";
+import inova from "../../assets/carouselImage/inova.jpeg";
+import lika from "../../assets/carouselImage/lika.jpg";
+import marine from "../../assets/carouselImage/marine.jpg";
+import tenedos from "../../assets/carouselImage/tenedos.jpg";
 
 const Carousel = () => {
   // const [isHovered, setIsHovered] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const images = [
-    retro,
-    vintage,
-    image1,
-    image2,
-    image3,
-    image4,
-    decor,
-    country,
-  ];
+  const images = [alinda, beigeGold, inova, lika, marine, tenedos];
+
   const nextSlide = () => {
     setActiveIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
@@ -49,14 +39,12 @@ const Carousel = () => {
   }, []);
 
   const imageDecorText = [
-    "Retro",
-    "Vintage",
-    "Asena",
-    "Ormane",
-    "New Model",
-    "Galaxy",
-    "Decor",
-    "Country",
+    "Alinda",
+    "Beige Gold",
+    "Inova",
+    "Lika",
+    "Marine",
+    "Tenedos",
   ];
 
   return (

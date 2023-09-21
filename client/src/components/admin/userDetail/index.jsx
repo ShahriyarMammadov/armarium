@@ -48,7 +48,7 @@ const UserDetailComponent = ({ data }) => {
           <Image
             width={100}
             height={100}
-            src={`http://localhost:3000/images/${data?.user?.profilePhoto}`}
+            src={`https://armariumbackend-production.up.railway.app/images/${data?.user?.profilePhoto}`}
             alt={`${data?.name}`}
           />
         </>

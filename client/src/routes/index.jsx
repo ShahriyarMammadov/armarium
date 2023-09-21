@@ -16,6 +16,8 @@ import BlogPage from "../pages/site/blogPage";
 import BlogDetailPage from "../pages/site/blogDetailPage";
 import ReferencesPage from "../pages/site/referencesPage";
 import DashBoard from "../pages/admin/dashBoard";
+import AllDoorPage from "../pages/site/allDoorpage";
+import FurniturePage from "../pages/site/furniturePage";
 
 const ROUTES = [
   {
@@ -31,7 +33,7 @@ const ROUTES = [
         element: <ModelsDetailPage />,
       },
       {
-        path: "/mebel/all_models",
+        path: "/mebeller/all_models",
         element: <AllModelsPage />,
       },
       {
@@ -65,6 +67,14 @@ const ROUTES = [
       {
         path: "xeberler/blog/:id",
         element: <BlogDetailPage />,
+      },
+      {
+        path: "/mebeller",
+        element: <FurniturePage />,
+      },
+      {
+        path: "/mebeller/qapilar",
+        element: <AllDoorPage />,
       },
       {
         path: "vakansiyalar",

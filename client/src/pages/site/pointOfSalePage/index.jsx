@@ -24,7 +24,7 @@ const PointOfSalesPages = () => {
       }
       setLoading(true);
       const { data } = await axios.post(
-        `http://localhost:3000/writeToUs/addWriteToUs`,
+        `https://armariumbackend-production.up.railway.app/writeToUs/addWriteToUs`,
         {
           fullName,
           email,
@@ -45,12 +45,22 @@ const PointOfSalesPages = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Satış Nöqtələri</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
       <div className="backImage">
         <iframe
-          src="https://maps.google.com/maps?q=xirdalan%20dairesi&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+          src="https://maps.google.com/maps?&amp;hl=en&amp;q=40.445080, 49.778401&amp;t=p&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
           id="gmap_canvas"
           frameborder="0"
+          maptype="terrain"
           scrolling="no"
         ></iframe>
       </div>
@@ -108,14 +118,12 @@ const PointOfSalesPages = () => {
               Sumqayıt şossesi, döngə 1, n50 (Xırdalan dairəsi tərəf)
             </address>
 
-            <a href="tel:+993134473" className="tel">
-              {t("Telefon")}: +99455 415 2515
+            <a href="tel:+99512908127" className="tel">
+              {t("Telefon")}: +99451 290 8127
             </a>
             <a href="mailto:salam">Email: armarium@armarium.az</a>
 
-            <p className="contactAbout">
-              {t("Əlaqədar Şəxs")}: Fırat Yıldırım
-            </p>
+            <p className="contactAbout">{t("Əlaqədar Şəxs")}: Fırat Yıldırım</p>
           </div>
         </div>
 

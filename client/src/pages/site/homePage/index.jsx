@@ -1,13 +1,12 @@
 import React from "react";
 import "./index.scss";
 import Carousel from "../../../components/carousel";
-import videoImg from "../../../assets/images/15.jpg";
-import backImg from "../../../assets/images/16.png";
+import videoImg from "../../../assets/carouselImage/alinda.jpg";
+import backImg from "../../../assets/carouselImage/beigegold.jpg";
 import CardComponent from "../../../components/card";
 import ModelsComponent from "../../../components/models";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
-import WhyArmariumPage from "../../../components/whyArmarium";
 import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
@@ -20,6 +19,15 @@ const HomePage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Xəyallarınız Gerçəkləşdirək</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
       <section id="section1" className="imageSlider">
         <Carousel />

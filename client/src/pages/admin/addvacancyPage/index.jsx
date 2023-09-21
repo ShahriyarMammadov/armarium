@@ -17,7 +17,7 @@ const AddVacancyPage = () => {
   const getAllVacancies = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/vacancy/allVacancy`
+        `https://armariumbackend-production.up.railway.app/vacancy/allVacancy`
       );
       setAllVacancies(data);
       setLoading(false);
@@ -35,7 +35,7 @@ const AddVacancyPage = () => {
     try {
       console.log(name);
       const deleteVacancy = await axios.delete(
-        `http://localhost:3000/vacancy/deleteVacancyByName/${name}/${id}`
+        `https://armariumbackend-production.up.railway.app/vacancy/deleteVacancyByName/${name}/${id}`
       );
       message.success("vakansiya uğurla silindi");
       getAllVacancies();
@@ -55,7 +55,7 @@ const AddVacancyPage = () => {
       }
       setLoading(true);
       const addData = await axios.post(
-        `http://localhost:3000/vacancy/addVacancy/${id}`,
+        `https://armariumbackend-production.up.railway.app/vacancy/addVacancy/${id}`,
         {
           name,
           description,
@@ -114,9 +114,7 @@ const AddVacancyPage = () => {
       </>
     ),
   }));
-
-  console.log("items", items);
-
+  
   return (
     <div>
       {loading ? (

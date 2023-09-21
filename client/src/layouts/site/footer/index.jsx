@@ -29,15 +29,13 @@ const Footer = () => {
               </div>
               <div className="text">
                 <p>
-                  <a href="tel: +994503134473">
-                    {t("Telefon")}: +99450 313 4473
-                  </a>
+                  <a href="tel: +994512908127">{t("Telefon")}: +99451 290 8127</a>
                 </p>
               </div>
               <div className="text">
                 <Link to={"/"}>
                   <p>
-                    <a href="tel:+994503134473">Faks: +99450 313 4473</a>
+                    <a href="tel:+994512908127">Faks: +99451 290 8127</a>
                   </p>
                 </Link>
               </div>
@@ -74,13 +72,22 @@ const Footer = () => {
                 <h4>{t("Bizi İzləyin")}</h4>
               </div>
               <div className="text">
-                <a href="" target="_blank">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100094702263939&mibextid=b06tZ0"
+                  target="_blank"
+                >
                   <i className="fa-brands fa-facebook-f"></i>
                 </a>
-                <a href="" target="_blank">
+                <a
+                  href="https://www.instagram.com/armariumkitchendoor/"
+                  target="_blank"
+                >
                   <i className="fa-brands fa-instagram"></i>
                 </a>
-                <a href="" target="_blank">
+                <a
+                  href="https://youtube.com/@ArmariumKitchenDoor?si=j7Qwq0W9UVI8LdtA"
+                  target="_blank"
+                >
                   <i className="fa-brands fa-youtube"></i>
                 </a>
               </div>
@@ -99,7 +106,7 @@ const Footer = () => {
 
           <div className="map">
             <iframe
-              src="https://maps.google.com/maps?q=Azerbaijan%20Technical%20University&amp;t=k&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
+              src="https://maps.google.com/maps?q=40.445080,49.778401&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=&amp;output=embed"
               id="gmap_canvas"
               frameborder="0"
               scrolling="no"

@@ -14,6 +14,7 @@ import AddDecorPage from "../addDecorPage";
 import AddReferencePage from "../addReferencePage";
 import AdminHeader from "../../../layouts/admin/header";
 import ContactPage from "../contactPage";
+import AddDoorPage from "../addDoorPage";
 
 const DashBoard = () => {
   const { Header, Content, Footer, Sider } = Layout;
@@ -48,30 +49,20 @@ const DashBoard = () => {
     },
     {
       key: "6",
+      title: "Qapı Əlavə Et",
+      icon: <i className="fa-solid fa-door-open"></i>,
+    },
+    {
+      key: "7",
       title: "Referans Əlavə Et",
       icon: <i className="fa-regular fa-building"></i>,
     },
     {
-      key: "7",
+      key: "8",
       title: "Əlaqə",
       icon: <i className="fa-regular fa-id-badge"></i>,
     },
   ]);
-
-  // const items = [
-  //   UserOutlined,
-  //   VideoCameraOutlined,
-  //   UploadOutlined,
-  //   BarChartOutlined,
-  //   CloudOutlined,
-  //   AppstoreOutlined,
-  //   TeamOutlined,
-  //   ShopOutlined,
-  // ].map((icon, index) => ({
-  //   key: String(index + 1),
-  //   icon: React.createElement(icon),
-  //   label: `nav ${index + 1}`,
-  // }));
 
   const {
     token: { colorBgContainer },
@@ -81,7 +72,7 @@ const DashBoard = () => {
 
   const getUserData = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/user/userDataById/${id}`,
+      `https://armariumbackend-production.up.railway.app/user/userDataById/${id}`,
       { withCredentials: true }
     );
     setLoading(false);
@@ -94,15 +85,6 @@ const DashBoard = () => {
 
   const handleMenuClick = async (item) => {
     setSelectedMenuItem(item.key);
-    // console.log(item.key);
-
-    // if (item.key === "1") {
-    //   const { data } = await axios.get(
-    //     `http://localhost:3000/user/userDataById`
-    //   );
-    //   setUserData(data);
-    //   console.log(data);
-    // }
   };
 
   const renderContent = () => {
@@ -130,8 +112,10 @@ const DashBoard = () => {
       case "5":
         return <AddDecorPage />;
       case "6":
-        return <AddReferencePage />;
+        return <AddDoorPage />;
       case "7":
+        return <AddReferencePage />;
+      case "8":
         return <ContactPage />;
       default:
         return null;

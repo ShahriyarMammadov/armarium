@@ -40,7 +40,7 @@ const addReferencePage = () => {
   const getAllReference = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/reference/allReferences`
+        `https://armariumbackend-production.up.railway.app/reference/allReferences`
       );
       setAllReference(data);
       setLoading(false);
@@ -58,7 +58,7 @@ const addReferencePage = () => {
     try {
       setLoading(true);
       const deleteDecor = await axios.delete(
-        `http://localhost:3000/reference/deleteReferanceByName/${name}/${id}`
+        `https://armariumbackend-production.up.railway.app/reference/deleteReferanceByName/${name}/${id}`
       );
       message.success("Dekor uğurla silindi");
       getAllReference();
@@ -87,11 +87,12 @@ const addReferencePage = () => {
       });
 
       const addData = await axios.post(
-        `http://localhost:3000/reference/addReference/${id}`,
+        `https://armariumbackend-production.up.railway.app/reference/addReference/${id}`,
         formData
       );
       message.success(addData?.data?.message);
-
+      setCoverImage("");
+      setİmages([]);
       getAllReference();
       setLoading(false);
     } catch (error) {
@@ -116,14 +117,15 @@ const addReferencePage = () => {
                 <div className="grid-container container">
                   {reference?.map((e, i) => {
                     const imageUrls = e?.images.map(
-                      (image) => `http://localhost:3000/images/${image}`
+                      (image) =>
+                        `https://armariumbackend-production.up.railway.app/images/${image}`
                     );
                     return (
                       <>
                         <div style={{ position: "relative" }} key={i}>
                           <Image.PreviewGroup items={imageUrls} key={i}>
                             <Image
-                              src={`http://localhost:3000/images/${e?.coverImage}`}
+                              src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                             />
                           </Image.PreviewGroup>
                           <Text

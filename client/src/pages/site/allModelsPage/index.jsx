@@ -12,7 +12,9 @@ const AllModelsPage = () => {
 
   const getAllDecors = async () => {
     try {
-      const data = await axios.get("http://localhost:3000/decor/allDecor");
+      const data = await axios.get(
+        "https://armariumbackend-production.up.railway.app/decor/allDecor"
+      );
       setDecors(data?.data);
       setLoading(false);
     } catch (error) {
@@ -30,6 +32,15 @@ const AllModelsPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Bütün Modellər</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
       <div className="coverImage">
         <div className="backImage"></div>
@@ -47,7 +58,7 @@ const AllModelsPage = () => {
                     return (
                       <Link to={`/model/${e?.name}`} key={i}>
                         <img
-                          src={`http://localhost:3000/images/${e?.coverImage}`}
+                          src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                           alt={`${e?.name}`}
                         />
                         <div className="text hidden">

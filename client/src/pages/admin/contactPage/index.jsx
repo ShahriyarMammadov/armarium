@@ -14,7 +14,7 @@ const ContactPage = () => {
   const getContactMe = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/contactMe/getContactMe`
+        `https://armariumbackend-production.up.railway.app/contactMe/getContactMe`
       );
       setContactMe(data);
     } catch (error) {
@@ -25,7 +25,7 @@ const ContactPage = () => {
   const getWriteToUs = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:3000/writeToUs/allWriteToUs`
+        `https://armariumbackend-production.up.railway.app/writeToUs/allWriteToUs`
       );
       setWriteToUs(data);
       setLoading(false);

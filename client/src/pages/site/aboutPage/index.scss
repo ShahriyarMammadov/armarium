@@ -23,6 +23,10 @@
     .aboutPage {
         padding: 0px 15px 40px 15px;
 
+        @media only screen and (max-width: 425px) {
+            text-align: justify;
+        }
+
         .about {
             text-align: center;
         }

@@ -37,7 +37,9 @@ const addDecorPage = () => {
 
   const getAllDecor = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/decor/allDecor`);
+      const { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/decor/allDecor`
+      );
       setAllDecor(data);
       setLoading(false);
     } catch (error) {
@@ -50,7 +52,7 @@ const addDecorPage = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `http://localhost:3000/selectedDecor/getSelectedDecors`
+        `https://armariumbackend-production.up.railway.app/selectedDecor/getSelectedDecors`
       );
       setSelectedDecor(data);
       setLoading(false);
@@ -65,7 +67,7 @@ const addDecorPage = () => {
         return message.warning("Dekor Adı Qeyd Edin!");
       }
       const { data } = await axios.post(
-        `http://localhost:3000/selectedDecor/addNameToSelectedDecor`,
+        `https://armariumbackend-production.up.railway.app/selectedDecor/addNameToSelectedDecor`,
         { selectedNames: selectedDecorName }
       );
       console.log(data);
@@ -82,7 +84,7 @@ const addDecorPage = () => {
     try {
       console.log(name);
       const { data } = await axios.delete(
-        `http://localhost:3000/selectedDecor/removeNameFromSelectedDecor?name=${name}`
+        `https://armariumbackend-production.up.railway.app/selectedDecor/removeNameFromSelectedDecor?name=${name}`
       );
       getSelectedDecor();
       message.success(data.message);
@@ -100,7 +102,7 @@ const addDecorPage = () => {
     try {
       setLoading(true);
       const deleteDecor = await axios.delete(
-        `http://localhost:3000/decor/deleteDecorByName/${name}/${id}`
+        `https://armariumbackend-production.up.railway.app/decor/deleteDecorByName/${name}/${id}`
       );
       message.success("Dekor uğurla silindi");
       getAllDecor();
@@ -136,12 +138,16 @@ const addDecorPage = () => {
       });
 
       const { data } = await axios.post(
-        `http://localhost:3000/decor/addDecor/${id}`,
+        `https://armariumbackend-production.up.railway.app/decor/addDecor/${id}`,
         formData
       );
       message.success(data.message);
-      getAllDecor();
+      setCoverImage("");
+      setİmages([]);
+      setDecorDescription("");
+      setDecorDescription("");
       setLoading(false);
+      getAllDecor();
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -171,7 +177,7 @@ const addDecorPage = () => {
                       <>
                         <Link to={`#`} key={i}>
                           <img
-                            src={`http://localhost:3000/images/${e?.coverImage}`}
+                            src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                             alt={`${e?.name}`}
                           />
                           <div className="text hidden">

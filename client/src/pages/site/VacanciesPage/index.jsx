@@ -14,7 +14,9 @@ const VacanciesPage = () => {
 
   const getAllData = async () => {
     try {
-      const data = await axios.get(`http://localhost:3000/vacancy/allVacancy`);
+      const data = await axios.get(
+        `https://armariumbackend-production.up.railway.app/vacancy/allVacancy`
+      );
       setAllData(data.data);
       setLoading(false);
     } catch (error) {
@@ -50,6 +52,15 @@ const VacanciesPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Vakansiyalar</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
       <div className="backImage"></div>
 

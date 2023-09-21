@@ -30,7 +30,7 @@ const FloatButtonComponent = () => {
       setLoading(true);
       if (phoneNumber.trim().length !== 0) {
         const data = await axios.post(
-          `http://localhost:3000/contactMe/addContactMe`,
+          `https://armariumbackend-production.up.railway.app/contactMe/addContactMe`,
           { phoneNumber: firstNum + phoneNumber }
         );
         success();

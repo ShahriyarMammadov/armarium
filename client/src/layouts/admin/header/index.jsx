@@ -21,8 +21,8 @@ const AdminHeader = ({ data }) => {
 
           <div className="profilePhoto">
             <img
-              // src={`http://localhost:3000/images/${data?.profilePhoto}`}
-              src={logo}
+              src={`https://armariumbackend-production.up.railway.app/images/${data?.profilePhoto}`}
+              // src={logo}
               alt="profilePhoto"
             />
           </div>

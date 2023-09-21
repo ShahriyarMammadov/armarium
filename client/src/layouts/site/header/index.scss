@@ -6,11 +6,19 @@ header {
     padding: 10px 5px;
     z-index: 10;
     // backdrop-filter: blur(5px);
-    transition: all 0.5s;
+    transition: all 0.3s;
 
-    @media only screen and (max-width: 500px) {
+    &#resize {
+        margin-top: -15px;
+    }
+
+
+    @media only screen and (max-width: 768px) {
         height: 90px;
 
+        &#resize {
+            margin-top: 0 !important;
+        }
     }
 
     hr {
@@ -19,6 +27,10 @@ header {
         background: #878685;
 
         &.inactive {
+            display: none;
+        }
+
+        @media only screen and (max-width: 768px) {
             display: none;
         }
     }
@@ -74,27 +86,24 @@ header {
 
     #header {
 
-        &.resize {
-            margin-top: -20px;
-
-            @media only screen and (max-width: 500px) {
-                margin-top: 0;
-            }
-        }
-
         a {
             color: white;
             text-decoration: none;
         }
 
         .headerTop {
+            padding: 5px 10px;
+            height: 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-height: 100px;
             opacity: 1;
-            transition: all 0.3s ease-in-out;
-            overflow: hidden;
+
+            @media only screen and (max-width: 768px) {
+                display: none;
+                height: 0 !important;
+                padding: 0 !important;
+            }
 
             .search {
                 padding: 8px;
@@ -109,10 +118,6 @@ header {
                 i {
                     color: white;
                 }
-            }
-
-            @media only screen and (max-width: 500px) {
-                display: none;
             }
 
             .fa-right-to-bracket {

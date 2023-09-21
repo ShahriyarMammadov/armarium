@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import backImage from "../../../assets/images/1.jpg";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { Image } from "antd";
 import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 const BlogDetailPage = () => {
   const [detailData, setDetailData] = useState([]);
@@ -14,13 +14,15 @@ const BlogDetailPage = () => {
   const getBlogByName = async () => {
     try {
       const data = await axios.get(
-        `http://localhost:3000/blog/blogByName/${id}`
+        `https://armariumbackend-production.up.railway.app/blog/blogByName/${id}`
       );
       setDetailData(data?.data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     getBlogByName();
@@ -31,23 +33,30 @@ const BlogDetailPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | {id}</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
 
-      <div className="backImage">
-        <img src={backImage} alt="image" />
-      </div>
+      <div className="backImage"></div>
 
       <div className="blogDetail container">
         <div className="navigation">
           <span>
             <Link to={"/"}>
-              ƏSAS SƏHİFƏ <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/xeberler"}>
-              XƏBƏRLƏR <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("XƏBƏRLƏR")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <Link to={"/xeberler/blog"}>
-              BLOG <i className="fa-solid fa-caret-right"></i>{" "}
+              {t("BLOQ")} <i className="fa-solid fa-caret-right"></i>{" "}
             </Link>
             <span>{id.toLocaleUpperCase()}</span>
           </span>
@@ -67,7 +76,7 @@ const BlogDetailPage = () => {
         </div>
         <Image
           className="blogImage"
-          src={`http://localhost:3000/images/${detailData[0]?.coverImage}`}
+          src={`https://armariumbackend-production.up.railway.app/images/${detailData[0]?.coverImage}`}
           alt={`${detailData[0]?.name}`}
         />
       </div>

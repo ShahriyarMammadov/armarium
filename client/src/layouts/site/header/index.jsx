@@ -9,7 +9,6 @@ import { Collapse } from "antd";
 import { useTranslation } from "react-i18next";
 import i18n from "../../../locales/i18n";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 
 import en from "../../../assets/images/en.jpg";
 import tr from "../../../assets/images/tr.jpg";
@@ -46,9 +45,6 @@ const Header = () => {
   // HEADERTOP VISIBLE
   const threshold = 50;
   const scrollThreshold = 150;
-
-  // COOKIE
-  const [cookies, setCookie, removeCookie] = useCookies(["jwt"]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -196,11 +192,25 @@ const Header = () => {
       children: (
         <>
           <Link
-            to={"/mebel/all_models"}
+            to={"/mebeller/all_models"}
+            className="drawerATeg"
+            onClick={onClose}
+          >
+            MEBELLƏR
+          </Link>
+          <Link
+            to={"/mebeller/all_models"}
             className="drawerATeg"
             onClick={onClose}
           >
             BÜTÜN MODELLLƏR
+          </Link>
+          <Link
+            to={"/mebeller/qapilar"}
+            className="drawerATeg"
+            onClick={onClose}
+          >
+            QAPILAR
           </Link>
         </>
       ),
@@ -269,7 +279,7 @@ const Header = () => {
     try {
       setLoading(true);
       let data = await axios.post(
-        `http://localhost:3000/auth/signIn`,
+        `https://armariumbackend-production.up.railway.app/auth/signIn`,
         {
           email: email,
           password: password,
@@ -311,7 +321,7 @@ const Header = () => {
       setLoading(true);
       const userID = sessionStorage.getItem("id");
       const { data } = await axios.post(
-        "http://localhost:3000/checkAdmin",
+        "https://armariumbackend-production.up.railway.app/checkAdmin",
         {
           userID: userID,
         },
@@ -356,7 +366,7 @@ const Header = () => {
   const onSearch = async (value, _e) => {
     try {
       const { data } = await axios.post(
-        `http://localhost:3000/search/searchByName/${value.toLocaleLowerCase()}`
+        `https://armariumbackend-production.up.railway.app/search/searchByName/${value.toLocaleLowerCase()}`
       );
       setSearchResult(data);
     } catch (error) {
@@ -365,14 +375,17 @@ const Header = () => {
   };
 
   return (
-    <header className={`${colorChange ? "colorChange" : ""}`}>
+    <header
+      className={`${colorChange ? "colorChange" : ""}`}
+      id={`${visible ? "" : "resize"}`}
+    >
       {contextHolder}
-      <div id="header" className={`container ${visible ? "" : "resize"}`}>
+      <div id="header" className="container">
         <div className={`${visible ? "active" : "inactive"} headerTop`}>
           <div className="left">
             <div className="icon">
               <a
-                href="https://www.linkedin.com/company/armarium-kitchen-doors/"
+                href="https://www.instagram.com/armariumkitchendoor/"
                 target="_blank"
                 title="Instagram"
               >
@@ -408,8 +421,8 @@ const Header = () => {
               </a>
             </div>
             <div className="telephoneNumber">
-              <a href="tel:+994503134473">
-                {t("ƏLAQƏ")}: <span>+99450 313 4473</span>
+              <a href="tel:+994512908127">
+                {t("ƏLAQƏ")}: <span>+99451 290 8127</span>
               </a>
             </div>
           </div>
@@ -468,7 +481,7 @@ const Header = () => {
                                   <p>{e?.name}</p>
                                   {e?.coverImage ? (
                                     <img
-                                      src={`http://localhost:3000/images/${e?.coverImage}`}
+                                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                                       alt="error"
                                     />
                                   ) : null}
@@ -536,7 +549,7 @@ const Header = () => {
           />
         </Modal>
 
-        <hr className={`${visible ? "active" : "inactive"} headerTop`} />
+        <hr className={`${visible ? "active" : "inactive"}`} />
 
         <div className="headerBottom container">
           <div className="logo">
@@ -560,13 +573,9 @@ const Header = () => {
                     Email: armarium@armarium.az
                   </a>
                 </div>
-                <address>
-                  İnterpak Ahşap ve Ürünleri San. Tic. Ltd. Şti. Atatürk
-                  Olimpiyat Parkı Yolu E6 Gişeler Yanı MASKO Mobilya Kenti 2-B
-                  Blok No:22-24 İkitelli / İSTANBUL , TÜRKİYE
-                </address>
+                <address>Sumqayıt şossesi, döngə 1, n50</address>
                 <a
-                  href="https://www.google.com/maps/place/X%C4%B1rdalan+dair%D3%99si/@40.4409891,49.7703011,17z/data=!3m1!4b1!4m6!3m5!1s0x4030866c1ef7474d:0x7c7d8e76b0d5768b!8m2!3d40.440985!4d49.772876!16s%2Fg%2F11b5yvnbd3?entry=ttu"
+                  href="https://www.google.com/maps/place/40%C2%B026'43.9%22N+49%C2%B046'39.9%22E/@40.4455163,49.7752114,17.05z/data=!4m4!3m3!8m2!3d40.4455261!4d49.7777519?entry=ttu"
                   className="googleMaps"
                   target="_blank"
                 >

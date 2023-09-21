@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.scss";
-// import guaranteBackGif from "../../../assets/backgroundImages/zemanet.png";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
@@ -13,10 +12,17 @@ const GuaranteePage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Zəmanət</title>
+        <meta property="og:image" content="/as.png" />
+        <meta
+          name="description"
+          content="Armarium | Hər Zaman Sizinlə. armarium"
+        />
+        <meta
+          name="keywords"
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+        ></meta>
       </Helmet>
-      <div className="backImage">
-        {/* <img src={guaranteBackGif} alt="Welcome" /> */}
-      </div>
+      <div className="backImage"></div>
       <div className="container">
         <div className="navigation">
           <span>

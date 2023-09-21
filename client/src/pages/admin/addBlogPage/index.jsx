@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Button, Collapse, Form, Input, Popconfirm, message } from "antd";
+import { Button, Form, Input, Popconfirm, message } from "antd";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
 
 const AddBlogPage = () => {
@@ -23,7 +23,9 @@ const AddBlogPage = () => {
 
   const getAllBlog = async () => {
     try {
-      const { data } = await axios.get(`http://localhost:3000/blog/getAllBlog`);
+      const { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/blog/getAllBlog`
+      );
       setAllBlog(data);
       setLoading(false);
     } catch (error) {
@@ -40,7 +42,7 @@ const AddBlogPage = () => {
     try {
       setLoading(true);
       const deleteBlog = await axios.delete(
-        `http://localhost:3000/blog/deleteBlogByName/${name}/${id}`
+        `https://armariumbackend-production.up.railway.app/blog/deleteBlogByName/${name}/${id}`
       );
       message.success("Blog uğurla silindi");
       getAllBlog();
@@ -68,9 +70,12 @@ const AddBlogPage = () => {
       formData.append("name", name);
       formData.append("description", description);
       const addData = await axios.post(
-        `http://localhost:3000/blog/addBlog/${id}`,
+        `https://armariumbackend-production.up.railway.app/blog/addBlog/${id}`,
         formData
       );
+      setBlogName("");
+      setCoverImage("");
+      setBlogDescription("");
       getAllBlog();
       setLoading(false);
     } catch (error) {
@@ -96,7 +101,7 @@ const AddBlogPage = () => {
                   return (
                     <div className="blog" key={i}>
                       <img
-                        src={`http://localhost:3000/images/${e?.coverImage}`}
+                        src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                         alt={`${e?.name}`}
                       />
 

@@ -26,12 +26,15 @@ const NavBarDropdownComponent = () => {
       </div>
 
       <div className="dropdown">
-        <NavLink to={"/features"} className="parent">
+        <NavLink to={"/mebeller/all_models"} className="parent">
           {t("MEBEL")}
         </NavLink>
         <div className="dropdown-content">
-          <NavLink to={"/mebel/all_models"} title="Photo Proofing">
+          <NavLink to={"/mebeller/all_models"} title="Photo Proofing">
             <div className="text">{t("BÜTÜN MODELLƏR")}</div>
+          </NavLink>
+          <NavLink to={"/mebeller/qapilar"} title="Photo Proofing">
+            <div className="text">{t("QAPILAR")}</div>
           </NavLink>
         </div>
       </div>

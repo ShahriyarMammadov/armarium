@@ -15,7 +15,7 @@ const ModelsComponent = () => {
   const getSelectedModelsData = async () => {
     try {
       const data = await axios.get(
-        "http://localhost:3000/selectedDecor/getSelectedDecors"
+        "https://armariumbackend-production.up.railway.app/selectedDecor/getSelectedDecors"
       );
       setSelectedData(data?.data);
     } catch (error) {
@@ -38,7 +38,7 @@ const ModelsComponent = () => {
           </div>
           <button
             onClick={() => {
-              navigate("/mebel/all_models");
+              navigate("/mebeller/all_models");
             }}
           >
             {t("BÜTÜN MODELLƏR")}
@@ -54,7 +54,7 @@ const ModelsComponent = () => {
                 <Link to={`/model/${e?.name}`}>
                   <div className="image" key={i}>
                     <img
-                      src={`http://localhost:3000/images/${e?.coverImage}`}
+                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
                       alt={`${e?.name}`}
                     />
                     <p className="decorName">{e?.name}</p>
