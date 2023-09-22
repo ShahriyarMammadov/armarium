@@ -1,30 +1,19 @@
 import React from "react";
 import "./index.scss";
 import logo from "../../../assets/images/logo.png";
+import userPhoto from "../../../assets/adminuser.png";
 
 const AdminHeader = ({ data }) => {
-  console.log(data);
   return (
-    <div id="header">
-      <div className="header">
+    <div id="adminHeader">
+      <div className="adminHeader">
         <div className="left">
           <img src={logo} alt="Logo" />
         </div>
 
         <div className="right">
-          {/* <Badge count={8}>
-            <i
-              className="fa-regular fa-bell"
-              style={{ fontSize: "30px", cursor: "pointer" }}
-            ></i>
-          </Badge> */}
-
           <div className="profilePhoto">
-            <img
-              src={`https://armariumbackend-production.up.railway.app/images/${data?.profilePhoto}`}
-              // src={logo}
-              alt="profilePhoto"
-            />
+            <img src={userPhoto} alt="profilePhoto" />
           </div>
         </div>
       </div>

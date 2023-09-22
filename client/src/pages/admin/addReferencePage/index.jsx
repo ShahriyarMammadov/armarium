@@ -109,7 +109,7 @@ const addReferencePage = () => {
           <h4>BÜTÜN REFERANSLAR</h4>
           {reference.length === 0 ? (
             <>
-              <h1>HEÇ BİR REFERANS PAYLAŞMAMISINIZ.</h1>
+              <h1>HEÇ BİR REFERANS PAYLAŞMAMIŞSINIZ.</h1>
             </>
           ) : (
             <div id="reference">
@@ -200,6 +200,10 @@ const addReferencePage = () => {
       >
         <Form.Item label="Referansın Adı:">
           <Input
+            style={{
+              padding: "10px",
+              fontWeight: "700",
+            }}
             onChange={(e) => {
               setReferenceName(e.target.value);
             }}
@@ -208,7 +212,7 @@ const addReferencePage = () => {
         <Form.Item label="Örtük Şəkli: ">
           <input type="file" name="coverImage" onChange={handleFileChange} />
         </Form.Item>
-        <Form.Item label="Şəklillər: ">
+        <Form.Item label="Referansa Aid Şəklillər: ">
           <input
             type="file"
             name="images"
@@ -223,7 +227,7 @@ const addReferencePage = () => {
               fontWeight: "900",
             }}
           >
-            BİR DƏFƏYƏ MAKSİMUM 14 ƏDƏD ŞƏKİL YÜKLƏMƏK MÜMKÜNDÜR
+            BİR DƏFƏYƏ MAKSİMUM 14 ƏDƏD ŞƏKİL YÜKLƏMƏK MÜMKÜNDÜR.
           </p>
         </Form.Item>
 

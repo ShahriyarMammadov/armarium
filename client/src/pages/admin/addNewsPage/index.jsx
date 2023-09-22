@@ -4,6 +4,7 @@ import { Button, Form, Input, Popconfirm, message } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
+import TextArea from "antd/es/input/TextArea";
 
 const AddNewsPage = () => {
   const { id } = useParams();
@@ -97,7 +98,7 @@ const AddNewsPage = () => {
           <h4>BÜTÜN XƏBƏRLƏR</h4>
           {news.length === 0 ? (
             <>
-              <h1>HEÇ BİR XƏBƏR PAYLAŞMAMISINIZ.</h1>
+              <h1>HEÇ BİR XƏBƏR PAYLAŞMAMIŞSINIZ.</h1>
             </>
           ) : (
             <div className="cards">
@@ -188,31 +189,25 @@ const AddNewsPage = () => {
       >
         <Form.Item label="Xəbərin Adı:">
           <Input
+            style={{
+              padding: "10px",
+              fontWeight: "700",
+            }}
             onChange={(e) => {
               setNewsName(e.target.value);
             }}
           />
         </Form.Item>
-        <Form.Item label="Qısa Məlumat:">
-          <Input
+        <Form.Item label="Xəbər Haqqında Qısa Məlumat:">
+          <TextArea
             onChange={(e) => {
               setNewsCardDescription(e.target.value);
             }}
           />
-          <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            MƏLUMAT ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
-            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
-          </p>
         </Form.Item>
-        <Form.Item label="Xəbər Məlumatı: ">
-          <Input
+        <Form.Item label="Ətraflı Məlumat: ">
+          <TextArea
+            style={{ height: "100px" }}
             onChange={(e) => {
               setNewsDescription(e.target.value);
             }}
@@ -225,7 +220,7 @@ const AddNewsPage = () => {
               fontWeight: "900",
             }}
           >
-            TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
+            MƏLUMAT ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
             CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
           </p>
         </Form.Item>

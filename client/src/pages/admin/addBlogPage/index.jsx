@@ -4,6 +4,7 @@ import { Button, Form, Input, Popconfirm, message } from "antd";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import LoadingComponent from "../../../components/loading";
+import TextArea from "antd/es/input/TextArea";
 
 const AddBlogPage = () => {
   const { id } = useParams();
@@ -186,6 +187,10 @@ const AddBlogPage = () => {
       >
         <Form.Item label="Bloqun Adı:">
           <Input
+            style={{
+              padding: "10px",
+              fontWeight: "700",
+            }}
             onChange={(e) => {
               setBlogName(e.target.value);
             }}
@@ -202,7 +207,8 @@ const AddBlogPage = () => {
           </p>
         </Form.Item>
         <Form.Item label="Bloq Məlumatı: ">
-          <Input
+          <TextArea
+            style={{ height: "100px" }}
             onChange={(e) => {
               setBlogDescription(e.target.value);
             }}
@@ -220,18 +226,11 @@ const AddBlogPage = () => {
           </p>
         </Form.Item>
         <Form.Item label="Örtük Şəkli: ">
-          <input type="file" name="coverImage" onChange={handleFileChange} />
-          {/* <p
-            style={{
-              color: "red",
-              fontSize: "12px",
-              margin: "0",
-              fontWeight: "900",
-            }}
-          >
-            TƏLƏBLƏR ƏLAVƏ EDƏRKƏN CÜMLƏNİN YENİ SƏTİRDƏN BAŞLAMASI ÜÇÜN ƏVVƏLKİ
-            CÜMLƏNİN SONUNA {`<br />`} ƏLAVƏ EDİN
-          </p> */}
+          <input
+            type="file"
+            name="coverImage"
+            onChange={handleFileChange}
+          />
         </Form.Item>
 
         <Form.Item label="Əlavə Edilsin?">

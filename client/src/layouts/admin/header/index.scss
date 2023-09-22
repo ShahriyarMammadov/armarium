@@ -1,14 +1,17 @@
-#header {
-    .header {
+#adminHeader {
+    height: 100px;
+    background-color: #001529;
+
+    .adminHeader {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 10px 0;
+        padding: 20px 0;
         display: flex;
         justify-content: space-between;
 
         .left {
             img {
-                width: 60px;
+                width: 40px;
             }
         }
 

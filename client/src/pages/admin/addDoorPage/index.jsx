@@ -85,7 +85,7 @@ const AddDoorPage = () => {
           <h4>BÜTÜN QAPILAR</h4>
           {doors.length === 0 ? (
             <>
-              <h1>HEÇ BİR QAPI PAYLAŞMAMISINIZ.</h1>
+              <h1>HEÇ BİR QAPI PAYLAŞMAMIŞSINIZ.</h1>
             </>
           ) : (
             <div id="doorAdmin">
@@ -158,10 +158,24 @@ const AddDoorPage = () => {
       >
         <Form.Item label="Qapının İD-si">
           <Input
+            style={{
+              padding: "10px",
+              fontWeight: "700",
+            }}
             onChange={(e) => {
               setId(e.target.value);
             }}
           />
+          <p
+            style={{
+              color: "red",
+              fontSize: "12px",
+              margin: "0",
+              fontWeight: "900",
+            }}
+          >
+            ID Yalnız bir qapıya aid olmalıdır.
+          </p>
         </Form.Item>
         <Form.Item label="Qapının Şəkli: ">
           <input type="file" name="coverImage" onChange={handleFileChange} />

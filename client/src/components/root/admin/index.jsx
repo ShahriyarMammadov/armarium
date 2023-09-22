@@ -35,7 +35,7 @@ const AdminRoot = () => {
       }
     };
 
-    // verifyUser();
+    verifyUser();
   }, [navigate]);
 
   return (

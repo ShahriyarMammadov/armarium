@@ -131,7 +131,7 @@ const DashBoard = () => {
             height: "100vh",
             position: "fixed",
             left: 0,
-            top: 115,
+            top: 100,
             bottom: 0,
           }}
         >
@@ -154,7 +154,7 @@ const DashBoard = () => {
           className="site-layout"
           style={{
             marginLeft: 200,
-            backgroundColor: "#F3F2F7",
+            backgroundColor: "#5b6668",
           }}
         >
           <Header
@@ -167,7 +167,7 @@ const DashBoard = () => {
           </Header>
           <Content
             style={{
-              margin: "80px 16px 40px 16px",
+              margin: "55px 16px 60px 16px",
               overflow: "initial",
             }}
           >
@@ -176,9 +176,12 @@ const DashBoard = () => {
           <Footer
             style={{
               textAlign: "center",
+              backgroundColor: "#293423",
+              color: "white",
+              fontWeight: "700",
             }}
           >
-            ARMARİUM
+            ARMARİUM @ 2023 created by ALLVAN AGENCY
           </Footer>
         </Layout>
       </Layout>

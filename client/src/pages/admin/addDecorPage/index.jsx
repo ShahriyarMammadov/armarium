@@ -163,7 +163,7 @@ const addDecorPage = () => {
           <h4>BÜTÜN DEKORLAR</h4>
           {decor.length === 0 ? (
             <>
-              <h1>HEÇ BİR DEKOR PAYLAŞMAMISINIZ.</h1>
+              <h1>HEÇ BİR DEKOR PAYLAŞMAMIŞSINIZ.</h1>
             </>
           ) : (
             <div id="decor">
@@ -247,6 +247,10 @@ const addDecorPage = () => {
       >
         <Form.Item label="Dekorun Adı:">
           <Input
+            style={{
+              padding: "10px",
+              fontWeight: "700",
+            }}
             onChange={(e) => {
               setDecorName(e.target.value);
             }}
@@ -254,6 +258,7 @@ const addDecorPage = () => {
         </Form.Item>
         <Form.Item label="Dekor Haqqında Məlumat: ">
           <TextArea
+            style={{ height: "100px" }}
             onChange={(e) => {
               setDecorDescription(e.target.value);
             }}
@@ -357,6 +362,10 @@ const addDecorPage = () => {
         >
           <Form.Item label="Seçilmiş Dekorun Adı:">
             <Input
+              style={{
+                padding: "10px",
+                fontWeight: "700",
+              }}
               onChange={(e) => {
                 setSelectedDecorName(e.target.value);
               }}
@@ -369,7 +378,7 @@ const addDecorPage = () => {
                 fontWeight: "900",
               }}
             >
-              DEKORUN ADI BÖYÜK HƏRFLƏ BAŞLAYIRSA İLK HƏRFİDƏ BÖYÜK ƏLAVƏ
+              DEKORUN ADI BÖYÜK HƏRFLƏ BAŞLAYIRSA İLK HƏRFDƏ BÖYÜK ƏLAVƏ
               EDİLMƏLİDİR.
             </p>
           </Form.Item>

@@ -61,6 +61,8 @@ const AddVacancyPage = () => {
           description,
         }
       );
+      setVacancyName("");
+      setVacancyDescription("");
       getAllVacancies();
       setLoading(false);
     } catch (error) {
@@ -114,7 +116,7 @@ const AddVacancyPage = () => {
       </>
     ),
   }));
-  
+
   return (
     <div>
       {loading ? (
@@ -123,7 +125,7 @@ const AddVacancyPage = () => {
         <div className="activeVacancies">
           <h4>BÜTÜN VAKANSİYALAR</h4>
           {allVacancies.length === 0 ? (
-            <h1>HEÇ BİR VAKANSİYA YOXDUR.</h1>
+            <h1>VAKANSİYA ƏLAVƏ ETMƏMİŞSİNİZ.</h1>
           ) : (
             <Collapse
               // defaultActiveKey={["1"]}
@@ -154,6 +156,11 @@ const AddVacancyPage = () => {
       >
         <Form.Item label="Vakansiyanın Adı:">
           <Input
+            className="adminAddedInput"
+            style={{
+              padding: "10px",
+              fontWeight: "700",
+            }}
             onChange={(e) => {
               setVacancyName(e.target.value);
             }}
@@ -161,6 +168,7 @@ const AddVacancyPage = () => {
         </Form.Item>
         <Form.Item label="Tələblər: ">
           <TextArea
+            style={{ height: "100px" }}
             onChange={(e) => {
               setVacancyDescription(e.target.value);
             }}
