@@ -272,87 +272,7 @@ const Header = () => {
     // console.log(key);
   };
 
-  // LOGIN
-  const navigate = useNavigate();
-
-  const login = async () => {
-    try {
-      setLoading(true);
-      let data = await axios.post(
-        `https://armariumbackend-production.up.railway.app/auth/signIn`,
-        {
-          email: email,
-          password: password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-      setLoading(false);
-
-      if (data?.data?.created) {
-        if (data?.data?.data?.role === "admin") {
-          openNotificationWithIcon(data?.data?.message, "success");
-
-          sessionStorage.setItem("id", data?.data?.data?._id);
-
-          navigate(`/admin/adminData/${data?.data?.data?._id}`);
-        } else {
-          openNotificationWithIcon("SIZ ADMIN DEYILSINIZ!!!", "warning");
-          setOpenModal(false);
-        }
-      } else {
-        openNotificationWithIcon(
-          data?.data?.message?.email
-            ? data?.data?.errors?.email
-            : data?.data?.errors?.password,
-          "error"
-        );
-      }
-    } catch (error) {
-      console.log("catch", error);
-      openNotificationWithIcon("Server Error", "error");
-      setLoading(false);
-    }
-  };
-
-  const checkAdmin = async () => {
-    try {
-      setLoading(true);
-      const userID = sessionStorage.getItem("id");
-      const { data } = await axios.post(
-        "https://armariumbackend-production.up.railway.app/checkAdmin",
-        {
-          userID: userID,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-
-      if (!data?.success) {
-        setOpenModal(false);
-        openNotificationWithIcon(data?.message, "error");
-      } else {
-        navigate(`/admin/adminData/${data?.data?._id}`);
-      }
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // NOTIFICATION
-  const [api, contextHolder] = notification.useNotification();
-  const openNotificationWithIcon = (text, type) => {
-    api[type]({
-      message: "Armarium",
-      description: text,
-    });
-  };
-
   // SEARCH
-
   const handleSearchOk = () => {
     setLoading(true);
   };
@@ -379,7 +299,6 @@ const Header = () => {
       className={`${colorChange ? "colorChange" : ""}`}
       id={`${visible ? "" : "resize"}`}
     >
-      {contextHolder}
       <div id="header" className="container">
         <div className={`${visible ? "active" : "inactive"} headerTop`}>
           <div className="left">
@@ -497,57 +416,8 @@ const Header = () => {
                 })
               )}
             </Modal>
-
-            {localStorage.getItem("role") == "admin" ? (
-              <i
-                className="fa-solid fa-right-to-bracket"
-                onClick={() => {
-                  sessionStorage.getItem("id") ? checkAdmin() : showModal();
-                }}
-              ></i>
-            ) : null}
           </div>
         </div>
-
-        {/* MODAL */}
-        <Modal
-          open={openModal}
-          title="LOGIN"
-          onOk={handleOk}
-          onCancel={handleCancel}
-          footer={[
-            <Button key="back" onClick={handleCancel}>
-              ÇIX
-            </Button>,
-            <Button
-              key="submit"
-              type="primary"
-              loading={loading}
-              onClick={() => {
-                login();
-              }}
-            >
-              DAXIL OL
-            </Button>,
-          ]}
-        >
-          <Input
-            placeholder="Email"
-            prefix={<UserOutlined />}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-          <br />
-          <br />
-          <Input.Password
-            placeholder="Password"
-            prefix={<i className="fa-solid fa-lock"></i>}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </Modal>
 
         <hr className={`${visible ? "active" : "inactive"}`} />
 

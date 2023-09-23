@@ -1,4 +1,3 @@
-import AdminRoot from "../components/root/admin";
 import MainRoot from "../components/root/site";
 import AllModelsPage from "../pages/site/allModelsPage";
 import HomePage from "../pages/site/homePage";
@@ -15,7 +14,6 @@ import PointOfSalesPages from "../pages/site/pointOfSalePage";
 import BlogPage from "../pages/site/blogPage";
 import BlogDetailPage from "../pages/site/blogDetailPage";
 import ReferencesPage from "../pages/site/referencesPage";
-import DashBoard from "../pages/admin/dashBoard";
 import AllDoorPage from "../pages/site/allDoorpage";
 import FurniturePage from "../pages/site/furniturePage";
 
@@ -93,28 +91,6 @@ const ROUTES = [
         element: <NotFoundPage />,
       },
     ],
-  },
-  {
-    path: "/admin/",
-    element: <AdminRoot />,
-    children: [
-      {
-        path: "adminData/:id",
-        element: <DashBoard />,
-      },
-      {
-        path: "user/",
-        // element: <AboutMePage />,
-      },
-    ],
-  },
-  {
-    path: "/login",
-    // element: <LoginPage />,
-  },
-  {
-    path: "/signup",
-    // element: <SignupPage />,
   },
 ];
 

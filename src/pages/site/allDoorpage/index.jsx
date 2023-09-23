@@ -3,7 +3,7 @@ import "./index.scss";
 import { Helmet } from "react-helmet";
 import SkeletonComponent from "../../../components/skeleton";
 import axios from "axios";
-import { Image } from "antd";
+import { Empty, Image } from "antd";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
@@ -67,7 +67,13 @@ const AllDoorPage = () => {
             ) : (
               <div className="imagesCards">
                 {doors.length == 0 ? (
-                  <h3>Qapı Yoxdur.</h3>
+                  <Empty
+                    description={false}
+                    style={{
+                      display: "block",
+                      width: "80vw",
+                    }}
+                  />
                 ) : (
                   <>
                     <div className="headerText">
