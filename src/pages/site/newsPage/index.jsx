@@ -13,6 +13,8 @@ const NewsPage = () => {
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
 
+  const [dataCount, setDataCount] = useState(6);
+
   const getNewsData = async () => {
     try {
       let data = await axios.get(
@@ -59,53 +61,65 @@ const NewsPage = () => {
         {loading ? (
           <LoadingComponent />
         ) : (
-          <div className="cards">
-            {data.length == 0 ? (
-              <Empty
-                description={false}
-                style={{
-                  display: "block",
-                  width: "80vw",
-                }}
-              />
-            ) : (
-              data?.map((e, i) => {
-                return (
-                  <div className="card" key={i}>
-                    <div className="image">
-                      <Link to={`/xeberler/${e?._id}`}>
-                        <img
-                          src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
-                          alt={`${e?.name}`}
-                        />
-                      </Link>
-                    </div>
-                    <div className="text">
-                      <div className="headerText">
-                        <h5>{e?.name}</h5>
-                      </div>
-                      <div className="date">
-                        <i className="fa-regular fa-calendar-days"></i>{" "}
-                        {e?.date?.slice(0, 10)}
-                      </div>
-                      <hr />
-
-                      <div className="detailTextSlice">
-                        <p>{e?.cardDescription}</p>
-                      </div>
-
-                      <div className="nav">
+          <>
+            <div className="cards">
+              {data.length == 0 ? (
+                <Empty
+                  description={false}
+                  style={{
+                    display: "block",
+                    width: "80vw",
+                  }}
+                />
+              ) : (
+                data?.slice(0, dataCount)?.map((e, i) => {
+                  return (
+                    <div className="card" key={i}>
+                      <div className="image">
                         <Link to={`/xeberler/${e?._id}`}>
-                          DAHA ƏTRAFLI{" "}
-                          <i className="fa-solid fa-caret-right"></i>
+                          <img
+                            src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                            alt={`${e?.name}`}
+                          />
                         </Link>
                       </div>
+                      <div className="text">
+                        <div className="headerText">
+                          <h5>{e?.name}</h5>
+                        </div>
+                        <div className="date">
+                          <i className="fa-regular fa-calendar-days"></i>{" "}
+                          {e?.date?.slice(0, 10)}
+                        </div>
+                        <hr />
+
+                        <div className="detailTextSlice">
+                          <p>{e?.cardDescription}</p>
+                        </div>
+
+                        <div className="nav">
+                          <Link to={`/xeberler/${e?._id}`}>
+                            DAHA ƏTRAFLI{" "}
+                            <i className="fa-solid fa-caret-right"></i>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
+                  );
+                })
+              )}
+            </div>
+
+            {data?.length > 6 && data?.length > dataCount ? (
+              <button
+                onClick={() => {
+                  setDataCount(dataCount + 6);
+                }}
+              >
+                {t("DAHA ÇOX")}
+              </button>
+            ) : null}
+          </>
         )}
       </div>
     </div>

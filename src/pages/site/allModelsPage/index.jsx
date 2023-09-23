@@ -3,12 +3,17 @@ import "./index.scss";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import LoadingComponent from "../../../components/loading";
 import SkeletonComponent from "../../../components/skeleton";
+import { Empty } from "antd";
+import { useTranslation } from "react-i18next";
 
 const AllModelsPage = () => {
   const [decors, setDecors] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [decorSliceCount, setDecorSliceCount] = useState(2);
+
+  const { t } = useTranslation();
 
   const getAllDecors = async () => {
     try {
@@ -52,24 +57,42 @@ const AllModelsPage = () => {
             ) : (
               <div className="imagesCards">
                 {decors.length == 0 ? (
-                  <h3>Dekor Yoxdur.</h3>
+                  <Empty
+                    description={false}
+                    style={{
+                      display: "block",
+                      width: "80vw",
+                    }}
+                  />
                 ) : (
-                  decors?.map((e, i) => {
-                    return (
-                      <Link to={`/model/${e?.name}`} key={i}>
-                        <img
-                          src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
-                          alt={`${e?.name}`}
-                        />
-                        <div className="text hidden">
-                          <p className="modelName">{e?.name}</p>
-                          <p className="description hidden">
-                            {e?.description?.slice(0, 37) + ". . ."}
-                          </p>
-                        </div>
-                      </Link>
-                    );
-                  })
+                  <>
+                    {decors?.slice(0, decorSliceCount)?.map((e, i) => {
+                      return (
+                        <Link to={`/model/${e?.name}`} key={i}>
+                          <img
+                            src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                            alt={`${e?.name}`}
+                          />
+                          <div className="text hidden">
+                            <p className="modelName">{e?.name}</p>
+                            <p className="description hidden">
+                              {e?.description?.slice(0, 37) + ". . ."}
+                            </p>
+                          </div>
+                        </Link>
+                      );
+                    })}
+
+                    {decors?.length > 20 && decors?.length > decorSliceCount ? (
+                      <button
+                        onClick={() => {
+                          setDecorSliceCount(decorSliceCount + 20);
+                        }}
+                      >
+                        {t("DAHA ÇOX")}
+                      </button>
+                    ) : null}
+                  </>
                 )}
               </div>
             )}

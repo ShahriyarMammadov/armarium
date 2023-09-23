@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-// import blogBackImage from "../../../assets/backgroundImages/blog.png";
-import { Modal, Input, Button, Empty } from "antd";
+import { Modal, Input, Button, Empty, List } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
@@ -52,6 +51,9 @@ const BlogPage = () => {
     getAllBlog();
   }, []);
 
+  const [position, setPosition] = useState("bottom");
+  const [align, setAlign] = useState("center");
+
   return (
     <div id="blogPage">
       <Helmet>
@@ -67,9 +69,7 @@ const BlogPage = () => {
           content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
         ></meta>
       </Helmet>
-      <div className="backImage">
-        {/* <img src={blogBackImage} alt="backImage" /> */}
-      </div>
+      <div className="backImage"></div>
       <div className="blogPage container">
         <div className="headerText">
           <h1>{t("ARMARIUM BLOQ")}</h1>
@@ -99,39 +99,46 @@ const BlogPage = () => {
                 }}
               />
             ) : (
-              blogs.map((e, i) => {
-                return (
-                  <div className="blog" key={i}>
-                    <img
-                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
-                      alt={`${e?.name}`}
-                    />
+              <List
+                pagination={{
+                  position,
+                  align,
+                }}
+                dataSource={blogs}
+                renderItem={(e, i) => (
+                  <>
+                    <div className="blog">
+                      <img
+                        src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                        alt={`${e?.name}`}
+                      />
 
-                    <div className="rightText">
-                      <div className="blogHeaderText">
-                        <h2>{e?.name}</h2>
-                      </div>
-                      <div className="description">
-                        <p>
-                          {e?.description
-                            ?.slice(0, 250)
-                            ?.split("<br />")
-                            ?.map((line, lineIndex) => (
-                              <React.Fragment key={lineIndex}>
-                                {line}. . .
-                                <br />
-                              </React.Fragment>
-                            ))}
-                        </p>
-                      </div>
+                      <div className="rightText">
+                        <div className="blogHeaderText">
+                          <h2>{e?.name}</h2>
+                        </div>
+                        <div className="description">
+                          <p>
+                            {e?.description
+                              ?.slice(0, 250)
+                              ?.split("<br />")
+                              ?.map((line, lineIndex) => (
+                                <React.Fragment key={lineIndex}>
+                                  {line}. . .
+                                  <br />
+                                </React.Fragment>
+                              ))}
+                          </p>
+                        </div>
 
-                      <Link to={`/xeberler/blog/${e?.name}`}>
-                        Ətraflı <i className="fa-solid fa-caret-right"></i>
-                      </Link>
+                        <Link to={`/xeberler/blog/${e?.name}`}>
+                          Ətraflı <i className="fa-solid fa-caret-right"></i>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                );
-              })
+                  </>
+                )}
+              />
             )}
           </div>
         )}

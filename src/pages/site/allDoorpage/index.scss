@@ -23,6 +23,19 @@
     #allDoors {
         padding: 40px 10px;
 
+        button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.5s;
+
+            &:hover {
+                background-color: red;
+                color: white;
+            }
+        }
+
         .grid-container {
             columns: 4 200px;
 

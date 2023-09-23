@@ -4,13 +4,14 @@ import axios from "axios";
 import { Empty, Image, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import LoadingComponent from "../../../components/loading";
 import { useTranslation } from "react-i18next";
 import SkeletonComponent from "../../../components/skeleton";
 
 const ReferencesPage = () => {
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [dataCount, setDataCount] = useState(2);
 
   const { t } = useTranslation();
 
@@ -78,48 +79,59 @@ const ReferencesPage = () => {
             <SkeletonComponent />
           </div>
         ) : (
-          <div className="grid-container container">
-            {allData.length == 0 ? (
-              <Empty
-                description={false}
-                style={{
-                  display: "block",
-                  width: "80vw",
+          <>
+            <div className="grid-container container">
+              {allData.length == 0 ? (
+                <Empty
+                  description={false}
+                  style={{
+                    display: "block",
+                    width: "80vw",
+                  }}
+                />
+              ) : (
+                allData?.slice(0, dataCount)?.map((e, i) => {
+                  const imageUrls = e?.images.map(
+                    (image) =>
+                      `https://armariumbackend-production.up.railway.app/images/${image}`
+                  );
+                  return (
+                    <>
+                      <div style={{ position: "relative" }}>
+                        <Image.PreviewGroup items={imageUrls} key={i}>
+                          <Image
+                            src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                          />
+                        </Image.PreviewGroup>
+                        <Text
+                          style={{
+                            position: "absolute",
+                            top: "20px",
+                            right: "20px",
+                            color: "white",
+                            fontWeight: "bold",
+                            backgroundColor: "rgba(0, 0, 0, 0.5)",
+                            padding: "6px 10px",
+                          }}
+                        >
+                          {e?.name}
+                        </Text>
+                      </div>
+                    </>
+                  );
+                })
+              )}
+            </div>
+            {allData?.length > 2 && allData?.length > dataCount ? (
+              <button
+                onClick={() => {
+                  setDataCount(dataCount + 10);
                 }}
-              />
-            ) : (
-              allData?.map((e, i) => {
-                const imageUrls = e?.images.map(
-                  (image) =>
-                    `https://armariumbackend-production.up.railway.app/images/${image}`
-                );
-                return (
-                  <>
-                    <div style={{ position: "relative" }}>
-                      <Image.PreviewGroup items={imageUrls} key={i}>
-                        <Image
-                          src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
-                        />
-                      </Image.PreviewGroup>
-                      <Text
-                        style={{
-                          position: "absolute",
-                          top: "20px",
-                          right: "20px",
-                          color: "white",
-                          fontWeight: "bold",
-                          backgroundColor: "rgba(0, 0, 0, 0.5)",
-                          padding: "6px 10px",
-                        }}
-                      >
-                        {e?.name}
-                      </Text>
-                    </div>
-                  </>
-                );
-              })
-            )}
-          </div>
+              >
+                {t("DAHA ÇOX")}
+              </button>
+            ) : null}
+          </>
         )}
       </div>
     </div>

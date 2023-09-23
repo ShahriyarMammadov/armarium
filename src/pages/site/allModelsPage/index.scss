@@ -23,6 +23,19 @@
     #KitchenModels {
         padding: 80px 5px;
 
+        button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.5s;
+
+            &:hover {
+                background-color: red;
+                color: white;
+            }
+        }
+
         .imagesCards {
             display: flex;
             align-items: center;
@@ -32,7 +45,7 @@
 
             a {
                 width: calc((100% / 2) - 10px);
-                height: 40%;
+                height: 450px;
                 position: relative;
 
                 @media only screen and (max-width: 800px) {

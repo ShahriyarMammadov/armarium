@@ -92,13 +92,15 @@ const AllDoorPage = () => {
                       })}
                     </div>
 
-                    <button
-                      onClick={() => {
-                        setSliceCount(sliceCount + 12);
-                      }}
-                    >
-                      {t("DAHA ÇOX")}
-                    </button>
+                    {doors?.length > 12 && doors?.length > sliceCount ? (
+                      <button
+                        onClick={() => {
+                          setSliceCount(sliceCount + 20);
+                        }}
+                      >
+                        {t("DAHA ÇOX")}
+                      </button>
+                    ) : null}
                   </>
                 )}
               </div>
