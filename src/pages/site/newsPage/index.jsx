@@ -6,6 +6,7 @@ import axios from "axios";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
 import { useTranslation } from "react-i18next";
+import { Empty } from "antd";
 
 const NewsPage = () => {
   const [data, setData] = useState([]);
@@ -60,7 +61,13 @@ const NewsPage = () => {
         ) : (
           <div className="cards">
             {data.length == 0 ? (
-              <h3>Xəbər Yoxdur.</h3>
+              <Empty
+                description={false}
+                style={{
+                  display: "block",
+                  width: "80vw",
+                }}
+              />
             ) : (
               data?.map((e, i) => {
                 return (

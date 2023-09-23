@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 import axios from "axios";
-import { Image, Typography } from "antd";
+import { Empty, Image, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import LoadingComponent from "../../../components/loading";
@@ -80,7 +80,13 @@ const ReferencesPage = () => {
         ) : (
           <div className="grid-container container">
             {allData.length == 0 ? (
-              <h3>Referans Yoxdur.</h3>
+              <Empty
+                description={false}
+                style={{
+                  display: "block",
+                  width: "80vw",
+                }}
+              />
             ) : (
               allData?.map((e, i) => {
                 const imageUrls = e?.images.map(

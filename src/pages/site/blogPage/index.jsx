@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
 // import blogBackImage from "../../../assets/backgroundImages/blog.png";
-import { Modal, Input, Button } from "antd";
+import { Modal, Input, Button, Empty } from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
@@ -91,7 +91,13 @@ const BlogPage = () => {
         ) : (
           <div className="blogs">
             {blogs.length == 0 ? (
-              <h3>Bloq Yoxdur.</h3>
+              <Empty
+                description={false}
+                style={{
+                  display: "block",
+                  width: "80vw",
+                }}
+              />
             ) : (
               blogs.map((e, i) => {
                 return (
