@@ -19,7 +19,7 @@ const HomePage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Xəyallarınız Gerçəkləşdirək</title>
-        <meta property="og:image" content="/as.png" />
+        <meta property="og:image" content="/favicon.png" />
         <meta
           name="description"
           content="Armarium | Hər Zaman Sizinlə. armarium"

@@ -11,7 +11,7 @@ const AllModelsPage = () => {
   const [decors, setDecors] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [decorSliceCount, setDecorSliceCount] = useState(2);
+  const [decorSliceCount, setDecorSliceCount] = useState(20);
 
   const { t } = useTranslation();
 
@@ -37,7 +37,7 @@ const AllModelsPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Bütün Modellər</title>
-        <meta property="og:image" content="/as.png" />
+        <meta property="og:image" content="/favicon.png" />
         <meta
           name="description"
           content="Armarium | Hər Zaman Sizinlə. armarium"
@@ -51,6 +51,14 @@ const AllModelsPage = () => {
         <div className="backImage"></div>
 
         <div className="allModels container">
+          <div className="navigation">
+            <span>
+              <Link to={"/"}>
+                {t("ƏSAS SƏHİFƏ")} <i className="fa-solid fa-caret-right"></i>{" "}
+              </Link>
+              <span>{t("BÜTÜN MODELLƏRİMİZ")}</span>
+            </span>
+          </div>
           <div id="KitchenModels">
             {loading ? (
               <SkeletonComponent />
