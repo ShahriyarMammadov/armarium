@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../../components/dropdown/navbarDropdown";
-import { Button, Drawer, Dropdown, Input, Modal, notification } from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Button, Drawer, Dropdown, Input, Modal } from "antd";
 import { Collapse } from "antd";
 import { useTranslation } from "react-i18next";
 import i18n from "../../../locales/i18n";
@@ -431,12 +430,12 @@ const Header = () => {
                 <div className="cardImg">
                   <img src={logo} alt="Armarium" />
                 </div>
-                <p className="slogan">Lorem ipsum dolor sit amet. (Slogan)</p>
+                <p className="slogan">Armarium | Hər zaman sizinlə</p>
               </div>
               <div className="right about">
                 <div className="contact">
-                  <a href="tel:+994503134473" className="telephoneNumber">
-                    {t("Telefon")}: +99450 313 4473
+                  <a href="tel:+99512908127" className="telephoneNumber">
+                    {t("Telefon")}: +99451 290 8127
                   </a>
                   <br />
                   <a href="mailto:armarium@armarium.az" className="email">
@@ -454,7 +453,7 @@ const Header = () => {
                 </a>
                 <div className="icon">
                   <a
-                    href="https://www.linkedin.com/company/armarium-kitchen-doors/"
+                    href="https://www.instagram.com/armariumkitchendoor/"
                     target="_blank"
                     title="Instagram"
                   >

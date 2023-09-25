@@ -3,7 +3,7 @@
     display: inline-block;
 
     .active {
-        border-bottom: 3px solid red;
+        border-bottom: 3px solid #b71312;
         padding: 10px;
     }
 
@@ -16,7 +16,7 @@
 
         &:hover {
             color: #e30615 !important;
-            border-bottom: 2px solid red;
+            border-bottom: 2px solid #b71312;
         }
 
         @media only screen and (max-width: 900px) {
@@ -41,7 +41,7 @@
         min-width: 260px;
         margin-top: 12px;
         z-index: 1;
-        border-bottom: 2px solid red;
+        border-bottom: 3px solid #b71312;
 
         a {
             background-color: white;

@@ -29,7 +29,9 @@ const Footer = () => {
               </div>
               <div className="text">
                 <p>
-                  <a href="tel: +994512908127">{t("Telefon")}: +99451 290 8127</a>
+                  <a href="tel: +994512908127">
+                    {t("Telefon")}: +99451 290 8127
+                  </a>
                 </p>
               </div>
               <div className="text">
@@ -118,7 +120,7 @@ const Footer = () => {
       <div className="allRight">
         <div className="container">
           <p>{t("© 2023 ARMARİUM, Bütün hüquqlar Qorunur.")}</p>
-          <Link to={"/"}>{t("Sayt Xəritəsi")}</Link>
+          <a href={"https://allvan.az/"} target="_blank">{t("Website by Allvan")}</a>
         </div>
       </div>
     </>
