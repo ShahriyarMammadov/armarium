@@ -29,6 +29,7 @@ const AllDoorPage = () => {
 
   useEffect(() => {
     getAllDoors();
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -36,10 +37,10 @@ const AllDoorPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Qapılar</title>
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:image" content="../../../../public/favicon.png" />
         <meta
           name="description"
-          content="Armarium | Hər Zaman Sizinlə. armarium"
+          content="Armarium | Xəyallarınızı Armarium ilə süsləyin"
         />
         <meta
           name="keywords"

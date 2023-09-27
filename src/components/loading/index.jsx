@@ -4,7 +4,7 @@ import "./index.scss";
 const LoadingComponent = () => {
   return (
     <div id="loading">
-      <span class="loader"></span>
+      <span className="loader"></span>
     </div>
   );
 };

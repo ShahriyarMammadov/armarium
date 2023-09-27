@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -8,6 +8,10 @@ import { useTranslation } from "react-i18next";
 
 // AIzaSyDakeBJ24f3MWFyBFxYwlRA8EIQPAs5g5c
 const PointOfSalesPages = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { TextArea } = Input;
   const [fullName, setfullName] = useState("");
   const [email, setEmail] = useState("");
@@ -45,14 +49,14 @@ const PointOfSalesPages = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Satış Nöqtələri</title>
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:image" content="../../../../public/favicon.png" />
         <meta
           name="description"
-          content="Armarium | Hər Zaman Sizinlə. armarium"
+          content="Armarium | Xəyallarınızı Armarium ilə süsləyin"
         />
         <meta
           name="keywords"
-          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, Xəyallarınızı Armarium ilə süsləyin"
         ></meta>
       </Helmet>
       <div className="backImage">

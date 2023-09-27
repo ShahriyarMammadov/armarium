@@ -29,6 +29,7 @@ const NewsPage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getNewsData();
   }, []);
 
@@ -37,14 +38,14 @@ const NewsPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Xəbərlər</title>
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:image" content="../../../../public/favicon.png" />
         <meta
           name="description"
-          content="Armarium | Hər Zaman Sizinlə. armarium"
+          content="Armarium | Xəyallarınızı Armarium ilə süsləyin"
         />
         <meta
           name="keywords"
-          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, Xəyallarınızı Armarium ilə süsləyin"
         ></meta>
       </Helmet>
       <div className="backImage"></div>

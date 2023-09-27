@@ -195,14 +195,7 @@ const Header = () => {
             className="drawerATeg"
             onClick={onClose}
           >
-            MEBELLƏR
-          </Link>
-          <Link
-            to={"/mebeller/all_models"}
-            className="drawerATeg"
-            onClick={onClose}
-          >
-            BÜTÜN MODELLLƏR
+            BÜTÜN MODELLƏR
           </Link>
           <Link
             to={"/mebeller/qapilar"}
@@ -430,7 +423,7 @@ const Header = () => {
                 <div className="cardImg">
                   <img src={logo} alt="Armarium" />
                 </div>
-                <p className="slogan">Armarium | Hər zaman sizinlə</p>
+                <p className="slogan">Xəyallarınızı Armarium ilə süsləyin</p>
               </div>
               <div className="right about">
                 <div className="contact">

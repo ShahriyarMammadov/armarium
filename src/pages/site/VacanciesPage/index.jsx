@@ -8,6 +8,10 @@ import { useTranslation } from "react-i18next";
 import LoadingComponent from "../../../components/loading";
 
 const VacanciesPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
@@ -29,6 +33,18 @@ const VacanciesPage = () => {
     getAllData();
   }, []);
 
+  function findEmails(text) {
+    const words = text.split(" ");
+    const emails = [];
+
+    for (const word of words) {
+      if (word.includes("@")) {
+        emails.push(word);
+      }
+    }
+    return emails;
+  }
+
   const items = allData?.map((data) => ({
     key: data?.id?.toString(),
     label: data?.name,
@@ -42,7 +58,17 @@ const VacanciesPage = () => {
             </React.Fragment>
           ))}
         </p>
-        <a href={`mailto:f.yildirim@armarium.az`}>Müraciət Et</a>
+        {
+          <a
+            href={`mailto:${
+              findEmails(data?.description)?.length > 0
+                ? findEmails(data?.description)[0]
+                : "f.yildirim@armarium.az"
+            }`}
+          >
+            Müraciət Et
+          </a>
+        }
       </>
     ),
   }));
@@ -52,14 +78,14 @@ const VacanciesPage = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Armarium | Vakansiyalar</title>
-        <meta property="og:image" content="/favicon.png" />
+        <meta property="og:image" content="../../../../public/favicon.png" />
         <meta
           name="description"
-          content="Armarium | Hər Zaman Sizinlə. armarium"
+          content="Armarium | Xəyallarınızı Armarium ilə süsləyin"
         />
         <meta
           name="keywords"
-          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, Xəyallarınızı Armarium ilə süsləyin"
         ></meta>
       </Helmet>
       <div className="backImage"></div>

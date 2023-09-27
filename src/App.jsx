@@ -28,7 +28,7 @@ function App() {
 
   let docTitle = document.title;
   window.addEventListener("blur", () => {
-    document.title = "Armarium | Hər zaman sizinlə";
+    document.title = "Armarium | Xəyallarınızı Armarium ilə süsləyin";
   });
 
   window.addEventListener("focus", () => {

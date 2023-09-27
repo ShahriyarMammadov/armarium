@@ -8,8 +8,6 @@ import { useTranslation } from "react-i18next";
 const ModelsComponent = () => {
   const [selectedData, setSelectedData] = useState([]);
 
-  console.log(selectedData);
-
   const navigate = useNavigate();
 
   const getSelectedModelsData = async () => {

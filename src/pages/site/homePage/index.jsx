@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./index.scss";
 import Carousel from "../../../components/carousel";
 import videoImg from "../../../assets/carouselImage/alinda.jpg";
@@ -12,21 +12,25 @@ import { useTranslation } from "react-i18next";
 const HomePage = () => {
   const nav = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { t } = useTranslation();
 
   return (
     <main>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Armarium | Xəyallarınız Gerçəkləşdirək</title>
-        <meta property="og:image" content="/favicon.png" />
+        <title>Armarium | Xəyallarınızi Armarium ilə süsləyin</title>
+        <meta property="og:image" content="../../../../public/favicon.png" />
         <meta
           name="description"
-          content="Armarium | Hər Zaman Sizinlə. armarium"
+          content="Armarium | Xəyallarınızı Armarium ilə süsləyin"
         />
         <meta
           name="keywords"
-          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, "
+          content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, Xəyallarınızı Armarium ilə süsləyin"
         ></meta>
       </Helmet>
       <section id="section1" className="imageSlider">

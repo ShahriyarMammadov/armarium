@@ -95,7 +95,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div>
+            {/* <div>
               <div className="headerText">
                 <h4>{t("Sertifikatlar")}</h4>
               </div>
@@ -103,7 +103,7 @@ const Footer = () => {
                 <img src={ISO9001} alt="ISO9001" className="first" />
                 <img src={ISO14001} alt="ISO14001" />
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="map">
