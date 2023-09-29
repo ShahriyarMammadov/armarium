@@ -34,14 +34,14 @@ main {
                     line-height: 14px;
                     color: white;
                     cursor: pointer;
-                    background-color: red;
+                    background-color: #b71312;
                     border: none;
                     transition: all 0.3s;
 
                     &:hover {
                         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
                         background-color: white;
-                        color: red;
+                        color: #b71312;
                     }
                 }
             }

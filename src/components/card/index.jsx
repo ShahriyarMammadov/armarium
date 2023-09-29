@@ -28,16 +28,16 @@ const CardComponent = () => {
           <div className="text">
             <div className="headerText">
               <h3>
-                <Link to={"/"}>Dijital Katalog</Link>
+                <Link to={"/"}>Digital Kataloq</Link>
               </h3>
             </div>
             <div className="link">
-              <Link to={"/"}>Detaylar Icin Tiklayiniz {">"}</Link>
+              <Link to={"/"}>Ətraflı Məlumat {">"}</Link>
             </div>
           </div>
         </div>
 
-        <div className="card">
+        {/* <div className="card">
           <div className="image">
             <img src={endirim} alt="first" />
           </div>
@@ -83,7 +83,7 @@ const CardComponent = () => {
               <Link to={"/"}>Detaylar Icin Tiklayiniz {">"}</Link>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

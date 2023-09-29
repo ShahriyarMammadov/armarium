@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
-import ISO9001 from "../../../assets/images/iso1.png";
-import ISO14001 from "../../../assets/images/iso2.png";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 const Footer = () => {
   const { t } = useTranslation();
+
+  const [sertifikat, setSertifikat] = useState([]);
+
+  const getCertificate = async () => {
+    try {
+      let { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/about/allCertificate`
+      );
+      setSertifikat(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCertificate();
+  }, []);
 
   return (
     <>
@@ -95,15 +111,22 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* <div>
+            <div>
               <div className="headerText">
                 <h4>{t("Sertifikatlar")}</h4>
               </div>
               <div className="text">
-                <img src={ISO9001} alt="ISO9001" className="first" />
-                <img src={ISO14001} alt="ISO14001" />
+                {sertifikat?.slice(0, 2)?.map((e) => {
+                  console.log(e);
+                  return (
+                    <img
+                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                      alt="Sertifikat"
+                    />
+                  );
+                })}
               </div>
-            </div> */}
+            </div>
           </div>
 
           <div className="map">
@@ -120,7 +143,9 @@ const Footer = () => {
       <div className="allRight">
         <div className="container">
           <p>{t("© 2023 ARMARİUM, Bütün hüquqlar Qorunur.")}</p>
-          <a href={"https://allvan.az/"} target="_blank">{t("Website by Allvan")}</a>
+          <a href={"https://allvan.az/"} target="_blank">
+            {t("Website by Allvan")}
+          </a>
         </div>
       </div>
     </>
