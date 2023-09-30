@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import endirim from "../../assets/images/40endirim.png";
-import certyoj from "../../assets/images/certyoj.jpg";
 import first from "../../assets/images/first.jpg";
-import iso from "../../assets/images/iso.png";
 import "./index.scss";
 
 const CardComponent = () => {
-  const [data, setData] = useState([]);
-  const [scrollX, setScrollX] = useState(false);
+  // const [data, setData] = useState([]);
+  // const [scrollX, setScrollX] = useState(false);
 
-  useEffect(() => {
-    if (data.length > 4) {
-      setScrollX(true);
-    } else {
-      setScrollX(false);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (data.length > 4) {
+  //     setScrollX(true);
+  //   } else {
+  //     setScrollX(false);
+  //   }
+  // }, []);
 
   return (
     <>

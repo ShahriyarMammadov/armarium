@@ -1,19 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.scss";
 import Carousel from "../../../components/carousel";
-import videoImg from "../../../assets/carouselImage/alinda.jpg";
-import backImg from "../../../assets/carouselImage/beigegold.jpg";
+import videoImg from "../../../assets/images/about1.jpg";
+import backImg from "../../../assets/images/about2.jpg";
 import CardComponent from "../../../components/card";
 import ModelsComponent from "../../../components/models";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 
 const HomePage = () => {
+  const [selectedData, setSelectedData] = useState([]);
+
   const nav = useNavigate();
+
+  const getSelectedModelsData = async () => {
+    try {
+      const data = await axios.get(
+        "https://armariumbackend-production.up.railway.app/selectedDecor/getSelectedDecors"
+      );
+      setSelectedData(data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    getSelectedModelsData();
   }, []);
 
   const { t } = useTranslation();
@@ -34,7 +49,7 @@ const HomePage = () => {
         ></meta>
       </Helmet>
       <section id="section1" className="imageSlider">
-        <Carousel />
+        <Carousel data={selectedData} />
       </section>
 
       <section id="section2" className="about">
@@ -74,7 +89,7 @@ const HomePage = () => {
       </section> */}
 
       <section id="section5" className="models">
-        <ModelsComponent />
+        <ModelsComponent data={selectedData} />
       </section>
     </main>
   );

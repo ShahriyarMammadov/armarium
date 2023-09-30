@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./index.scss";
 import Helmet from "react-helmet";
 import { Link } from "react-router-dom";
@@ -21,6 +21,22 @@ const AboutPage = () => {
         `https://armariumbackend-production.up.railway.app/about/getHaqqimizda/6515be22e9d3dcf856ed1311`
       );
       setAboutText(data?.data?.about);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  const backgroundRef = useRef(null);
+
+  const getBackImage = async () => {
+    try {
+      let { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Haqqimizda`
+      );
+      if (backgroundRef.current) {
+        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+      }
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -30,6 +46,7 @@ const AboutPage = () => {
 
   useEffect(() => {
     getAboutText();
+    getBackImage();
   }, []);
 
   return (
@@ -47,7 +64,7 @@ const AboutPage = () => {
           content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, Xəyallarınızı Armarium ilə süsləyin"
         ></meta>
       </Helmet>
-      <div className="backImage"></div>
+      <div className="backImage" ref={backgroundRef}></div>
       <div className="aboutPage container">
         <div className="navigation">
           <span>

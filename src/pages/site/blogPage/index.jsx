@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./index.scss";
 import { Modal, Input, Button, Empty, List } from "antd";
 import { Link } from "react-router-dom";
@@ -40,6 +40,21 @@ const BlogPage = () => {
         "https://armariumbackend-production.up.railway.app/blog/getAllBlog"
       );
       setBlogs(data?.data);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+  const backgroundRef = useRef(null);
+
+  const getBackImage = async () => {
+    try {
+      let { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Bloq`
+      );
+      if (backgroundRef.current) {
+        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+      }
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -50,6 +65,7 @@ const BlogPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
     getAllBlog();
+    getBackImage();
   }, []);
 
   const [position, setPosition] = useState("bottom");
@@ -70,7 +86,7 @@ const BlogPage = () => {
           content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, Xəyallarınızı Armarium ilə süsləyin"
         ></meta>
       </Helmet>
-      <div className="backImage"></div>
+      <div className="backImage" ref={backgroundRef}></div>
       <div className="blogPage container">
         <div className="headerText">
           <h1>{t("ARMARIUM BLOQ")}</h1>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./index.scss";
 import { Helmet } from "react-helmet";
 import SkeletonComponent from "../../../components/skeleton";
@@ -27,9 +27,27 @@ const AllDoorPage = () => {
     }
   };
 
+  const backgroundRef = useRef(null);
+
+  const getBackImage = async () => {
+    try {
+      let { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/allDoors`
+      );
+      if (backgroundRef.current) {
+        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    getAllDoors();
     window.scrollTo(0, 0);
+    getAllDoors();
+    getBackImage();
   }, []);
 
   return (
@@ -48,7 +66,7 @@ const AllDoorPage = () => {
         />
       </Helmet>
       <div className="coverImage">
-        <div className="backImage"></div>
+        <div className="backImage" ref={backgroundRef}></div>
 
         <div className="container">
           <div className="navigation">

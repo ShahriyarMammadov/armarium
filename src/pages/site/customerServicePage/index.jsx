@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./index.scss";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
@@ -27,8 +27,26 @@ const CustomerServicePage = () => {
     }
   };
 
+  const backgroundRef = useRef(null);
+
+  const getBackImage = async () => {
+    try {
+      let { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/MIssiya`
+      );
+      if (backgroundRef.current) {
+        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+      }
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
     getGuaranteeText();
+    getBackImage();
   }, []);
 
   const { t } = useTranslation();
@@ -48,7 +66,7 @@ const CustomerServicePage = () => {
           content="Müasir Mebellər, Armarium az, armarium, Mebel Mağazası, qapı, Dekorlar, Mebel Dükkanı, Mebel Firması, Xəyallarınızı Armarium ilə süsləyin"
         ></meta>
       </Helmet>
-      <div className="backImage"></div>
+      <div className="backImage" ref={backgroundRef}></div>
       <div className="container">
         <div className="navigation">
           <span>
