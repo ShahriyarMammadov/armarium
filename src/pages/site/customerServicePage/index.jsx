@@ -32,7 +32,7 @@ const CustomerServicePage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/MIssiya`
+        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Missiya`
       );
       if (backgroundRef.current) {
         backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;

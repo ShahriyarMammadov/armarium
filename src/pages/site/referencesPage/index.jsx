@@ -105,7 +105,7 @@ const ReferencesPage = () => {
                   description={false}
                   style={{
                     display: "block",
-                    width: "90vw",
+                    width: "80vw",
                   }}
                 />
               ) : (
