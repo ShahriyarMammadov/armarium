@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./index.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 import NavBarDropdownComponent from "../../../components/dropdown/navbarDropdown";
 import { Button, Drawer, Dropdown, Input, Modal } from "antd";
@@ -14,6 +14,8 @@ import tr from "../../../assets/images/tr.jpg";
 import az from "../../../assets/images/az.png";
 
 const Header = () => {
+  let location = useLocation();
+
   // SCROLL
   const [prevScrollPos, setPrevScrollPos] = useState(0);
 
@@ -288,6 +290,11 @@ const Header = () => {
 
   return (
     <header
+      style={
+        location.pathname === "/satis_noqteleri"
+          ? { backgroundColor: "#1b1b1b" }
+          : {}
+      }
       className={`${colorChange ? "colorChange" : ""}`}
       id={`${visible ? "" : "resize"}`}
     >
