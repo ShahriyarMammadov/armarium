@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { Button, Input, message } from "antd";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import LoadingComponent from "../../../components/loading";
 
 // AIzaSyDakeBJ24f3MWFyBFxYwlRA8EIQPAs5g5c
 const PointOfSalesPages = () => {
@@ -18,8 +19,28 @@ const PointOfSalesPages = () => {
   const [phoneNumber, setphoneNumber] = useState("");
   const [text, setText] = useState("");
   const [loading, setLoading] = useState(false);
+  const [data, setdata] = useState([]);
+  const [loadingGetData, setLoadingGetData] = useState(true);
 
   const { t } = useTranslation();
+
+  const getData = async () => {
+    try {
+      const { data } = await axios.get(
+        `https://armariumbackend-production.up.railway.app/salesPoint/allSalesPoint`
+      );
+
+      setdata(data);
+      setLoadingGetData(false);
+    } catch (error) {
+      console.log(error);
+      setLoadingGetData(false);
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const addWriteToUs = async () => {
     try {
@@ -87,49 +108,48 @@ const PointOfSalesPages = () => {
           </span>
         </div>
 
-        <div className="services">
-          <div className="service">
-            <h2>{t("Göstərilən Xidmətlər")}</h2>
+        {loadingGetData ? (
+          <LoadingComponent />
+        ) : (
+          data?.map((e, i) => {
+            return (
+              <div className="services" key={i}>
+                <div className="service">
+                  <h2>{t("Göstərilən Xidmətlər")}</h2>
+                  {e?.gosterilenXidmetler.map((e, i) => {
+                    return (
+                      <>
+                        <div key={i}>
+                          <p>
+                            <i className="fa-solid fa-check"></i>
+                            {e}
+                          </p>
+                        </div>
+                      </>
+                    );
+                  })}
+                </div>
 
-            <div>
-              <p>
-                <i className="fa-solid fa-check"></i>
-                Ödənişsiz Kəşf
-              </p>
-              <p>
-                <i className="fa-solid fa-check"></i>
-                Dizayn və Layihələndirmə
-              </p>
-              <p>
-                <i className="fa-solid fa-check"></i>
-                3D Təqdimat
-              </p>
-              <p>
-                <i className="fa-solid fa-check"></i>
-                Montaj və Servis Xidmətləri
-              </p>
-              <p>
-                <i className="fa-solid fa-check"></i>
-                Məhsul Nümunələrini Görə Bilmə
-              </p>
-            </div>
-          </div>
+                <div className="contact" key={i + 1}>
+                  <h2>{t("Əlaqə Məlumatları")}</h2>
+                  <p className="companyName">
+                    {t("İş saatları")}: {e?.saat}
+                  </p>
+                  <address>{e?.address}</address>
 
-          <div className="contact">
-            <h2>{t("Əlaqə Məlumatları")}</h2>
-            <p className="companyName">{t("İş saatları")}: 09:00 - 18:00</p>
-            <address>
-              Sumqayıt şossesi, döngə 1, n50 (Xırdalan dairəsi tərəf)
-            </address>
+                  <a href="tel:+99512908127" className="tel">
+                    {t("Telefon")}: {e?.phoneNumber}
+                  </a>
+                  <a href={`mailto:${e?.email}`}>Email: {e?.email}</a>
 
-            <a href="tel:+99512908127" className="tel">
-              {t("Telefon")}: +99451 290 8127
-            </a>
-            <a href="mailto:salam">Email: armarium@armarium.az</a>
-
-            <p className="contactAbout">{t("Əlaqədar Şəxs")}: Fırat Yıldırım</p>
-          </div>
-        </div>
+                  <p className="contactAbout">
+                    {t("Əlaqədar Şəxs")}: {e?.contactPerson}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        )}
 
         <div className="writeToUs">
           <div className="head">
