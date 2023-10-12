@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./index.scss";
-import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import SkeletonComponent from "../skeleton";
 import { useTranslation } from "react-i18next";
