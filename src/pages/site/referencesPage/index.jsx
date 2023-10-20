@@ -11,7 +11,7 @@ const ReferencesPage = () => {
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [dataCount, setDataCount] = useState(2);
+  const [dataCount, setDataCount] = useState(8);
 
   const { t } = useTranslation();
 
@@ -141,10 +141,10 @@ const ReferencesPage = () => {
                 })
               )}
             </div>
-            {allData?.length > 2 && allData?.length > dataCount ? (
+            {allData?.length > 8 && allData?.length > dataCount ? (
               <button
                 onClick={() => {
-                  setDataCount(dataCount + 10);
+                  setDataCount(dataCount + 8);
                 }}
               >
                 {t("DAHA ÇOX")}
