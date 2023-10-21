@@ -86,14 +86,10 @@ const CustomerServicePage = () => {
           {loading ? (
             <LoadingComponent />
           ) : (
-            <div className="aboutText">
-              {missiyaText?.split("<br />").map((line, lineIndex) => (
-                <React.Fragment key={lineIndex}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </div>
+            <div
+              className="aboutText"
+              dangerouslySetInnerHTML={{ __html: missiyaText }}
+            ></div>
           )}
         </div>
       </div>

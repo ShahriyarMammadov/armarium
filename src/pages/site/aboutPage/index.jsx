@@ -80,14 +80,10 @@ const AboutPage = () => {
         {loading ? (
           <LoadingComponent />
         ) : (
-          <div className="aboutText">
-            {aboutText?.split("<br />").map((line, lineIndex) => (
-              <React.Fragment key={lineIndex}>
-                {line}
-                <br />
-              </React.Fragment>
-            ))}
-          </div>
+          <div
+            className="aboutText"
+            dangerouslySetInnerHTML={{ __html: aboutText }}
+          ></div>
         )}
       </div>
     </div>

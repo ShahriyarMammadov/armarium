@@ -175,7 +175,7 @@ const Header = () => {
             className="drawerATeg"
             onClick={onClose}
           >
-            MÜŞTƏRİ XİDMƏTLƏRİ
+            MISSIYA
           </Link>
           <Link
             to={"/haqqimizda/terminler"}

@@ -86,14 +86,10 @@ const GuaranteePage = () => {
           {loading ? (
             <LoadingComponent />
           ) : (
-            <div className="aboutText">
-              {guaranteeText?.split("<br />").map((line, lineIndex) => (
-                <React.Fragment key={lineIndex}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-            </div>
+            <div
+              className="aboutText"
+              dangerouslySetInnerHTML={{ __html: guaranteeText }}
+            ></div>
           )}
         </div>
       </div>
