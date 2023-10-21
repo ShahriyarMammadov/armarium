@@ -134,19 +134,12 @@ const BlogPage = () => {
                         <div className="blogHeaderText">
                           <h2>{e?.name}</h2>
                         </div>
-                        <div className="description">
-                          <p>
-                            {e?.description
-                              ?.slice(0, 250)
-                              ?.split("<br />")
-                              ?.map((line, lineIndex) => (
-                                <React.Fragment key={lineIndex}>
-                                  {line}. . .
-                                  <br />
-                                </React.Fragment>
-                              ))}
-                          </p>
-                        </div>
+                        <div
+                          className="description"
+                          dangerouslySetInnerHTML={{
+                            __html: e?.description?.slice(0, 250),
+                          }}
+                        ></div>
 
                         <Link to={`/xeberler/blog/${e?.name}`}>
                           Ətraflı <i className="fa-solid fa-caret-right"></i>

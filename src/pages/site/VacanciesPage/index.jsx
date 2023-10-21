@@ -60,6 +60,7 @@ const VacanciesPage = () => {
         emails.push(word);
       }
     }
+
     return emails;
   }
 
@@ -68,14 +69,11 @@ const VacanciesPage = () => {
     label: data?.name,
     children: (
       <>
-        <p>
-          {data?.description?.split("<br />").map((line, lineIndex) => (
-            <React.Fragment key={lineIndex}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}
-        </p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: data?.description,
+          }}
+        ></div>
         {
           <a
             href={`mailto:${

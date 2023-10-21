@@ -55,14 +55,12 @@ const NewsDetailPage = () => {
             <Link to={"/xeberler"}>XƏBƏRLƏR</Link>
           </span>
         </div>
-        <p>
-          {detailData[0]?.description.split("<br />").map((line, lineIndex) => (
-            <React.Fragment key={lineIndex}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}
-        </p>
+        <div
+          className="detailNews"
+          dangerouslySetInnerHTML={{
+            __html: detailData[0]?.description,
+          }}
+        ></div>
       </div>
     </div>
   );

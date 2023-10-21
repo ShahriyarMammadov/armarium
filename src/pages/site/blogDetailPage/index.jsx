@@ -83,18 +83,12 @@ const BlogDetailPage = () => {
           </span>
         </div>
 
-        <div className="text">
-          <p>
-            {detailData[0]?.description
-              .split("<br />")
-              .map((line, lineIndex) => (
-                <React.Fragment key={lineIndex}>
-                  {line}
-                  <br />
-                </React.Fragment>
-              ))}
-          </p>
-        </div>
+        <div
+          className="text"
+          dangerouslySetInnerHTML={{
+            __html: detailData[0]?.description,
+          }}
+        ></div>
         <Image
           className="blogImage"
           src={`https://armariumbackend-production.up.railway.app/images/${detailData[0]?.coverImage}`}
