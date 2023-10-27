@@ -73,7 +73,7 @@ const Footer = () => {
               </div>
               <div className="text">
                 <Link to={"/haqqimizda/musteri_xidmeti"}>
-                  <p>{t("Müştəri Xidmətləri")}</p>
+                  <p>{t("Missiya")}</p>
                 </Link>
               </div>
               <div className="text">
