@@ -8,11 +8,12 @@ import FloatButtonComponent from "../../floatButton";
 const MainRoot = () => {
   return (
     <>
-      <Header />
+{/*       <Header />
       <Outlet />
       <BackToTopComponent />
       <FloatButtonComponent />
-      <Footer />
+      <Footer /> */}
+      <h1>Sayt bağlıdır.</h1>
     </>
   );
 };
