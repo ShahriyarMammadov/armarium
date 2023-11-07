@@ -13,7 +13,7 @@ const MainRoot = () => {
       <BackToTopComponent />
       <FloatButtonComponent />
       <Footer /> */}
-      <h1>Sayt bağlıdır.</h1>
+      <h1 style={{display:"flex",JustifyContent:"center",alignItems:"center",width:"100vw",height:"100vh"}}>SAYT BAĞLIDIR.</h1>
     </>
   );
 };
