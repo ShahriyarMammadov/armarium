@@ -8,12 +8,11 @@ import FloatButtonComponent from "../../floatButton";
 const MainRoot = () => {
   return (
     <>
-{/*       <Header />
+      <Header />
       <Outlet />
       <BackToTopComponent />
       <FloatButtonComponent />
-      <Footer /> */}
-      <h1 style={{display:"flex",justifyContent:"center",alignItems:"center",width:"100vw",height:"100vh",padding:"0",margin:"0"}}>SAYT BAĞLIDIR.</h1>
+      <Footer />
     </>
   );
 };
