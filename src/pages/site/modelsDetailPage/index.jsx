@@ -4,7 +4,7 @@ import "./index.scss";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet";
-import LoadingComponent from '../../../components/loading'
+import LoadingComponent from "../../../components/loading";
 
 const ModelsDetailPage = () => {
   const [decorData, setDecorData] = useState([]);
@@ -57,7 +57,11 @@ const ModelsDetailPage = () => {
 
           <div className="aboutText container">
             <h5>{decorData[0]?.name}</h5>
-            <p>{decorData[0]?.description}</p>
+            <p
+              dangerouslySetInnerHTML={{
+                __html: decorData[0]?.description,
+              }}
+            ></p>
           </div>
 
           <div className="grid-container container">

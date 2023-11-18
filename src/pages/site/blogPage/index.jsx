@@ -23,14 +23,12 @@ const BlogPage = () => {
 
   const handleOk = () => {
     setModalText("The modal will be closed after two seconds");
-    console.log(name, comment);
     setConfirmLoading(true);
     setOpen(false);
     setConfirmLoading(false);
   };
 
   const handleCancel = () => {
-    // console.log("Clicked cancel button");
     setOpen(false);
   };
 

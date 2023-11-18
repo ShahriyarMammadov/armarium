@@ -117,7 +117,6 @@ const Footer = () => {
               </div>
               <div className="text">
                 {sertifikat?.slice(0, 2)?.map((e) => {
-                  console.log(e);
                   return (
                     <img
                       src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
