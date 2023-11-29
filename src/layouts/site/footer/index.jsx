@@ -142,8 +142,8 @@ const Footer = () => {
       <div className="allRight">
         <div className="container">
           <p>{t("© 2023 ARMARİUM, Bütün hüquqlar Qorunur.")}</p>
-          <a href={"https://allvan.az/"} target="_blank">
-            {t("Website by Allvan")}
+          <a href={"https://shahriyarmammadov.com"} target="_blank">
+            {t("Website by Shahriyar")}
           </a>
         </div>
       </div>
