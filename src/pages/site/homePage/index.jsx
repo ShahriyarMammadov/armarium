@@ -37,7 +37,7 @@ const HomePage = () => {
     <main>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Armarium | Xəyallarınızi Armarium ilə süsləyin</title>
+        <title>Armarium | Xəyallarınızı Armarium ilə süsləyin</title>
         <meta property="og:image" content="../../../../public/favicon.png" />
         <meta
           name="description"
