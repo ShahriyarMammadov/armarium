@@ -17,7 +17,7 @@ const AllDoorPage = () => {
   const getAllDoors = async () => {
     try {
       const { data } = await axios.get(
-        "https://armariumbackend-production.up.railway.app/door/allDoors"
+        ""
       );
       setDoors(data);
       setLoading(false);
@@ -32,10 +32,10 @@ const AllDoorPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/allDoors`
+        `""/backImage/getBackImageByPage/allDoors`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -103,7 +103,7 @@ const AllDoorPage = () => {
                         return (
                           <div className="grid-content" key={i}>
                             <Image
-                              src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                              src={`""/images/${e?.coverImage}`}
                             />
                             <p>{e?.id}</p>
                           </div>

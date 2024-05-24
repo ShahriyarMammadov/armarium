@@ -17,7 +17,7 @@ const NewsPage = () => {
   const getNewsData = async () => {
     try {
       let data = await axios.get(
-        `https://armariumbackend-production.up.railway.app/news/allNews`
+        `""/news/allNews`
       );
       setData(data.data);
       setLoading(false);
@@ -32,10 +32,10 @@ const NewsPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Xeberler`
+        `""/backImage/getBackImageByPage/Xeberler`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -96,7 +96,7 @@ const NewsPage = () => {
                       <div className="image">
                         <Link to={`/xeberler/${e?._id}`}>
                           <img
-                            src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                            src={`""/images/${e?.coverImage}`}
                             alt={`${e?.name}`}
                           />
                         </Link>

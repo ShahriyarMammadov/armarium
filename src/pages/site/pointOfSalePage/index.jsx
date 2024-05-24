@@ -27,7 +27,7 @@ const PointOfSalesPages = () => {
   const getData = async () => {
     try {
       const { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/salesPoint/allSalesPoint`
+        `""/salesPoint/allSalesPoint`
       );
 
       setdata(data);
@@ -49,7 +49,7 @@ const PointOfSalesPages = () => {
       }
       setLoading(true);
       const { data } = await axios.post(
-        `https://armariumbackend-production.up.railway.app/writeToUs/addWriteToUs`,
+        `""/writeToUs/addWriteToUs`,
         {
           fullName,
           email,

@@ -20,7 +20,7 @@ const ReferencesPage = () => {
   const getAllData = async () => {
     try {
       const data = await axios.get(
-        `https://armariumbackend-production.up.railway.app/reference/allReferences`
+        `""/reference/allReferences`
       );
       setAllData(data.data);
       setLoading(false);
@@ -35,10 +35,10 @@ const ReferencesPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Referans`
+        `""/backImage/getBackImageByPage/Referans`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -112,14 +112,14 @@ const ReferencesPage = () => {
                 allData?.slice(0, dataCount)?.map((e, i) => {
                   const imageUrls = e?.images.map(
                     (image) =>
-                      `https://armariumbackend-production.up.railway.app/images/${image}`
+                      `""/images/${image}`
                   );
                   return (
                     <>
                       <div style={{ position: "relative" }}>
                         <Image.PreviewGroup items={imageUrls} key={i}>
                           <Image
-                            src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                            src={`""/images/${e?.coverImage}`}
                           />
                         </Image.PreviewGroup>
                         <Text

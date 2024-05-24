@@ -56,7 +56,7 @@ const Carousel = ({ data }) => {
           // onMouseEnter={() => setIsHovered(true)}
           // onMouseLeave={() => setIsHovered(false)}
           style={{
-            backgroundImage: `url(https://armariumbackend-production.up.railway.app/images/${image?.coverImage})`,
+            backgroundImage: `url()`,
           }}
         >
           <div className="decor-text">{image?.name}</div>

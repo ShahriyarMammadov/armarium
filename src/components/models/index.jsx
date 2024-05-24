@@ -35,7 +35,7 @@ const ModelsComponent = ({ data }) => {
                 <Link to={`/model/${e?.name}`}>
                   <div className="image" key={i}>
                     <img
-                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                      src={`""/images/${e?.coverImage}`}
                       alt={`${e?.name}`}
                     />
                     <p className="decorName">{e?.name}</p>

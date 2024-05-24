@@ -14,10 +14,10 @@ const TermsPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Terminler`
+        `""/backImage/getBackImageByPage/Terminler`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {

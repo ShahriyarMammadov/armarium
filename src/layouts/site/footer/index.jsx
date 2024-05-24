@@ -12,7 +12,7 @@ const Footer = () => {
   const getCertificate = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/about/allCertificate`
+        `""/about/allCertificate`
       );
       setSertifikat(data);
     } catch (error) {
@@ -119,7 +119,7 @@ const Footer = () => {
                 {sertifikat?.slice(0, 2)?.map((e) => {
                   return (
                     <img
-                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                      src={`""/images/${e?.coverImage}`}
                       alt="Sertifikat"
                     />
                   );

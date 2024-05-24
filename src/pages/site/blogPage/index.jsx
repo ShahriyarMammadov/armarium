@@ -34,9 +34,7 @@ const BlogPage = () => {
 
   const getAllBlog = async () => {
     try {
-      const data = await axios.get(
-        "https://armariumbackend-production.up.railway.app/blog/getAllBlog"
-      );
+      const data = await axios.get("");
       setBlogs(data?.data);
     } catch (error) {
       console.log(error);
@@ -47,11 +45,9 @@ const BlogPage = () => {
 
   const getBackImage = async () => {
     try {
-      let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Bloq`
-      );
+      let { data } = await axios.get(`""/backImage/getBackImageByPage/Bloq`);
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -124,7 +120,7 @@ const BlogPage = () => {
                   <>
                     <div className="blog">
                       <img
-                        src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                        src={`""/images/${e?.coverImage}`}
                         alt={`${e?.name}`}
                       />
 

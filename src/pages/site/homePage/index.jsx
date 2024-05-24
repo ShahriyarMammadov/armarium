@@ -18,7 +18,7 @@ const HomePage = () => {
   const getSelectedModelsData = async () => {
     try {
       const data = await axios.get(
-        "https://armariumbackend-production.up.railway.app/selectedDecor/getSelectedDecors"
+        """/selectedDecor/getSelectedDecors"
       );
       setSelectedData(data?.data);
     } catch (error) {

@@ -17,9 +17,7 @@ const AllModelsPage = () => {
 
   const getAllDecors = async () => {
     try {
-      const data = await axios.get(
-        "https://armariumbackend-production.up.railway.app/decor/allDecor"
-      );
+      const data = await axios.get("");
       setDecors(data?.data);
       setLoading(false);
     } catch (error) {
@@ -33,10 +31,10 @@ const AllModelsPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/AllModels`
+        `""/backImage/getBackImageByPage/AllModels`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -97,7 +95,7 @@ const AllModelsPage = () => {
                       return (
                         <Link to={`/model/${e?.name}`} key={i}>
                           <img
-                            src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                            src={`""/images/${e?.coverImage}`}
                             alt={`${e?.name}`}
                           />
                           <div className="text hidden">

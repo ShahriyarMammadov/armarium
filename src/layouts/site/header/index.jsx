@@ -280,7 +280,7 @@ const Header = () => {
   const onSearch = async (value, _e) => {
     try {
       const { data } = await axios.post(
-        `https://armariumbackend-production.up.railway.app/search/searchByName/${value.toLocaleLowerCase()}`
+        `""/search/searchByName/${value.toLocaleLowerCase()}`
       );
       setSearchResult(data);
     } catch (error) {
@@ -399,7 +399,7 @@ const Header = () => {
                                   <p>{e?.name}</p>
                                   {e?.coverImage ? (
                                     <img
-                                      src={`https://armariumbackend-production.up.railway.app/images/${e?.coverImage}`}
+                                      src={`""/images/${e?.coverImage}`}
                                       alt="error"
                                     />
                                   ) : null}

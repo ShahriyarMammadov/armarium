@@ -14,7 +14,7 @@ const ModelsDetailPage = () => {
   const getDecorData = async () => {
     try {
       const data = await axios.get(
-        `https://armariumbackend-production.up.railway.app/decor/decorByName/${id}`
+        `""/decor/decorByName/${id}`
       );
       setDecorData(data?.data);
       setLoading(false);
@@ -50,7 +50,7 @@ const ModelsDetailPage = () => {
         <section id="detailPage">
           <div className="coverImage">
             <img
-              src={`https://armariumbackend-production.up.railway.app/images/${decorData[0]?.coverImage}`}
+              src={`""/images/${decorData[0]?.coverImage}`}
               alt="coverImage"
             />
           </div>
@@ -75,7 +75,7 @@ const ModelsDetailPage = () => {
                 return (
                   <Image
                     key={i}
-                    src={`https://armariumbackend-production.up.railway.app/images/${e}`}
+                    src={`""/images/${e}`}
                   />
                 );
               })}

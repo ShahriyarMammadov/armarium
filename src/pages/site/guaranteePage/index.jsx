@@ -17,7 +17,7 @@ const GuaranteePage = () => {
   const getGuaranteeText = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/about/getZemanet/651674b81222f3e734ae9f72`
+        `""/about/getZemanet/651674b81222f3e734ae9f72`
       );
       setGuaranteeText(data?.data?.about);
       setLoading(false);
@@ -31,10 +31,10 @@ const GuaranteePage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Zemanet`
+        `""/backImage/getBackImageByPage/Zemanet`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {

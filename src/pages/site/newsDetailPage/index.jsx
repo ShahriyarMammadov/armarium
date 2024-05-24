@@ -12,7 +12,7 @@ const NewsDetailPage = () => {
   const getNewsData = async () => {
     try {
       let data = await axios.get(
-        `https://armariumbackend-production.up.railway.app/news/newsByName/${id}`
+        `""/news/newsByName/${id}`
       );
       setDetailData(data.data);
     } catch (error) {
@@ -42,7 +42,7 @@ const NewsDetailPage = () => {
       </Helmet>
       <div className="backImage">
         <img
-          src={`https://armariumbackend-production.up.railway.app/images/${detailData[0]?.coverImage}`}
+          src={`""/images/${detailData[0]?.coverImage}`}
           alt={`${detailData[0]?.name}`}
         />
       </div>

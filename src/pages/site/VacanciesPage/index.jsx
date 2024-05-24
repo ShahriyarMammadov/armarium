@@ -19,7 +19,7 @@ const VacanciesPage = () => {
   const getAllData = async () => {
     try {
       const data = await axios.get(
-        `https://armariumbackend-production.up.railway.app/vacancy/allVacancy`
+        `""/vacancy/allVacancy`
       );
       setAllData(data.data);
       setLoading(false);
@@ -34,10 +34,10 @@ const VacanciesPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `https://armariumbackend-production.up.railway.app/backImage/getBackImageByPage/Vakansiya`
+        `""/backImage/getBackImageByPage/Vakansiya`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(https://armariumbackend-production.up.railway.app/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
