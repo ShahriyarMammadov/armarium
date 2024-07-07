@@ -13,12 +13,11 @@ const AllDoorPage = () => {
   const [sliceCount, setSliceCount] = useState(12);
 
   const { t } = useTranslation();
+  const apiLink = "http://api.armarium.az";
 
   const getAllDoors = async () => {
     try {
-      const { data } = await axios.get(
-        ""
-      );
+      const { data } = await axios.get("http://api.armarium.az/door/allDoors");
       setDoors(data);
       setLoading(false);
     } catch (error) {
@@ -32,10 +31,10 @@ const AllDoorPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/allDoors`
+        `${apiLink}/backImage/getBackImageByPage/allDoors`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${apiLink}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -102,9 +101,7 @@ const AllDoorPage = () => {
                       {doors?.slice(0, sliceCount).map((e, i) => {
                         return (
                           <div className="grid-content" key={i}>
-                            <Image
-                              src={`""/images/${e?.coverImage}`}
-                            />
+                            <Image src={`${apiLink}/images/${e?.coverImage}`} />
                             <p>{e?.id}</p>
                           </div>
                         );

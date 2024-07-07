@@ -8,7 +8,8 @@ const ModelsComponent = ({ data }) => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
-
+  const ApiLInk = "http://api.armarium.az";
+  console.log(data.data);
   return (
     <div id="modelsComponent">
       <div className="container">
@@ -35,7 +36,7 @@ const ModelsComponent = ({ data }) => {
                 <Link to={`/model/${e?.name}`}>
                   <div className="image" key={i}>
                     <img
-                      src={`""/images/${e?.coverImage}`}
+                      src={`${ApiLInk}/images/${e?.coverImage}`}
                       alt={`${e?.name}`}
                     />
                     <p className="decorName">{e?.name}</p>

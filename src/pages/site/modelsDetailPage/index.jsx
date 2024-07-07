@@ -10,12 +10,10 @@ const ModelsDetailPage = () => {
   const [decorData, setDecorData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-
+  console.log(id);
   const getDecorData = async () => {
     try {
-      const data = await axios.get(
-        `""/decor/decorByName/${id}`
-      );
+      const data = await axios.get(`${apiLink}/decor/decorByName/${id}`);
       setDecorData(data?.data);
       setLoading(false);
     } catch (error) {
@@ -28,7 +26,7 @@ const ModelsDetailPage = () => {
     window.scrollTo(0, 0);
     getDecorData();
   }, []);
-
+  const apiLink = "http://api.armarium.az";
   return (
     <main>
       <Helmet>
@@ -50,7 +48,7 @@ const ModelsDetailPage = () => {
         <section id="detailPage">
           <div className="coverImage">
             <img
-              src={`""/images/${decorData[0]?.coverImage}`}
+              src={`${apiLink}/images/${decorData[0]?.coverImage}`}
               alt="coverImage"
             />
           </div>
@@ -72,12 +70,7 @@ const ModelsDetailPage = () => {
               }}
             >
               {decorData[0]?.images?.map((e, i) => {
-                return (
-                  <Image
-                    key={i}
-                    src={`""/images/${e}`}
-                  />
-                );
+                return <Image key={i} src={`${apiLink}/images/${e}`} />;
               })}
             </Image.PreviewGroup>
           </div>

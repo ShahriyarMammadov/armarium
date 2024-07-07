@@ -13,11 +13,11 @@ const GuaranteePage = () => {
 
   const [loading, setLoading] = useState(true);
   const [guaranteeText, setGuaranteeText] = useState("");
-
+  const apiLink = "http://api.armarium.az";
   const getGuaranteeText = async () => {
     try {
       let { data } = await axios.get(
-        `""/about/getZemanet/651674b81222f3e734ae9f72`
+        `${apiLink}/about/getZemanet/651674b81222f3e734ae9f72`
       );
       setGuaranteeText(data?.data?.about);
       setLoading(false);
@@ -31,10 +31,10 @@ const GuaranteePage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/Zemanet`
+        `${apiLink}/backImage/getBackImageByPage/Zemanet`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${apiLink}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {

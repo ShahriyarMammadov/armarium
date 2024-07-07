@@ -13,11 +13,11 @@ const CustomerServicePage = () => {
 
   const [loading, setLoading] = useState(true);
   const [missiyaText, setMissiyaText] = useState("");
-
+  const apiLink = "http://api.armarium.az";
   const getGuaranteeText = async () => {
     try {
       let { data } = await axios.get(
-        `""/about/getMissiya/6515c18559f571344af26918`
+        `${apiLink}/about/getMissiya/6515c18559f571344af26918`
       );
       setMissiyaText(data?.data?.about);
       setLoading(false);
@@ -32,10 +32,10 @@ const CustomerServicePage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/Missiya`
+        `${apiLink}/backImage/getBackImageByPage/Missiya`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${apiLink}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {

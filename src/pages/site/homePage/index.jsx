@@ -18,7 +18,7 @@ const HomePage = () => {
   const getSelectedModelsData = async () => {
     try {
       const data = await axios.get(
-        """/selectedDecor/getSelectedDecors"
+        "http://api.armarium.az/selectedDecor/getSelectedDecors"
       );
       setSelectedData(data?.data);
     } catch (error) {

@@ -16,6 +16,7 @@ const BlogPage = () => {
   const [loading, setLoading] = useState(true);
 
   const { t } = useTranslation();
+  const ApiLInk = "http://api.armarium.az";
 
   const showModal = () => {
     setOpen(true);
@@ -45,9 +46,11 @@ const BlogPage = () => {
 
   const getBackImage = async () => {
     try {
-      let { data } = await axios.get(`""/backImage/getBackImageByPage/Bloq`);
+      let { data } = await axios.get(
+        `${ApiLInk}/backImage/getBackImageByPage/Bloq`
+      );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${ApiLInk}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -120,7 +123,7 @@ const BlogPage = () => {
                   <>
                     <div className="blog">
                       <img
-                        src={`""/images/${e?.coverImage}`}
+                        src={`${ApiLInk}/images/${e?.coverImage}`}
                         alt={`${e?.name}`}
                       />
 

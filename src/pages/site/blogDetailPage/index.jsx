@@ -11,12 +11,11 @@ const BlogDetailPage = () => {
   const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
+  const apiLink = "http://api.armarium.az";
 
   const getBlogByName = async () => {
     try {
-      const data = await axios.get(
-        `""/blog/blogByName/${id}`
-      );
+      const data = await axios.get(`${apiLink}/blog/blogByName/${id}`);
       setDetailData(data?.data);
     } catch (error) {
       console.log(error);
@@ -28,10 +27,10 @@ const BlogDetailPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/BloqDetail`
+        `${apiLink}/backImage/getBackImageByPage/BloqDetail`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${apiLink}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -91,7 +90,7 @@ const BlogDetailPage = () => {
         ></div>
         <Image
           className="blogImage"
-          src={`""/images/${detailData[0]?.coverImage}`}
+          src={`${apiLink}/images/${detailData[0]?.coverImage}`}
           alt={`${detailData[0]?.name}`}
         />
       </div>

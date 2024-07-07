@@ -12,6 +12,7 @@ const PointOfSalesPages = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const ApiLInk = "http://api.armarium.az";
 
   const { TextArea } = Input;
   const [fullName, setfullName] = useState("");
@@ -26,9 +27,7 @@ const PointOfSalesPages = () => {
 
   const getData = async () => {
     try {
-      const { data } = await axios.get(
-        `""/salesPoint/allSalesPoint`
-      );
+      const { data } = await axios.get(`${ApiLInk}/salesPoint/allSalesPoint`);
 
       setdata(data);
       setLoadingGetData(false);
@@ -48,15 +47,12 @@ const PointOfSalesPages = () => {
         return message.error("Xanaları Tam Doldurun.");
       }
       setLoading(true);
-      const { data } = await axios.post(
-        `""/writeToUs/addWriteToUs`,
-        {
-          fullName,
-          email,
-          phoneNumber,
-          text,
-        }
-      );
+      const { data } = await axios.post(`${ApiLInk}/writeToUs/addWriteToUs`, {
+        fullName,
+        email,
+        phoneNumber,
+        text,
+      });
       message.success(data?.message);
       setLoading(false);
     } catch (error) {

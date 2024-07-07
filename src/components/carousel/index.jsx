@@ -46,7 +46,7 @@ const Carousel = ({ data }) => {
   //   "Marine",
   //   "Tenedos",
   // ];
-
+  const apiLink = "http://api.armarium.az";
   return (
     <div className="carousel">
       {data?.data?.map((image, index) => (
@@ -56,12 +56,13 @@ const Carousel = ({ data }) => {
           // onMouseEnter={() => setIsHovered(true)}
           // onMouseLeave={() => setIsHovered(false)}
           style={{
-            backgroundImage: `url()`,
+            backgroundImage: `url(${apiLink}/images/${image?.coverImage})`,
           }}
         >
           <div className="decor-text">{image?.name}</div>
         </div>
       ))}
+
       <button className="carousel-button prev" onClick={prevSlide}>
         <i className="fa-solid fa-angle-left"></i>
       </button>

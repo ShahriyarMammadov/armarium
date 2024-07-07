@@ -8,12 +8,11 @@ const Footer = () => {
   const { t } = useTranslation();
 
   const [sertifikat, setSertifikat] = useState([]);
+  const ApiLInk = "http://api.armarium.az";
 
   const getCertificate = async () => {
     try {
-      let { data } = await axios.get(
-        `""/about/allCertificate`
-      );
+      let { data } = await axios.get(`${ApiLInk}/about/allCertificate`);
       setSertifikat(data);
     } catch (error) {
       console.log(error);
@@ -119,7 +118,7 @@ const Footer = () => {
                 {sertifikat?.slice(0, 2)?.map((e) => {
                   return (
                     <img
-                      src={`""/images/${e?.coverImage}`}
+                      src={`${ApiLInk}/images/${e?.coverImage}`}
                       alt="Sertifikat"
                     />
                   );

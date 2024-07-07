@@ -10,14 +10,14 @@ const TermsPage = () => {
   const [loading, setLoading] = useState(true);
 
   const backgroundRef = useRef(null);
-
+  const apiLink = "http://api.armarium.az";
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/Terminler`
+        `${apiLink}/backImage/getBackImageByPage/Terminler`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${apiLink}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {

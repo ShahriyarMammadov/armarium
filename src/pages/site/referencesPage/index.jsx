@@ -14,14 +14,13 @@ const ReferencesPage = () => {
   const [dataCount, setDataCount] = useState(8);
 
   const { t } = useTranslation();
+  const ApiLInk = "http://api.armarium.az";
 
   const { Text } = Typography;
 
   const getAllData = async () => {
     try {
-      const data = await axios.get(
-        `""/reference/allReferences`
-      );
+      const data = await axios.get(`${ApiLInk}/reference/allReferences`);
       setAllData(data.data);
       setLoading(false);
     } catch (error) {
@@ -35,10 +34,10 @@ const ReferencesPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/Referans`
+        `${ApiLInk}/backImage/getBackImageByPage/Referans`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${ApiLInk}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -111,16 +110,13 @@ const ReferencesPage = () => {
               ) : (
                 allData?.slice(0, dataCount)?.map((e, i) => {
                   const imageUrls = e?.images.map(
-                    (image) =>
-                      `""/images/${image}`
+                    (image) => `${ApiLInk}/images/${image}`
                   );
                   return (
                     <>
                       <div style={{ position: "relative" }}>
                         <Image.PreviewGroup items={imageUrls} key={i}>
-                          <Image
-                            src={`""/images/${e?.coverImage}`}
-                          />
+                          <Image src={`${ApiLInk}/images/${e?.coverImage}`} />
                         </Image.PreviewGroup>
                         <Text
                           style={{

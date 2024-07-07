@@ -11,6 +11,7 @@ const VacanciesPage = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const ApiLInk = "http://api.armarium.az";
 
   const [allData, setAllData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -18,9 +19,7 @@ const VacanciesPage = () => {
 
   const getAllData = async () => {
     try {
-      const data = await axios.get(
-        `""/vacancy/allVacancy`
-      );
+      const data = await axios.get(`${ApiLInk}/vacancy/allVacancy`);
       setAllData(data.data);
       setLoading(false);
     } catch (error) {
@@ -34,10 +33,10 @@ const VacanciesPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/Vakansiya`
+        `${ApiLInk}/backImage/getBackImageByPage/Vakansiya`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${ApiLInk}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {

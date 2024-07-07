@@ -11,14 +11,13 @@ const NewsPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { t } = useTranslation();
+  const ApiLInk = "http://api.armarium.az";
 
   const [dataCount, setDataCount] = useState(6);
 
   const getNewsData = async () => {
     try {
-      let data = await axios.get(
-        `""/news/allNews`
-      );
+      let data = await axios.get(`${ApiLInk}/news/allNews`);
       setData(data.data);
       setLoading(false);
     } catch (error) {
@@ -32,10 +31,10 @@ const NewsPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/Xeberler`
+        `${ApiLInk}/backImage/getBackImageByPage/Xeberler`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${ApiLInk}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -96,7 +95,7 @@ const NewsPage = () => {
                       <div className="image">
                         <Link to={`/xeberler/${e?._id}`}>
                           <img
-                            src={`""/images/${e?.coverImage}`}
+                            src={`${ApiLInk}/images/${e?.coverImage}`}
                             alt={`${e?.name}`}
                           />
                         </Link>

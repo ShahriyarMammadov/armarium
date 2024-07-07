@@ -12,13 +12,16 @@ const AllModelsPage = () => {
   const [loading, setLoading] = useState(true);
 
   const [decorSliceCount, setDecorSliceCount] = useState(20);
+  const ApiLInk = "http://api.armarium.az";
 
   const { t } = useTranslation();
 
   const getAllDecors = async () => {
     try {
-      const data = await axios.get("");
-      setDecors(data?.data);
+      const data = await axios.get(
+        "http://api.armarium.az/selectedDecor/getSelectedDecors"
+      );
+      setDecors(data?.data.data);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -27,14 +30,13 @@ const AllModelsPage = () => {
   };
 
   const backgroundRef = useRef(null);
-
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/AllModels`
+        `${ApiLInk}/backImage/getBackImageByPage/AllModels`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${ApiLInk}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
@@ -48,7 +50,6 @@ const AllModelsPage = () => {
     getAllDecors();
     getBackImage();
   }, []);
-
   return (
     <div id="allModels">
       <Helmet>
@@ -91,22 +92,26 @@ const AllModelsPage = () => {
                   />
                 ) : (
                   <>
-                    {decors?.slice(0, decorSliceCount)?.map((e, i) => {
-                      return (
-                        <Link to={`/model/${e?.name}`} key={i}>
-                          <img
-                            src={`""/images/${e?.coverImage}`}
-                            alt={`${e?.name}`}
-                          />
-                          <div className="text hidden">
-                            <p className="modelName">{e?.name}</p>
-                            <p className="description hidden">
-                              {e?.description?.slice(0, 37) + ". . ."}
-                            </p>
-                          </div>
-                        </Link>
-                      );
-                    })}
+                    {Array.isArray(decors) &&
+                      decors?.slice(0, decorSliceCount)?.map((e, i) => {
+                        const descriptionText =
+                          e?.description?.replace(/<\/?p>/g, "").slice(0, 37) +
+                          "...";
+                        return (
+                          <Link to={`/model/${e?.name}`} key={i}>
+                            <img
+                              src={`${ApiLInk}/images/${e?.coverImage}`}
+                              alt={`${e?.name}`}
+                            />
+                            <div className="text hidden">
+                              <p className="modelName">{e?.name}</p>
+                              <p className="description hidden">
+                                {descriptionText}
+                              </p>
+                            </div>
+                          </Link>
+                        );
+                      })}
 
                     {decors?.length > 20 && decors?.length > decorSliceCount ? (
                       <button

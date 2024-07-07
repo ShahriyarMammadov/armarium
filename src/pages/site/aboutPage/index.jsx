@@ -14,11 +14,12 @@ const AboutPage = () => {
 
   const { t } = useTranslation();
   const [aboutText, setAboutText] = useState("");
+  const apiLink = "http://api.armarium.az";
 
   const getAboutText = async () => {
     try {
       let { data } = await axios.get(
-        `""/about/getHaqqimizda/6515be22e9d3dcf856ed1311`
+        `${apiLink}/about/getHaqqimizda/6515be22e9d3dcf856ed1311`
       );
       setAboutText(data?.data?.about);
     } catch (error) {
@@ -32,10 +33,10 @@ const AboutPage = () => {
   const getBackImage = async () => {
     try {
       let { data } = await axios.get(
-        `""/backImage/getBackImageByPage/Haqqimizda`
+        `${apiLink}/backImage/getBackImageByPage/Haqqimizda`
       );
       if (backgroundRef.current) {
-        backgroundRef.current.style.backgroundImage = `url(""/images/${data?.image?.coverImage})`;
+        backgroundRef.current.style.backgroundImage = `url(${apiLink}/images/${data?.image?.coverImage})`;
       }
       setLoading(false);
     } catch (error) {
